@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Rpcs** | Pointer to **map[string]interface{}** | This field has not had a description added. | [optional] 
 **PublishedKey** | Pointer to **string** | This field has not had a description added. | [optional] 
 **SecretKey** | Pointer to **string** | This field has not had a description added. | [optional] 
+**Verified** | Pointer to **bool** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 
@@ -233,6 +234,31 @@ SetSecretKey sets SecretKey field to given value.
 `func (o *GameModel) HasSecretKey() bool`
 
 HasSecretKey returns a boolean if a field has been set.
+
+### GetVerified
+
+`func (o *GameModel) GetVerified() bool`
+
+GetVerified returns the Verified field if non-nil, zero value otherwise.
+
+### GetVerifiedOk
+
+`func (o *GameModel) GetVerifiedOk() (*bool, bool)`
+
+GetVerifiedOk returns a tuple with the Verified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerified
+
+`func (o *GameModel) SetVerified(v bool)`
+
+SetVerified sets Verified field to given value.
+
+### HasVerified
+
+`func (o *GameModel) HasVerified() bool`
+
+HasVerified returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

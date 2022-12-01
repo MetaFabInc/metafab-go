@@ -1,25 +1,25 @@
-# \ExchangesApi
+# \ShopsApi
 
 All URIs are relative to *https://api.trymetafab.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateExchange**](ExchangesApi.md#CreateExchange) | **Post** /v1/exchanges | Create exchange
-[**GetExchangeOffer**](ExchangesApi.md#GetExchangeOffer) | **Get** /v1/exchanges/{exchangeId}/items/{exchangeOfferId} | Get exchange offer
-[**GetExchangeOffers**](ExchangesApi.md#GetExchangeOffers) | **Get** /v1/exchanges/{exchangeId}/offers | Get exchange offers
-[**GetExchanges**](ExchangesApi.md#GetExchanges) | **Get** /v1/exchanges | Get exchanges
-[**RemoveExchangeOffer**](ExchangesApi.md#RemoveExchangeOffer) | **Delete** /v1/exchanges/{exchangeId}/offers/{exchangeOfferId} | Remove exchange offer
-[**SetExchangeOffer**](ExchangesApi.md#SetExchangeOffer) | **Post** /v1/exchanges/{exchangeId}/offers | Set exchange offer
-[**UseExchangeOffer**](ExchangesApi.md#UseExchangeOffer) | **Post** /v1/exchanges/{exchangeId}/offers/{exchangeOfferId}/uses | Use exchange offer
-[**WithdrawFromExchange**](ExchangesApi.md#WithdrawFromExchange) | **Post** /v1/exchanges/{exchangeId}/withdrawals | Withdraw from exchange
+[**CreateShop**](ShopsApi.md#CreateShop) | **Post** /v1/shops | Create shop
+[**GetShopOffer**](ShopsApi.md#GetShopOffer) | **Get** /v1/shops/{shopId}/items/{shopOfferId} | Get shop offer
+[**GetShopOffers**](ShopsApi.md#GetShopOffers) | **Get** /v1/shops/{shopId}/offers | Get shop offers
+[**GetShops**](ShopsApi.md#GetShops) | **Get** /v1/shops | Get shops
+[**RemoveShopOffer**](ShopsApi.md#RemoveShopOffer) | **Delete** /v1/shops/{shopId}/offers/{shopOfferId} | Remove shop offer
+[**SetShopOffer**](ShopsApi.md#SetShopOffer) | **Post** /v1/shops/{shopId}/offers | Set shop offer
+[**UseShopOffer**](ShopsApi.md#UseShopOffer) | **Post** /v1/shops/{shopId}/offers/{shopOfferId}/uses | Use shop offer
+[**WithdrawFromShop**](ShopsApi.md#WithdrawFromShop) | **Post** /v1/shops/{shopId}/withdrawals | Withdraw from shop
 
 
 
-## CreateExchange
+## CreateShop
 
-> CreateExchange200Response CreateExchange(ctx).XAuthorization(xAuthorization).XPassword(xPassword).CreateExchangeRequest(createExchangeRequest).Execute()
+> CreateShop200Response CreateShop(ctx).XAuthorization(xAuthorization).XPassword(xPassword).CreateShopRequest(createShopRequest).Execute()
 
-Create exchange
+Create shop
 
 
 
@@ -38,17 +38,17 @@ import (
 func main() {
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-    createExchangeRequest := *openapiclient.NewCreateExchangeRequest("SELECT ONE") // CreateExchangeRequest | 
+    createShopRequest := *openapiclient.NewCreateShopRequest("SELECT ONE") // CreateShopRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExchangesApi.CreateExchange(context.Background()).XAuthorization(xAuthorization).XPassword(xPassword).CreateExchangeRequest(createExchangeRequest).Execute()
+    resp, r, err := apiClient.ShopsApi.CreateShop(context.Background()).XAuthorization(xAuthorization).XPassword(xPassword).CreateShopRequest(createShopRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExchangesApi.CreateExchange``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.CreateShop``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateExchange`: CreateExchange200Response
-    fmt.Fprintf(os.Stdout, "Response from `ExchangesApi.CreateExchange`: %v\n", resp)
+    // response from `CreateShop`: CreateShop200Response
+    fmt.Fprintf(os.Stdout, "Response from `ShopsApi.CreateShop`: %v\n", resp)
 }
 ```
 
@@ -58,18 +58,18 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateExchangeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateShopRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
  **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
- **createExchangeRequest** | [**CreateExchangeRequest**](CreateExchangeRequest.md) |  | 
+ **createShopRequest** | [**CreateShopRequest**](CreateShopRequest.md) |  | 
 
 ### Return type
 
-[**CreateExchange200Response**](CreateExchange200Response.md)
+[**CreateShop200Response**](CreateShop200Response.md)
 
 ### Authorization
 
@@ -85,84 +85,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GetExchangeOffer
+## GetShopOffer
 
-> ExchangeOffer GetExchangeOffer(ctx, exchangeId, exchangeOfferId).Execute()
+> ShopOffer GetShopOffer(ctx, shopId, shopOfferId).Execute()
 
-Get exchange offer
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    exchangeId := "exchangeId_example" // string | Any exchange id within the MetaFab ecosystem.
-    exchangeOfferId := "exchangeOfferId_example" // string | Any offer id for the exchange. Zero, or a positive integer.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExchangesApi.GetExchangeOffer(context.Background(), exchangeId, exchangeOfferId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExchangesApi.GetExchangeOffer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetExchangeOffer`: ExchangeOffer
-    fmt.Fprintf(os.Stdout, "Response from `ExchangesApi.GetExchangeOffer`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exchangeId** | **string** | Any exchange id within the MetaFab ecosystem. | 
-**exchangeOfferId** | **string** | Any offer id for the exchange. Zero, or a positive integer. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetExchangeOfferRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ExchangeOffer**](ExchangeOffer.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetExchangeOffers
-
-> []ExchangeOffer GetExchangeOffers(ctx, exchangeId).Execute()
-
-Get exchange offers
+Get shop offer
 
 
 
@@ -179,17 +106,18 @@ import (
 )
 
 func main() {
-    exchangeId := "exchangeId_example" // string | Any exchange id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopOfferId := "shopOfferId_example" // string | Any offer id for the shop. Zero, or a positive integer.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExchangesApi.GetExchangeOffers(context.Background(), exchangeId).Execute()
+    resp, r, err := apiClient.ShopsApi.GetShopOffer(context.Background(), shopId, shopOfferId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExchangesApi.GetExchangeOffers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.GetShopOffer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetExchangeOffers`: []ExchangeOffer
-    fmt.Fprintf(os.Stdout, "Response from `ExchangesApi.GetExchangeOffers`: %v\n", resp)
+    // response from `GetShopOffer`: ShopOffer
+    fmt.Fprintf(os.Stdout, "Response from `ShopsApi.GetShopOffer`: %v\n", resp)
 }
 ```
 
@@ -199,20 +127,22 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exchangeId** | **string** | Any exchange id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopOfferId** | **string** | Any offer id for the shop. Zero, or a positive integer. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetExchangeOffersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetShopOfferRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+
 ### Return type
 
-[**[]ExchangeOffer**](ExchangeOffer.md)
+[**ShopOffer**](ShopOffer.md)
 
 ### Authorization
 
@@ -228,11 +158,81 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GetExchanges
+## GetShopOffers
 
-> []GetExchanges200ResponseInner GetExchanges(ctx).XGameKey(xGameKey).Execute()
+> []ShopOffer GetShopOffers(ctx, shopId).Execute()
 
-Get exchanges
+Get shop offers
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ShopsApi.GetShopOffers(context.Background(), shopId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.GetShopOffers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetShopOffers`: []ShopOffer
+    fmt.Fprintf(os.Stdout, "Response from `ShopsApi.GetShopOffers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetShopOffersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]ShopOffer**](ShopOffer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetShops
+
+> []GetShops200ResponseInner GetShops(ctx).XGameKey(xGameKey).Execute()
+
+Get shops
 
 
 
@@ -253,13 +253,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExchangesApi.GetExchanges(context.Background()).XGameKey(xGameKey).Execute()
+    resp, r, err := apiClient.ShopsApi.GetShops(context.Background()).XGameKey(xGameKey).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExchangesApi.GetExchanges``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.GetShops``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetExchanges`: []GetExchanges200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `ExchangesApi.GetExchanges`: %v\n", resp)
+    // response from `GetShops`: []GetShops200ResponseInner
+    fmt.Fprintf(os.Stdout, "Response from `ShopsApi.GetShops`: %v\n", resp)
 }
 ```
 
@@ -269,7 +269,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetExchangesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetShopsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]GetExchanges200ResponseInner**](GetExchanges200ResponseInner.md)
+[**[]GetShops200ResponseInner**](GetShops200ResponseInner.md)
 
 ### Authorization
 
@@ -294,11 +294,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## RemoveExchangeOffer
+## RemoveShopOffer
 
-> TransactionModel RemoveExchangeOffer(ctx, exchangeId, exchangeOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+> TransactionModel RemoveShopOffer(ctx, shopId, shopOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
 
-Remove exchange offer
+Remove shop offer
 
 
 
@@ -315,20 +315,20 @@ import (
 )
 
 func main() {
-    exchangeId := "exchangeId_example" // string | Any exchange id within the MetaFab ecosystem.
-    exchangeOfferId := "exchangeOfferId_example" // string | Any offer id for the exchange. Zero, or a positive integer.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopOfferId := "shopOfferId_example" // string | Any offer id for the shop. Zero, or a positive integer.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExchangesApi.RemoveExchangeOffer(context.Background(), exchangeId, exchangeOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+    resp, r, err := apiClient.ShopsApi.RemoveShopOffer(context.Background(), shopId, shopOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExchangesApi.RemoveExchangeOffer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.RemoveShopOffer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RemoveExchangeOffer`: TransactionModel
-    fmt.Fprintf(os.Stdout, "Response from `ExchangesApi.RemoveExchangeOffer`: %v\n", resp)
+    // response from `RemoveShopOffer`: TransactionModel
+    fmt.Fprintf(os.Stdout, "Response from `ShopsApi.RemoveShopOffer`: %v\n", resp)
 }
 ```
 
@@ -338,12 +338,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exchangeId** | **string** | Any exchange id within the MetaFab ecosystem. | 
-**exchangeOfferId** | **string** | Any offer id for the exchange. Zero, or a positive integer. | 
+**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopOfferId** | **string** | Any offer id for the shop. Zero, or a positive integer. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRemoveExchangeOfferRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRemoveShopOfferRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -371,11 +371,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## SetExchangeOffer
+## SetShopOffer
 
-> TransactionModel SetExchangeOffer(ctx, exchangeId).XAuthorization(xAuthorization).XPassword(xPassword).SetExchangeOfferRequest(setExchangeOfferRequest).Execute()
+> TransactionModel SetShopOffer(ctx, shopId).XAuthorization(xAuthorization).XPassword(xPassword).SetShopOfferRequest(setShopOfferRequest).Execute()
 
-Set exchange offer
+Set shop offer
 
 
 
@@ -392,20 +392,20 @@ import (
 )
 
 func main() {
-    exchangeId := "exchangeId_example" // string | Any exchange id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-    setExchangeOfferRequest := *openapiclient.NewSetExchangeOfferRequest(float32(1337)) // SetExchangeOfferRequest | 
+    setShopOfferRequest := *openapiclient.NewSetShopOfferRequest(int32(1337)) // SetShopOfferRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExchangesApi.SetExchangeOffer(context.Background(), exchangeId).XAuthorization(xAuthorization).XPassword(xPassword).SetExchangeOfferRequest(setExchangeOfferRequest).Execute()
+    resp, r, err := apiClient.ShopsApi.SetShopOffer(context.Background(), shopId).XAuthorization(xAuthorization).XPassword(xPassword).SetShopOfferRequest(setShopOfferRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExchangesApi.SetExchangeOffer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.SetShopOffer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetExchangeOffer`: TransactionModel
-    fmt.Fprintf(os.Stdout, "Response from `ExchangesApi.SetExchangeOffer`: %v\n", resp)
+    // response from `SetShopOffer`: TransactionModel
+    fmt.Fprintf(os.Stdout, "Response from `ShopsApi.SetShopOffer`: %v\n", resp)
 }
 ```
 
@@ -415,11 +415,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exchangeId** | **string** | Any exchange id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSetExchangeOfferRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSetShopOfferRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
  **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
- **setExchangeOfferRequest** | [**SetExchangeOfferRequest**](SetExchangeOfferRequest.md) |  | 
+ **setShopOfferRequest** | [**SetShopOfferRequest**](SetShopOfferRequest.md) |  | 
 
 ### Return type
 
@@ -447,11 +447,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## UseExchangeOffer
+## UseShopOffer
 
-> TransactionModel UseExchangeOffer(ctx, exchangeId, exchangeOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+> TransactionModel UseShopOffer(ctx, shopId, shopOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
 
-Use exchange offer
+Use shop offer
 
 
 
@@ -468,20 +468,20 @@ import (
 )
 
 func main() {
-    exchangeId := "exchangeId_example" // string | Any exchange id within the MetaFab ecosystem.
-    exchangeOfferId := "exchangeOfferId_example" // string | Any offer id for the exchange. Zero, or a positive integer.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopOfferId := "shopOfferId_example" // string | Any offer id for the shop. Zero, or a positive integer.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
     xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExchangesApi.UseExchangeOffer(context.Background(), exchangeId, exchangeOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+    resp, r, err := apiClient.ShopsApi.UseShopOffer(context.Background(), shopId, shopOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExchangesApi.UseExchangeOffer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.UseShopOffer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UseExchangeOffer`: TransactionModel
-    fmt.Fprintf(os.Stdout, "Response from `ExchangesApi.UseExchangeOffer`: %v\n", resp)
+    // response from `UseShopOffer`: TransactionModel
+    fmt.Fprintf(os.Stdout, "Response from `ShopsApi.UseShopOffer`: %v\n", resp)
 }
 ```
 
@@ -491,12 +491,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exchangeId** | **string** | Any exchange id within the MetaFab ecosystem. | 
-**exchangeOfferId** | **string** | Any offer id for the exchange. Zero, or a positive integer. | 
+**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopOfferId** | **string** | Any offer id for the shop. Zero, or a positive integer. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUseExchangeOfferRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUseShopOfferRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -524,11 +524,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## WithdrawFromExchange
+## WithdrawFromShop
 
-> TransactionModel WithdrawFromExchange(ctx, exchangeId).XAuthorization(xAuthorization).XPassword(xPassword).WithdrawFromExchangeRequest(withdrawFromExchangeRequest).Execute()
+> TransactionModel WithdrawFromShop(ctx, shopId).XAuthorization(xAuthorization).XPassword(xPassword).WithdrawFromShopRequest(withdrawFromShopRequest).Execute()
 
-Withdraw from exchange
+Withdraw from shop
 
 
 
@@ -545,20 +545,20 @@ import (
 )
 
 func main() {
-    exchangeId := "exchangeId_example" // string | Any exchange id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-    withdrawFromExchangeRequest := *openapiclient.NewWithdrawFromExchangeRequest() // WithdrawFromExchangeRequest | 
+    withdrawFromShopRequest := *openapiclient.NewWithdrawFromShopRequest() // WithdrawFromShopRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExchangesApi.WithdrawFromExchange(context.Background(), exchangeId).XAuthorization(xAuthorization).XPassword(xPassword).WithdrawFromExchangeRequest(withdrawFromExchangeRequest).Execute()
+    resp, r, err := apiClient.ShopsApi.WithdrawFromShop(context.Background(), shopId).XAuthorization(xAuthorization).XPassword(xPassword).WithdrawFromShopRequest(withdrawFromShopRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExchangesApi.WithdrawFromExchange``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.WithdrawFromShop``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `WithdrawFromExchange`: TransactionModel
-    fmt.Fprintf(os.Stdout, "Response from `ExchangesApi.WithdrawFromExchange`: %v\n", resp)
+    // response from `WithdrawFromShop`: TransactionModel
+    fmt.Fprintf(os.Stdout, "Response from `ShopsApi.WithdrawFromShop`: %v\n", resp)
 }
 ```
 
@@ -568,11 +568,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**exchangeId** | **string** | Any exchange id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiWithdrawFromExchangeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiWithdrawFromShopRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -580,7 +580,7 @@ Name | Type | Description  | Notes
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
  **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
- **withdrawFromExchangeRequest** | [**WithdrawFromExchangeRequest**](WithdrawFromExchangeRequest.md) |  | 
+ **withdrawFromShopRequest** | [**WithdrawFromShopRequest**](WithdrawFromShopRequest.md) |  | 
 
 ### Return type
 

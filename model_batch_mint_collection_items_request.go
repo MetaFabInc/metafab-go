@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -20,9 +20,9 @@ type BatchMintCollectionItemsRequest struct {
 	// A valid EVM based address to create (mint) the items for. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
 	Address *string `json:"address,omitempty"`
 	// An array of unique itemIds to create (mint).
-	ItemIds []float32 `json:"itemIds"`
+	ItemIds []int32 `json:"itemIds"`
 	// An array of the quantities of each of the unique itemIds provided to create (mint). The quantity of each itemId in itemIds should be at the same index as the specific itemId in the itemIds array. For example, quantities[2] defines the quantity to mint for itemIds[2], etc.
-	Quantities []float32 `json:"quantities"`
+	Quantities []int32 `json:"quantities"`
 	// Any wallet id within the MetaFab ecosystem to create (mint) the items for.
 	WalletId *string `json:"walletId,omitempty"`
 }
@@ -31,7 +31,7 @@ type BatchMintCollectionItemsRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBatchMintCollectionItemsRequest(itemIds []float32, quantities []float32) *BatchMintCollectionItemsRequest {
+func NewBatchMintCollectionItemsRequest(itemIds []int32, quantities []int32) *BatchMintCollectionItemsRequest {
 	this := BatchMintCollectionItemsRequest{}
 	this.ItemIds = itemIds
 	this.Quantities = quantities
@@ -79,9 +79,9 @@ func (o *BatchMintCollectionItemsRequest) SetAddress(v string) {
 }
 
 // GetItemIds returns the ItemIds field value
-func (o *BatchMintCollectionItemsRequest) GetItemIds() []float32 {
+func (o *BatchMintCollectionItemsRequest) GetItemIds() []int32 {
 	if o == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 
@@ -90,7 +90,7 @@ func (o *BatchMintCollectionItemsRequest) GetItemIds() []float32 {
 
 // GetItemIdsOk returns a tuple with the ItemIds field value
 // and a boolean to check if the value has been set.
-func (o *BatchMintCollectionItemsRequest) GetItemIdsOk() ([]float32, bool) {
+func (o *BatchMintCollectionItemsRequest) GetItemIdsOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,14 +98,14 @@ func (o *BatchMintCollectionItemsRequest) GetItemIdsOk() ([]float32, bool) {
 }
 
 // SetItemIds sets field value
-func (o *BatchMintCollectionItemsRequest) SetItemIds(v []float32) {
+func (o *BatchMintCollectionItemsRequest) SetItemIds(v []int32) {
 	o.ItemIds = v
 }
 
 // GetQuantities returns the Quantities field value
-func (o *BatchMintCollectionItemsRequest) GetQuantities() []float32 {
+func (o *BatchMintCollectionItemsRequest) GetQuantities() []int32 {
 	if o == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 
@@ -114,7 +114,7 @@ func (o *BatchMintCollectionItemsRequest) GetQuantities() []float32 {
 
 // GetQuantitiesOk returns a tuple with the Quantities field value
 // and a boolean to check if the value has been set.
-func (o *BatchMintCollectionItemsRequest) GetQuantitiesOk() ([]float32, bool) {
+func (o *BatchMintCollectionItemsRequest) GetQuantitiesOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *BatchMintCollectionItemsRequest) GetQuantitiesOk() ([]float32, bool) {
 }
 
 // SetQuantities sets field value
-func (o *BatchMintCollectionItemsRequest) SetQuantities(v []float32) {
+func (o *BatchMintCollectionItemsRequest) SetQuantities(v []int32) {
 	o.Quantities = v
 }
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ContractId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
-**Contract** | Pointer to [**CollectionModel**](CollectionModel.md) |  | [optional] 
+**Contract** | Pointer to [**ContractModel**](ContractModel.md) |  | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetContract
 
-`func (o *GetCollections200ResponseInner) GetContract() CollectionModel`
+`func (o *GetCollections200ResponseInner) GetContract() ContractModel`
 
 GetContract returns the Contract field if non-nil, zero value otherwise.
 
 ### GetContractOk
 
-`func (o *GetCollections200ResponseInner) GetContractOk() (*CollectionModel, bool)`
+`func (o *GetCollections200ResponseInner) GetContractOk() (*ContractModel, bool)`
 
 GetContractOk returns a tuple with the Contract field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContract
 
-`func (o *GetCollections200ResponseInner) SetContract(v CollectionModel)`
+`func (o *GetCollections200ResponseInner) SetContract(v ContractModel)`
 
 SetContract sets Contract field to given value.
 

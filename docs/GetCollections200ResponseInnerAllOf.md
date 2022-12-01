@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Contract** | Pointer to [**CollectionModel**](CollectionModel.md) |  | [optional] 
+**Contract** | Pointer to [**ContractModel**](ContractModel.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetContract
 
-`func (o *GetCollections200ResponseInnerAllOf) GetContract() CollectionModel`
+`func (o *GetCollections200ResponseInnerAllOf) GetContract() ContractModel`
 
 GetContract returns the Contract field if non-nil, zero value otherwise.
 
 ### GetContractOk
 
-`func (o *GetCollections200ResponseInnerAllOf) GetContractOk() (*CollectionModel, bool)`
+`func (o *GetCollections200ResponseInnerAllOf) GetContractOk() (*ContractModel, bool)`
 
 GetContractOk returns a tuple with the Contract field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContract
 
-`func (o *GetCollections200ResponseInnerAllOf) SetContract(v CollectionModel)`
+`func (o *GetCollections200ResponseInnerAllOf) SetContract(v ContractModel)`
 
 SetContract sets Contract field to given value.
 

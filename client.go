@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the MetaFab API API v1.2.1
+// APIClient manages communication with the MetaFab API API v1.3.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -54,13 +54,15 @@ type APIClient struct {
 
 	CurrenciesApi *CurrenciesApiService
 
-	ExchangesApi *ExchangesApiService
-
 	GamesApi *GamesApiService
 
 	ItemsApi *ItemsApiService
 
+	LootboxesApi *LootboxesApiService
+
 	PlayersApi *PlayersApiService
+
+	ShopsApi *ShopsApiService
 
 	TransactionsApi *TransactionsApiService
 
@@ -85,10 +87,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.ContractsApi = (*ContractsApiService)(&c.common)
 	c.CurrenciesApi = (*CurrenciesApiService)(&c.common)
-	c.ExchangesApi = (*ExchangesApiService)(&c.common)
 	c.GamesApi = (*GamesApiService)(&c.common)
 	c.ItemsApi = (*ItemsApiService)(&c.common)
+	c.LootboxesApi = (*LootboxesApiService)(&c.common)
 	c.PlayersApi = (*PlayersApiService)(&c.common)
+	c.ShopsApi = (*ShopsApiService)(&c.common)
 	c.TransactionsApi = (*TransactionsApiService)(&c.common)
 	c.WalletsApi = (*WalletsApiService)(&c.common)
 

@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | A valid EVM based address to create (mint) the item(s) for. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | [optional] 
-**Quantity** | **float32** | The quantity of the specified item id to create (mint). | 
+**Quantity** | **int32** | The quantity of the specified item id to create (mint). | 
 **WalletId** | Pointer to **string** | Any wallet id within the MetaFab ecosystem to create (mint) the item(s) for. | [optional] 
 
 ## Methods
 
 ### NewMintCollectionItemRequest
 
-`func NewMintCollectionItemRequest(quantity float32, ) *MintCollectionItemRequest`
+`func NewMintCollectionItemRequest(quantity int32, ) *MintCollectionItemRequest`
 
 NewMintCollectionItemRequest instantiates a new MintCollectionItemRequest object
 This constructor will assign default values to properties that have it defined,
@@ -54,20 +54,20 @@ HasAddress returns a boolean if a field has been set.
 
 ### GetQuantity
 
-`func (o *MintCollectionItemRequest) GetQuantity() float32`
+`func (o *MintCollectionItemRequest) GetQuantity() int32`
 
 GetQuantity returns the Quantity field if non-nil, zero value otherwise.
 
 ### GetQuantityOk
 
-`func (o *MintCollectionItemRequest) GetQuantityOk() (*float32, bool)`
+`func (o *MintCollectionItemRequest) GetQuantityOk() (*int32, bool)`
 
 GetQuantityOk returns a tuple with the Quantity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuantity
 
-`func (o *MintCollectionItemRequest) SetQuantity(v float32)`
+`func (o *MintCollectionItemRequest) SetQuantity(v int32)`
 
 SetQuantity sets Quantity field to given value.
 

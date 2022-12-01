@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// ExchangeModel struct for ExchangeModel
-type ExchangeModel struct {
+// CreateLootboxManager200Response struct for CreateLootboxManager200Response
+type CreateLootboxManager200Response struct {
 	// This field has not had a description added.
 	Id *string `json:"id,omitempty"`
 	// This field has not had a description added.
@@ -27,27 +27,28 @@ type ExchangeModel struct {
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
 	CreatedAt *string `json:"createdAt,omitempty"`
+	Contract *CreateCollection200ResponseAllOfContract `json:"contract,omitempty"`
 }
 
-// NewExchangeModel instantiates a new ExchangeModel object
+// NewCreateLootboxManager200Response instantiates a new CreateLootboxManager200Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExchangeModel() *ExchangeModel {
-	this := ExchangeModel{}
+func NewCreateLootboxManager200Response() *CreateLootboxManager200Response {
+	this := CreateLootboxManager200Response{}
 	return &this
 }
 
-// NewExchangeModelWithDefaults instantiates a new ExchangeModel object
+// NewCreateLootboxManager200ResponseWithDefaults instantiates a new CreateLootboxManager200Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewExchangeModelWithDefaults() *ExchangeModel {
-	this := ExchangeModel{}
+func NewCreateLootboxManager200ResponseWithDefaults() *CreateLootboxManager200Response {
+	this := CreateLootboxManager200Response{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ExchangeModel) GetId() string {
+func (o *CreateLootboxManager200Response) GetId() string {
 	if o == nil || o.Id == nil {
 		var ret string
 		return ret
@@ -57,7 +58,7 @@ func (o *ExchangeModel) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExchangeModel) GetIdOk() (*string, bool) {
+func (o *CreateLootboxManager200Response) GetIdOk() (*string, bool) {
 	if o == nil || o.Id == nil {
 		return nil, false
 	}
@@ -65,7 +66,7 @@ func (o *ExchangeModel) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ExchangeModel) HasId() bool {
+func (o *CreateLootboxManager200Response) HasId() bool {
 	if o != nil && o.Id != nil {
 		return true
 	}
@@ -74,12 +75,12 @@ func (o *ExchangeModel) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ExchangeModel) SetId(v string) {
+func (o *CreateLootboxManager200Response) SetId(v string) {
 	o.Id = &v
 }
 
 // GetGameId returns the GameId field value if set, zero value otherwise.
-func (o *ExchangeModel) GetGameId() string {
+func (o *CreateLootboxManager200Response) GetGameId() string {
 	if o == nil || o.GameId == nil {
 		var ret string
 		return ret
@@ -89,7 +90,7 @@ func (o *ExchangeModel) GetGameId() string {
 
 // GetGameIdOk returns a tuple with the GameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExchangeModel) GetGameIdOk() (*string, bool) {
+func (o *CreateLootboxManager200Response) GetGameIdOk() (*string, bool) {
 	if o == nil || o.GameId == nil {
 		return nil, false
 	}
@@ -97,7 +98,7 @@ func (o *ExchangeModel) GetGameIdOk() (*string, bool) {
 }
 
 // HasGameId returns a boolean if a field has been set.
-func (o *ExchangeModel) HasGameId() bool {
+func (o *CreateLootboxManager200Response) HasGameId() bool {
 	if o != nil && o.GameId != nil {
 		return true
 	}
@@ -106,12 +107,12 @@ func (o *ExchangeModel) HasGameId() bool {
 }
 
 // SetGameId gets a reference to the given string and assigns it to the GameId field.
-func (o *ExchangeModel) SetGameId(v string) {
+func (o *CreateLootboxManager200Response) SetGameId(v string) {
 	o.GameId = &v
 }
 
 // GetContractId returns the ContractId field value if set, zero value otherwise.
-func (o *ExchangeModel) GetContractId() string {
+func (o *CreateLootboxManager200Response) GetContractId() string {
 	if o == nil || o.ContractId == nil {
 		var ret string
 		return ret
@@ -121,7 +122,7 @@ func (o *ExchangeModel) GetContractId() string {
 
 // GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExchangeModel) GetContractIdOk() (*string, bool) {
+func (o *CreateLootboxManager200Response) GetContractIdOk() (*string, bool) {
 	if o == nil || o.ContractId == nil {
 		return nil, false
 	}
@@ -129,7 +130,7 @@ func (o *ExchangeModel) GetContractIdOk() (*string, bool) {
 }
 
 // HasContractId returns a boolean if a field has been set.
-func (o *ExchangeModel) HasContractId() bool {
+func (o *CreateLootboxManager200Response) HasContractId() bool {
 	if o != nil && o.ContractId != nil {
 		return true
 	}
@@ -138,12 +139,12 @@ func (o *ExchangeModel) HasContractId() bool {
 }
 
 // SetContractId gets a reference to the given string and assigns it to the ContractId field.
-func (o *ExchangeModel) SetContractId(v string) {
+func (o *CreateLootboxManager200Response) SetContractId(v string) {
 	o.ContractId = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ExchangeModel) GetUpdatedAt() string {
+func (o *CreateLootboxManager200Response) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
 		var ret string
 		return ret
@@ -153,7 +154,7 @@ func (o *ExchangeModel) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExchangeModel) GetUpdatedAtOk() (*string, bool) {
+func (o *CreateLootboxManager200Response) GetUpdatedAtOk() (*string, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -161,7 +162,7 @@ func (o *ExchangeModel) GetUpdatedAtOk() (*string, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *ExchangeModel) HasUpdatedAt() bool {
+func (o *CreateLootboxManager200Response) HasUpdatedAt() bool {
 	if o != nil && o.UpdatedAt != nil {
 		return true
 	}
@@ -170,12 +171,12 @@ func (o *ExchangeModel) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *ExchangeModel) SetUpdatedAt(v string) {
+func (o *CreateLootboxManager200Response) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ExchangeModel) GetCreatedAt() string {
+func (o *CreateLootboxManager200Response) GetCreatedAt() string {
 	if o == nil || o.CreatedAt == nil {
 		var ret string
 		return ret
@@ -185,7 +186,7 @@ func (o *ExchangeModel) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExchangeModel) GetCreatedAtOk() (*string, bool) {
+func (o *CreateLootboxManager200Response) GetCreatedAtOk() (*string, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -193,7 +194,7 @@ func (o *ExchangeModel) GetCreatedAtOk() (*string, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *ExchangeModel) HasCreatedAt() bool {
+func (o *CreateLootboxManager200Response) HasCreatedAt() bool {
 	if o != nil && o.CreatedAt != nil {
 		return true
 	}
@@ -202,11 +203,43 @@ func (o *ExchangeModel) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *ExchangeModel) SetCreatedAt(v string) {
+func (o *CreateLootboxManager200Response) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
-func (o ExchangeModel) MarshalJSON() ([]byte, error) {
+// GetContract returns the Contract field value if set, zero value otherwise.
+func (o *CreateLootboxManager200Response) GetContract() CreateCollection200ResponseAllOfContract {
+	if o == nil || o.Contract == nil {
+		var ret CreateCollection200ResponseAllOfContract
+		return ret
+	}
+	return *o.Contract
+}
+
+// GetContractOk returns a tuple with the Contract field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateLootboxManager200Response) GetContractOk() (*CreateCollection200ResponseAllOfContract, bool) {
+	if o == nil || o.Contract == nil {
+		return nil, false
+	}
+	return o.Contract, true
+}
+
+// HasContract returns a boolean if a field has been set.
+func (o *CreateLootboxManager200Response) HasContract() bool {
+	if o != nil && o.Contract != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContract gets a reference to the given CreateCollection200ResponseAllOfContract and assigns it to the Contract field.
+func (o *CreateLootboxManager200Response) SetContract(v CreateCollection200ResponseAllOfContract) {
+	o.Contract = &v
+}
+
+func (o CreateLootboxManager200Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
@@ -223,41 +256,44 @@ func (o ExchangeModel) MarshalJSON() ([]byte, error) {
 	if o.CreatedAt != nil {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
+	if o.Contract != nil {
+		toSerialize["contract"] = o.Contract
+	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableExchangeModel struct {
-	value *ExchangeModel
+type NullableCreateLootboxManager200Response struct {
+	value *CreateLootboxManager200Response
 	isSet bool
 }
 
-func (v NullableExchangeModel) Get() *ExchangeModel {
+func (v NullableCreateLootboxManager200Response) Get() *CreateLootboxManager200Response {
 	return v.value
 }
 
-func (v *NullableExchangeModel) Set(val *ExchangeModel) {
+func (v *NullableCreateLootboxManager200Response) Set(val *CreateLootboxManager200Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableExchangeModel) IsSet() bool {
+func (v NullableCreateLootboxManager200Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableExchangeModel) Unset() {
+func (v *NullableCreateLootboxManager200Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableExchangeModel(val *ExchangeModel) *NullableExchangeModel {
-	return &NullableExchangeModel{value: val, isSet: true}
+func NewNullableCreateLootboxManager200Response(val *CreateLootboxManager200Response) *NullableCreateLootboxManager200Response {
+	return &NullableCreateLootboxManager200Response{value: val, isSet: true}
 }
 
-func (v NullableExchangeModel) MarshalJSON() ([]byte, error) {
+func (v NullableCreateLootboxManager200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableExchangeModel) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateLootboxManager200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

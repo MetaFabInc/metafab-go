@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | A valid EVM based addresses to transfer items to. | [optional] 
 **WalletId** | Pointer to **[]string** | A wallet id within the MetaFab ecosystem to transfer items to. | [optional] 
-**Quantity** | **float32** | The quantity of the collectionItemId to transfer. | 
+**Quantity** | **int32** | The quantity of the collectionItemId to transfer. | 
 
 ## Methods
 
 ### NewTransferCollectionItemRequest
 
-`func NewTransferCollectionItemRequest(quantity float32, ) *TransferCollectionItemRequest`
+`func NewTransferCollectionItemRequest(quantity int32, ) *TransferCollectionItemRequest`
 
 NewTransferCollectionItemRequest instantiates a new TransferCollectionItemRequest object
 This constructor will assign default values to properties that have it defined,
@@ -79,20 +79,20 @@ HasWalletId returns a boolean if a field has been set.
 
 ### GetQuantity
 
-`func (o *TransferCollectionItemRequest) GetQuantity() float32`
+`func (o *TransferCollectionItemRequest) GetQuantity() int32`
 
 GetQuantity returns the Quantity field if non-nil, zero value otherwise.
 
 ### GetQuantityOk
 
-`func (o *TransferCollectionItemRequest) GetQuantityOk() (*float32, bool)`
+`func (o *TransferCollectionItemRequest) GetQuantityOk() (*int32, bool)`
 
 GetQuantityOk returns a tuple with the Quantity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuantity
 
-`func (o *TransferCollectionItemRequest) SetQuantity(v float32)`
+`func (o *TransferCollectionItemRequest) SetQuantity(v int32)`
 
 SetQuantity sets Quantity field to given value.
 

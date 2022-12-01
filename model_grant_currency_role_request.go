@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -22,7 +22,7 @@ type GrantCurrencyRoleRequest struct {
 	// A valid EVM based address to grant the role to.
 	Address *string `json:"address,omitempty"`
 	// A wallet id within the MetaFab ecosystem to grant the role to.
-	WalletId []string `json:"walletId,omitempty"`
+	WalletId *string `json:"walletId,omitempty"`
 }
 
 // NewGrantCurrencyRoleRequest instantiates a new GrantCurrencyRoleRequest object
@@ -100,17 +100,17 @@ func (o *GrantCurrencyRoleRequest) SetAddress(v string) {
 }
 
 // GetWalletId returns the WalletId field value if set, zero value otherwise.
-func (o *GrantCurrencyRoleRequest) GetWalletId() []string {
+func (o *GrantCurrencyRoleRequest) GetWalletId() string {
 	if o == nil || o.WalletId == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
-	return o.WalletId
+	return *o.WalletId
 }
 
 // GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GrantCurrencyRoleRequest) GetWalletIdOk() ([]string, bool) {
+func (o *GrantCurrencyRoleRequest) GetWalletIdOk() (*string, bool) {
 	if o == nil || o.WalletId == nil {
 		return nil, false
 	}
@@ -126,9 +126,9 @@ func (o *GrantCurrencyRoleRequest) HasWalletId() bool {
 	return false
 }
 
-// SetWalletId gets a reference to the given []string and assigns it to the WalletId field.
-func (o *GrantCurrencyRoleRequest) SetWalletId(v []string) {
-	o.WalletId = v
+// SetWalletId gets a reference to the given string and assigns it to the WalletId field.
+func (o *GrantCurrencyRoleRequest) SetWalletId(v string) {
+	o.WalletId = &v
 }
 
 func (o GrantCurrencyRoleRequest) MarshalJSON() ([]byte, error) {

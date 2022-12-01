@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **float32** | A unique itemId to use for this item within the collection. If an existing itemId is used, the current metadata will be overriden. Any number may be used.  The terms &#x60;itemId&#x60; and &#x60;collectionItemId&#x60; are used interchangeably and equivalent to one another throughout MetaFab documentation. | 
+**Id** | **int32** | A unique itemId to use for this item within the collection. If an existing itemId is used, the current metadata will be overriden. Any number may be used.  The terms &#x60;itemId&#x60; and &#x60;collectionItemId&#x60; are used interchangeably and equivalent to one another throughout MetaFab documentation. | 
 **Name** | **string** | The name of this item. | 
 **Description** | **string** | A text description of this item. This is a great spot to include lore, game mechanics and more related to this item. | 
 **ImageBase64** | Pointer to **string** | A base64 string of the image for this item. Either &#x60;imageBase64&#x60; or &#x60;imageUrl&#x60; must be provided. Supported image formats are &#x60;jpg&#x60;, &#x60;jpeg&#x60;, &#x60;png&#x60;, &#x60;gif&#x60;. Recommended size of 1:1 aspect ratio and no more than 1500x1500 pixels. | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewCreateCollectionItemRequest
 
-`func NewCreateCollectionItemRequest(id float32, name string, description string, ) *CreateCollectionItemRequest`
+`func NewCreateCollectionItemRequest(id int32, name string, description string, ) *CreateCollectionItemRequest`
 
 NewCreateCollectionItemRequest instantiates a new CreateCollectionItemRequest object
 This constructor will assign default values to properties that have it defined,
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *CreateCollectionItemRequest) GetId() float32`
+`func (o *CreateCollectionItemRequest) GetId() int32`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *CreateCollectionItemRequest) GetIdOk() (*float32, bool)`
+`func (o *CreateCollectionItemRequest) GetIdOk() (*int32, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *CreateCollectionItemRequest) SetId(v float32)`
+`func (o *CreateCollectionItemRequest) SetId(v int32)`
 
 SetId sets Id field to given value.
 

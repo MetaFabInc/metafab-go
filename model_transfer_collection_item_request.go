@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -22,14 +22,14 @@ type TransferCollectionItemRequest struct {
 	// A wallet id within the MetaFab ecosystem to transfer items to.
 	WalletId []string `json:"walletId,omitempty"`
 	// The quantity of the collectionItemId to transfer.
-	Quantity float32 `json:"quantity"`
+	Quantity int32 `json:"quantity"`
 }
 
 // NewTransferCollectionItemRequest instantiates a new TransferCollectionItemRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferCollectionItemRequest(quantity float32) *TransferCollectionItemRequest {
+func NewTransferCollectionItemRequest(quantity int32) *TransferCollectionItemRequest {
 	this := TransferCollectionItemRequest{}
 	this.Quantity = quantity
 	return &this
@@ -108,9 +108,9 @@ func (o *TransferCollectionItemRequest) SetWalletId(v []string) {
 }
 
 // GetQuantity returns the Quantity field value
-func (o *TransferCollectionItemRequest) GetQuantity() float32 {
+func (o *TransferCollectionItemRequest) GetQuantity() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -119,7 +119,7 @@ func (o *TransferCollectionItemRequest) GetQuantity() float32 {
 
 // GetQuantityOk returns a tuple with the Quantity field value
 // and a boolean to check if the value has been set.
-func (o *TransferCollectionItemRequest) GetQuantityOk() (*float32, bool) {
+func (o *TransferCollectionItemRequest) GetQuantityOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -127,7 +127,7 @@ func (o *TransferCollectionItemRequest) GetQuantityOk() (*float32, bool) {
 }
 
 // SetQuantity sets field value
-func (o *TransferCollectionItemRequest) SetQuantity(v float32) {
+func (o *TransferCollectionItemRequest) SetQuantity(v int32) {
 	o.Quantity = v
 }
 

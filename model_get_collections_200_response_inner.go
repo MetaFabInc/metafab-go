@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -27,7 +27,7 @@ type GetCollections200ResponseInner struct {
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
 	CreatedAt *string `json:"createdAt,omitempty"`
-	Contract *CollectionModel `json:"contract,omitempty"`
+	Contract *ContractModel `json:"contract,omitempty"`
 }
 
 // NewGetCollections200ResponseInner instantiates a new GetCollections200ResponseInner object
@@ -208,9 +208,9 @@ func (o *GetCollections200ResponseInner) SetCreatedAt(v string) {
 }
 
 // GetContract returns the Contract field value if set, zero value otherwise.
-func (o *GetCollections200ResponseInner) GetContract() CollectionModel {
+func (o *GetCollections200ResponseInner) GetContract() ContractModel {
 	if o == nil || o.Contract == nil {
-		var ret CollectionModel
+		var ret ContractModel
 		return ret
 	}
 	return *o.Contract
@@ -218,7 +218,7 @@ func (o *GetCollections200ResponseInner) GetContract() CollectionModel {
 
 // GetContractOk returns a tuple with the Contract field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetCollections200ResponseInner) GetContractOk() (*CollectionModel, bool) {
+func (o *GetCollections200ResponseInner) GetContractOk() (*ContractModel, bool) {
 	if o == nil || o.Contract == nil {
 		return nil, false
 	}
@@ -234,8 +234,8 @@ func (o *GetCollections200ResponseInner) HasContract() bool {
 	return false
 }
 
-// SetContract gets a reference to the given CollectionModel and assigns it to the Contract field.
-func (o *GetCollections200ResponseInner) SetContract(v CollectionModel) {
+// SetContract gets a reference to the given ContractModel and assigns it to the Contract field.
+func (o *GetCollections200ResponseInner) SetContract(v ContractModel) {
 	o.Contract = &v
 }
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Role** | **string** | A valid MetaFab role or bytes string representing a role, such as &#x60;minter&#x60; or &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | 
 **Address** | Pointer to **string** | A valid EVM based address to grant the role to. | [optional] 
-**WalletId** | Pointer to **[]string** | A wallet id within the MetaFab ecosystem to grant the role to. | [optional] 
+**WalletId** | Pointer to **string** | A wallet id within the MetaFab ecosystem to grant the role to. | [optional] 
 
 ## Methods
 
@@ -74,20 +74,20 @@ HasAddress returns a boolean if a field has been set.
 
 ### GetWalletId
 
-`func (o *GrantCurrencyRoleRequest) GetWalletId() []string`
+`func (o *GrantCurrencyRoleRequest) GetWalletId() string`
 
 GetWalletId returns the WalletId field if non-nil, zero value otherwise.
 
 ### GetWalletIdOk
 
-`func (o *GrantCurrencyRoleRequest) GetWalletIdOk() (*[]string, bool)`
+`func (o *GrantCurrencyRoleRequest) GetWalletIdOk() (*string, bool)`
 
 GetWalletIdOk returns a tuple with the WalletId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWalletId
 
-`func (o *GrantCurrencyRoleRequest) SetWalletId(v []string)`
+`func (o *GrantCurrencyRoleRequest) SetWalletId(v string)`
 
 SetWalletId sets WalletId field to given value.
 

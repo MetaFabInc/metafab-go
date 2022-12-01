@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -15,43 +15,43 @@ import (
 	"encoding/json"
 )
 
-// WithdrawFromExchangeRequest struct for WithdrawFromExchangeRequest
-type WithdrawFromExchangeRequest struct {
+// WithdrawFromShopRequest struct for WithdrawFromShopRequest
+type WithdrawFromShopRequest struct {
 	// A valid EVM based address to withdraw to. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
 	Address *string `json:"address,omitempty"`
 	// Any wallet id within the MetaFab ecosystem to withdraw to.
 	WalletId *string `json:"walletId,omitempty"`
-	// The address of the currency (ERC20) token to withdraw from the exchange. If no currencyAddress or currencyId, and no collectionAddress or collectionId are provided, the native token held by the exchange will be withdrawn.
+	// The address of the currency (ERC20) token to withdraw from the shop. If no currencyAddress or currencyId, and no collectionAddress or collectionId are provided, the native token held by the shop will be withdrawn.
 	CurrencyAddress *string `json:"currencyAddress,omitempty"`
-	// A valid MetaFab currency id that represents the currency token to withdraw from the exchange. `currencyAddress` or `currencyId` can be provided when withdrawing currency.
+	// A valid MetaFab currency id that represents the currency token to withdraw from the shop. `currencyAddress` or `currencyId` can be provided when withdrawing currency.
 	CurrencyId *string `json:"currencyId,omitempty"`
-	// The address of the collection (ERC1155) for the items to withdraw from the exchange. If no currencyAddress and no collectionAddress is provided, the native token held by the exchange will be withdrawn.
+	// The address of the collection (ERC1155) for the items to withdraw from the shop. If no currencyAddress and no collectionAddress is provided, the native token held by the shop will be withdrawn.
 	CollectionAddress *string `json:"collectionAddress,omitempty"`
-	// A valid MetaFab collection id that represents the collection for the items to withdraw from the exchange. `collectionAddress` or `collectionId` can be provided when withdrawing items.
+	// A valid MetaFab collection id that represents the collection for the items to withdraw from the shop. `collectionAddress` or `collectionId` can be provided when withdrawing items.
 	CollectionId *string `json:"collectionId,omitempty"`
-	// The specific itemIds of the provided collection to withdraw from the exchange.
-	ItemIds []float32 `json:"itemIds,omitempty"`
+	// The specific itemIds of the provided collection to withdraw from the shop.
+	ItemIds []int32 `json:"itemIds,omitempty"`
 }
 
-// NewWithdrawFromExchangeRequest instantiates a new WithdrawFromExchangeRequest object
+// NewWithdrawFromShopRequest instantiates a new WithdrawFromShopRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWithdrawFromExchangeRequest() *WithdrawFromExchangeRequest {
-	this := WithdrawFromExchangeRequest{}
+func NewWithdrawFromShopRequest() *WithdrawFromShopRequest {
+	this := WithdrawFromShopRequest{}
 	return &this
 }
 
-// NewWithdrawFromExchangeRequestWithDefaults instantiates a new WithdrawFromExchangeRequest object
+// NewWithdrawFromShopRequestWithDefaults instantiates a new WithdrawFromShopRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewWithdrawFromExchangeRequestWithDefaults() *WithdrawFromExchangeRequest {
-	this := WithdrawFromExchangeRequest{}
+func NewWithdrawFromShopRequestWithDefaults() *WithdrawFromShopRequest {
+	this := WithdrawFromShopRequest{}
 	return &this
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
-func (o *WithdrawFromExchangeRequest) GetAddress() string {
+func (o *WithdrawFromShopRequest) GetAddress() string {
 	if o == nil || o.Address == nil {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *WithdrawFromExchangeRequest) GetAddress() string {
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WithdrawFromExchangeRequest) GetAddressOk() (*string, bool) {
+func (o *WithdrawFromShopRequest) GetAddressOk() (*string, bool) {
 	if o == nil || o.Address == nil {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *WithdrawFromExchangeRequest) GetAddressOk() (*string, bool) {
 }
 
 // HasAddress returns a boolean if a field has been set.
-func (o *WithdrawFromExchangeRequest) HasAddress() bool {
+func (o *WithdrawFromShopRequest) HasAddress() bool {
 	if o != nil && o.Address != nil {
 		return true
 	}
@@ -78,12 +78,12 @@ func (o *WithdrawFromExchangeRequest) HasAddress() bool {
 }
 
 // SetAddress gets a reference to the given string and assigns it to the Address field.
-func (o *WithdrawFromExchangeRequest) SetAddress(v string) {
+func (o *WithdrawFromShopRequest) SetAddress(v string) {
 	o.Address = &v
 }
 
 // GetWalletId returns the WalletId field value if set, zero value otherwise.
-func (o *WithdrawFromExchangeRequest) GetWalletId() string {
+func (o *WithdrawFromShopRequest) GetWalletId() string {
 	if o == nil || o.WalletId == nil {
 		var ret string
 		return ret
@@ -93,7 +93,7 @@ func (o *WithdrawFromExchangeRequest) GetWalletId() string {
 
 // GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WithdrawFromExchangeRequest) GetWalletIdOk() (*string, bool) {
+func (o *WithdrawFromShopRequest) GetWalletIdOk() (*string, bool) {
 	if o == nil || o.WalletId == nil {
 		return nil, false
 	}
@@ -101,7 +101,7 @@ func (o *WithdrawFromExchangeRequest) GetWalletIdOk() (*string, bool) {
 }
 
 // HasWalletId returns a boolean if a field has been set.
-func (o *WithdrawFromExchangeRequest) HasWalletId() bool {
+func (o *WithdrawFromShopRequest) HasWalletId() bool {
 	if o != nil && o.WalletId != nil {
 		return true
 	}
@@ -110,12 +110,12 @@ func (o *WithdrawFromExchangeRequest) HasWalletId() bool {
 }
 
 // SetWalletId gets a reference to the given string and assigns it to the WalletId field.
-func (o *WithdrawFromExchangeRequest) SetWalletId(v string) {
+func (o *WithdrawFromShopRequest) SetWalletId(v string) {
 	o.WalletId = &v
 }
 
 // GetCurrencyAddress returns the CurrencyAddress field value if set, zero value otherwise.
-func (o *WithdrawFromExchangeRequest) GetCurrencyAddress() string {
+func (o *WithdrawFromShopRequest) GetCurrencyAddress() string {
 	if o == nil || o.CurrencyAddress == nil {
 		var ret string
 		return ret
@@ -125,7 +125,7 @@ func (o *WithdrawFromExchangeRequest) GetCurrencyAddress() string {
 
 // GetCurrencyAddressOk returns a tuple with the CurrencyAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WithdrawFromExchangeRequest) GetCurrencyAddressOk() (*string, bool) {
+func (o *WithdrawFromShopRequest) GetCurrencyAddressOk() (*string, bool) {
 	if o == nil || o.CurrencyAddress == nil {
 		return nil, false
 	}
@@ -133,7 +133,7 @@ func (o *WithdrawFromExchangeRequest) GetCurrencyAddressOk() (*string, bool) {
 }
 
 // HasCurrencyAddress returns a boolean if a field has been set.
-func (o *WithdrawFromExchangeRequest) HasCurrencyAddress() bool {
+func (o *WithdrawFromShopRequest) HasCurrencyAddress() bool {
 	if o != nil && o.CurrencyAddress != nil {
 		return true
 	}
@@ -142,12 +142,12 @@ func (o *WithdrawFromExchangeRequest) HasCurrencyAddress() bool {
 }
 
 // SetCurrencyAddress gets a reference to the given string and assigns it to the CurrencyAddress field.
-func (o *WithdrawFromExchangeRequest) SetCurrencyAddress(v string) {
+func (o *WithdrawFromShopRequest) SetCurrencyAddress(v string) {
 	o.CurrencyAddress = &v
 }
 
 // GetCurrencyId returns the CurrencyId field value if set, zero value otherwise.
-func (o *WithdrawFromExchangeRequest) GetCurrencyId() string {
+func (o *WithdrawFromShopRequest) GetCurrencyId() string {
 	if o == nil || o.CurrencyId == nil {
 		var ret string
 		return ret
@@ -157,7 +157,7 @@ func (o *WithdrawFromExchangeRequest) GetCurrencyId() string {
 
 // GetCurrencyIdOk returns a tuple with the CurrencyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WithdrawFromExchangeRequest) GetCurrencyIdOk() (*string, bool) {
+func (o *WithdrawFromShopRequest) GetCurrencyIdOk() (*string, bool) {
 	if o == nil || o.CurrencyId == nil {
 		return nil, false
 	}
@@ -165,7 +165,7 @@ func (o *WithdrawFromExchangeRequest) GetCurrencyIdOk() (*string, bool) {
 }
 
 // HasCurrencyId returns a boolean if a field has been set.
-func (o *WithdrawFromExchangeRequest) HasCurrencyId() bool {
+func (o *WithdrawFromShopRequest) HasCurrencyId() bool {
 	if o != nil && o.CurrencyId != nil {
 		return true
 	}
@@ -174,12 +174,12 @@ func (o *WithdrawFromExchangeRequest) HasCurrencyId() bool {
 }
 
 // SetCurrencyId gets a reference to the given string and assigns it to the CurrencyId field.
-func (o *WithdrawFromExchangeRequest) SetCurrencyId(v string) {
+func (o *WithdrawFromShopRequest) SetCurrencyId(v string) {
 	o.CurrencyId = &v
 }
 
 // GetCollectionAddress returns the CollectionAddress field value if set, zero value otherwise.
-func (o *WithdrawFromExchangeRequest) GetCollectionAddress() string {
+func (o *WithdrawFromShopRequest) GetCollectionAddress() string {
 	if o == nil || o.CollectionAddress == nil {
 		var ret string
 		return ret
@@ -189,7 +189,7 @@ func (o *WithdrawFromExchangeRequest) GetCollectionAddress() string {
 
 // GetCollectionAddressOk returns a tuple with the CollectionAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WithdrawFromExchangeRequest) GetCollectionAddressOk() (*string, bool) {
+func (o *WithdrawFromShopRequest) GetCollectionAddressOk() (*string, bool) {
 	if o == nil || o.CollectionAddress == nil {
 		return nil, false
 	}
@@ -197,7 +197,7 @@ func (o *WithdrawFromExchangeRequest) GetCollectionAddressOk() (*string, bool) {
 }
 
 // HasCollectionAddress returns a boolean if a field has been set.
-func (o *WithdrawFromExchangeRequest) HasCollectionAddress() bool {
+func (o *WithdrawFromShopRequest) HasCollectionAddress() bool {
 	if o != nil && o.CollectionAddress != nil {
 		return true
 	}
@@ -206,12 +206,12 @@ func (o *WithdrawFromExchangeRequest) HasCollectionAddress() bool {
 }
 
 // SetCollectionAddress gets a reference to the given string and assigns it to the CollectionAddress field.
-func (o *WithdrawFromExchangeRequest) SetCollectionAddress(v string) {
+func (o *WithdrawFromShopRequest) SetCollectionAddress(v string) {
 	o.CollectionAddress = &v
 }
 
 // GetCollectionId returns the CollectionId field value if set, zero value otherwise.
-func (o *WithdrawFromExchangeRequest) GetCollectionId() string {
+func (o *WithdrawFromShopRequest) GetCollectionId() string {
 	if o == nil || o.CollectionId == nil {
 		var ret string
 		return ret
@@ -221,7 +221,7 @@ func (o *WithdrawFromExchangeRequest) GetCollectionId() string {
 
 // GetCollectionIdOk returns a tuple with the CollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WithdrawFromExchangeRequest) GetCollectionIdOk() (*string, bool) {
+func (o *WithdrawFromShopRequest) GetCollectionIdOk() (*string, bool) {
 	if o == nil || o.CollectionId == nil {
 		return nil, false
 	}
@@ -229,7 +229,7 @@ func (o *WithdrawFromExchangeRequest) GetCollectionIdOk() (*string, bool) {
 }
 
 // HasCollectionId returns a boolean if a field has been set.
-func (o *WithdrawFromExchangeRequest) HasCollectionId() bool {
+func (o *WithdrawFromShopRequest) HasCollectionId() bool {
 	if o != nil && o.CollectionId != nil {
 		return true
 	}
@@ -238,14 +238,14 @@ func (o *WithdrawFromExchangeRequest) HasCollectionId() bool {
 }
 
 // SetCollectionId gets a reference to the given string and assigns it to the CollectionId field.
-func (o *WithdrawFromExchangeRequest) SetCollectionId(v string) {
+func (o *WithdrawFromShopRequest) SetCollectionId(v string) {
 	o.CollectionId = &v
 }
 
 // GetItemIds returns the ItemIds field value if set, zero value otherwise.
-func (o *WithdrawFromExchangeRequest) GetItemIds() []float32 {
+func (o *WithdrawFromShopRequest) GetItemIds() []int32 {
 	if o == nil || o.ItemIds == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 	return o.ItemIds
@@ -253,7 +253,7 @@ func (o *WithdrawFromExchangeRequest) GetItemIds() []float32 {
 
 // GetItemIdsOk returns a tuple with the ItemIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WithdrawFromExchangeRequest) GetItemIdsOk() ([]float32, bool) {
+func (o *WithdrawFromShopRequest) GetItemIdsOk() ([]int32, bool) {
 	if o == nil || o.ItemIds == nil {
 		return nil, false
 	}
@@ -261,7 +261,7 @@ func (o *WithdrawFromExchangeRequest) GetItemIdsOk() ([]float32, bool) {
 }
 
 // HasItemIds returns a boolean if a field has been set.
-func (o *WithdrawFromExchangeRequest) HasItemIds() bool {
+func (o *WithdrawFromShopRequest) HasItemIds() bool {
 	if o != nil && o.ItemIds != nil {
 		return true
 	}
@@ -269,12 +269,12 @@ func (o *WithdrawFromExchangeRequest) HasItemIds() bool {
 	return false
 }
 
-// SetItemIds gets a reference to the given []float32 and assigns it to the ItemIds field.
-func (o *WithdrawFromExchangeRequest) SetItemIds(v []float32) {
+// SetItemIds gets a reference to the given []int32 and assigns it to the ItemIds field.
+func (o *WithdrawFromShopRequest) SetItemIds(v []int32) {
 	o.ItemIds = v
 }
 
-func (o WithdrawFromExchangeRequest) MarshalJSON() ([]byte, error) {
+func (o WithdrawFromShopRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Address != nil {
 		toSerialize["address"] = o.Address
@@ -300,38 +300,38 @@ func (o WithdrawFromExchangeRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableWithdrawFromExchangeRequest struct {
-	value *WithdrawFromExchangeRequest
+type NullableWithdrawFromShopRequest struct {
+	value *WithdrawFromShopRequest
 	isSet bool
 }
 
-func (v NullableWithdrawFromExchangeRequest) Get() *WithdrawFromExchangeRequest {
+func (v NullableWithdrawFromShopRequest) Get() *WithdrawFromShopRequest {
 	return v.value
 }
 
-func (v *NullableWithdrawFromExchangeRequest) Set(val *WithdrawFromExchangeRequest) {
+func (v *NullableWithdrawFromShopRequest) Set(val *WithdrawFromShopRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableWithdrawFromExchangeRequest) IsSet() bool {
+func (v NullableWithdrawFromShopRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableWithdrawFromExchangeRequest) Unset() {
+func (v *NullableWithdrawFromShopRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableWithdrawFromExchangeRequest(val *WithdrawFromExchangeRequest) *NullableWithdrawFromExchangeRequest {
-	return &NullableWithdrawFromExchangeRequest{value: val, isSet: true}
+func NewNullableWithdrawFromShopRequest(val *WithdrawFromShopRequest) *NullableWithdrawFromShopRequest {
+	return &NullableWithdrawFromShopRequest{value: val, isSet: true}
 }
 
-func (v NullableWithdrawFromExchangeRequest) MarshalJSON() ([]byte, error) {
+func (v NullableWithdrawFromShopRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableWithdrawFromExchangeRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableWithdrawFromShopRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

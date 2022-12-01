@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -1083,7 +1083,7 @@ func (r ApiGetCollectionItemBalanceRequest) WalletId(walletId string) ApiGetColl
 	return r
 }
 
-func (r ApiGetCollectionItemBalanceRequest) Execute() (float32, *http.Response, error) {
+func (r ApiGetCollectionItemBalanceRequest) Execute() (int32, *http.Response, error) {
 	return r.ApiService.GetCollectionItemBalanceExecute(r)
 }
 
@@ -1107,13 +1107,13 @@ func (a *ItemsApiService) GetCollectionItemBalance(ctx context.Context, collecti
 }
 
 // Execute executes the request
-//  @return float32
-func (a *ItemsApiService) GetCollectionItemBalanceExecute(r ApiGetCollectionItemBalanceRequest) (float32, *http.Response, error) {
+//  @return int32
+func (a *ItemsApiService) GetCollectionItemBalanceExecute(r ApiGetCollectionItemBalanceRequest) (int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  float32
+		localVarReturnValue  int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ItemsApiService.GetCollectionItemBalance")
@@ -1218,7 +1218,7 @@ func (r ApiGetCollectionItemBalancesRequest) WalletId(walletId string) ApiGetCol
 	return r
 }
 
-func (r ApiGetCollectionItemBalancesRequest) Execute() (map[string]float32, *http.Response, error) {
+func (r ApiGetCollectionItemBalancesRequest) Execute() (map[string]int32, *http.Response, error) {
 	return r.ApiService.GetCollectionItemBalancesExecute(r)
 }
 
@@ -1240,13 +1240,13 @@ func (a *ItemsApiService) GetCollectionItemBalances(ctx context.Context, collect
 }
 
 // Execute executes the request
-//  @return map[string]float32
-func (a *ItemsApiService) GetCollectionItemBalancesExecute(r ApiGetCollectionItemBalancesRequest) (map[string]float32, *http.Response, error) {
+//  @return map[string]int32
+func (a *ItemsApiService) GetCollectionItemBalancesExecute(r ApiGetCollectionItemBalancesRequest) (map[string]int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]float32
+		localVarReturnValue  map[string]int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ItemsApiService.GetCollectionItemBalances")
@@ -1336,7 +1336,7 @@ type ApiGetCollectionItemSuppliesRequest struct {
 	collectionId string
 }
 
-func (r ApiGetCollectionItemSuppliesRequest) Execute() (map[string]float32, *http.Response, error) {
+func (r ApiGetCollectionItemSuppliesRequest) Execute() (map[string]int32, *http.Response, error) {
 	return r.ApiService.GetCollectionItemSuppliesExecute(r)
 }
 
@@ -1358,13 +1358,13 @@ func (a *ItemsApiService) GetCollectionItemSupplies(ctx context.Context, collect
 }
 
 // Execute executes the request
-//  @return map[string]float32
-func (a *ItemsApiService) GetCollectionItemSuppliesExecute(r ApiGetCollectionItemSuppliesRequest) (map[string]float32, *http.Response, error) {
+//  @return map[string]int32
+func (a *ItemsApiService) GetCollectionItemSuppliesExecute(r ApiGetCollectionItemSuppliesRequest) (map[string]int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]float32
+		localVarReturnValue  map[string]int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ItemsApiService.GetCollectionItemSupplies")
@@ -1463,7 +1463,7 @@ func (r ApiGetCollectionItemSupplyRequest) WalletId(walletId string) ApiGetColle
 	return r
 }
 
-func (r ApiGetCollectionItemSupplyRequest) Execute() (float32, *http.Response, error) {
+func (r ApiGetCollectionItemSupplyRequest) Execute() (int32, *http.Response, error) {
 	return r.ApiService.GetCollectionItemSupplyExecute(r)
 }
 
@@ -1487,13 +1487,13 @@ func (a *ItemsApiService) GetCollectionItemSupply(ctx context.Context, collectio
 }
 
 // Execute executes the request
-//  @return float32
-func (a *ItemsApiService) GetCollectionItemSupplyExecute(r ApiGetCollectionItemSupplyRequest) (float32, *http.Response, error) {
+//  @return int32
+func (a *ItemsApiService) GetCollectionItemSupplyExecute(r ApiGetCollectionItemSupplyRequest) (int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  float32
+		localVarReturnValue  int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ItemsApiService.GetCollectionItemSupply")
@@ -1585,7 +1585,7 @@ type ApiGetCollectionItemTimelockRequest struct {
 	collectionItemId float32
 }
 
-func (r ApiGetCollectionItemTimelockRequest) Execute() (float32, *http.Response, error) {
+func (r ApiGetCollectionItemTimelockRequest) Execute() (int32, *http.Response, error) {
 	return r.ApiService.GetCollectionItemTimelockExecute(r)
 }
 
@@ -1609,13 +1609,13 @@ func (a *ItemsApiService) GetCollectionItemTimelock(ctx context.Context, collect
 }
 
 // Execute executes the request
-//  @return float32
-func (a *ItemsApiService) GetCollectionItemTimelockExecute(r ApiGetCollectionItemTimelockRequest) (float32, *http.Response, error) {
+//  @return int32
+func (a *ItemsApiService) GetCollectionItemTimelockExecute(r ApiGetCollectionItemTimelockRequest) (int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  float32
+		localVarReturnValue  int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ItemsApiService.GetCollectionItemTimelock")

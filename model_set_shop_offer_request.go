@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -15,18 +15,18 @@ import (
 	"encoding/json"
 )
 
-// SetExchangeOfferRequest struct for SetExchangeOfferRequest
-type SetExchangeOfferRequest struct {
-	// A unique offer id to use for this offer for the exchange. If an existing offer id is used, the current offer will be updated but the existing number of uses will be kept. If you want to reset the number of uses for an existing offer, first remove it using the remove offer endpoint, then set it.
-	Id float32 `json:"id"`
+// SetShopOfferRequest struct for SetShopOfferRequest
+type SetShopOfferRequest struct {
+	// A unique offer id to use for this offer for the shop. If an existing offer id is used, the current offer will be updated but the existing number of uses will be kept. If you want to reset the number of uses for an existing offer, first remove it using the remove offer endpoint, then set it.
+	Id int32 `json:"id"`
 	// A valid EVM based ERC1155 or MetaFab game items contract address that represents the collection for input items required by this offer. `inputCollectionAddress` or `inputCollectionId` can optionally be provided.
 	InputCollectionAddress *string `json:"inputCollectionAddress,omitempty"`
 	// A valid MetaFab collection id that represents the collection for input items required by this offer. `inputCollectionAddress` or `inputCollectionId` can optionally be provided.
 	InputCollectionId *string `json:"inputCollectionId,omitempty"`
-	// An array of item ids from the provided input collection that are required to use this offer. Input items are transferred from the wallet to the exchange contract upon using an offer.
-	InputCollectionItemIds []float32 `json:"inputCollectionItemIds,omitempty"`
+	// An array of item ids from the provided input collection that are required to use this offer. Input items are transferred from the wallet to the shop contract upon using an offer.
+	InputCollectionItemIds []int32 `json:"inputCollectionItemIds,omitempty"`
 	// An array of amounts for each item id from the provided input collection that are required to use this offer. Item amounts array indices are reflective of the amount required for a given item id at the same index.
-	InputCollectionItemAmounts []float32 `json:"inputCollectionItemAmounts,omitempty"`
+	InputCollectionItemAmounts []int32 `json:"inputCollectionItemAmounts,omitempty"`
 	// A valid EVM based ERC20 or MetaFab game currency contract address that for the currency required by this offer.
 	InputCurrencyAddress *string `json:"inputCurrencyAddress,omitempty"`
 	// A valid MetaFab currency id that represents the currency required by this offer.
@@ -37,42 +37,42 @@ type SetExchangeOfferRequest struct {
 	OutputCollectionAddress *string `json:"outputCollectionAddress,omitempty"`
 	// A valid MetaFab collection id that represents the collection for output items given by this offer. `outputCollectionAddress` or `outputCollectionId` can optionally be provided.
 	OutputCollectionId *string `json:"outputCollectionId,omitempty"`
-	// An array of item ids from the provided output collection that are given by this offer. Output items are automatically minted if the exchange contract has the `minter` role for the output collection contract. Otherwise, they are transferred from the item balance held by the exchange contract.
-	OutputCollectionItemIds []float32 `json:"outputCollectionItemIds,omitempty"`
+	// An array of item ids from the provided output collection that are given by this offer. Output items are automatically minted if the shop contract has the `minter` role for the output collection contract. Otherwise, they are transferred from the item balance held by the shop contract.
+	OutputCollectionItemIds []int32 `json:"outputCollectionItemIds,omitempty"`
 	// An array of amounts for each item id from the provided output collection that are given by this offer. Item amounts array indices are reflective of the amount required for a given item id at the same index.
-	OutputCollectionItemAmounts []float32 `json:"outputCollectionItemAmounts,omitempty"`
-	// A valid EVM based ERC20 or MetaFab game currency contract address that for the currency given by this offer. The output currency amount is automatically minted if the exchange contract has the `minter` role for the output currency contract. Otherwise, they are transferred from the currency balance held by the exchange contract.
+	OutputCollectionItemAmounts []int32 `json:"outputCollectionItemAmounts,omitempty"`
+	// A valid EVM based ERC20 or MetaFab game currency contract address that for the currency given by this offer. The output currency amount is automatically minted if the shop contract has the `minter` role for the output currency contract. Otherwise, they are transferred from the currency balance held by the shop contract.
 	OutputCurrencyAddress *string `json:"outputCurrencyAddress,omitempty"`
 	// A valid MetaFab currency id for the currency given by this offer.
 	OutputCurrencyId *string `json:"outputCurrencyId,omitempty"`
 	// The amount of currency given by this offer. If an outputCurrencyAmount is provided without an output currency address or id, the native chain currency is used as the given currency.
 	OutputCurrencyAmount *float32 `json:"outputCurrencyAmount,omitempty"`
 	// The maximum number of times this offer can be used in total. maxUses is collective across all uses of the offer. If 5 unique players use an offer, that counts as 5 offer uses. Exclude this or use 0 to allow unlimited uses.
-	MaxUses *float32 `json:"maxUses,omitempty"`
+	MaxUses *int32 `json:"maxUses,omitempty"`
 }
 
-// NewSetExchangeOfferRequest instantiates a new SetExchangeOfferRequest object
+// NewSetShopOfferRequest instantiates a new SetShopOfferRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetExchangeOfferRequest(id float32) *SetExchangeOfferRequest {
-	this := SetExchangeOfferRequest{}
+func NewSetShopOfferRequest(id int32) *SetShopOfferRequest {
+	this := SetShopOfferRequest{}
 	this.Id = id
 	return &this
 }
 
-// NewSetExchangeOfferRequestWithDefaults instantiates a new SetExchangeOfferRequest object
+// NewSetShopOfferRequestWithDefaults instantiates a new SetShopOfferRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSetExchangeOfferRequestWithDefaults() *SetExchangeOfferRequest {
-	this := SetExchangeOfferRequest{}
+func NewSetShopOfferRequestWithDefaults() *SetShopOfferRequest {
+	this := SetShopOfferRequest{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *SetExchangeOfferRequest) GetId() float32 {
+func (o *SetShopOfferRequest) GetId() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -81,7 +81,7 @@ func (o *SetExchangeOfferRequest) GetId() float32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetIdOk() (*float32, bool) {
+func (o *SetShopOfferRequest) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -89,12 +89,12 @@ func (o *SetExchangeOfferRequest) GetIdOk() (*float32, bool) {
 }
 
 // SetId sets field value
-func (o *SetExchangeOfferRequest) SetId(v float32) {
+func (o *SetShopOfferRequest) SetId(v int32) {
 	o.Id = v
 }
 
 // GetInputCollectionAddress returns the InputCollectionAddress field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetInputCollectionAddress() string {
+func (o *SetShopOfferRequest) GetInputCollectionAddress() string {
 	if o == nil || o.InputCollectionAddress == nil {
 		var ret string
 		return ret
@@ -104,7 +104,7 @@ func (o *SetExchangeOfferRequest) GetInputCollectionAddress() string {
 
 // GetInputCollectionAddressOk returns a tuple with the InputCollectionAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetInputCollectionAddressOk() (*string, bool) {
+func (o *SetShopOfferRequest) GetInputCollectionAddressOk() (*string, bool) {
 	if o == nil || o.InputCollectionAddress == nil {
 		return nil, false
 	}
@@ -112,7 +112,7 @@ func (o *SetExchangeOfferRequest) GetInputCollectionAddressOk() (*string, bool) 
 }
 
 // HasInputCollectionAddress returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasInputCollectionAddress() bool {
+func (o *SetShopOfferRequest) HasInputCollectionAddress() bool {
 	if o != nil && o.InputCollectionAddress != nil {
 		return true
 	}
@@ -121,12 +121,12 @@ func (o *SetExchangeOfferRequest) HasInputCollectionAddress() bool {
 }
 
 // SetInputCollectionAddress gets a reference to the given string and assigns it to the InputCollectionAddress field.
-func (o *SetExchangeOfferRequest) SetInputCollectionAddress(v string) {
+func (o *SetShopOfferRequest) SetInputCollectionAddress(v string) {
 	o.InputCollectionAddress = &v
 }
 
 // GetInputCollectionId returns the InputCollectionId field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetInputCollectionId() string {
+func (o *SetShopOfferRequest) GetInputCollectionId() string {
 	if o == nil || o.InputCollectionId == nil {
 		var ret string
 		return ret
@@ -136,7 +136,7 @@ func (o *SetExchangeOfferRequest) GetInputCollectionId() string {
 
 // GetInputCollectionIdOk returns a tuple with the InputCollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetInputCollectionIdOk() (*string, bool) {
+func (o *SetShopOfferRequest) GetInputCollectionIdOk() (*string, bool) {
 	if o == nil || o.InputCollectionId == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *SetExchangeOfferRequest) GetInputCollectionIdOk() (*string, bool) {
 }
 
 // HasInputCollectionId returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasInputCollectionId() bool {
+func (o *SetShopOfferRequest) HasInputCollectionId() bool {
 	if o != nil && o.InputCollectionId != nil {
 		return true
 	}
@@ -153,14 +153,14 @@ func (o *SetExchangeOfferRequest) HasInputCollectionId() bool {
 }
 
 // SetInputCollectionId gets a reference to the given string and assigns it to the InputCollectionId field.
-func (o *SetExchangeOfferRequest) SetInputCollectionId(v string) {
+func (o *SetShopOfferRequest) SetInputCollectionId(v string) {
 	o.InputCollectionId = &v
 }
 
 // GetInputCollectionItemIds returns the InputCollectionItemIds field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetInputCollectionItemIds() []float32 {
+func (o *SetShopOfferRequest) GetInputCollectionItemIds() []int32 {
 	if o == nil || o.InputCollectionItemIds == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 	return o.InputCollectionItemIds
@@ -168,7 +168,7 @@ func (o *SetExchangeOfferRequest) GetInputCollectionItemIds() []float32 {
 
 // GetInputCollectionItemIdsOk returns a tuple with the InputCollectionItemIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetInputCollectionItemIdsOk() ([]float32, bool) {
+func (o *SetShopOfferRequest) GetInputCollectionItemIdsOk() ([]int32, bool) {
 	if o == nil || o.InputCollectionItemIds == nil {
 		return nil, false
 	}
@@ -176,7 +176,7 @@ func (o *SetExchangeOfferRequest) GetInputCollectionItemIdsOk() ([]float32, bool
 }
 
 // HasInputCollectionItemIds returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasInputCollectionItemIds() bool {
+func (o *SetShopOfferRequest) HasInputCollectionItemIds() bool {
 	if o != nil && o.InputCollectionItemIds != nil {
 		return true
 	}
@@ -184,15 +184,15 @@ func (o *SetExchangeOfferRequest) HasInputCollectionItemIds() bool {
 	return false
 }
 
-// SetInputCollectionItemIds gets a reference to the given []float32 and assigns it to the InputCollectionItemIds field.
-func (o *SetExchangeOfferRequest) SetInputCollectionItemIds(v []float32) {
+// SetInputCollectionItemIds gets a reference to the given []int32 and assigns it to the InputCollectionItemIds field.
+func (o *SetShopOfferRequest) SetInputCollectionItemIds(v []int32) {
 	o.InputCollectionItemIds = v
 }
 
 // GetInputCollectionItemAmounts returns the InputCollectionItemAmounts field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetInputCollectionItemAmounts() []float32 {
+func (o *SetShopOfferRequest) GetInputCollectionItemAmounts() []int32 {
 	if o == nil || o.InputCollectionItemAmounts == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 	return o.InputCollectionItemAmounts
@@ -200,7 +200,7 @@ func (o *SetExchangeOfferRequest) GetInputCollectionItemAmounts() []float32 {
 
 // GetInputCollectionItemAmountsOk returns a tuple with the InputCollectionItemAmounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetInputCollectionItemAmountsOk() ([]float32, bool) {
+func (o *SetShopOfferRequest) GetInputCollectionItemAmountsOk() ([]int32, bool) {
 	if o == nil || o.InputCollectionItemAmounts == nil {
 		return nil, false
 	}
@@ -208,7 +208,7 @@ func (o *SetExchangeOfferRequest) GetInputCollectionItemAmountsOk() ([]float32, 
 }
 
 // HasInputCollectionItemAmounts returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasInputCollectionItemAmounts() bool {
+func (o *SetShopOfferRequest) HasInputCollectionItemAmounts() bool {
 	if o != nil && o.InputCollectionItemAmounts != nil {
 		return true
 	}
@@ -216,13 +216,13 @@ func (o *SetExchangeOfferRequest) HasInputCollectionItemAmounts() bool {
 	return false
 }
 
-// SetInputCollectionItemAmounts gets a reference to the given []float32 and assigns it to the InputCollectionItemAmounts field.
-func (o *SetExchangeOfferRequest) SetInputCollectionItemAmounts(v []float32) {
+// SetInputCollectionItemAmounts gets a reference to the given []int32 and assigns it to the InputCollectionItemAmounts field.
+func (o *SetShopOfferRequest) SetInputCollectionItemAmounts(v []int32) {
 	o.InputCollectionItemAmounts = v
 }
 
 // GetInputCurrencyAddress returns the InputCurrencyAddress field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetInputCurrencyAddress() string {
+func (o *SetShopOfferRequest) GetInputCurrencyAddress() string {
 	if o == nil || o.InputCurrencyAddress == nil {
 		var ret string
 		return ret
@@ -232,7 +232,7 @@ func (o *SetExchangeOfferRequest) GetInputCurrencyAddress() string {
 
 // GetInputCurrencyAddressOk returns a tuple with the InputCurrencyAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetInputCurrencyAddressOk() (*string, bool) {
+func (o *SetShopOfferRequest) GetInputCurrencyAddressOk() (*string, bool) {
 	if o == nil || o.InputCurrencyAddress == nil {
 		return nil, false
 	}
@@ -240,7 +240,7 @@ func (o *SetExchangeOfferRequest) GetInputCurrencyAddressOk() (*string, bool) {
 }
 
 // HasInputCurrencyAddress returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasInputCurrencyAddress() bool {
+func (o *SetShopOfferRequest) HasInputCurrencyAddress() bool {
 	if o != nil && o.InputCurrencyAddress != nil {
 		return true
 	}
@@ -249,12 +249,12 @@ func (o *SetExchangeOfferRequest) HasInputCurrencyAddress() bool {
 }
 
 // SetInputCurrencyAddress gets a reference to the given string and assigns it to the InputCurrencyAddress field.
-func (o *SetExchangeOfferRequest) SetInputCurrencyAddress(v string) {
+func (o *SetShopOfferRequest) SetInputCurrencyAddress(v string) {
 	o.InputCurrencyAddress = &v
 }
 
 // GetInputCurrencyId returns the InputCurrencyId field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetInputCurrencyId() string {
+func (o *SetShopOfferRequest) GetInputCurrencyId() string {
 	if o == nil || o.InputCurrencyId == nil {
 		var ret string
 		return ret
@@ -264,7 +264,7 @@ func (o *SetExchangeOfferRequest) GetInputCurrencyId() string {
 
 // GetInputCurrencyIdOk returns a tuple with the InputCurrencyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetInputCurrencyIdOk() (*string, bool) {
+func (o *SetShopOfferRequest) GetInputCurrencyIdOk() (*string, bool) {
 	if o == nil || o.InputCurrencyId == nil {
 		return nil, false
 	}
@@ -272,7 +272,7 @@ func (o *SetExchangeOfferRequest) GetInputCurrencyIdOk() (*string, bool) {
 }
 
 // HasInputCurrencyId returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasInputCurrencyId() bool {
+func (o *SetShopOfferRequest) HasInputCurrencyId() bool {
 	if o != nil && o.InputCurrencyId != nil {
 		return true
 	}
@@ -281,12 +281,12 @@ func (o *SetExchangeOfferRequest) HasInputCurrencyId() bool {
 }
 
 // SetInputCurrencyId gets a reference to the given string and assigns it to the InputCurrencyId field.
-func (o *SetExchangeOfferRequest) SetInputCurrencyId(v string) {
+func (o *SetShopOfferRequest) SetInputCurrencyId(v string) {
 	o.InputCurrencyId = &v
 }
 
 // GetInputCurrencyAmount returns the InputCurrencyAmount field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetInputCurrencyAmount() float32 {
+func (o *SetShopOfferRequest) GetInputCurrencyAmount() float32 {
 	if o == nil || o.InputCurrencyAmount == nil {
 		var ret float32
 		return ret
@@ -296,7 +296,7 @@ func (o *SetExchangeOfferRequest) GetInputCurrencyAmount() float32 {
 
 // GetInputCurrencyAmountOk returns a tuple with the InputCurrencyAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetInputCurrencyAmountOk() (*float32, bool) {
+func (o *SetShopOfferRequest) GetInputCurrencyAmountOk() (*float32, bool) {
 	if o == nil || o.InputCurrencyAmount == nil {
 		return nil, false
 	}
@@ -304,7 +304,7 @@ func (o *SetExchangeOfferRequest) GetInputCurrencyAmountOk() (*float32, bool) {
 }
 
 // HasInputCurrencyAmount returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasInputCurrencyAmount() bool {
+func (o *SetShopOfferRequest) HasInputCurrencyAmount() bool {
 	if o != nil && o.InputCurrencyAmount != nil {
 		return true
 	}
@@ -313,12 +313,12 @@ func (o *SetExchangeOfferRequest) HasInputCurrencyAmount() bool {
 }
 
 // SetInputCurrencyAmount gets a reference to the given float32 and assigns it to the InputCurrencyAmount field.
-func (o *SetExchangeOfferRequest) SetInputCurrencyAmount(v float32) {
+func (o *SetShopOfferRequest) SetInputCurrencyAmount(v float32) {
 	o.InputCurrencyAmount = &v
 }
 
 // GetOutputCollectionAddress returns the OutputCollectionAddress field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetOutputCollectionAddress() string {
+func (o *SetShopOfferRequest) GetOutputCollectionAddress() string {
 	if o == nil || o.OutputCollectionAddress == nil {
 		var ret string
 		return ret
@@ -328,7 +328,7 @@ func (o *SetExchangeOfferRequest) GetOutputCollectionAddress() string {
 
 // GetOutputCollectionAddressOk returns a tuple with the OutputCollectionAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetOutputCollectionAddressOk() (*string, bool) {
+func (o *SetShopOfferRequest) GetOutputCollectionAddressOk() (*string, bool) {
 	if o == nil || o.OutputCollectionAddress == nil {
 		return nil, false
 	}
@@ -336,7 +336,7 @@ func (o *SetExchangeOfferRequest) GetOutputCollectionAddressOk() (*string, bool)
 }
 
 // HasOutputCollectionAddress returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasOutputCollectionAddress() bool {
+func (o *SetShopOfferRequest) HasOutputCollectionAddress() bool {
 	if o != nil && o.OutputCollectionAddress != nil {
 		return true
 	}
@@ -345,12 +345,12 @@ func (o *SetExchangeOfferRequest) HasOutputCollectionAddress() bool {
 }
 
 // SetOutputCollectionAddress gets a reference to the given string and assigns it to the OutputCollectionAddress field.
-func (o *SetExchangeOfferRequest) SetOutputCollectionAddress(v string) {
+func (o *SetShopOfferRequest) SetOutputCollectionAddress(v string) {
 	o.OutputCollectionAddress = &v
 }
 
 // GetOutputCollectionId returns the OutputCollectionId field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetOutputCollectionId() string {
+func (o *SetShopOfferRequest) GetOutputCollectionId() string {
 	if o == nil || o.OutputCollectionId == nil {
 		var ret string
 		return ret
@@ -360,7 +360,7 @@ func (o *SetExchangeOfferRequest) GetOutputCollectionId() string {
 
 // GetOutputCollectionIdOk returns a tuple with the OutputCollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetOutputCollectionIdOk() (*string, bool) {
+func (o *SetShopOfferRequest) GetOutputCollectionIdOk() (*string, bool) {
 	if o == nil || o.OutputCollectionId == nil {
 		return nil, false
 	}
@@ -368,7 +368,7 @@ func (o *SetExchangeOfferRequest) GetOutputCollectionIdOk() (*string, bool) {
 }
 
 // HasOutputCollectionId returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasOutputCollectionId() bool {
+func (o *SetShopOfferRequest) HasOutputCollectionId() bool {
 	if o != nil && o.OutputCollectionId != nil {
 		return true
 	}
@@ -377,14 +377,14 @@ func (o *SetExchangeOfferRequest) HasOutputCollectionId() bool {
 }
 
 // SetOutputCollectionId gets a reference to the given string and assigns it to the OutputCollectionId field.
-func (o *SetExchangeOfferRequest) SetOutputCollectionId(v string) {
+func (o *SetShopOfferRequest) SetOutputCollectionId(v string) {
 	o.OutputCollectionId = &v
 }
 
 // GetOutputCollectionItemIds returns the OutputCollectionItemIds field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetOutputCollectionItemIds() []float32 {
+func (o *SetShopOfferRequest) GetOutputCollectionItemIds() []int32 {
 	if o == nil || o.OutputCollectionItemIds == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 	return o.OutputCollectionItemIds
@@ -392,7 +392,7 @@ func (o *SetExchangeOfferRequest) GetOutputCollectionItemIds() []float32 {
 
 // GetOutputCollectionItemIdsOk returns a tuple with the OutputCollectionItemIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetOutputCollectionItemIdsOk() ([]float32, bool) {
+func (o *SetShopOfferRequest) GetOutputCollectionItemIdsOk() ([]int32, bool) {
 	if o == nil || o.OutputCollectionItemIds == nil {
 		return nil, false
 	}
@@ -400,7 +400,7 @@ func (o *SetExchangeOfferRequest) GetOutputCollectionItemIdsOk() ([]float32, boo
 }
 
 // HasOutputCollectionItemIds returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasOutputCollectionItemIds() bool {
+func (o *SetShopOfferRequest) HasOutputCollectionItemIds() bool {
 	if o != nil && o.OutputCollectionItemIds != nil {
 		return true
 	}
@@ -408,15 +408,15 @@ func (o *SetExchangeOfferRequest) HasOutputCollectionItemIds() bool {
 	return false
 }
 
-// SetOutputCollectionItemIds gets a reference to the given []float32 and assigns it to the OutputCollectionItemIds field.
-func (o *SetExchangeOfferRequest) SetOutputCollectionItemIds(v []float32) {
+// SetOutputCollectionItemIds gets a reference to the given []int32 and assigns it to the OutputCollectionItemIds field.
+func (o *SetShopOfferRequest) SetOutputCollectionItemIds(v []int32) {
 	o.OutputCollectionItemIds = v
 }
 
 // GetOutputCollectionItemAmounts returns the OutputCollectionItemAmounts field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetOutputCollectionItemAmounts() []float32 {
+func (o *SetShopOfferRequest) GetOutputCollectionItemAmounts() []int32 {
 	if o == nil || o.OutputCollectionItemAmounts == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 	return o.OutputCollectionItemAmounts
@@ -424,7 +424,7 @@ func (o *SetExchangeOfferRequest) GetOutputCollectionItemAmounts() []float32 {
 
 // GetOutputCollectionItemAmountsOk returns a tuple with the OutputCollectionItemAmounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetOutputCollectionItemAmountsOk() ([]float32, bool) {
+func (o *SetShopOfferRequest) GetOutputCollectionItemAmountsOk() ([]int32, bool) {
 	if o == nil || o.OutputCollectionItemAmounts == nil {
 		return nil, false
 	}
@@ -432,7 +432,7 @@ func (o *SetExchangeOfferRequest) GetOutputCollectionItemAmountsOk() ([]float32,
 }
 
 // HasOutputCollectionItemAmounts returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasOutputCollectionItemAmounts() bool {
+func (o *SetShopOfferRequest) HasOutputCollectionItemAmounts() bool {
 	if o != nil && o.OutputCollectionItemAmounts != nil {
 		return true
 	}
@@ -440,13 +440,13 @@ func (o *SetExchangeOfferRequest) HasOutputCollectionItemAmounts() bool {
 	return false
 }
 
-// SetOutputCollectionItemAmounts gets a reference to the given []float32 and assigns it to the OutputCollectionItemAmounts field.
-func (o *SetExchangeOfferRequest) SetOutputCollectionItemAmounts(v []float32) {
+// SetOutputCollectionItemAmounts gets a reference to the given []int32 and assigns it to the OutputCollectionItemAmounts field.
+func (o *SetShopOfferRequest) SetOutputCollectionItemAmounts(v []int32) {
 	o.OutputCollectionItemAmounts = v
 }
 
 // GetOutputCurrencyAddress returns the OutputCurrencyAddress field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetOutputCurrencyAddress() string {
+func (o *SetShopOfferRequest) GetOutputCurrencyAddress() string {
 	if o == nil || o.OutputCurrencyAddress == nil {
 		var ret string
 		return ret
@@ -456,7 +456,7 @@ func (o *SetExchangeOfferRequest) GetOutputCurrencyAddress() string {
 
 // GetOutputCurrencyAddressOk returns a tuple with the OutputCurrencyAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetOutputCurrencyAddressOk() (*string, bool) {
+func (o *SetShopOfferRequest) GetOutputCurrencyAddressOk() (*string, bool) {
 	if o == nil || o.OutputCurrencyAddress == nil {
 		return nil, false
 	}
@@ -464,7 +464,7 @@ func (o *SetExchangeOfferRequest) GetOutputCurrencyAddressOk() (*string, bool) {
 }
 
 // HasOutputCurrencyAddress returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasOutputCurrencyAddress() bool {
+func (o *SetShopOfferRequest) HasOutputCurrencyAddress() bool {
 	if o != nil && o.OutputCurrencyAddress != nil {
 		return true
 	}
@@ -473,12 +473,12 @@ func (o *SetExchangeOfferRequest) HasOutputCurrencyAddress() bool {
 }
 
 // SetOutputCurrencyAddress gets a reference to the given string and assigns it to the OutputCurrencyAddress field.
-func (o *SetExchangeOfferRequest) SetOutputCurrencyAddress(v string) {
+func (o *SetShopOfferRequest) SetOutputCurrencyAddress(v string) {
 	o.OutputCurrencyAddress = &v
 }
 
 // GetOutputCurrencyId returns the OutputCurrencyId field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetOutputCurrencyId() string {
+func (o *SetShopOfferRequest) GetOutputCurrencyId() string {
 	if o == nil || o.OutputCurrencyId == nil {
 		var ret string
 		return ret
@@ -488,7 +488,7 @@ func (o *SetExchangeOfferRequest) GetOutputCurrencyId() string {
 
 // GetOutputCurrencyIdOk returns a tuple with the OutputCurrencyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetOutputCurrencyIdOk() (*string, bool) {
+func (o *SetShopOfferRequest) GetOutputCurrencyIdOk() (*string, bool) {
 	if o == nil || o.OutputCurrencyId == nil {
 		return nil, false
 	}
@@ -496,7 +496,7 @@ func (o *SetExchangeOfferRequest) GetOutputCurrencyIdOk() (*string, bool) {
 }
 
 // HasOutputCurrencyId returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasOutputCurrencyId() bool {
+func (o *SetShopOfferRequest) HasOutputCurrencyId() bool {
 	if o != nil && o.OutputCurrencyId != nil {
 		return true
 	}
@@ -505,12 +505,12 @@ func (o *SetExchangeOfferRequest) HasOutputCurrencyId() bool {
 }
 
 // SetOutputCurrencyId gets a reference to the given string and assigns it to the OutputCurrencyId field.
-func (o *SetExchangeOfferRequest) SetOutputCurrencyId(v string) {
+func (o *SetShopOfferRequest) SetOutputCurrencyId(v string) {
 	o.OutputCurrencyId = &v
 }
 
 // GetOutputCurrencyAmount returns the OutputCurrencyAmount field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetOutputCurrencyAmount() float32 {
+func (o *SetShopOfferRequest) GetOutputCurrencyAmount() float32 {
 	if o == nil || o.OutputCurrencyAmount == nil {
 		var ret float32
 		return ret
@@ -520,7 +520,7 @@ func (o *SetExchangeOfferRequest) GetOutputCurrencyAmount() float32 {
 
 // GetOutputCurrencyAmountOk returns a tuple with the OutputCurrencyAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetOutputCurrencyAmountOk() (*float32, bool) {
+func (o *SetShopOfferRequest) GetOutputCurrencyAmountOk() (*float32, bool) {
 	if o == nil || o.OutputCurrencyAmount == nil {
 		return nil, false
 	}
@@ -528,7 +528,7 @@ func (o *SetExchangeOfferRequest) GetOutputCurrencyAmountOk() (*float32, bool) {
 }
 
 // HasOutputCurrencyAmount returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasOutputCurrencyAmount() bool {
+func (o *SetShopOfferRequest) HasOutputCurrencyAmount() bool {
 	if o != nil && o.OutputCurrencyAmount != nil {
 		return true
 	}
@@ -537,14 +537,14 @@ func (o *SetExchangeOfferRequest) HasOutputCurrencyAmount() bool {
 }
 
 // SetOutputCurrencyAmount gets a reference to the given float32 and assigns it to the OutputCurrencyAmount field.
-func (o *SetExchangeOfferRequest) SetOutputCurrencyAmount(v float32) {
+func (o *SetShopOfferRequest) SetOutputCurrencyAmount(v float32) {
 	o.OutputCurrencyAmount = &v
 }
 
 // GetMaxUses returns the MaxUses field value if set, zero value otherwise.
-func (o *SetExchangeOfferRequest) GetMaxUses() float32 {
+func (o *SetShopOfferRequest) GetMaxUses() int32 {
 	if o == nil || o.MaxUses == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.MaxUses
@@ -552,7 +552,7 @@ func (o *SetExchangeOfferRequest) GetMaxUses() float32 {
 
 // GetMaxUsesOk returns a tuple with the MaxUses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SetExchangeOfferRequest) GetMaxUsesOk() (*float32, bool) {
+func (o *SetShopOfferRequest) GetMaxUsesOk() (*int32, bool) {
 	if o == nil || o.MaxUses == nil {
 		return nil, false
 	}
@@ -560,7 +560,7 @@ func (o *SetExchangeOfferRequest) GetMaxUsesOk() (*float32, bool) {
 }
 
 // HasMaxUses returns a boolean if a field has been set.
-func (o *SetExchangeOfferRequest) HasMaxUses() bool {
+func (o *SetShopOfferRequest) HasMaxUses() bool {
 	if o != nil && o.MaxUses != nil {
 		return true
 	}
@@ -568,12 +568,12 @@ func (o *SetExchangeOfferRequest) HasMaxUses() bool {
 	return false
 }
 
-// SetMaxUses gets a reference to the given float32 and assigns it to the MaxUses field.
-func (o *SetExchangeOfferRequest) SetMaxUses(v float32) {
+// SetMaxUses gets a reference to the given int32 and assigns it to the MaxUses field.
+func (o *SetShopOfferRequest) SetMaxUses(v int32) {
 	o.MaxUses = &v
 }
 
-func (o SetExchangeOfferRequest) MarshalJSON() ([]byte, error) {
+func (o SetShopOfferRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
@@ -626,38 +626,38 @@ func (o SetExchangeOfferRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableSetExchangeOfferRequest struct {
-	value *SetExchangeOfferRequest
+type NullableSetShopOfferRequest struct {
+	value *SetShopOfferRequest
 	isSet bool
 }
 
-func (v NullableSetExchangeOfferRequest) Get() *SetExchangeOfferRequest {
+func (v NullableSetShopOfferRequest) Get() *SetShopOfferRequest {
 	return v.value
 }
 
-func (v *NullableSetExchangeOfferRequest) Set(val *SetExchangeOfferRequest) {
+func (v *NullableSetShopOfferRequest) Set(val *SetShopOfferRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSetExchangeOfferRequest) IsSet() bool {
+func (v NullableSetShopOfferRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSetExchangeOfferRequest) Unset() {
+func (v *NullableSetShopOfferRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSetExchangeOfferRequest(val *SetExchangeOfferRequest) *NullableSetExchangeOfferRequest {
-	return &NullableSetExchangeOfferRequest{value: val, isSet: true}
+func NewNullableSetShopOfferRequest(val *SetShopOfferRequest) *NullableSetShopOfferRequest {
+	return &NullableSetShopOfferRequest{value: val, isSet: true}
 }
 
-func (v NullableSetExchangeOfferRequest) MarshalJSON() ([]byte, error) {
+func (v NullableSetShopOfferRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSetExchangeOfferRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableSetShopOfferRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

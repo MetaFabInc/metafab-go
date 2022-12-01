@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -164,7 +164,7 @@ Create a new game. A game is the root entity required for all API interactions. 
 
 To use any of MetaFab's services, you must first create a game through this endpoint.
 
-**Game creation is limited during our closed beta. Please contact ArkDev#4501 on Discord to be a part of our beta.**
+After creating your game through this endpoint, a verification email will be sent to the email address used. Before you can access any of MetaFab's features, you'll need to click the link contained in the verification email to verify your account.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateGameRequest

@@ -52,7 +52,7 @@ func main() {
     collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-    batchMintCollectionItemsRequest := *openapiclient.NewBatchMintCollectionItemsRequest([]float32{float32(123)}, []float32{float32(123)}) // BatchMintCollectionItemsRequest | 
+    batchMintCollectionItemsRequest := *openapiclient.NewBatchMintCollectionItemsRequest([]int32{int32(123)}, []int32{int32(123)}) // BatchMintCollectionItemsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -128,7 +128,7 @@ func main() {
     collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
     xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-    batchTransferCollectionItemsRequest := *openapiclient.NewBatchTransferCollectionItemsRequest([]float32{float32(12)}, []float32{float32(1)}) // BatchTransferCollectionItemsRequest | 
+    batchTransferCollectionItemsRequest := *openapiclient.NewBatchTransferCollectionItemsRequest([]int32{int32(12)}, []int32{int32(1)}) // BatchTransferCollectionItemsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -205,7 +205,7 @@ func main() {
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
     xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-    burnCollectionItemRequest := *openapiclient.NewBurnCollectionItemRequest(float32(123)) // BurnCollectionItemRequest | 
+    burnCollectionItemRequest := *openapiclient.NewBurnCollectionItemRequest(int32(123)) // BurnCollectionItemRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -353,7 +353,7 @@ func main() {
     collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-    createCollectionItemRequest := *openapiclient.NewCreateCollectionItemRequest(float32(1337), "Fire Dagger", "Description_example") // CreateCollectionItemRequest | 
+    createCollectionItemRequest := *openapiclient.NewCreateCollectionItemRequest(int32(1337), "Fire Dagger", "Description_example") // CreateCollectionItemRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -556,7 +556,7 @@ No authorization required
 
 ## GetCollectionItemBalance
 
-> float32 GetCollectionItemBalance(ctx, collectionId, collectionItemId).Address(address).WalletId(walletId).Execute()
+> int32 GetCollectionItemBalance(ctx, collectionId, collectionItemId).Address(address).WalletId(walletId).Execute()
 
 Get collection item balance
 
@@ -587,7 +587,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.GetCollectionItemBalance``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCollectionItemBalance`: float32
+    // response from `GetCollectionItemBalance`: int32
     fmt.Fprintf(os.Stdout, "Response from `ItemsApi.GetCollectionItemBalance`: %v\n", resp)
 }
 ```
@@ -615,7 +615,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**float32**
+**int32**
 
 ### Authorization
 
@@ -633,7 +633,7 @@ No authorization required
 
 ## GetCollectionItemBalances
 
-> map[string]float32 GetCollectionItemBalances(ctx, collectionId).Address(address).WalletId(walletId).Execute()
+> map[string]int32 GetCollectionItemBalances(ctx, collectionId).Address(address).WalletId(walletId).Execute()
 
 Get collection item balances
 
@@ -663,7 +663,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.GetCollectionItemBalances``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCollectionItemBalances`: map[string]float32
+    // response from `GetCollectionItemBalances`: map[string]int32
     fmt.Fprintf(os.Stdout, "Response from `ItemsApi.GetCollectionItemBalances`: %v\n", resp)
 }
 ```
@@ -689,7 +689,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]float32**
+**map[string]int32**
 
 ### Authorization
 
@@ -707,7 +707,7 @@ No authorization required
 
 ## GetCollectionItemSupplies
 
-> map[string]float32 GetCollectionItemSupplies(ctx, collectionId).Execute()
+> map[string]int32 GetCollectionItemSupplies(ctx, collectionId).Execute()
 
 Get collection item supplies
 
@@ -735,7 +735,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.GetCollectionItemSupplies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCollectionItemSupplies`: map[string]float32
+    // response from `GetCollectionItemSupplies`: map[string]int32
     fmt.Fprintf(os.Stdout, "Response from `ItemsApi.GetCollectionItemSupplies`: %v\n", resp)
 }
 ```
@@ -759,7 +759,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]float32**
+**map[string]int32**
 
 ### Authorization
 
@@ -777,7 +777,7 @@ No authorization required
 
 ## GetCollectionItemSupply
 
-> float32 GetCollectionItemSupply(ctx, collectionId, collectionItemId).Address(address).WalletId(walletId).Execute()
+> int32 GetCollectionItemSupply(ctx, collectionId, collectionItemId).Address(address).WalletId(walletId).Execute()
 
 Get collection item supply
 
@@ -808,7 +808,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.GetCollectionItemSupply``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCollectionItemSupply`: float32
+    // response from `GetCollectionItemSupply`: int32
     fmt.Fprintf(os.Stdout, "Response from `ItemsApi.GetCollectionItemSupply`: %v\n", resp)
 }
 ```
@@ -836,7 +836,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**float32**
+**int32**
 
 ### Authorization
 
@@ -854,7 +854,7 @@ No authorization required
 
 ## GetCollectionItemTimelock
 
-> float32 GetCollectionItemTimelock(ctx, collectionId, collectionItemId).Execute()
+> int32 GetCollectionItemTimelock(ctx, collectionId, collectionItemId).Execute()
 
 Get collection item timelock
 
@@ -883,7 +883,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.GetCollectionItemTimelock``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCollectionItemTimelock`: float32
+    // response from `GetCollectionItemTimelock`: int32
     fmt.Fprintf(os.Stdout, "Response from `ItemsApi.GetCollectionItemTimelock`: %v\n", resp)
 }
 ```
@@ -909,7 +909,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**float32**
+**int32**
 
 ### Authorization
 
@@ -1238,7 +1238,7 @@ func main() {
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-    mintCollectionItemRequest := *openapiclient.NewMintCollectionItemRequest(float32(123)) // MintCollectionItemRequest | 
+    mintCollectionItemRequest := *openapiclient.NewMintCollectionItemRequest(int32(123)) // MintCollectionItemRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1469,7 +1469,7 @@ func main() {
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-    setCollectionItemTimelockRequest := *openapiclient.NewSetCollectionItemTimelockRequest(float32(1665786026)) // SetCollectionItemTimelockRequest | 
+    setCollectionItemTimelockRequest := *openapiclient.NewSetCollectionItemTimelockRequest(int32(1665786026)) // SetCollectionItemTimelockRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1548,7 +1548,7 @@ func main() {
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
     xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-    transferCollectionItemRequest := *openapiclient.NewTransferCollectionItemRequest(float32(123)) // TransferCollectionItemRequest | 
+    transferCollectionItemRequest := *openapiclient.NewTransferCollectionItemRequest(int32(123)) // TransferCollectionItemRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

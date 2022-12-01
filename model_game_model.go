@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -33,6 +33,8 @@ type GameModel struct {
 	PublishedKey *string `json:"publishedKey,omitempty"`
 	// This field has not had a description added.
 	SecretKey *string `json:"secretKey,omitempty"`
+	// This field has not had a description added.
+	Verified *bool `json:"verified,omitempty"`
 	// This field has not had a description added.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
@@ -312,6 +314,38 @@ func (o *GameModel) SetSecretKey(v string) {
 	o.SecretKey = &v
 }
 
+// GetVerified returns the Verified field value if set, zero value otherwise.
+func (o *GameModel) GetVerified() bool {
+	if o == nil || o.Verified == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Verified
+}
+
+// GetVerifiedOk returns a tuple with the Verified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GameModel) GetVerifiedOk() (*bool, bool) {
+	if o == nil || o.Verified == nil {
+		return nil, false
+	}
+	return o.Verified, true
+}
+
+// HasVerified returns a boolean if a field has been set.
+func (o *GameModel) HasVerified() bool {
+	if o != nil && o.Verified != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVerified gets a reference to the given bool and assigns it to the Verified field.
+func (o *GameModel) SetVerified(v bool) {
+	o.Verified = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *GameModel) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
@@ -401,6 +435,9 @@ func (o GameModel) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecretKey != nil {
 		toSerialize["secretKey"] = o.SecretKey
+	}
+	if o.Verified != nil {
+		toSerialize["verified"] = o.Verified
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt

@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -18,14 +18,14 @@ import (
 // SetCollectionItemTimelockRequest struct for SetCollectionItemTimelockRequest
 type SetCollectionItemTimelockRequest struct {
 	// A unix timestamp (in seconds) defining when the set timelock expires.
-	Timelock float32 `json:"timelock"`
+	Timelock int32 `json:"timelock"`
 }
 
 // NewSetCollectionItemTimelockRequest instantiates a new SetCollectionItemTimelockRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetCollectionItemTimelockRequest(timelock float32) *SetCollectionItemTimelockRequest {
+func NewSetCollectionItemTimelockRequest(timelock int32) *SetCollectionItemTimelockRequest {
 	this := SetCollectionItemTimelockRequest{}
 	this.Timelock = timelock
 	return &this
@@ -40,9 +40,9 @@ func NewSetCollectionItemTimelockRequestWithDefaults() *SetCollectionItemTimeloc
 }
 
 // GetTimelock returns the Timelock field value
-func (o *SetCollectionItemTimelockRequest) GetTimelock() float32 {
+func (o *SetCollectionItemTimelockRequest) GetTimelock() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *SetCollectionItemTimelockRequest) GetTimelock() float32 {
 
 // GetTimelockOk returns a tuple with the Timelock field value
 // and a boolean to check if the value has been set.
-func (o *SetCollectionItemTimelockRequest) GetTimelockOk() (*float32, bool) {
+func (o *SetCollectionItemTimelockRequest) GetTimelockOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *SetCollectionItemTimelockRequest) GetTimelockOk() (*float32, bool) {
 }
 
 // SetTimelock sets field value
-func (o *SetCollectionItemTimelockRequest) SetTimelock(v float32) {
+func (o *SetCollectionItemTimelockRequest) SetTimelock(v int32) {
 	o.Timelock = v
 }
 

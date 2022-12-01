@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -18,14 +18,14 @@ import (
 // BurnCollectionItemRequest struct for BurnCollectionItemRequest
 type BurnCollectionItemRequest struct {
 	// The quantity of the collectionItemId to burn.
-	Quantity float32 `json:"quantity"`
+	Quantity int32 `json:"quantity"`
 }
 
 // NewBurnCollectionItemRequest instantiates a new BurnCollectionItemRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBurnCollectionItemRequest(quantity float32) *BurnCollectionItemRequest {
+func NewBurnCollectionItemRequest(quantity int32) *BurnCollectionItemRequest {
 	this := BurnCollectionItemRequest{}
 	this.Quantity = quantity
 	return &this
@@ -40,9 +40,9 @@ func NewBurnCollectionItemRequestWithDefaults() *BurnCollectionItemRequest {
 }
 
 // GetQuantity returns the Quantity field value
-func (o *BurnCollectionItemRequest) GetQuantity() float32 {
+func (o *BurnCollectionItemRequest) GetQuantity() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *BurnCollectionItemRequest) GetQuantity() float32 {
 
 // GetQuantityOk returns a tuple with the Quantity field value
 // and a boolean to check if the value has been set.
-func (o *BurnCollectionItemRequest) GetQuantityOk() (*float32, bool) {
+func (o *BurnCollectionItemRequest) GetQuantityOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *BurnCollectionItemRequest) GetQuantityOk() (*float32, bool) {
 }
 
 // SetQuantity sets field value
-func (o *BurnCollectionItemRequest) SetQuantity(v float32) {
+func (o *BurnCollectionItemRequest) SetQuantity(v int32) {
 	o.Quantity = v
 }
 

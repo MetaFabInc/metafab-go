@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -21,69 +21,69 @@ import (
 )
 
 
-// ExchangesApiService ExchangesApi service
-type ExchangesApiService service
+// ShopsApiService ShopsApi service
+type ShopsApiService service
 
-type ApiCreateExchangeRequest struct {
+type ApiCreateShopRequest struct {
 	ctx context.Context
-	ApiService *ExchangesApiService
+	ApiService *ShopsApiService
 	xAuthorization *string
 	xPassword *string
-	createExchangeRequest *CreateExchangeRequest
+	createShopRequest *CreateShopRequest
 }
 
 // The &#x60;secretKey&#x60; of the authenticating game.
-func (r ApiCreateExchangeRequest) XAuthorization(xAuthorization string) ApiCreateExchangeRequest {
+func (r ApiCreateShopRequest) XAuthorization(xAuthorization string) ApiCreateShopRequest {
 	r.xAuthorization = &xAuthorization
 	return r
 }
 
 // The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiCreateExchangeRequest) XPassword(xPassword string) ApiCreateExchangeRequest {
+func (r ApiCreateShopRequest) XPassword(xPassword string) ApiCreateShopRequest {
 	r.xPassword = &xPassword
 	return r
 }
 
-func (r ApiCreateExchangeRequest) CreateExchangeRequest(createExchangeRequest CreateExchangeRequest) ApiCreateExchangeRequest {
-	r.createExchangeRequest = &createExchangeRequest
+func (r ApiCreateShopRequest) CreateShopRequest(createShopRequest CreateShopRequest) ApiCreateShopRequest {
+	r.createShopRequest = &createShopRequest
 	return r
 }
 
-func (r ApiCreateExchangeRequest) Execute() (*CreateExchange200Response, *http.Response, error) {
-	return r.ApiService.CreateExchangeExecute(r)
+func (r ApiCreateShopRequest) Execute() (*CreateShop200Response, *http.Response, error) {
+	return r.ApiService.CreateShopExecute(r)
 }
 
 /*
-CreateExchange Create exchange
+CreateShop Create shop
 
-Creates a new game exchange and deploys a exchange contract on behalf of the authenticating game's primary wallet. The deployed exchange contract allows you to create fixed price rates for players to buy specific items from any item collection or ERC1155 contract. Additionally, an exchange allows you to create exchange offers for some set of item(s) to another set of item(s) or any mix of currency. Exchanges completely supports gasless player transactions.
+Creates a new game shop and deploys a shop contract on behalf of the authenticating game's primary wallet. The deployed shop contract allows you to create fixed price rates for players to buy specific items from any item collection or ERC1155 contract. Additionally, a shop allows you to create shop offers for some set of item(s) to another set of item(s) or any mix of currency. Shops completely support gasless player transactions.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateExchangeRequest
+ @return ApiCreateShopRequest
 */
-func (a *ExchangesApiService) CreateExchange(ctx context.Context) ApiCreateExchangeRequest {
-	return ApiCreateExchangeRequest{
+func (a *ShopsApiService) CreateShop(ctx context.Context) ApiCreateShopRequest {
+	return ApiCreateShopRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CreateExchange200Response
-func (a *ExchangesApiService) CreateExchangeExecute(r ApiCreateExchangeRequest) (*CreateExchange200Response, *http.Response, error) {
+//  @return CreateShop200Response
+func (a *ShopsApiService) CreateShopExecute(r ApiCreateShopRequest) (*CreateShop200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateExchange200Response
+		localVarReturnValue  *CreateShop200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExchangesApiService.CreateExchange")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShopsApiService.CreateShop")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/exchanges"
+	localVarPath := localBasePath + "/v1/shops"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -94,8 +94,8 @@ func (a *ExchangesApiService) CreateExchangeExecute(r ApiCreateExchangeRequest) 
 	if r.xPassword == nil {
 		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
 	}
-	if r.createExchangeRequest == nil {
-		return localVarReturnValue, nil, reportError("createExchangeRequest is required and must be specified")
+	if r.createShopRequest == nil {
+		return localVarReturnValue, nil, reportError("createShopRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -118,7 +118,7 @@ func (a *ExchangesApiService) CreateExchangeExecute(r ApiCreateExchangeRequest) 
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
 	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
 	// body params
-	localVarPostBody = r.createExchangeRequest
+	localVarPostBody = r.createShopRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -175,54 +175,54 @@ func (a *ExchangesApiService) CreateExchangeExecute(r ApiCreateExchangeRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetExchangeOfferRequest struct {
+type ApiGetShopOfferRequest struct {
 	ctx context.Context
-	ApiService *ExchangesApiService
-	exchangeId string
-	exchangeOfferId string
+	ApiService *ShopsApiService
+	shopId string
+	shopOfferId string
 }
 
-func (r ApiGetExchangeOfferRequest) Execute() (*ExchangeOffer, *http.Response, error) {
-	return r.ApiService.GetExchangeOfferExecute(r)
+func (r ApiGetShopOfferRequest) Execute() (*ShopOffer, *http.Response, error) {
+	return r.ApiService.GetShopOfferExecute(r)
 }
 
 /*
-GetExchangeOffer Get exchange offer
+GetShopOffer Get shop offer
 
-Returns a exchange offer object for the provided exchangeOfferId.
+Returns a shop offer object for the provided shopOfferId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exchangeId Any exchange id within the MetaFab ecosystem.
- @param exchangeOfferId Any offer id for the exchange. Zero, or a positive integer.
- @return ApiGetExchangeOfferRequest
+ @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopOfferId Any offer id for the shop. Zero, or a positive integer.
+ @return ApiGetShopOfferRequest
 */
-func (a *ExchangesApiService) GetExchangeOffer(ctx context.Context, exchangeId string, exchangeOfferId string) ApiGetExchangeOfferRequest {
-	return ApiGetExchangeOfferRequest{
+func (a *ShopsApiService) GetShopOffer(ctx context.Context, shopId string, shopOfferId string) ApiGetShopOfferRequest {
+	return ApiGetShopOfferRequest{
 		ApiService: a,
 		ctx: ctx,
-		exchangeId: exchangeId,
-		exchangeOfferId: exchangeOfferId,
+		shopId: shopId,
+		shopOfferId: shopOfferId,
 	}
 }
 
 // Execute executes the request
-//  @return ExchangeOffer
-func (a *ExchangesApiService) GetExchangeOfferExecute(r ApiGetExchangeOfferRequest) (*ExchangeOffer, *http.Response, error) {
+//  @return ShopOffer
+func (a *ShopsApiService) GetShopOfferExecute(r ApiGetShopOfferRequest) (*ShopOffer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ExchangeOffer
+		localVarReturnValue  *ShopOffer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExchangesApiService.GetExchangeOffer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShopsApiService.GetShopOffer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/exchanges/{exchangeId}/items/{exchangeOfferId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeId"+"}", url.PathEscape(parameterToString(r.exchangeId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeOfferId"+"}", url.PathEscape(parameterToString(r.exchangeOfferId, "")), -1)
+	localVarPath := localBasePath + "/v1/shops/{shopId}/items/{shopOfferId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"shopId"+"}", url.PathEscape(parameterToString(r.shopId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"shopOfferId"+"}", url.PathEscape(parameterToString(r.shopOfferId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -291,50 +291,50 @@ func (a *ExchangesApiService) GetExchangeOfferExecute(r ApiGetExchangeOfferReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetExchangeOffersRequest struct {
+type ApiGetShopOffersRequest struct {
 	ctx context.Context
-	ApiService *ExchangesApiService
-	exchangeId string
+	ApiService *ShopsApiService
+	shopId string
 }
 
-func (r ApiGetExchangeOffersRequest) Execute() ([]ExchangeOffer, *http.Response, error) {
-	return r.ApiService.GetExchangeOffersExecute(r)
+func (r ApiGetShopOffersRequest) Execute() ([]ShopOffer, *http.Response, error) {
+	return r.ApiService.GetShopOffersExecute(r)
 }
 
 /*
-GetExchangeOffers Get exchange offers
+GetShopOffers Get shop offers
 
-Returns all exchange offers as an array of exchange offer objects.
+Returns all shop offers as an array of shop offer objects.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exchangeId Any exchange id within the MetaFab ecosystem.
- @return ApiGetExchangeOffersRequest
+ @param shopId Any shop id within the MetaFab ecosystem.
+ @return ApiGetShopOffersRequest
 */
-func (a *ExchangesApiService) GetExchangeOffers(ctx context.Context, exchangeId string) ApiGetExchangeOffersRequest {
-	return ApiGetExchangeOffersRequest{
+func (a *ShopsApiService) GetShopOffers(ctx context.Context, shopId string) ApiGetShopOffersRequest {
+	return ApiGetShopOffersRequest{
 		ApiService: a,
 		ctx: ctx,
-		exchangeId: exchangeId,
+		shopId: shopId,
 	}
 }
 
 // Execute executes the request
-//  @return []ExchangeOffer
-func (a *ExchangesApiService) GetExchangeOffersExecute(r ApiGetExchangeOffersRequest) ([]ExchangeOffer, *http.Response, error) {
+//  @return []ShopOffer
+func (a *ShopsApiService) GetShopOffersExecute(r ApiGetShopOffersRequest) ([]ShopOffer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ExchangeOffer
+		localVarReturnValue  []ShopOffer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExchangesApiService.GetExchangeOffers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShopsApiService.GetShopOffers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/exchanges/{exchangeId}/offers"
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeId"+"}", url.PathEscape(parameterToString(r.exchangeId, "")), -1)
+	localVarPath := localBasePath + "/v1/shops/{shopId}/offers"
+	localVarPath = strings.Replace(localVarPath, "{"+"shopId"+"}", url.PathEscape(parameterToString(r.shopId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -403,53 +403,53 @@ func (a *ExchangesApiService) GetExchangeOffersExecute(r ApiGetExchangeOffersReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetExchangesRequest struct {
+type ApiGetShopsRequest struct {
 	ctx context.Context
-	ApiService *ExchangesApiService
+	ApiService *ShopsApiService
 	xGameKey *string
 }
 
 // The &#x60;publishedKey&#x60; of a specific game. This can be shared or included in game clients, websites, etc.
-func (r ApiGetExchangesRequest) XGameKey(xGameKey string) ApiGetExchangesRequest {
+func (r ApiGetShopsRequest) XGameKey(xGameKey string) ApiGetShopsRequest {
 	r.xGameKey = &xGameKey
 	return r
 }
 
-func (r ApiGetExchangesRequest) Execute() ([]GetExchanges200ResponseInner, *http.Response, error) {
-	return r.ApiService.GetExchangesExecute(r)
+func (r ApiGetShopsRequest) Execute() ([]GetShops200ResponseInner, *http.Response, error) {
+	return r.ApiService.GetShopsExecute(r)
 }
 
 /*
-GetExchanges Get exchanges
+GetShops Get shops
 
-Returns an array of active exchanges for the game associated with the provided `X-Game-Key`.
+Returns an array of active shops for the game associated with the provided `X-Game-Key`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetExchangesRequest
+ @return ApiGetShopsRequest
 */
-func (a *ExchangesApiService) GetExchanges(ctx context.Context) ApiGetExchangesRequest {
-	return ApiGetExchangesRequest{
+func (a *ShopsApiService) GetShops(ctx context.Context) ApiGetShopsRequest {
+	return ApiGetShopsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []GetExchanges200ResponseInner
-func (a *ExchangesApiService) GetExchangesExecute(r ApiGetExchangesRequest) ([]GetExchanges200ResponseInner, *http.Response, error) {
+//  @return []GetShops200ResponseInner
+func (a *ShopsApiService) GetShopsExecute(r ApiGetShopsRequest) ([]GetShops200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []GetExchanges200ResponseInner
+		localVarReturnValue  []GetShops200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExchangesApiService.GetExchanges")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShopsApiService.GetShops")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/exchanges"
+	localVarPath := localBasePath + "/v1/shops"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -522,53 +522,53 @@ func (a *ExchangesApiService) GetExchangesExecute(r ApiGetExchangesRequest) ([]G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRemoveExchangeOfferRequest struct {
+type ApiRemoveShopOfferRequest struct {
 	ctx context.Context
-	ApiService *ExchangesApiService
-	exchangeId string
-	exchangeOfferId string
+	ApiService *ShopsApiService
+	shopId string
+	shopOfferId string
 	xAuthorization *string
 	xPassword *string
 }
 
 // The &#x60;secretKey&#x60; of the authenticating game.
-func (r ApiRemoveExchangeOfferRequest) XAuthorization(xAuthorization string) ApiRemoveExchangeOfferRequest {
+func (r ApiRemoveShopOfferRequest) XAuthorization(xAuthorization string) ApiRemoveShopOfferRequest {
 	r.xAuthorization = &xAuthorization
 	return r
 }
 
 // The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiRemoveExchangeOfferRequest) XPassword(xPassword string) ApiRemoveExchangeOfferRequest {
+func (r ApiRemoveShopOfferRequest) XPassword(xPassword string) ApiRemoveShopOfferRequest {
 	r.xPassword = &xPassword
 	return r
 }
 
-func (r ApiRemoveExchangeOfferRequest) Execute() (*TransactionModel, *http.Response, error) {
-	return r.ApiService.RemoveExchangeOfferExecute(r)
+func (r ApiRemoveShopOfferRequest) Execute() (*TransactionModel, *http.Response, error) {
+	return r.ApiService.RemoveShopOfferExecute(r)
 }
 
 /*
-RemoveExchangeOffer Remove exchange offer
+RemoveShopOffer Remove shop offer
 
-Removes the provided offerId from the provided exchange. Removed offers can no longer be used.
+Removes the provided offer by offerId from the provided shop. Removed offers can no longer be used.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exchangeId Any exchange id within the MetaFab ecosystem.
- @param exchangeOfferId Any offer id for the exchange. Zero, or a positive integer.
- @return ApiRemoveExchangeOfferRequest
+ @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopOfferId Any offer id for the shop. Zero, or a positive integer.
+ @return ApiRemoveShopOfferRequest
 */
-func (a *ExchangesApiService) RemoveExchangeOffer(ctx context.Context, exchangeId string, exchangeOfferId string) ApiRemoveExchangeOfferRequest {
-	return ApiRemoveExchangeOfferRequest{
+func (a *ShopsApiService) RemoveShopOffer(ctx context.Context, shopId string, shopOfferId string) ApiRemoveShopOfferRequest {
+	return ApiRemoveShopOfferRequest{
 		ApiService: a,
 		ctx: ctx,
-		exchangeId: exchangeId,
-		exchangeOfferId: exchangeOfferId,
+		shopId: shopId,
+		shopOfferId: shopOfferId,
 	}
 }
 
 // Execute executes the request
 //  @return TransactionModel
-func (a *ExchangesApiService) RemoveExchangeOfferExecute(r ApiRemoveExchangeOfferRequest) (*TransactionModel, *http.Response, error) {
+func (a *ShopsApiService) RemoveShopOfferExecute(r ApiRemoveShopOfferRequest) (*TransactionModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -576,14 +576,14 @@ func (a *ExchangesApiService) RemoveExchangeOfferExecute(r ApiRemoveExchangeOffe
 		localVarReturnValue  *TransactionModel
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExchangesApiService.RemoveExchangeOffer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShopsApiService.RemoveShopOffer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/exchanges/{exchangeId}/offers/{exchangeOfferId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeId"+"}", url.PathEscape(parameterToString(r.exchangeId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeOfferId"+"}", url.PathEscape(parameterToString(r.exchangeOfferId, "")), -1)
+	localVarPath := localBasePath + "/v1/shops/{shopId}/offers/{shopOfferId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"shopId"+"}", url.PathEscape(parameterToString(r.shopId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"shopOfferId"+"}", url.PathEscape(parameterToString(r.shopOfferId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -670,60 +670,60 @@ func (a *ExchangesApiService) RemoveExchangeOfferExecute(r ApiRemoveExchangeOffe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSetExchangeOfferRequest struct {
+type ApiSetShopOfferRequest struct {
 	ctx context.Context
-	ApiService *ExchangesApiService
-	exchangeId string
+	ApiService *ShopsApiService
+	shopId string
 	xAuthorization *string
 	xPassword *string
-	setExchangeOfferRequest *SetExchangeOfferRequest
+	setShopOfferRequest *SetShopOfferRequest
 }
 
 // The &#x60;secretKey&#x60; of the authenticating game.
-func (r ApiSetExchangeOfferRequest) XAuthorization(xAuthorization string) ApiSetExchangeOfferRequest {
+func (r ApiSetShopOfferRequest) XAuthorization(xAuthorization string) ApiSetShopOfferRequest {
 	r.xAuthorization = &xAuthorization
 	return r
 }
 
 // The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiSetExchangeOfferRequest) XPassword(xPassword string) ApiSetExchangeOfferRequest {
+func (r ApiSetShopOfferRequest) XPassword(xPassword string) ApiSetShopOfferRequest {
 	r.xPassword = &xPassword
 	return r
 }
 
-func (r ApiSetExchangeOfferRequest) SetExchangeOfferRequest(setExchangeOfferRequest SetExchangeOfferRequest) ApiSetExchangeOfferRequest {
-	r.setExchangeOfferRequest = &setExchangeOfferRequest
+func (r ApiSetShopOfferRequest) SetShopOfferRequest(setShopOfferRequest SetShopOfferRequest) ApiSetShopOfferRequest {
+	r.setShopOfferRequest = &setShopOfferRequest
 	return r
 }
 
-func (r ApiSetExchangeOfferRequest) Execute() (*TransactionModel, *http.Response, error) {
-	return r.ApiService.SetExchangeOfferExecute(r)
+func (r ApiSetShopOfferRequest) Execute() (*TransactionModel, *http.Response, error) {
+	return r.ApiService.SetShopOfferExecute(r)
 }
 
 /*
-SetExchangeOffer Set exchange offer
+SetShopOffer Set shop offer
 
-Sets a new exchange offer or updates an existing one for the provided id. Exchange offers allow currency to item, item to currency or item to item exchanges.
+Sets a new shop offer or updates an existing one for the provided id. Shop offers allow currency to item, item to currency or item to item exchanges.
 
 All request fields besides `id` are optional. Any optional fields omitted will not be used for the offer. This allows you to create many different combinations of offers. For example, you can create an offer that may require 3 unique item ids of specified quantities from a given item collection and gives the user 1 new unique item id in exchange.
 
-Another example, you may want to make an exchange offer from one ERC20 token to another. This is also possible - simple set the input and output currency fields and leave the others blank.
+Another example, you may want to make a shop offer from one ERC20 token to another. This is also possible - simple set the input and output currency fields and leave the others blank.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exchangeId Any exchange id within the MetaFab ecosystem.
- @return ApiSetExchangeOfferRequest
+ @param shopId Any shop id within the MetaFab ecosystem.
+ @return ApiSetShopOfferRequest
 */
-func (a *ExchangesApiService) SetExchangeOffer(ctx context.Context, exchangeId string) ApiSetExchangeOfferRequest {
-	return ApiSetExchangeOfferRequest{
+func (a *ShopsApiService) SetShopOffer(ctx context.Context, shopId string) ApiSetShopOfferRequest {
+	return ApiSetShopOfferRequest{
 		ApiService: a,
 		ctx: ctx,
-		exchangeId: exchangeId,
+		shopId: shopId,
 	}
 }
 
 // Execute executes the request
 //  @return TransactionModel
-func (a *ExchangesApiService) SetExchangeOfferExecute(r ApiSetExchangeOfferRequest) (*TransactionModel, *http.Response, error) {
+func (a *ShopsApiService) SetShopOfferExecute(r ApiSetShopOfferRequest) (*TransactionModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -731,13 +731,13 @@ func (a *ExchangesApiService) SetExchangeOfferExecute(r ApiSetExchangeOfferReque
 		localVarReturnValue  *TransactionModel
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExchangesApiService.SetExchangeOffer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShopsApiService.SetShopOffer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/exchanges/{exchangeId}/offers"
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeId"+"}", url.PathEscape(parameterToString(r.exchangeId, "")), -1)
+	localVarPath := localBasePath + "/v1/shops/{shopId}/offers"
+	localVarPath = strings.Replace(localVarPath, "{"+"shopId"+"}", url.PathEscape(parameterToString(r.shopId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -748,8 +748,8 @@ func (a *ExchangesApiService) SetExchangeOfferExecute(r ApiSetExchangeOfferReque
 	if r.xPassword == nil {
 		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
 	}
-	if r.setExchangeOfferRequest == nil {
-		return localVarReturnValue, nil, reportError("setExchangeOfferRequest is required and must be specified")
+	if r.setShopOfferRequest == nil {
+		return localVarReturnValue, nil, reportError("setShopOfferRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -772,7 +772,7 @@ func (a *ExchangesApiService) SetExchangeOfferExecute(r ApiSetExchangeOfferReque
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
 	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
 	// body params
-	localVarPostBody = r.setExchangeOfferRequest
+	localVarPostBody = r.setShopOfferRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -829,53 +829,53 @@ func (a *ExchangesApiService) SetExchangeOfferExecute(r ApiSetExchangeOfferReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUseExchangeOfferRequest struct {
+type ApiUseShopOfferRequest struct {
 	ctx context.Context
-	ApiService *ExchangesApiService
-	exchangeId string
-	exchangeOfferId string
+	ApiService *ShopsApiService
+	shopId string
+	shopOfferId string
 	xAuthorization *string
 	xPassword *string
 }
 
 // The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player.
-func (r ApiUseExchangeOfferRequest) XAuthorization(xAuthorization string) ApiUseExchangeOfferRequest {
+func (r ApiUseShopOfferRequest) XAuthorization(xAuthorization string) ApiUseShopOfferRequest {
 	r.xAuthorization = &xAuthorization
 	return r
 }
 
 // The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiUseExchangeOfferRequest) XPassword(xPassword string) ApiUseExchangeOfferRequest {
+func (r ApiUseShopOfferRequest) XPassword(xPassword string) ApiUseShopOfferRequest {
 	r.xPassword = &xPassword
 	return r
 }
 
-func (r ApiUseExchangeOfferRequest) Execute() (*TransactionModel, *http.Response, error) {
-	return r.ApiService.UseExchangeOfferExecute(r)
+func (r ApiUseShopOfferRequest) Execute() (*TransactionModel, *http.Response, error) {
+	return r.ApiService.UseShopOfferExecute(r)
 }
 
 /*
-UseExchangeOffer Use exchange offer
+UseShopOffer Use shop offer
 
-Uses an exchange offer. The required (input) item(s) and/or currency are removed from the wallet or player wallet using the offer. The given (output) item(s) and/or currency are given to the wallet or player wallet using the offer.
+Uses a shop offer. The required (input) item(s) and/or currency are removed from the wallet or player wallet using the offer. The given (output) item(s) and/or currency are given to the wallet or player wallet using the offer.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exchangeId Any exchange id within the MetaFab ecosystem.
- @param exchangeOfferId Any offer id for the exchange. Zero, or a positive integer.
- @return ApiUseExchangeOfferRequest
+ @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopOfferId Any offer id for the shop. Zero, or a positive integer.
+ @return ApiUseShopOfferRequest
 */
-func (a *ExchangesApiService) UseExchangeOffer(ctx context.Context, exchangeId string, exchangeOfferId string) ApiUseExchangeOfferRequest {
-	return ApiUseExchangeOfferRequest{
+func (a *ShopsApiService) UseShopOffer(ctx context.Context, shopId string, shopOfferId string) ApiUseShopOfferRequest {
+	return ApiUseShopOfferRequest{
 		ApiService: a,
 		ctx: ctx,
-		exchangeId: exchangeId,
-		exchangeOfferId: exchangeOfferId,
+		shopId: shopId,
+		shopOfferId: shopOfferId,
 	}
 }
 
 // Execute executes the request
 //  @return TransactionModel
-func (a *ExchangesApiService) UseExchangeOfferExecute(r ApiUseExchangeOfferRequest) (*TransactionModel, *http.Response, error) {
+func (a *ShopsApiService) UseShopOfferExecute(r ApiUseShopOfferRequest) (*TransactionModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -883,14 +883,14 @@ func (a *ExchangesApiService) UseExchangeOfferExecute(r ApiUseExchangeOfferReque
 		localVarReturnValue  *TransactionModel
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExchangesApiService.UseExchangeOffer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShopsApiService.UseShopOffer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/exchanges/{exchangeId}/offers/{exchangeOfferId}/uses"
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeId"+"}", url.PathEscape(parameterToString(r.exchangeId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeOfferId"+"}", url.PathEscape(parameterToString(r.exchangeOfferId, "")), -1)
+	localVarPath := localBasePath + "/v1/shops/{shopId}/offers/{shopOfferId}/uses"
+	localVarPath = strings.Replace(localVarPath, "{"+"shopId"+"}", url.PathEscape(parameterToString(r.shopId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"shopOfferId"+"}", url.PathEscape(parameterToString(r.shopOfferId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -977,56 +977,56 @@ func (a *ExchangesApiService) UseExchangeOfferExecute(r ApiUseExchangeOfferReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiWithdrawFromExchangeRequest struct {
+type ApiWithdrawFromShopRequest struct {
 	ctx context.Context
-	ApiService *ExchangesApiService
-	exchangeId string
+	ApiService *ShopsApiService
+	shopId string
 	xAuthorization *string
 	xPassword *string
-	withdrawFromExchangeRequest *WithdrawFromExchangeRequest
+	withdrawFromShopRequest *WithdrawFromShopRequest
 }
 
 // The &#x60;secretKey&#x60; of the authenticating game.
-func (r ApiWithdrawFromExchangeRequest) XAuthorization(xAuthorization string) ApiWithdrawFromExchangeRequest {
+func (r ApiWithdrawFromShopRequest) XAuthorization(xAuthorization string) ApiWithdrawFromShopRequest {
 	r.xAuthorization = &xAuthorization
 	return r
 }
 
 // The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiWithdrawFromExchangeRequest) XPassword(xPassword string) ApiWithdrawFromExchangeRequest {
+func (r ApiWithdrawFromShopRequest) XPassword(xPassword string) ApiWithdrawFromShopRequest {
 	r.xPassword = &xPassword
 	return r
 }
 
-func (r ApiWithdrawFromExchangeRequest) WithdrawFromExchangeRequest(withdrawFromExchangeRequest WithdrawFromExchangeRequest) ApiWithdrawFromExchangeRequest {
-	r.withdrawFromExchangeRequest = &withdrawFromExchangeRequest
+func (r ApiWithdrawFromShopRequest) WithdrawFromShopRequest(withdrawFromShopRequest WithdrawFromShopRequest) ApiWithdrawFromShopRequest {
+	r.withdrawFromShopRequest = &withdrawFromShopRequest
 	return r
 }
 
-func (r ApiWithdrawFromExchangeRequest) Execute() (*TransactionModel, *http.Response, error) {
-	return r.ApiService.WithdrawFromExchangeExecute(r)
+func (r ApiWithdrawFromShopRequest) Execute() (*TransactionModel, *http.Response, error) {
+	return r.ApiService.WithdrawFromShopExecute(r)
 }
 
 /*
-WithdrawFromExchange Withdraw from exchange
+WithdrawFromShop Withdraw from shop
 
-Withdraws native token, currency or items from a exchange. Whenever an exchange offer has input requirements, the native tokens, currencies or items for the requirements of that offer are deposited into the exchange contract when the offer is used. These can be withdrawn to any other address.
+Withdraws native token, currency or items from a shop. Whenever a shop offer has input requirements, the native tokens, currencies or items for the requirements of that offer are deposited into the shop contract when the offer is used. These can be withdrawn to any other address.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param exchangeId Any exchange id within the MetaFab ecosystem.
- @return ApiWithdrawFromExchangeRequest
+ @param shopId Any shop id within the MetaFab ecosystem.
+ @return ApiWithdrawFromShopRequest
 */
-func (a *ExchangesApiService) WithdrawFromExchange(ctx context.Context, exchangeId string) ApiWithdrawFromExchangeRequest {
-	return ApiWithdrawFromExchangeRequest{
+func (a *ShopsApiService) WithdrawFromShop(ctx context.Context, shopId string) ApiWithdrawFromShopRequest {
+	return ApiWithdrawFromShopRequest{
 		ApiService: a,
 		ctx: ctx,
-		exchangeId: exchangeId,
+		shopId: shopId,
 	}
 }
 
 // Execute executes the request
 //  @return TransactionModel
-func (a *ExchangesApiService) WithdrawFromExchangeExecute(r ApiWithdrawFromExchangeRequest) (*TransactionModel, *http.Response, error) {
+func (a *ShopsApiService) WithdrawFromShopExecute(r ApiWithdrawFromShopRequest) (*TransactionModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1034,13 +1034,13 @@ func (a *ExchangesApiService) WithdrawFromExchangeExecute(r ApiWithdrawFromExcha
 		localVarReturnValue  *TransactionModel
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExchangesApiService.WithdrawFromExchange")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShopsApiService.WithdrawFromShop")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/exchanges/{exchangeId}/withdrawals"
-	localVarPath = strings.Replace(localVarPath, "{"+"exchangeId"+"}", url.PathEscape(parameterToString(r.exchangeId, "")), -1)
+	localVarPath := localBasePath + "/v1/shops/{shopId}/withdrawals"
+	localVarPath = strings.Replace(localVarPath, "{"+"shopId"+"}", url.PathEscape(parameterToString(r.shopId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1051,8 +1051,8 @@ func (a *ExchangesApiService) WithdrawFromExchangeExecute(r ApiWithdrawFromExcha
 	if r.xPassword == nil {
 		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
 	}
-	if r.withdrawFromExchangeRequest == nil {
-		return localVarReturnValue, nil, reportError("withdrawFromExchangeRequest is required and must be specified")
+	if r.withdrawFromShopRequest == nil {
+		return localVarReturnValue, nil, reportError("withdrawFromShopRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1075,7 +1075,7 @@ func (a *ExchangesApiService) WithdrawFromExchangeExecute(r ApiWithdrawFromExcha
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
 	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
 	// body params
-	localVarPostBody = r.withdrawFromExchangeRequest
+	localVarPostBody = r.withdrawFromShopRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

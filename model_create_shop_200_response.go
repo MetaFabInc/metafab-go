@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// GetExchanges200ResponseInner struct for GetExchanges200ResponseInner
-type GetExchanges200ResponseInner struct {
+// CreateShop200Response struct for CreateShop200Response
+type CreateShop200Response struct {
 	// This field has not had a description added.
 	Id *string `json:"id,omitempty"`
 	// This field has not had a description added.
@@ -27,28 +27,28 @@ type GetExchanges200ResponseInner struct {
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
 	CreatedAt *string `json:"createdAt,omitempty"`
-	Contract *ContractModel `json:"contract,omitempty"`
+	Contract *CreateCollection200ResponseAllOfContract `json:"contract,omitempty"`
 }
 
-// NewGetExchanges200ResponseInner instantiates a new GetExchanges200ResponseInner object
+// NewCreateShop200Response instantiates a new CreateShop200Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetExchanges200ResponseInner() *GetExchanges200ResponseInner {
-	this := GetExchanges200ResponseInner{}
+func NewCreateShop200Response() *CreateShop200Response {
+	this := CreateShop200Response{}
 	return &this
 }
 
-// NewGetExchanges200ResponseInnerWithDefaults instantiates a new GetExchanges200ResponseInner object
+// NewCreateShop200ResponseWithDefaults instantiates a new CreateShop200Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetExchanges200ResponseInnerWithDefaults() *GetExchanges200ResponseInner {
-	this := GetExchanges200ResponseInner{}
+func NewCreateShop200ResponseWithDefaults() *CreateShop200Response {
+	this := CreateShop200Response{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *GetExchanges200ResponseInner) GetId() string {
+func (o *CreateShop200Response) GetId() string {
 	if o == nil || o.Id == nil {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *GetExchanges200ResponseInner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetExchanges200ResponseInner) GetIdOk() (*string, bool) {
+func (o *CreateShop200Response) GetIdOk() (*string, bool) {
 	if o == nil || o.Id == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *GetExchanges200ResponseInner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *GetExchanges200ResponseInner) HasId() bool {
+func (o *CreateShop200Response) HasId() bool {
 	if o != nil && o.Id != nil {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *GetExchanges200ResponseInner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *GetExchanges200ResponseInner) SetId(v string) {
+func (o *CreateShop200Response) SetId(v string) {
 	o.Id = &v
 }
 
 // GetGameId returns the GameId field value if set, zero value otherwise.
-func (o *GetExchanges200ResponseInner) GetGameId() string {
+func (o *CreateShop200Response) GetGameId() string {
 	if o == nil || o.GameId == nil {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *GetExchanges200ResponseInner) GetGameId() string {
 
 // GetGameIdOk returns a tuple with the GameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetExchanges200ResponseInner) GetGameIdOk() (*string, bool) {
+func (o *CreateShop200Response) GetGameIdOk() (*string, bool) {
 	if o == nil || o.GameId == nil {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *GetExchanges200ResponseInner) GetGameIdOk() (*string, bool) {
 }
 
 // HasGameId returns a boolean if a field has been set.
-func (o *GetExchanges200ResponseInner) HasGameId() bool {
+func (o *CreateShop200Response) HasGameId() bool {
 	if o != nil && o.GameId != nil {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *GetExchanges200ResponseInner) HasGameId() bool {
 }
 
 // SetGameId gets a reference to the given string and assigns it to the GameId field.
-func (o *GetExchanges200ResponseInner) SetGameId(v string) {
+func (o *CreateShop200Response) SetGameId(v string) {
 	o.GameId = &v
 }
 
 // GetContractId returns the ContractId field value if set, zero value otherwise.
-func (o *GetExchanges200ResponseInner) GetContractId() string {
+func (o *CreateShop200Response) GetContractId() string {
 	if o == nil || o.ContractId == nil {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *GetExchanges200ResponseInner) GetContractId() string {
 
 // GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetExchanges200ResponseInner) GetContractIdOk() (*string, bool) {
+func (o *CreateShop200Response) GetContractIdOk() (*string, bool) {
 	if o == nil || o.ContractId == nil {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *GetExchanges200ResponseInner) GetContractIdOk() (*string, bool) {
 }
 
 // HasContractId returns a boolean if a field has been set.
-func (o *GetExchanges200ResponseInner) HasContractId() bool {
+func (o *CreateShop200Response) HasContractId() bool {
 	if o != nil && o.ContractId != nil {
 		return true
 	}
@@ -139,12 +139,12 @@ func (o *GetExchanges200ResponseInner) HasContractId() bool {
 }
 
 // SetContractId gets a reference to the given string and assigns it to the ContractId field.
-func (o *GetExchanges200ResponseInner) SetContractId(v string) {
+func (o *CreateShop200Response) SetContractId(v string) {
 	o.ContractId = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *GetExchanges200ResponseInner) GetUpdatedAt() string {
+func (o *CreateShop200Response) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
 		var ret string
 		return ret
@@ -154,7 +154,7 @@ func (o *GetExchanges200ResponseInner) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetExchanges200ResponseInner) GetUpdatedAtOk() (*string, bool) {
+func (o *CreateShop200Response) GetUpdatedAtOk() (*string, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -162,7 +162,7 @@ func (o *GetExchanges200ResponseInner) GetUpdatedAtOk() (*string, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *GetExchanges200ResponseInner) HasUpdatedAt() bool {
+func (o *CreateShop200Response) HasUpdatedAt() bool {
 	if o != nil && o.UpdatedAt != nil {
 		return true
 	}
@@ -171,12 +171,12 @@ func (o *GetExchanges200ResponseInner) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *GetExchanges200ResponseInner) SetUpdatedAt(v string) {
+func (o *CreateShop200Response) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *GetExchanges200ResponseInner) GetCreatedAt() string {
+func (o *CreateShop200Response) GetCreatedAt() string {
 	if o == nil || o.CreatedAt == nil {
 		var ret string
 		return ret
@@ -186,7 +186,7 @@ func (o *GetExchanges200ResponseInner) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetExchanges200ResponseInner) GetCreatedAtOk() (*string, bool) {
+func (o *CreateShop200Response) GetCreatedAtOk() (*string, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -194,7 +194,7 @@ func (o *GetExchanges200ResponseInner) GetCreatedAtOk() (*string, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *GetExchanges200ResponseInner) HasCreatedAt() bool {
+func (o *CreateShop200Response) HasCreatedAt() bool {
 	if o != nil && o.CreatedAt != nil {
 		return true
 	}
@@ -203,14 +203,14 @@ func (o *GetExchanges200ResponseInner) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *GetExchanges200ResponseInner) SetCreatedAt(v string) {
+func (o *CreateShop200Response) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
 // GetContract returns the Contract field value if set, zero value otherwise.
-func (o *GetExchanges200ResponseInner) GetContract() ContractModel {
+func (o *CreateShop200Response) GetContract() CreateCollection200ResponseAllOfContract {
 	if o == nil || o.Contract == nil {
-		var ret ContractModel
+		var ret CreateCollection200ResponseAllOfContract
 		return ret
 	}
 	return *o.Contract
@@ -218,7 +218,7 @@ func (o *GetExchanges200ResponseInner) GetContract() ContractModel {
 
 // GetContractOk returns a tuple with the Contract field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetExchanges200ResponseInner) GetContractOk() (*ContractModel, bool) {
+func (o *CreateShop200Response) GetContractOk() (*CreateCollection200ResponseAllOfContract, bool) {
 	if o == nil || o.Contract == nil {
 		return nil, false
 	}
@@ -226,7 +226,7 @@ func (o *GetExchanges200ResponseInner) GetContractOk() (*ContractModel, bool) {
 }
 
 // HasContract returns a boolean if a field has been set.
-func (o *GetExchanges200ResponseInner) HasContract() bool {
+func (o *CreateShop200Response) HasContract() bool {
 	if o != nil && o.Contract != nil {
 		return true
 	}
@@ -234,12 +234,12 @@ func (o *GetExchanges200ResponseInner) HasContract() bool {
 	return false
 }
 
-// SetContract gets a reference to the given ContractModel and assigns it to the Contract field.
-func (o *GetExchanges200ResponseInner) SetContract(v ContractModel) {
+// SetContract gets a reference to the given CreateCollection200ResponseAllOfContract and assigns it to the Contract field.
+func (o *CreateShop200Response) SetContract(v CreateCollection200ResponseAllOfContract) {
 	o.Contract = &v
 }
 
-func (o GetExchanges200ResponseInner) MarshalJSON() ([]byte, error) {
+func (o CreateShop200Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
@@ -262,38 +262,38 @@ func (o GetExchanges200ResponseInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGetExchanges200ResponseInner struct {
-	value *GetExchanges200ResponseInner
+type NullableCreateShop200Response struct {
+	value *CreateShop200Response
 	isSet bool
 }
 
-func (v NullableGetExchanges200ResponseInner) Get() *GetExchanges200ResponseInner {
+func (v NullableCreateShop200Response) Get() *CreateShop200Response {
 	return v.value
 }
 
-func (v *NullableGetExchanges200ResponseInner) Set(val *GetExchanges200ResponseInner) {
+func (v *NullableCreateShop200Response) Set(val *CreateShop200Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetExchanges200ResponseInner) IsSet() bool {
+func (v NullableCreateShop200Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetExchanges200ResponseInner) Unset() {
+func (v *NullableCreateShop200Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetExchanges200ResponseInner(val *GetExchanges200ResponseInner) *NullableGetExchanges200ResponseInner {
-	return &NullableGetExchanges200ResponseInner{value: val, isSet: true}
+func NewNullableCreateShop200Response(val *CreateShop200Response) *NullableCreateShop200Response {
+	return &NullableCreateShop200Response{value: val, isSet: true}
 }
 
-func (v NullableGetExchanges200ResponseInner) MarshalJSON() ([]byte, error) {
+func (v NullableCreateShop200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetExchanges200ResponseInner) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateShop200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

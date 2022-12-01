@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -22,16 +22,16 @@ type BatchTransferCollectionItemsRequest struct {
 	// An array of wallet ids within the MetaFab ecosystem to transfer items to.
 	WalletIds []string `json:"walletIds,omitempty"`
 	// An array of unique itemIds to transfer. Each recipient will receive the same set of items provided.
-	ItemIds []float32 `json:"itemIds"`
+	ItemIds []int32 `json:"itemIds"`
 	// The quantities of each unique itemId to transfer. Each recipient will receive the same quantities of items provided.
-	Quantities []float32 `json:"quantities"`
+	Quantities []int32 `json:"quantities"`
 }
 
 // NewBatchTransferCollectionItemsRequest instantiates a new BatchTransferCollectionItemsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBatchTransferCollectionItemsRequest(itemIds []float32, quantities []float32) *BatchTransferCollectionItemsRequest {
+func NewBatchTransferCollectionItemsRequest(itemIds []int32, quantities []int32) *BatchTransferCollectionItemsRequest {
 	this := BatchTransferCollectionItemsRequest{}
 	this.ItemIds = itemIds
 	this.Quantities = quantities
@@ -111,9 +111,9 @@ func (o *BatchTransferCollectionItemsRequest) SetWalletIds(v []string) {
 }
 
 // GetItemIds returns the ItemIds field value
-func (o *BatchTransferCollectionItemsRequest) GetItemIds() []float32 {
+func (o *BatchTransferCollectionItemsRequest) GetItemIds() []int32 {
 	if o == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 
@@ -122,7 +122,7 @@ func (o *BatchTransferCollectionItemsRequest) GetItemIds() []float32 {
 
 // GetItemIdsOk returns a tuple with the ItemIds field value
 // and a boolean to check if the value has been set.
-func (o *BatchTransferCollectionItemsRequest) GetItemIdsOk() ([]float32, bool) {
+func (o *BatchTransferCollectionItemsRequest) GetItemIdsOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -130,14 +130,14 @@ func (o *BatchTransferCollectionItemsRequest) GetItemIdsOk() ([]float32, bool) {
 }
 
 // SetItemIds sets field value
-func (o *BatchTransferCollectionItemsRequest) SetItemIds(v []float32) {
+func (o *BatchTransferCollectionItemsRequest) SetItemIds(v []int32) {
 	o.ItemIds = v
 }
 
 // GetQuantities returns the Quantities field value
-func (o *BatchTransferCollectionItemsRequest) GetQuantities() []float32 {
+func (o *BatchTransferCollectionItemsRequest) GetQuantities() []int32 {
 	if o == nil {
-		var ret []float32
+		var ret []int32
 		return ret
 	}
 
@@ -146,7 +146,7 @@ func (o *BatchTransferCollectionItemsRequest) GetQuantities() []float32 {
 
 // GetQuantitiesOk returns a tuple with the Quantities field value
 // and a boolean to check if the value has been set.
-func (o *BatchTransferCollectionItemsRequest) GetQuantitiesOk() ([]float32, bool) {
+func (o *BatchTransferCollectionItemsRequest) GetQuantitiesOk() ([]int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -154,7 +154,7 @@ func (o *BatchTransferCollectionItemsRequest) GetQuantitiesOk() ([]float32, bool
 }
 
 // SetQuantities sets field value
-func (o *BatchTransferCollectionItemsRequest) SetQuantities(v []float32) {
+func (o *BatchTransferCollectionItemsRequest) SetQuantities(v []int32) {
 	o.Quantities = v
 }
 

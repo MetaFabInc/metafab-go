@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.2.1
+API version: 1.3.0
 Contact: metafabproject@gmail.com
 */
 
@@ -18,7 +18,7 @@ import (
 // CreateCollectionItemRequest struct for CreateCollectionItemRequest
 type CreateCollectionItemRequest struct {
 	// A unique itemId to use for this item within the collection. If an existing itemId is used, the current metadata will be overriden. Any number may be used.  The terms `itemId` and `collectionItemId` are used interchangeably and equivalent to one another throughout MetaFab documentation.
-	Id float32 `json:"id"`
+	Id int32 `json:"id"`
 	// The name of this item.
 	Name string `json:"name"`
 	// A text description of this item. This is a great spot to include lore, game mechanics and more related to this item.
@@ -39,7 +39,7 @@ type CreateCollectionItemRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateCollectionItemRequest(id float32, name string, description string) *CreateCollectionItemRequest {
+func NewCreateCollectionItemRequest(id int32, name string, description string) *CreateCollectionItemRequest {
 	this := CreateCollectionItemRequest{}
 	this.Id = id
 	this.Name = name
@@ -56,9 +56,9 @@ func NewCreateCollectionItemRequestWithDefaults() *CreateCollectionItemRequest {
 }
 
 // GetId returns the Id field value
-func (o *CreateCollectionItemRequest) GetId() float32 {
+func (o *CreateCollectionItemRequest) GetId() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -67,7 +67,7 @@ func (o *CreateCollectionItemRequest) GetId() float32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *CreateCollectionItemRequest) GetIdOk() (*float32, bool) {
+func (o *CreateCollectionItemRequest) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,7 +75,7 @@ func (o *CreateCollectionItemRequest) GetIdOk() (*float32, bool) {
 }
 
 // SetId sets field value
-func (o *CreateCollectionItemRequest) SetId(v float32) {
+func (o *CreateCollectionItemRequest) SetId(v int32) {
 	o.Id = v
 }
 
