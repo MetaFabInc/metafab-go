@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.3.0
+API version: 1.4.0
 Contact: metafabproject@gmail.com
 */
 
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the MetaFab API API v1.3.0
+// APIClient manages communication with the MetaFab API API v1.4.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

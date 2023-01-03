@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.3.0
+API version: 1.4.0
 Contact: metafabproject@gmail.com
 */
 
@@ -395,6 +395,320 @@ func (a *ContractsApiService) ReadContractExecute(r ApiReadContractRequest) (int
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTransferContractOwnershipRequest struct {
+	ctx context.Context
+	ApiService *ContractsApiService
+	contractId string
+	xAuthorization *string
+	xPassword *string
+	transferContractOwnershipRequest *TransferContractOwnershipRequest
+}
+
+// The &#x60;secretKey&#x60; of the authenticating game.
+func (r ApiTransferContractOwnershipRequest) XAuthorization(xAuthorization string) ApiTransferContractOwnershipRequest {
+	r.xAuthorization = &xAuthorization
+	return r
+}
+
+// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiTransferContractOwnershipRequest) XPassword(xPassword string) ApiTransferContractOwnershipRequest {
+	r.xPassword = &xPassword
+	return r
+}
+
+func (r ApiTransferContractOwnershipRequest) TransferContractOwnershipRequest(transferContractOwnershipRequest TransferContractOwnershipRequest) ApiTransferContractOwnershipRequest {
+	r.transferContractOwnershipRequest = &transferContractOwnershipRequest
+	return r
+}
+
+func (r ApiTransferContractOwnershipRequest) Execute() (*TransactionModel, *http.Response, error) {
+	return r.ApiService.TransferContractOwnershipExecute(r)
+}
+
+/*
+TransferContractOwnership Transfer contract ownership
+
+Transfer ownership and control of a MetaFab deployed smart contract to another wallet you control. Transferring control does not disrupt your usage of MetaFab APIs and can be done so without causing any service outages for your game. The new owner wallet will have full control over any relevant item collections and marketplace related pages this contract may be associated with, such as for MetaFab item or NFT contracts.
+
+Your game's custodial wallet will retain a `MANAGER_ROLE` on your contracts, allowing you to still use MetaFab APIs without issue while you retain full contract ownership and the contract's administrator role. If ever you want eject from using the MetaFab APIs but still retain your deployed smart contracts, you can revoke the `MANAGER_ROLE` from your game's custodial wallet address for your contract. We do not lock you into our systems.
+
+Please be certain that the wallet address you transfer ownership to is one you control. Once ownership and admin permissions are transferred, your game's custodial wallet no longer has permission to reassign ownership or administrative priveleges for your contract.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param contractId Any contract id within the MetaFab ecosystem.
+ @return ApiTransferContractOwnershipRequest
+*/
+func (a *ContractsApiService) TransferContractOwnership(ctx context.Context, contractId string) ApiTransferContractOwnershipRequest {
+	return ApiTransferContractOwnershipRequest{
+		ApiService: a,
+		ctx: ctx,
+		contractId: contractId,
+	}
+}
+
+// Execute executes the request
+//  @return TransactionModel
+func (a *ContractsApiService) TransferContractOwnershipExecute(r ApiTransferContractOwnershipRequest) (*TransactionModel, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TransactionModel
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContractsApiService.TransferContractOwnership")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/contracts/{contractId}/owners"
+	localVarPath = strings.Replace(localVarPath, "{"+"contractId"+"}", url.PathEscape(parameterToString(r.contractId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.xAuthorization == nil {
+		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
+	}
+	if r.xPassword == nil {
+		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	}
+	if r.transferContractOwnershipRequest == nil {
+		return localVarReturnValue, nil, reportError("transferContractOwnershipRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
+	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	// body params
+	localVarPostBody = r.transferContractOwnershipRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpgradeContractTrustedForwarderRequest struct {
+	ctx context.Context
+	ApiService *ContractsApiService
+	contractId string
+	xAuthorization *string
+	xPassword *string
+	upgradeContractTrustedForwarderRequest *UpgradeContractTrustedForwarderRequest
+}
+
+// The &#x60;secretKey&#x60; of the authenticating game.
+func (r ApiUpgradeContractTrustedForwarderRequest) XAuthorization(xAuthorization string) ApiUpgradeContractTrustedForwarderRequest {
+	r.xAuthorization = &xAuthorization
+	return r
+}
+
+// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiUpgradeContractTrustedForwarderRequest) XPassword(xPassword string) ApiUpgradeContractTrustedForwarderRequest {
+	r.xPassword = &xPassword
+	return r
+}
+
+func (r ApiUpgradeContractTrustedForwarderRequest) UpgradeContractTrustedForwarderRequest(upgradeContractTrustedForwarderRequest UpgradeContractTrustedForwarderRequest) ApiUpgradeContractTrustedForwarderRequest {
+	r.upgradeContractTrustedForwarderRequest = &upgradeContractTrustedForwarderRequest
+	return r
+}
+
+func (r ApiUpgradeContractTrustedForwarderRequest) Execute() (*TransactionModel, *http.Response, error) {
+	return r.ApiService.UpgradeContractTrustedForwarderExecute(r)
+}
+
+/*
+UpgradeContractTrustedForwarder Upgrade contract trusted forwarder
+
+In rare circumstances, you may need to upgrade the underlying trusted forwarder contract address attached to your game's contracts. Using this endpoint, you can provide a new trusted forwarder contract address to assign to any of your contracts that implement the `upgradeTrustedForwarder` function.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param contractId Any contract id within the MetaFab ecosystem.
+ @return ApiUpgradeContractTrustedForwarderRequest
+*/
+func (a *ContractsApiService) UpgradeContractTrustedForwarder(ctx context.Context, contractId string) ApiUpgradeContractTrustedForwarderRequest {
+	return ApiUpgradeContractTrustedForwarderRequest{
+		ApiService: a,
+		ctx: ctx,
+		contractId: contractId,
+	}
+}
+
+// Execute executes the request
+//  @return TransactionModel
+func (a *ContractsApiService) UpgradeContractTrustedForwarderExecute(r ApiUpgradeContractTrustedForwarderRequest) (*TransactionModel, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TransactionModel
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContractsApiService.UpgradeContractTrustedForwarder")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/contracts/{contractId}/forwarders"
+	localVarPath = strings.Replace(localVarPath, "{"+"contractId"+"}", url.PathEscape(parameterToString(r.contractId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.xAuthorization == nil {
+		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
+	}
+	if r.xPassword == nil {
+		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	}
+	if r.upgradeContractTrustedForwarderRequest == nil {
+		return localVarReturnValue, nil, reportError("upgradeContractTrustedForwarderRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
+	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	// body params
+	localVarPostBody = r.upgradeContractTrustedForwarderRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

@@ -7,6 +7,10 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Name** | Pointer to **string** | This field has not had a description added. | [optional] 
 **PublishedKey** | Pointer to **string** | This field has not had a description added. | [optional] 
+**RedirectUris** | Pointer to **[]string** | This field has not had a description added. | [optional] 
+**IconImageUrl** | Pointer to **string** | This field has not had a description added. | [optional] 
+**CoverImageUrl** | Pointer to **string** | This field has not had a description added. | [optional] 
+**PrimaryColorHex** | Pointer to **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 
@@ -103,6 +107,106 @@ SetPublishedKey sets PublishedKey field to given value.
 `func (o *PublicGame) HasPublishedKey() bool`
 
 HasPublishedKey returns a boolean if a field has been set.
+
+### GetRedirectUris
+
+`func (o *PublicGame) GetRedirectUris() []string`
+
+GetRedirectUris returns the RedirectUris field if non-nil, zero value otherwise.
+
+### GetRedirectUrisOk
+
+`func (o *PublicGame) GetRedirectUrisOk() (*[]string, bool)`
+
+GetRedirectUrisOk returns a tuple with the RedirectUris field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedirectUris
+
+`func (o *PublicGame) SetRedirectUris(v []string)`
+
+SetRedirectUris sets RedirectUris field to given value.
+
+### HasRedirectUris
+
+`func (o *PublicGame) HasRedirectUris() bool`
+
+HasRedirectUris returns a boolean if a field has been set.
+
+### GetIconImageUrl
+
+`func (o *PublicGame) GetIconImageUrl() string`
+
+GetIconImageUrl returns the IconImageUrl field if non-nil, zero value otherwise.
+
+### GetIconImageUrlOk
+
+`func (o *PublicGame) GetIconImageUrlOk() (*string, bool)`
+
+GetIconImageUrlOk returns a tuple with the IconImageUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconImageUrl
+
+`func (o *PublicGame) SetIconImageUrl(v string)`
+
+SetIconImageUrl sets IconImageUrl field to given value.
+
+### HasIconImageUrl
+
+`func (o *PublicGame) HasIconImageUrl() bool`
+
+HasIconImageUrl returns a boolean if a field has been set.
+
+### GetCoverImageUrl
+
+`func (o *PublicGame) GetCoverImageUrl() string`
+
+GetCoverImageUrl returns the CoverImageUrl field if non-nil, zero value otherwise.
+
+### GetCoverImageUrlOk
+
+`func (o *PublicGame) GetCoverImageUrlOk() (*string, bool)`
+
+GetCoverImageUrlOk returns a tuple with the CoverImageUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCoverImageUrl
+
+`func (o *PublicGame) SetCoverImageUrl(v string)`
+
+SetCoverImageUrl sets CoverImageUrl field to given value.
+
+### HasCoverImageUrl
+
+`func (o *PublicGame) HasCoverImageUrl() bool`
+
+HasCoverImageUrl returns a boolean if a field has been set.
+
+### GetPrimaryColorHex
+
+`func (o *PublicGame) GetPrimaryColorHex() string`
+
+GetPrimaryColorHex returns the PrimaryColorHex field if non-nil, zero value otherwise.
+
+### GetPrimaryColorHexOk
+
+`func (o *PublicGame) GetPrimaryColorHexOk() (*string, bool)`
+
+GetPrimaryColorHexOk returns a tuple with the PrimaryColorHex field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrimaryColorHex
+
+`func (o *PublicGame) SetPrimaryColorHex(v string)`
+
+SetPrimaryColorHex sets PrimaryColorHex field to given value.
+
+### HasPrimaryColorHex
+
+`func (o *PublicGame) HasPrimaryColorHex() bool`
+
+HasPrimaryColorHex returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

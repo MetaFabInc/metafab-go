@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | The address of the existing contract. | 
+**ForwarderAddress** | Pointer to **string** | The address of the ERC2771 forwarding contract trusted by the contract. | [optional] 
 **Abi** | **string** | JSON of the abi. | 
 **Chain** | **string** | The blockchain you want to deploy this currency on. Support for new blockchains are added over time. | 
 
@@ -46,6 +47,31 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
+
+### GetForwarderAddress
+
+`func (o *CreateContractRequest) GetForwarderAddress() string`
+
+GetForwarderAddress returns the ForwarderAddress field if non-nil, zero value otherwise.
+
+### GetForwarderAddressOk
+
+`func (o *CreateContractRequest) GetForwarderAddressOk() (*string, bool)`
+
+GetForwarderAddressOk returns a tuple with the ForwarderAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForwarderAddress
+
+`func (o *CreateContractRequest) SetForwarderAddress(v string)`
+
+SetForwarderAddress sets ForwarderAddress field to given value.
+
+### HasForwarderAddress
+
+`func (o *CreateContractRequest) HasForwarderAddress() bool`
+
+HasForwarderAddress returns a boolean if a field has been set.
 
 ### GetAbi
 

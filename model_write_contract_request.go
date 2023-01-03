@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.3.0
+API version: 1.4.0
 Contact: metafabproject@gmail.com
 */
 

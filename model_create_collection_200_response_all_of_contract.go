@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.3.0
+API version: 1.4.0
 Contact: metafabproject@gmail.com
 */
 
@@ -29,6 +29,8 @@ type CreateCollection200ResponseAllOfContract struct {
 	Type *string `json:"type,omitempty"`
 	// This field has not had a description added.
 	Address *string `json:"address,omitempty"`
+	// This field has not had a description added.
+	ForwarderAddress *string `json:"forwarderAddress,omitempty"`
 	// This field has not had a description added.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
@@ -245,6 +247,38 @@ func (o *CreateCollection200ResponseAllOfContract) SetAddress(v string) {
 	o.Address = &v
 }
 
+// GetForwarderAddress returns the ForwarderAddress field value if set, zero value otherwise.
+func (o *CreateCollection200ResponseAllOfContract) GetForwarderAddress() string {
+	if o == nil || o.ForwarderAddress == nil {
+		var ret string
+		return ret
+	}
+	return *o.ForwarderAddress
+}
+
+// GetForwarderAddressOk returns a tuple with the ForwarderAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateCollection200ResponseAllOfContract) GetForwarderAddressOk() (*string, bool) {
+	if o == nil || o.ForwarderAddress == nil {
+		return nil, false
+	}
+	return o.ForwarderAddress, true
+}
+
+// HasForwarderAddress returns a boolean if a field has been set.
+func (o *CreateCollection200ResponseAllOfContract) HasForwarderAddress() bool {
+	if o != nil && o.ForwarderAddress != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetForwarderAddress gets a reference to the given string and assigns it to the ForwarderAddress field.
+func (o *CreateCollection200ResponseAllOfContract) SetForwarderAddress(v string) {
+	o.ForwarderAddress = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *CreateCollection200ResponseAllOfContract) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
@@ -360,6 +394,9 @@ func (o CreateCollection200ResponseAllOfContract) MarshalJSON() ([]byte, error) 
 	}
 	if o.Address != nil {
 		toSerialize["address"] = o.Address
+	}
+	if o.ForwarderAddress != nil {
+		toSerialize["forwarderAddress"] = o.ForwarderAddress
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt

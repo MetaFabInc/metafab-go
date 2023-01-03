@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | This field has not had a description added. | [optional] 
 **GameId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **WalletId** | Pointer to **string** | This field has not had a description added. | [optional] 
+**ConnectedWalletId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Username** | Pointer to **string** | This field has not had a description added. | [optional] 
 **AccessToken** | Pointer to **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
@@ -105,6 +106,31 @@ SetWalletId sets WalletId field to given value.
 `func (o *PlayerModel) HasWalletId() bool`
 
 HasWalletId returns a boolean if a field has been set.
+
+### GetConnectedWalletId
+
+`func (o *PlayerModel) GetConnectedWalletId() string`
+
+GetConnectedWalletId returns the ConnectedWalletId field if non-nil, zero value otherwise.
+
+### GetConnectedWalletIdOk
+
+`func (o *PlayerModel) GetConnectedWalletIdOk() (*string, bool)`
+
+GetConnectedWalletIdOk returns a tuple with the ConnectedWalletId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectedWalletId
+
+`func (o *PlayerModel) SetConnectedWalletId(v string)`
+
+SetConnectedWalletId sets ConnectedWalletId field to given value.
+
+### HasConnectedWalletId
+
+`func (o *PlayerModel) HasConnectedWalletId() bool`
+
+HasConnectedWalletId returns a boolean if a field has been set.
 
 ### GetUsername
 

@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.3.0
+API version: 1.4.0
 Contact: metafabproject@gmail.com
 */
 
@@ -613,6 +613,280 @@ func (a *PlayersApiService) GetPlayersExecute(r ApiGetPlayersRequest) ([]PublicP
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRemovePlayerConnectedWalletRequest struct {
+	ctx context.Context
+	ApiService *PlayersApiService
+	playerId string
+	playerWalletId string
+	removePlayerConnectedWalletRequest *RemovePlayerConnectedWalletRequest
+}
+
+func (r ApiRemovePlayerConnectedWalletRequest) RemovePlayerConnectedWalletRequest(removePlayerConnectedWalletRequest RemovePlayerConnectedWalletRequest) ApiRemovePlayerConnectedWalletRequest {
+	r.removePlayerConnectedWalletRequest = &removePlayerConnectedWalletRequest
+	return r
+}
+
+func (r ApiRemovePlayerConnectedWalletRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RemovePlayerConnectedWalletExecute(r)
+}
+
+/*
+RemovePlayerConnectedWallet Remove player connected wallet
+
+Removes an external wallet from a player account. The player's wallet is reverted to their custodial wallet.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param playerId Any player id within the MetaFab ecosystem.
+ @param playerWalletId Any player wallet id within the MetaFab ecosystem.
+ @return ApiRemovePlayerConnectedWalletRequest
+*/
+func (a *PlayersApiService) RemovePlayerConnectedWallet(ctx context.Context, playerId string, playerWalletId string) ApiRemovePlayerConnectedWalletRequest {
+	return ApiRemovePlayerConnectedWalletRequest{
+		ApiService: a,
+		ctx: ctx,
+		playerId: playerId,
+		playerWalletId: playerWalletId,
+	}
+}
+
+// Execute executes the request
+func (a *PlayersApiService) RemovePlayerConnectedWalletExecute(r ApiRemovePlayerConnectedWalletRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlayersApiService.RemovePlayerConnectedWallet")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/players/{playerId}/wallets/{playerWalletId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"playerId"+"}", url.PathEscape(parameterToString(r.playerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"playerWalletId"+"}", url.PathEscape(parameterToString(r.playerWalletId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.removePlayerConnectedWalletRequest == nil {
+		return nil, reportError("removePlayerConnectedWalletRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.removePlayerConnectedWalletRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetPlayerConnectedWalletRequest struct {
+	ctx context.Context
+	ApiService *PlayersApiService
+	playerId string
+	xAuthorization *string
+	setPlayerConnectedWalletRequest *SetPlayerConnectedWalletRequest
+}
+
+// The &#x60;accessToken&#x60; of the authenticating player.
+func (r ApiSetPlayerConnectedWalletRequest) XAuthorization(xAuthorization string) ApiSetPlayerConnectedWalletRequest {
+	r.xAuthorization = &xAuthorization
+	return r
+}
+
+func (r ApiSetPlayerConnectedWalletRequest) SetPlayerConnectedWalletRequest(setPlayerConnectedWalletRequest SetPlayerConnectedWalletRequest) ApiSetPlayerConnectedWalletRequest {
+	r.setPlayerConnectedWalletRequest = &setPlayerConnectedWalletRequest
+	return r
+}
+
+func (r ApiSetPlayerConnectedWalletRequest) Execute() (*SetPlayerConnectedWallet200Response, *http.Response, error) {
+	return r.ApiService.SetPlayerConnectedWalletExecute(r)
+}
+
+/*
+SetPlayerConnectedWallet Set player connected wallet
+
+Sets an external wallet as the wallet for a player account. The set wallet can transact gaslessly with all MetaFab related systems through the same MetaFab API calls as custodial wallets without requiring transaction signing or private keys.
+
+This is done through an internal system MetaFab has created that allows an external connected wallet to delegate transaction signing for a specific game's set of contracts to a player's password protected custodial wallet. This allow the custodial wallet to sign and submit transactions to a specific game's related contracts as if they were signed and submitted by the connected external wallet. This also means that all earned tokens, purchased items and any interactions happen and are recorded on chain as the external connected wallet. No additional logic needs to be writted by developers to support both custodial and external wallets, everything just works.
+
+Finally, this endpoint is meant for advanced users. The majority of developers who want to implement external wallet support for their game can do so without any extra work through our whitelabeled wallet connection feature that implements this endpoint underneath the hood without any required work.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param playerId Any player id within the MetaFab ecosystem.
+ @return ApiSetPlayerConnectedWalletRequest
+*/
+func (a *PlayersApiService) SetPlayerConnectedWallet(ctx context.Context, playerId string) ApiSetPlayerConnectedWalletRequest {
+	return ApiSetPlayerConnectedWalletRequest{
+		ApiService: a,
+		ctx: ctx,
+		playerId: playerId,
+	}
+}
+
+// Execute executes the request
+//  @return SetPlayerConnectedWallet200Response
+func (a *PlayersApiService) SetPlayerConnectedWalletExecute(r ApiSetPlayerConnectedWalletRequest) (*SetPlayerConnectedWallet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SetPlayerConnectedWallet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlayersApiService.SetPlayerConnectedWallet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/players/{playerId}/wallets"
+	localVarPath = strings.Replace(localVarPath, "{"+"playerId"+"}", url.PathEscape(parameterToString(r.playerId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.xAuthorization == nil {
+		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
+	}
+	if r.setPlayerConnectedWalletRequest == nil {
+		return localVarReturnValue, nil, reportError("setPlayerConnectedWalletRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
+	// body params
+	localVarPostBody = r.setPlayerConnectedWalletRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v string

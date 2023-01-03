@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.3.0
+API version: 1.4.0
 Contact: metafabproject@gmail.com
 */
 
@@ -27,6 +27,14 @@ type UpdateGameRequest struct {
 	NewPassword *string `json:"newPassword,omitempty"`
 	// Sets a custom RPC for your game to use instead of MetaFab's default RPCs for the chain(s) you specify.  Expects a JSON object containing key value pairs of supported `chain` -> `rpc url`. Only the chain names provided as keys in the object will be explicitly overriden. To delete a custom RPC for your game, provide the chain name to delete as a key in the provided object and `null` as the value.  Set RPC example, `{ MATIC: 'https://polygon-rpc.com' }` Delete RPC example, `{ MATIC: null }`
 	Rpcs *map[string]string `json:"rpcs,omitempty"`
+	// An array of valid base redirect uris or exact uris that can be used for the redirect uri of various MetaFab features such as player login/registration and wallet connection.  Expects base or exact uris. For example, you could use include a uri of `https://trymetafab.com` and it would allow redirection to any valid uri on the domain, such as `https://trymetafab.com/play/game`.
+	RedirectUris []string `json:"redirectUris,omitempty"`
+	// A base64 string of the icon image for this game. Supported image formats are `jpg`, `jpeg`, `png`, `gif` Recommended size is 512x512 pixels, or 1:1 aspect ratio. This image is used for your auth/connect wallet flow and other MetaFab features for your game.
+	IconImageBase64 *string `json:"iconImageBase64,omitempty"`
+	// A base64 string of the cover image for this game. Supported image formats are `jpg`, `jpeg`, `png`, `gif`. Recommended size is 1600x1000 pixels, or 16:10 aspect ratio.  This image is used as the background image for your auth/connect wallet flow and other MetaFab features for your game.
+	CoverImageBase64 *string `json:"coverImageBase64,omitempty"`
+	// A valid hex color code. This color is used for your auth/connect wallet flow to control the color of buttons and other brandable MetaFab features for your game.
+	PrimaryColorHex *string `json:"primaryColorHex,omitempty"`
 	// Revokes the game's previous published key and returns a new one if true.
 	ResetPublishedKey *bool `json:"resetPublishedKey,omitempty"`
 	// Revokes the game's previous secret key and returns a new on if true.
@@ -210,6 +218,134 @@ func (o *UpdateGameRequest) SetRpcs(v map[string]string) {
 	o.Rpcs = &v
 }
 
+// GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
+func (o *UpdateGameRequest) GetRedirectUris() []string {
+	if o == nil || o.RedirectUris == nil {
+		var ret []string
+		return ret
+	}
+	return o.RedirectUris
+}
+
+// GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGameRequest) GetRedirectUrisOk() ([]string, bool) {
+	if o == nil || o.RedirectUris == nil {
+		return nil, false
+	}
+	return o.RedirectUris, true
+}
+
+// HasRedirectUris returns a boolean if a field has been set.
+func (o *UpdateGameRequest) HasRedirectUris() bool {
+	if o != nil && o.RedirectUris != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRedirectUris gets a reference to the given []string and assigns it to the RedirectUris field.
+func (o *UpdateGameRequest) SetRedirectUris(v []string) {
+	o.RedirectUris = v
+}
+
+// GetIconImageBase64 returns the IconImageBase64 field value if set, zero value otherwise.
+func (o *UpdateGameRequest) GetIconImageBase64() string {
+	if o == nil || o.IconImageBase64 == nil {
+		var ret string
+		return ret
+	}
+	return *o.IconImageBase64
+}
+
+// GetIconImageBase64Ok returns a tuple with the IconImageBase64 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGameRequest) GetIconImageBase64Ok() (*string, bool) {
+	if o == nil || o.IconImageBase64 == nil {
+		return nil, false
+	}
+	return o.IconImageBase64, true
+}
+
+// HasIconImageBase64 returns a boolean if a field has been set.
+func (o *UpdateGameRequest) HasIconImageBase64() bool {
+	if o != nil && o.IconImageBase64 != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIconImageBase64 gets a reference to the given string and assigns it to the IconImageBase64 field.
+func (o *UpdateGameRequest) SetIconImageBase64(v string) {
+	o.IconImageBase64 = &v
+}
+
+// GetCoverImageBase64 returns the CoverImageBase64 field value if set, zero value otherwise.
+func (o *UpdateGameRequest) GetCoverImageBase64() string {
+	if o == nil || o.CoverImageBase64 == nil {
+		var ret string
+		return ret
+	}
+	return *o.CoverImageBase64
+}
+
+// GetCoverImageBase64Ok returns a tuple with the CoverImageBase64 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGameRequest) GetCoverImageBase64Ok() (*string, bool) {
+	if o == nil || o.CoverImageBase64 == nil {
+		return nil, false
+	}
+	return o.CoverImageBase64, true
+}
+
+// HasCoverImageBase64 returns a boolean if a field has been set.
+func (o *UpdateGameRequest) HasCoverImageBase64() bool {
+	if o != nil && o.CoverImageBase64 != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCoverImageBase64 gets a reference to the given string and assigns it to the CoverImageBase64 field.
+func (o *UpdateGameRequest) SetCoverImageBase64(v string) {
+	o.CoverImageBase64 = &v
+}
+
+// GetPrimaryColorHex returns the PrimaryColorHex field value if set, zero value otherwise.
+func (o *UpdateGameRequest) GetPrimaryColorHex() string {
+	if o == nil || o.PrimaryColorHex == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrimaryColorHex
+}
+
+// GetPrimaryColorHexOk returns a tuple with the PrimaryColorHex field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGameRequest) GetPrimaryColorHexOk() (*string, bool) {
+	if o == nil || o.PrimaryColorHex == nil {
+		return nil, false
+	}
+	return o.PrimaryColorHex, true
+}
+
+// HasPrimaryColorHex returns a boolean if a field has been set.
+func (o *UpdateGameRequest) HasPrimaryColorHex() bool {
+	if o != nil && o.PrimaryColorHex != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrimaryColorHex gets a reference to the given string and assigns it to the PrimaryColorHex field.
+func (o *UpdateGameRequest) SetPrimaryColorHex(v string) {
+	o.PrimaryColorHex = &v
+}
+
 // GetResetPublishedKey returns the ResetPublishedKey field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetResetPublishedKey() bool {
 	if o == nil || o.ResetPublishedKey == nil {
@@ -290,6 +426,18 @@ func (o UpdateGameRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Rpcs != nil {
 		toSerialize["rpcs"] = o.Rpcs
+	}
+	if o.RedirectUris != nil {
+		toSerialize["redirectUris"] = o.RedirectUris
+	}
+	if o.IconImageBase64 != nil {
+		toSerialize["iconImageBase64"] = o.IconImageBase64
+	}
+	if o.CoverImageBase64 != nil {
+		toSerialize["coverImageBase64"] = o.CoverImageBase64
+	}
+	if o.PrimaryColorHex != nil {
+		toSerialize["primaryColorHex"] = o.PrimaryColorHex
 	}
 	if o.ResetPublishedKey != nil {
 		toSerialize["resetPublishedKey"] = o.ResetPublishedKey

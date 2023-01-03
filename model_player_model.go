@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.3.0
+API version: 1.4.0
 Contact: metafabproject@gmail.com
 */
 
@@ -23,6 +23,8 @@ type PlayerModel struct {
 	GameId *string `json:"gameId,omitempty"`
 	// This field has not had a description added.
 	WalletId *string `json:"walletId,omitempty"`
+	// This field has not had a description added.
+	ConnectedWalletId *string `json:"connectedWalletId,omitempty"`
 	// This field has not had a description added.
 	Username *string `json:"username,omitempty"`
 	// This field has not had a description added.
@@ -144,6 +146,38 @@ func (o *PlayerModel) HasWalletId() bool {
 // SetWalletId gets a reference to the given string and assigns it to the WalletId field.
 func (o *PlayerModel) SetWalletId(v string) {
 	o.WalletId = &v
+}
+
+// GetConnectedWalletId returns the ConnectedWalletId field value if set, zero value otherwise.
+func (o *PlayerModel) GetConnectedWalletId() string {
+	if o == nil || o.ConnectedWalletId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedWalletId
+}
+
+// GetConnectedWalletIdOk returns a tuple with the ConnectedWalletId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlayerModel) GetConnectedWalletIdOk() (*string, bool) {
+	if o == nil || o.ConnectedWalletId == nil {
+		return nil, false
+	}
+	return o.ConnectedWalletId, true
+}
+
+// HasConnectedWalletId returns a boolean if a field has been set.
+func (o *PlayerModel) HasConnectedWalletId() bool {
+	if o != nil && o.ConnectedWalletId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedWalletId gets a reference to the given string and assigns it to the ConnectedWalletId field.
+func (o *PlayerModel) SetConnectedWalletId(v string) {
+	o.ConnectedWalletId = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
@@ -284,6 +318,9 @@ func (o PlayerModel) MarshalJSON() ([]byte, error) {
 	}
 	if o.WalletId != nil {
 		toSerialize["walletId"] = o.WalletId
+	}
+	if o.ConnectedWalletId != nil {
+		toSerialize["connectedWalletId"] = o.ConnectedWalletId
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username

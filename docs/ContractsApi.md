@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**CreateContract**](ContractsApi.md#CreateContract) | **Post** /v1/contracts | Create custom contract
 [**GetContracts**](ContractsApi.md#GetContracts) | **Get** /v1/contracts | Get contracts
 [**ReadContract**](ContractsApi.md#ReadContract) | **Get** /v1/contracts/{contractId}/reads | Read contract data
+[**TransferContractOwnership**](ContractsApi.md#TransferContractOwnership) | **Post** /v1/contracts/{contractId}/owners | Transfer contract ownership
+[**UpgradeContractTrustedForwarder**](ContractsApi.md#UpgradeContractTrustedForwarder) | **Post** /v1/contracts/{contractId}/forwarders | Upgrade contract trusted forwarder
 [**WriteContract**](ContractsApi.md#WriteContract) | **Post** /v1/contracts/{contractId}/writes | Write contract data
 
 
@@ -212,6 +214,158 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TransferContractOwnership
+
+> TransactionModel TransferContractOwnership(ctx, contractId).XAuthorization(xAuthorization).XPassword(xPassword).TransferContractOwnershipRequest(transferContractOwnershipRequest).Execute()
+
+Transfer contract ownership
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    contractId := "contractId_example" // string | Any contract id within the MetaFab ecosystem.
+    xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
+    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    transferContractOwnershipRequest := *openapiclient.NewTransferContractOwnershipRequest("OwnerAddress_example") // TransferContractOwnershipRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContractsApi.TransferContractOwnership(context.Background(), contractId).XAuthorization(xAuthorization).XPassword(xPassword).TransferContractOwnershipRequest(transferContractOwnershipRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContractsApi.TransferContractOwnership``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `TransferContractOwnership`: TransactionModel
+    fmt.Fprintf(os.Stdout, "Response from `ContractsApi.TransferContractOwnership`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**contractId** | **string** | Any contract id within the MetaFab ecosystem. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTransferContractOwnershipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
+ **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **transferContractOwnershipRequest** | [**TransferContractOwnershipRequest**](TransferContractOwnershipRequest.md) |  | 
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpgradeContractTrustedForwarder
+
+> TransactionModel UpgradeContractTrustedForwarder(ctx, contractId).XAuthorization(xAuthorization).XPassword(xPassword).UpgradeContractTrustedForwarderRequest(upgradeContractTrustedForwarderRequest).Execute()
+
+Upgrade contract trusted forwarder
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    contractId := "contractId_example" // string | Any contract id within the MetaFab ecosystem.
+    xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
+    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    upgradeContractTrustedForwarderRequest := *openapiclient.NewUpgradeContractTrustedForwarderRequest("ForwarderAddress_example") // UpgradeContractTrustedForwarderRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContractsApi.UpgradeContractTrustedForwarder(context.Background(), contractId).XAuthorization(xAuthorization).XPassword(xPassword).UpgradeContractTrustedForwarderRequest(upgradeContractTrustedForwarderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContractsApi.UpgradeContractTrustedForwarder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpgradeContractTrustedForwarder`: TransactionModel
+    fmt.Fprintf(os.Stdout, "Response from `ContractsApi.UpgradeContractTrustedForwarder`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**contractId** | **string** | Any contract id within the MetaFab ecosystem. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpgradeContractTrustedForwarderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
+ **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **upgradeContractTrustedForwarderRequest** | [**UpgradeContractTrustedForwarderRequest**](UpgradeContractTrustedForwarderRequest.md) |  | 
+
+### Return type
+
+[**TransactionModel**](TransactionModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

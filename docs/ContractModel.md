@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Abi** | Pointer to **map[string]interface{}** | This field has not had a description added. | [optional] 
 **Type** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Address** | Pointer to **string** | This field has not had a description added. | [optional] 
+**ForwarderAddress** | Pointer to **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 
@@ -181,6 +182,31 @@ SetAddress sets Address field to given value.
 `func (o *ContractModel) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetForwarderAddress
+
+`func (o *ContractModel) GetForwarderAddress() string`
+
+GetForwarderAddress returns the ForwarderAddress field if non-nil, zero value otherwise.
+
+### GetForwarderAddressOk
+
+`func (o *ContractModel) GetForwarderAddressOk() (*string, bool)`
+
+GetForwarderAddressOk returns a tuple with the ForwarderAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForwarderAddress
+
+`func (o *ContractModel) SetForwarderAddress(v string)`
+
+SetForwarderAddress sets ForwarderAddress field to given value.
+
+### HasForwarderAddress
+
+`func (o *ContractModel) HasForwarderAddress() bool`
+
+HasForwarderAddress returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

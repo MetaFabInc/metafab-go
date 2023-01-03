@@ -9,6 +9,10 @@ Name | Type | Description | Notes
 **CurrentPassword** | Pointer to **string** | The game&#39;s current password. Must be provided if setting &#x60;newPassword&#x60; or &#x60;email&#x60;. | [optional] 
 **NewPassword** | Pointer to **string** | A new password. The game&#39;s old password will no longer be valid. | [optional] 
 **Rpcs** | Pointer to **map[string]string** | Sets a custom RPC for your game to use instead of MetaFab&#39;s default RPCs for the chain(s) you specify.  Expects a JSON object containing key value pairs of supported &#x60;chain&#x60; -&gt; &#x60;rpc url&#x60;. Only the chain names provided as keys in the object will be explicitly overriden. To delete a custom RPC for your game, provide the chain name to delete as a key in the provided object and &#x60;null&#x60; as the value.  Set RPC example, &#x60;{ MATIC: &#39;https://polygon-rpc.com&#39; }&#x60; Delete RPC example, &#x60;{ MATIC: null }&#x60; | [optional] 
+**RedirectUris** | Pointer to **[]string** | An array of valid base redirect uris or exact uris that can be used for the redirect uri of various MetaFab features such as player login/registration and wallet connection.  Expects base or exact uris. For example, you could use include a uri of &#x60;https://trymetafab.com&#x60; and it would allow redirection to any valid uri on the domain, such as &#x60;https://trymetafab.com/play/game&#x60;. | [optional] 
+**IconImageBase64** | Pointer to **string** | A base64 string of the icon image for this game. Supported image formats are &#x60;jpg&#x60;, &#x60;jpeg&#x60;, &#x60;png&#x60;, &#x60;gif&#x60; Recommended size is 512x512 pixels, or 1:1 aspect ratio. This image is used for your auth/connect wallet flow and other MetaFab features for your game. | [optional] 
+**CoverImageBase64** | Pointer to **string** | A base64 string of the cover image for this game. Supported image formats are &#x60;jpg&#x60;, &#x60;jpeg&#x60;, &#x60;png&#x60;, &#x60;gif&#x60;. Recommended size is 1600x1000 pixels, or 16:10 aspect ratio.  This image is used as the background image for your auth/connect wallet flow and other MetaFab features for your game. | [optional] 
+**PrimaryColorHex** | Pointer to **string** | A valid hex color code. This color is used for your auth/connect wallet flow to control the color of buttons and other brandable MetaFab features for your game. | [optional] 
 **ResetPublishedKey** | Pointer to **bool** | Revokes the game&#39;s previous published key and returns a new one if true. | [optional] 
 **ResetSecretKey** | Pointer to **bool** | Revokes the game&#39;s previous secret key and returns a new on if true. | [optional] 
 
@@ -155,6 +159,106 @@ SetRpcs sets Rpcs field to given value.
 `func (o *UpdateGameRequest) HasRpcs() bool`
 
 HasRpcs returns a boolean if a field has been set.
+
+### GetRedirectUris
+
+`func (o *UpdateGameRequest) GetRedirectUris() []string`
+
+GetRedirectUris returns the RedirectUris field if non-nil, zero value otherwise.
+
+### GetRedirectUrisOk
+
+`func (o *UpdateGameRequest) GetRedirectUrisOk() (*[]string, bool)`
+
+GetRedirectUrisOk returns a tuple with the RedirectUris field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedirectUris
+
+`func (o *UpdateGameRequest) SetRedirectUris(v []string)`
+
+SetRedirectUris sets RedirectUris field to given value.
+
+### HasRedirectUris
+
+`func (o *UpdateGameRequest) HasRedirectUris() bool`
+
+HasRedirectUris returns a boolean if a field has been set.
+
+### GetIconImageBase64
+
+`func (o *UpdateGameRequest) GetIconImageBase64() string`
+
+GetIconImageBase64 returns the IconImageBase64 field if non-nil, zero value otherwise.
+
+### GetIconImageBase64Ok
+
+`func (o *UpdateGameRequest) GetIconImageBase64Ok() (*string, bool)`
+
+GetIconImageBase64Ok returns a tuple with the IconImageBase64 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconImageBase64
+
+`func (o *UpdateGameRequest) SetIconImageBase64(v string)`
+
+SetIconImageBase64 sets IconImageBase64 field to given value.
+
+### HasIconImageBase64
+
+`func (o *UpdateGameRequest) HasIconImageBase64() bool`
+
+HasIconImageBase64 returns a boolean if a field has been set.
+
+### GetCoverImageBase64
+
+`func (o *UpdateGameRequest) GetCoverImageBase64() string`
+
+GetCoverImageBase64 returns the CoverImageBase64 field if non-nil, zero value otherwise.
+
+### GetCoverImageBase64Ok
+
+`func (o *UpdateGameRequest) GetCoverImageBase64Ok() (*string, bool)`
+
+GetCoverImageBase64Ok returns a tuple with the CoverImageBase64 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCoverImageBase64
+
+`func (o *UpdateGameRequest) SetCoverImageBase64(v string)`
+
+SetCoverImageBase64 sets CoverImageBase64 field to given value.
+
+### HasCoverImageBase64
+
+`func (o *UpdateGameRequest) HasCoverImageBase64() bool`
+
+HasCoverImageBase64 returns a boolean if a field has been set.
+
+### GetPrimaryColorHex
+
+`func (o *UpdateGameRequest) GetPrimaryColorHex() string`
+
+GetPrimaryColorHex returns the PrimaryColorHex field if non-nil, zero value otherwise.
+
+### GetPrimaryColorHexOk
+
+`func (o *UpdateGameRequest) GetPrimaryColorHexOk() (*string, bool)`
+
+GetPrimaryColorHexOk returns a tuple with the PrimaryColorHex field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrimaryColorHex
+
+`func (o *UpdateGameRequest) SetPrimaryColorHex(v string)`
+
+SetPrimaryColorHex sets PrimaryColorHex field to given value.
+
+### HasPrimaryColorHex
+
+`func (o *UpdateGameRequest) HasPrimaryColorHex() bool`
+
+HasPrimaryColorHex returns a boolean if a field has been set.
 
 ### GetResetPublishedKey
 

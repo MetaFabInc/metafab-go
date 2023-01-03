@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**GetPlayer**](PlayersApi.md#GetPlayer) | **Get** /v1/players/{playerId} | Get player
 [**GetPlayerData**](PlayersApi.md#GetPlayerData) | **Get** /v1/players/{playerId}/data | Get player data
 [**GetPlayers**](PlayersApi.md#GetPlayers) | **Get** /v1/players | Get players
+[**RemovePlayerConnectedWallet**](PlayersApi.md#RemovePlayerConnectedWallet) | **Delete** /v1/players/{playerId}/wallets/{playerWalletId} | Remove player connected wallet
+[**SetPlayerConnectedWallet**](PlayersApi.md#SetPlayerConnectedWallet) | **Post** /v1/players/{playerId}/wallets | Set player connected wallet
 [**SetPlayerData**](PlayersApi.md#SetPlayerData) | **Post** /v1/players/{playerId}/data | Set player data
 [**UpdatePlayer**](PlayersApi.md#UpdatePlayer) | **Patch** /v1/players/{playerId} | Update player
 
@@ -347,6 +349,153 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemovePlayerConnectedWallet
+
+> RemovePlayerConnectedWallet(ctx, playerId, playerWalletId).RemovePlayerConnectedWalletRequest(removePlayerConnectedWalletRequest).Execute()
+
+Remove player connected wallet
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    playerId := "playerId_example" // string | Any player id within the MetaFab ecosystem.
+    playerWalletId := "playerWalletId_example" // string | Any player wallet id within the MetaFab ecosystem.
+    removePlayerConnectedWalletRequest := *openapiclient.NewRemovePlayerConnectedWalletRequest("Address_example", int32(123), "Signature_example", "SELECT ONE") // RemovePlayerConnectedWalletRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PlayersApi.RemovePlayerConnectedWallet(context.Background(), playerId, playerWalletId).RemovePlayerConnectedWalletRequest(removePlayerConnectedWalletRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PlayersApi.RemovePlayerConnectedWallet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**playerId** | **string** | Any player id within the MetaFab ecosystem. | 
+**playerWalletId** | **string** | Any player wallet id within the MetaFab ecosystem. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemovePlayerConnectedWalletRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **removePlayerConnectedWalletRequest** | [**RemovePlayerConnectedWalletRequest**](RemovePlayerConnectedWalletRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetPlayerConnectedWallet
+
+> SetPlayerConnectedWallet200Response SetPlayerConnectedWallet(ctx, playerId).XAuthorization(xAuthorization).SetPlayerConnectedWalletRequest(setPlayerConnectedWalletRequest).Execute()
+
+Set player connected wallet
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    playerId := "playerId_example" // string | Any player id within the MetaFab ecosystem.
+    xAuthorization := "player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `accessToken` of the authenticating player.
+    setPlayerConnectedWalletRequest := *openapiclient.NewSetPlayerConnectedWalletRequest("Address_example", int32(123), "Signature_example", "SELECT ONE") // SetPlayerConnectedWalletRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PlayersApi.SetPlayerConnectedWallet(context.Background(), playerId).XAuthorization(xAuthorization).SetPlayerConnectedWalletRequest(setPlayerConnectedWalletRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PlayersApi.SetPlayerConnectedWallet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SetPlayerConnectedWallet`: SetPlayerConnectedWallet200Response
+    fmt.Fprintf(os.Stdout, "Response from `PlayersApi.SetPlayerConnectedWallet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**playerId** | **string** | Any player id within the MetaFab ecosystem. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetPlayerConnectedWalletRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xAuthorization** | **string** | The &#x60;accessToken&#x60; of the authenticating player. | 
+ **setPlayerConnectedWalletRequest** | [**SetPlayerConnectedWalletRequest**](SetPlayerConnectedWalletRequest.md) |  | 
+
+### Return type
+
+[**SetPlayerConnectedWallet200Response**](SetPlayerConnectedWallet200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

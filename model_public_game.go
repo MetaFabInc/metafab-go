@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.3.0
+API version: 1.4.0
 Contact: metafabproject@gmail.com
 */
 
@@ -23,6 +23,14 @@ type PublicGame struct {
 	Name *string `json:"name,omitempty"`
 	// This field has not had a description added.
 	PublishedKey *string `json:"publishedKey,omitempty"`
+	// This field has not had a description added.
+	RedirectUris []string `json:"redirectUris,omitempty"`
+	// This field has not had a description added.
+	IconImageUrl *string `json:"iconImageUrl,omitempty"`
+	// This field has not had a description added.
+	CoverImageUrl *string `json:"coverImageUrl,omitempty"`
+	// This field has not had a description added.
+	PrimaryColorHex *string `json:"primaryColorHex,omitempty"`
 	// This field has not had a description added.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
@@ -142,6 +150,134 @@ func (o *PublicGame) SetPublishedKey(v string) {
 	o.PublishedKey = &v
 }
 
+// GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
+func (o *PublicGame) GetRedirectUris() []string {
+	if o == nil || o.RedirectUris == nil {
+		var ret []string
+		return ret
+	}
+	return o.RedirectUris
+}
+
+// GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicGame) GetRedirectUrisOk() ([]string, bool) {
+	if o == nil || o.RedirectUris == nil {
+		return nil, false
+	}
+	return o.RedirectUris, true
+}
+
+// HasRedirectUris returns a boolean if a field has been set.
+func (o *PublicGame) HasRedirectUris() bool {
+	if o != nil && o.RedirectUris != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRedirectUris gets a reference to the given []string and assigns it to the RedirectUris field.
+func (o *PublicGame) SetRedirectUris(v []string) {
+	o.RedirectUris = v
+}
+
+// GetIconImageUrl returns the IconImageUrl field value if set, zero value otherwise.
+func (o *PublicGame) GetIconImageUrl() string {
+	if o == nil || o.IconImageUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.IconImageUrl
+}
+
+// GetIconImageUrlOk returns a tuple with the IconImageUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicGame) GetIconImageUrlOk() (*string, bool) {
+	if o == nil || o.IconImageUrl == nil {
+		return nil, false
+	}
+	return o.IconImageUrl, true
+}
+
+// HasIconImageUrl returns a boolean if a field has been set.
+func (o *PublicGame) HasIconImageUrl() bool {
+	if o != nil && o.IconImageUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIconImageUrl gets a reference to the given string and assigns it to the IconImageUrl field.
+func (o *PublicGame) SetIconImageUrl(v string) {
+	o.IconImageUrl = &v
+}
+
+// GetCoverImageUrl returns the CoverImageUrl field value if set, zero value otherwise.
+func (o *PublicGame) GetCoverImageUrl() string {
+	if o == nil || o.CoverImageUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.CoverImageUrl
+}
+
+// GetCoverImageUrlOk returns a tuple with the CoverImageUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicGame) GetCoverImageUrlOk() (*string, bool) {
+	if o == nil || o.CoverImageUrl == nil {
+		return nil, false
+	}
+	return o.CoverImageUrl, true
+}
+
+// HasCoverImageUrl returns a boolean if a field has been set.
+func (o *PublicGame) HasCoverImageUrl() bool {
+	if o != nil && o.CoverImageUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCoverImageUrl gets a reference to the given string and assigns it to the CoverImageUrl field.
+func (o *PublicGame) SetCoverImageUrl(v string) {
+	o.CoverImageUrl = &v
+}
+
+// GetPrimaryColorHex returns the PrimaryColorHex field value if set, zero value otherwise.
+func (o *PublicGame) GetPrimaryColorHex() string {
+	if o == nil || o.PrimaryColorHex == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrimaryColorHex
+}
+
+// GetPrimaryColorHexOk returns a tuple with the PrimaryColorHex field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicGame) GetPrimaryColorHexOk() (*string, bool) {
+	if o == nil || o.PrimaryColorHex == nil {
+		return nil, false
+	}
+	return o.PrimaryColorHex, true
+}
+
+// HasPrimaryColorHex returns a boolean if a field has been set.
+func (o *PublicGame) HasPrimaryColorHex() bool {
+	if o != nil && o.PrimaryColorHex != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrimaryColorHex gets a reference to the given string and assigns it to the PrimaryColorHex field.
+func (o *PublicGame) SetPrimaryColorHex(v string) {
+	o.PrimaryColorHex = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *PublicGame) GetUpdatedAt() string {
 	if o == nil || o.UpdatedAt == nil {
@@ -216,6 +352,18 @@ func (o PublicGame) MarshalJSON() ([]byte, error) {
 	}
 	if o.PublishedKey != nil {
 		toSerialize["publishedKey"] = o.PublishedKey
+	}
+	if o.RedirectUris != nil {
+		toSerialize["redirectUris"] = o.RedirectUris
+	}
+	if o.IconImageUrl != nil {
+		toSerialize["iconImageUrl"] = o.IconImageUrl
+	}
+	if o.CoverImageUrl != nil {
+		toSerialize["coverImageUrl"] = o.CoverImageUrl
+	}
+	if o.PrimaryColorHex != nil {
+		toSerialize["primaryColorHex"] = o.PrimaryColorHex
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updatedAt"] = o.UpdatedAt
