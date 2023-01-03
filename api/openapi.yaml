@@ -7,7 +7,7 @@ info:
   description: " Complete MetaFab API references and guides can be found at: https://trymetafab.com"
   termsOfService: https://trymetafab.com
   title: MetaFab API
-  version: 1.4.0
+  version: 1.4.1
 servers:
 - description: MetaFab API Server
   url: https://api.trymetafab.com
