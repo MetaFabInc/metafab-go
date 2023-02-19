@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -45,7 +45,7 @@ func NewTransferCollectionItemRequestWithDefaults() *TransferCollectionItemReque
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *TransferCollectionItemRequest) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil || isNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -55,15 +55,15 @@ func (o *TransferCollectionItemRequest) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferCollectionItemRequest) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
-		return nil, false
+	if o == nil || isNil(o.Address) {
+    return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *TransferCollectionItemRequest) HasAddress() bool {
-	if o != nil && o.Address != nil {
+	if o != nil && !isNil(o.Address) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *TransferCollectionItemRequest) SetAddress(v string) {
 
 // GetWalletId returns the WalletId field value if set, zero value otherwise.
 func (o *TransferCollectionItemRequest) GetWalletId() []string {
-	if o == nil || o.WalletId == nil {
+	if o == nil || isNil(o.WalletId) {
 		var ret []string
 		return ret
 	}
@@ -87,15 +87,15 @@ func (o *TransferCollectionItemRequest) GetWalletId() []string {
 // GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferCollectionItemRequest) GetWalletIdOk() ([]string, bool) {
-	if o == nil || o.WalletId == nil {
-		return nil, false
+	if o == nil || isNil(o.WalletId) {
+    return nil, false
 	}
 	return o.WalletId, true
 }
 
 // HasWalletId returns a boolean if a field has been set.
 func (o *TransferCollectionItemRequest) HasWalletId() bool {
-	if o != nil && o.WalletId != nil {
+	if o != nil && !isNil(o.WalletId) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *TransferCollectionItemRequest) GetQuantity() int32 {
 // and a boolean to check if the value has been set.
 func (o *TransferCollectionItemRequest) GetQuantityOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Quantity, true
 }
@@ -133,10 +133,10 @@ func (o *TransferCollectionItemRequest) SetQuantity(v int32) {
 
 func (o TransferCollectionItemRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Address != nil {
+	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if o.WalletId != nil {
+	if !isNil(o.WalletId) {
 		toSerialize["walletId"] = o.WalletId
 	}
 	if true {

@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -28,7 +28,7 @@ type ApiCreateLootboxManagerRequest struct {
 	ctx context.Context
 	ApiService *LootboxesApiService
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	createLootboxManagerRequest *CreateLootboxManagerRequest
 }
 
@@ -38,9 +38,9 @@ func (r ApiCreateLootboxManagerRequest) XAuthorization(xAuthorization string) Ap
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiCreateLootboxManagerRequest) XPassword(xPassword string) ApiCreateLootboxManagerRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiCreateLootboxManagerRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiCreateLootboxManagerRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -91,8 +91,8 @@ func (a *LootboxesApiService) CreateLootboxManagerExecute(r ApiCreateLootboxMana
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.createLootboxManagerRequest == nil {
 		return localVarReturnValue, nil, reportError("createLootboxManagerRequest is required and must be specified")
@@ -116,7 +116,7 @@ func (a *LootboxesApiService) CreateLootboxManagerExecute(r ApiCreateLootboxMana
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.createLootboxManagerRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -148,7 +148,8 @@ func (a *LootboxesApiService) CreateLootboxManagerExecute(r ApiCreateLootboxMana
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -158,7 +159,8 @@ func (a *LootboxesApiService) CreateLootboxManagerExecute(r ApiCreateLootboxMana
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -192,8 +194,8 @@ GetLootboxManagerLootbox Get lootbox manager lootbox
 Returns a lootbox manager lootbox object for the provided lootboxManagerLootboxId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param lootboxManagerId Any lootbox manager id within the MetaFab ecosystem.
- @param lootboxManagerLootboxId Any lootbox manager lootbox id within the MetaFab ecosystem.
+ @param lootboxManagerId Any lootbox manager id within the MetaFab platform.
+ @param lootboxManagerLootboxId Any lootbox manager lootbox id within the MetaFab platform.
  @return ApiGetLootboxManagerLootboxRequest
 */
 func (a *LootboxesApiService) GetLootboxManagerLootbox(ctx context.Context, lootboxManagerId string, lootboxManagerLootboxId string) ApiGetLootboxManagerLootboxRequest {
@@ -274,7 +276,8 @@ func (a *LootboxesApiService) GetLootboxManagerLootboxExecute(r ApiGetLootboxMan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -307,7 +310,7 @@ GetLootboxManagerLootboxes Get lootbox manager lootboxes
 Returns all lootbox manager lootboxes as an array of lootbox objects.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param lootboxManagerId Any lootbox manager id within the MetaFab ecosystem.
+ @param lootboxManagerId Any lootbox manager id within the MetaFab platform.
  @return ApiGetLootboxManagerLootboxesRequest
 */
 func (a *LootboxesApiService) GetLootboxManagerLootboxes(ctx context.Context, lootboxManagerId string) ApiGetLootboxManagerLootboxesRequest {
@@ -386,7 +389,8 @@ func (a *LootboxesApiService) GetLootboxManagerLootboxesExecute(r ApiGetLootboxM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -505,7 +509,8 @@ func (a *LootboxesApiService) GetLootboxManagersExecute(r ApiGetLootboxManagersR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -528,7 +533,7 @@ type ApiOpenLootboxManagerLootboxRequest struct {
 	lootboxManagerId string
 	lootboxManagerLootboxId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 }
 
 // The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player.
@@ -537,9 +542,9 @@ func (r ApiOpenLootboxManagerLootboxRequest) XAuthorization(xAuthorization strin
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiOpenLootboxManagerLootboxRequest) XPassword(xPassword string) ApiOpenLootboxManagerLootboxRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiOpenLootboxManagerLootboxRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiOpenLootboxManagerLootboxRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -553,8 +558,8 @@ OpenLootboxManagerLootbox Open lootbox manager lootbox
 Opens a lootbox manager lootbox. The required input item(s) are burned from the wallet or player wallet opening the lootbox. The given output item(s) are given to the wallet or player wallet opening the lootbox.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param lootboxManagerId Any lootbox manager id within the MetaFab ecosystem.
- @param lootboxManagerLootboxId Any lootbox manager lootbox id within the MetaFab ecosystem.
+ @param lootboxManagerId Any lootbox manager id within the MetaFab platform.
+ @param lootboxManagerLootboxId Any lootbox manager lootbox id within the MetaFab platform.
  @return ApiOpenLootboxManagerLootboxRequest
 */
 func (a *LootboxesApiService) OpenLootboxManagerLootbox(ctx context.Context, lootboxManagerId string, lootboxManagerLootboxId string) ApiOpenLootboxManagerLootboxRequest {
@@ -591,8 +596,8 @@ func (a *LootboxesApiService) OpenLootboxManagerLootboxExecute(r ApiOpenLootboxM
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -613,7 +618,7 @@ func (a *LootboxesApiService) OpenLootboxManagerLootboxExecute(r ApiOpenLootboxM
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -643,7 +648,8 @@ func (a *LootboxesApiService) OpenLootboxManagerLootboxExecute(r ApiOpenLootboxM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -653,7 +659,8 @@ func (a *LootboxesApiService) OpenLootboxManagerLootboxExecute(r ApiOpenLootboxM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -676,7 +683,7 @@ type ApiRemoveLootboxManagerLootboxRequest struct {
 	lootboxManagerId string
 	lootboxManagerLootboxId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 }
 
 // The &#x60;secretKey&#x60; of the authenticating game.
@@ -685,9 +692,9 @@ func (r ApiRemoveLootboxManagerLootboxRequest) XAuthorization(xAuthorization str
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiRemoveLootboxManagerLootboxRequest) XPassword(xPassword string) ApiRemoveLootboxManagerLootboxRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiRemoveLootboxManagerLootboxRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiRemoveLootboxManagerLootboxRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -701,8 +708,8 @@ RemoveLootboxManagerLootbox Remove lootbox manager lootbox
 Removes the provided lootbox by lootboxId from the provided lootbox manager. Removed lootboxes can no longer be used.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param lootboxManagerId Any lootbox manager id within the MetaFab ecosystem.
- @param lootboxManagerLootboxId Any lootbox manager lootbox id within the MetaFab ecosystem.
+ @param lootboxManagerId Any lootbox manager id within the MetaFab platform.
+ @param lootboxManagerLootboxId Any lootbox manager lootbox id within the MetaFab platform.
  @return ApiRemoveLootboxManagerLootboxRequest
 */
 func (a *LootboxesApiService) RemoveLootboxManagerLootbox(ctx context.Context, lootboxManagerId string, lootboxManagerLootboxId string) ApiRemoveLootboxManagerLootboxRequest {
@@ -739,8 +746,8 @@ func (a *LootboxesApiService) RemoveLootboxManagerLootboxExecute(r ApiRemoveLoot
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -761,7 +768,7 @@ func (a *LootboxesApiService) RemoveLootboxManagerLootboxExecute(r ApiRemoveLoot
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -791,7 +798,8 @@ func (a *LootboxesApiService) RemoveLootboxManagerLootboxExecute(r ApiRemoveLoot
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -801,7 +809,8 @@ func (a *LootboxesApiService) RemoveLootboxManagerLootboxExecute(r ApiRemoveLoot
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -823,7 +832,7 @@ type ApiSetLootboxManagerLootboxRequest struct {
 	ApiService *LootboxesApiService
 	lootboxManagerId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	setLootboxManagerLootboxRequest *SetLootboxManagerLootboxRequest
 }
 
@@ -833,9 +842,9 @@ func (r ApiSetLootboxManagerLootboxRequest) XAuthorization(xAuthorization string
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiSetLootboxManagerLootboxRequest) XPassword(xPassword string) ApiSetLootboxManagerLootboxRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiSetLootboxManagerLootboxRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiSetLootboxManagerLootboxRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -856,7 +865,7 @@ Sets a new lootbox manager lootbox or updates an existing one for the provided i
 Lootboxes can require any number of unique types of items and quantities to open a created lootbox type within the system. A common pattern with lootboxes is to create a lootbox item type within an item collection, and require it as the input item type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param lootboxManagerId Any lootbox manager id within the MetaFab ecosystem.
+ @param lootboxManagerId Any lootbox manager id within the MetaFab platform.
  @return ApiSetLootboxManagerLootboxRequest
 */
 func (a *LootboxesApiService) SetLootboxManagerLootbox(ctx context.Context, lootboxManagerId string) ApiSetLootboxManagerLootboxRequest {
@@ -891,8 +900,8 @@ func (a *LootboxesApiService) SetLootboxManagerLootboxExecute(r ApiSetLootboxMan
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.setLootboxManagerLootboxRequest == nil {
 		return localVarReturnValue, nil, reportError("setLootboxManagerLootboxRequest is required and must be specified")
@@ -916,7 +925,7 @@ func (a *LootboxesApiService) SetLootboxManagerLootboxExecute(r ApiSetLootboxMan
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.setLootboxManagerLootboxRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -948,7 +957,8 @@ func (a *LootboxesApiService) SetLootboxManagerLootboxExecute(r ApiSetLootboxMan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -958,7 +968,8 @@ func (a *LootboxesApiService) SetLootboxManagerLootboxExecute(r ApiSetLootboxMan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

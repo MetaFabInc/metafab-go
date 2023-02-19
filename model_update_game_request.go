@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -60,7 +60,7 @@ func NewUpdateGameRequestWithDefaults() *UpdateGameRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -70,15 +70,15 @@ func (o *UpdateGameRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -92,7 +92,7 @@ func (o *UpdateGameRequest) SetName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || isNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -102,15 +102,15 @@ func (o *UpdateGameRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
-		return nil, false
+	if o == nil || isNil(o.Email) {
+    return nil, false
 	}
 	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !isNil(o.Email) {
 		return true
 	}
 
@@ -124,7 +124,7 @@ func (o *UpdateGameRequest) SetEmail(v string) {
 
 // GetCurrentPassword returns the CurrentPassword field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetCurrentPassword() string {
-	if o == nil || o.CurrentPassword == nil {
+	if o == nil || isNil(o.CurrentPassword) {
 		var ret string
 		return ret
 	}
@@ -134,15 +134,15 @@ func (o *UpdateGameRequest) GetCurrentPassword() string {
 // GetCurrentPasswordOk returns a tuple with the CurrentPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetCurrentPasswordOk() (*string, bool) {
-	if o == nil || o.CurrentPassword == nil {
-		return nil, false
+	if o == nil || isNil(o.CurrentPassword) {
+    return nil, false
 	}
 	return o.CurrentPassword, true
 }
 
 // HasCurrentPassword returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasCurrentPassword() bool {
-	if o != nil && o.CurrentPassword != nil {
+	if o != nil && !isNil(o.CurrentPassword) {
 		return true
 	}
 
@@ -156,7 +156,7 @@ func (o *UpdateGameRequest) SetCurrentPassword(v string) {
 
 // GetNewPassword returns the NewPassword field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetNewPassword() string {
-	if o == nil || o.NewPassword == nil {
+	if o == nil || isNil(o.NewPassword) {
 		var ret string
 		return ret
 	}
@@ -166,15 +166,15 @@ func (o *UpdateGameRequest) GetNewPassword() string {
 // GetNewPasswordOk returns a tuple with the NewPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetNewPasswordOk() (*string, bool) {
-	if o == nil || o.NewPassword == nil {
-		return nil, false
+	if o == nil || isNil(o.NewPassword) {
+    return nil, false
 	}
 	return o.NewPassword, true
 }
 
 // HasNewPassword returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasNewPassword() bool {
-	if o != nil && o.NewPassword != nil {
+	if o != nil && !isNil(o.NewPassword) {
 		return true
 	}
 
@@ -188,7 +188,7 @@ func (o *UpdateGameRequest) SetNewPassword(v string) {
 
 // GetRpcs returns the Rpcs field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetRpcs() map[string]string {
-	if o == nil || o.Rpcs == nil {
+	if o == nil || isNil(o.Rpcs) {
 		var ret map[string]string
 		return ret
 	}
@@ -198,15 +198,15 @@ func (o *UpdateGameRequest) GetRpcs() map[string]string {
 // GetRpcsOk returns a tuple with the Rpcs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetRpcsOk() (*map[string]string, bool) {
-	if o == nil || o.Rpcs == nil {
-		return nil, false
+	if o == nil || isNil(o.Rpcs) {
+    return nil, false
 	}
 	return o.Rpcs, true
 }
 
 // HasRpcs returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasRpcs() bool {
-	if o != nil && o.Rpcs != nil {
+	if o != nil && !isNil(o.Rpcs) {
 		return true
 	}
 
@@ -220,7 +220,7 @@ func (o *UpdateGameRequest) SetRpcs(v map[string]string) {
 
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetRedirectUris() []string {
-	if o == nil || o.RedirectUris == nil {
+	if o == nil || isNil(o.RedirectUris) {
 		var ret []string
 		return ret
 	}
@@ -230,15 +230,15 @@ func (o *UpdateGameRequest) GetRedirectUris() []string {
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetRedirectUrisOk() ([]string, bool) {
-	if o == nil || o.RedirectUris == nil {
-		return nil, false
+	if o == nil || isNil(o.RedirectUris) {
+    return nil, false
 	}
 	return o.RedirectUris, true
 }
 
 // HasRedirectUris returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasRedirectUris() bool {
-	if o != nil && o.RedirectUris != nil {
+	if o != nil && !isNil(o.RedirectUris) {
 		return true
 	}
 
@@ -252,7 +252,7 @@ func (o *UpdateGameRequest) SetRedirectUris(v []string) {
 
 // GetIconImageBase64 returns the IconImageBase64 field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetIconImageBase64() string {
-	if o == nil || o.IconImageBase64 == nil {
+	if o == nil || isNil(o.IconImageBase64) {
 		var ret string
 		return ret
 	}
@@ -262,15 +262,15 @@ func (o *UpdateGameRequest) GetIconImageBase64() string {
 // GetIconImageBase64Ok returns a tuple with the IconImageBase64 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetIconImageBase64Ok() (*string, bool) {
-	if o == nil || o.IconImageBase64 == nil {
-		return nil, false
+	if o == nil || isNil(o.IconImageBase64) {
+    return nil, false
 	}
 	return o.IconImageBase64, true
 }
 
 // HasIconImageBase64 returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasIconImageBase64() bool {
-	if o != nil && o.IconImageBase64 != nil {
+	if o != nil && !isNil(o.IconImageBase64) {
 		return true
 	}
 
@@ -284,7 +284,7 @@ func (o *UpdateGameRequest) SetIconImageBase64(v string) {
 
 // GetCoverImageBase64 returns the CoverImageBase64 field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetCoverImageBase64() string {
-	if o == nil || o.CoverImageBase64 == nil {
+	if o == nil || isNil(o.CoverImageBase64) {
 		var ret string
 		return ret
 	}
@@ -294,15 +294,15 @@ func (o *UpdateGameRequest) GetCoverImageBase64() string {
 // GetCoverImageBase64Ok returns a tuple with the CoverImageBase64 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetCoverImageBase64Ok() (*string, bool) {
-	if o == nil || o.CoverImageBase64 == nil {
-		return nil, false
+	if o == nil || isNil(o.CoverImageBase64) {
+    return nil, false
 	}
 	return o.CoverImageBase64, true
 }
 
 // HasCoverImageBase64 returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasCoverImageBase64() bool {
-	if o != nil && o.CoverImageBase64 != nil {
+	if o != nil && !isNil(o.CoverImageBase64) {
 		return true
 	}
 
@@ -316,7 +316,7 @@ func (o *UpdateGameRequest) SetCoverImageBase64(v string) {
 
 // GetPrimaryColorHex returns the PrimaryColorHex field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetPrimaryColorHex() string {
-	if o == nil || o.PrimaryColorHex == nil {
+	if o == nil || isNil(o.PrimaryColorHex) {
 		var ret string
 		return ret
 	}
@@ -326,15 +326,15 @@ func (o *UpdateGameRequest) GetPrimaryColorHex() string {
 // GetPrimaryColorHexOk returns a tuple with the PrimaryColorHex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetPrimaryColorHexOk() (*string, bool) {
-	if o == nil || o.PrimaryColorHex == nil {
-		return nil, false
+	if o == nil || isNil(o.PrimaryColorHex) {
+    return nil, false
 	}
 	return o.PrimaryColorHex, true
 }
 
 // HasPrimaryColorHex returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasPrimaryColorHex() bool {
-	if o != nil && o.PrimaryColorHex != nil {
+	if o != nil && !isNil(o.PrimaryColorHex) {
 		return true
 	}
 
@@ -348,7 +348,7 @@ func (o *UpdateGameRequest) SetPrimaryColorHex(v string) {
 
 // GetResetPublishedKey returns the ResetPublishedKey field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetResetPublishedKey() bool {
-	if o == nil || o.ResetPublishedKey == nil {
+	if o == nil || isNil(o.ResetPublishedKey) {
 		var ret bool
 		return ret
 	}
@@ -358,15 +358,15 @@ func (o *UpdateGameRequest) GetResetPublishedKey() bool {
 // GetResetPublishedKeyOk returns a tuple with the ResetPublishedKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetResetPublishedKeyOk() (*bool, bool) {
-	if o == nil || o.ResetPublishedKey == nil {
-		return nil, false
+	if o == nil || isNil(o.ResetPublishedKey) {
+    return nil, false
 	}
 	return o.ResetPublishedKey, true
 }
 
 // HasResetPublishedKey returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasResetPublishedKey() bool {
-	if o != nil && o.ResetPublishedKey != nil {
+	if o != nil && !isNil(o.ResetPublishedKey) {
 		return true
 	}
 
@@ -380,7 +380,7 @@ func (o *UpdateGameRequest) SetResetPublishedKey(v bool) {
 
 // GetResetSecretKey returns the ResetSecretKey field value if set, zero value otherwise.
 func (o *UpdateGameRequest) GetResetSecretKey() bool {
-	if o == nil || o.ResetSecretKey == nil {
+	if o == nil || isNil(o.ResetSecretKey) {
 		var ret bool
 		return ret
 	}
@@ -390,15 +390,15 @@ func (o *UpdateGameRequest) GetResetSecretKey() bool {
 // GetResetSecretKeyOk returns a tuple with the ResetSecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateGameRequest) GetResetSecretKeyOk() (*bool, bool) {
-	if o == nil || o.ResetSecretKey == nil {
-		return nil, false
+	if o == nil || isNil(o.ResetSecretKey) {
+    return nil, false
 	}
 	return o.ResetSecretKey, true
 }
 
 // HasResetSecretKey returns a boolean if a field has been set.
 func (o *UpdateGameRequest) HasResetSecretKey() bool {
-	if o != nil && o.ResetSecretKey != nil {
+	if o != nil && !isNil(o.ResetSecretKey) {
 		return true
 	}
 
@@ -412,37 +412,37 @@ func (o *UpdateGameRequest) SetResetSecretKey(v bool) {
 
 func (o UpdateGameRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Email != nil {
+	if !isNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if o.CurrentPassword != nil {
+	if !isNil(o.CurrentPassword) {
 		toSerialize["currentPassword"] = o.CurrentPassword
 	}
-	if o.NewPassword != nil {
+	if !isNil(o.NewPassword) {
 		toSerialize["newPassword"] = o.NewPassword
 	}
-	if o.Rpcs != nil {
+	if !isNil(o.Rpcs) {
 		toSerialize["rpcs"] = o.Rpcs
 	}
-	if o.RedirectUris != nil {
+	if !isNil(o.RedirectUris) {
 		toSerialize["redirectUris"] = o.RedirectUris
 	}
-	if o.IconImageBase64 != nil {
+	if !isNil(o.IconImageBase64) {
 		toSerialize["iconImageBase64"] = o.IconImageBase64
 	}
-	if o.CoverImageBase64 != nil {
+	if !isNil(o.CoverImageBase64) {
 		toSerialize["coverImageBase64"] = o.CoverImageBase64
 	}
-	if o.PrimaryColorHex != nil {
+	if !isNil(o.PrimaryColorHex) {
 		toSerialize["primaryColorHex"] = o.PrimaryColorHex
 	}
-	if o.ResetPublishedKey != nil {
+	if !isNil(o.ResetPublishedKey) {
 		toSerialize["resetPublishedKey"] = o.ResetPublishedKey
 	}
-	if o.ResetSecretKey != nil {
+	if !isNil(o.ResetSecretKey) {
 		toSerialize["resetSecretKey"] = o.ResetSecretKey
 	}
 	return json.Marshal(toSerialize)

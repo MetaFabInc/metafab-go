@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## BatchTransferCurrency
 
-> TransactionModel BatchTransferCurrency(ctx, currencyId).XAuthorization(xAuthorization).XPassword(xPassword).BatchTransferCurrencyRequest(batchTransferCurrencyRequest).Execute()
+> TransactionModel BatchTransferCurrency(ctx, currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BatchTransferCurrencyRequest(batchTransferCurrencyRequest).Execute()
 
 Batch transfer currency
 
@@ -40,14 +40,14 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     batchTransferCurrencyRequest := *openapiclient.NewBatchTransferCurrencyRequest([]float32{float32(10)}) // BatchTransferCurrencyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CurrenciesApi.BatchTransferCurrency(context.Background(), currencyId).XAuthorization(xAuthorization).XPassword(xPassword).BatchTransferCurrencyRequest(batchTransferCurrencyRequest).Execute()
+    resp, r, err := apiClient.CurrenciesApi.BatchTransferCurrency(context.Background(), currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BatchTransferCurrencyRequest(batchTransferCurrencyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CurrenciesApi.BatchTransferCurrency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +63,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **batchTransferCurrencyRequest** | [**BatchTransferCurrencyRequest**](BatchTransferCurrencyRequest.md) |  | 
 
 ### Return type
@@ -97,7 +97,7 @@ No authorization required
 
 ## BurnCurrency
 
-> TransactionModel BurnCurrency(ctx, currencyId).XAuthorization(xAuthorization).XPassword(xPassword).BurnCurrencyRequest(burnCurrencyRequest).Execute()
+> TransactionModel BurnCurrency(ctx, currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BurnCurrencyRequest(burnCurrencyRequest).Execute()
 
 Burn currency
 
@@ -116,14 +116,14 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     burnCurrencyRequest := *openapiclient.NewBurnCurrencyRequest(float32(133.7)) // BurnCurrencyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CurrenciesApi.BurnCurrency(context.Background(), currencyId).XAuthorization(xAuthorization).XPassword(xPassword).BurnCurrencyRequest(burnCurrencyRequest).Execute()
+    resp, r, err := apiClient.CurrenciesApi.BurnCurrency(context.Background(), currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BurnCurrencyRequest(burnCurrencyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CurrenciesApi.BurnCurrency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,7 +139,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **burnCurrencyRequest** | [**BurnCurrencyRequest**](BurnCurrencyRequest.md) |  | 
 
 ### Return type
@@ -173,7 +173,7 @@ No authorization required
 
 ## CreateCurrency
 
-> CreateCurrency200Response CreateCurrency(ctx).XAuthorization(xAuthorization).XPassword(xPassword).CreateCurrencyRequest(createCurrencyRequest).Execute()
+> CreateCurrency200Response CreateCurrency(ctx).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateCurrencyRequest(createCurrencyRequest).Execute()
 
 Create currency
 
@@ -193,12 +193,12 @@ import (
 
 func main() {
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     createCurrencyRequest := *openapiclient.NewCreateCurrencyRequest("Bright Gems", "BGEM", float32(15000.5), "SELECT ONE") // CreateCurrencyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CurrenciesApi.CreateCurrency(context.Background()).XAuthorization(xAuthorization).XPassword(xPassword).CreateCurrencyRequest(createCurrencyRequest).Execute()
+    resp, r, err := apiClient.CurrenciesApi.CreateCurrency(context.Background()).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateCurrencyRequest(createCurrencyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CurrenciesApi.CreateCurrency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -220,7 +220,7 @@ Other parameters are passed through a pointer to a apiCreateCurrencyRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createCurrencyRequest** | [**CreateCurrencyRequest**](CreateCurrencyRequest.md) |  | 
 
 ### Return type
@@ -328,9 +328,9 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     address := "0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D" // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional)
-    walletId := "walletId_example" // string | Any wallet id within the MetaFab ecosystem. (optional)
+    walletId := "walletId_example" // string | Any wallet id within the MetaFab platform. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -350,7 +350,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **address** | **string** | A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
- **walletId** | **string** | Any wallet id within the MetaFab ecosystem. | 
+ **walletId** | **string** | Any wallet id within the MetaFab platform. | 
 
 ### Return type
 
@@ -402,7 +402,7 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -422,7 +422,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -472,10 +472,10 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     role := "minter" // string | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
     address := "0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D" // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional)
-    walletId := "walletId_example" // string | Any wallet id within the MetaFab ecosystem. (optional)
+    walletId := "walletId_example" // string | Any wallet id within the MetaFab platform. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -495,7 +495,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
 
  **role** | **string** | A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | 
  **address** | **string** | A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
- **walletId** | **string** | Any wallet id within the MetaFab ecosystem. | 
+ **walletId** | **string** | Any wallet id within the MetaFab platform. | 
 
 ### Return type
 
@@ -529,7 +529,7 @@ No authorization required
 
 ## GrantCurrencyRole
 
-> TransactionModel GrantCurrencyRole(ctx, currencyId).XAuthorization(xAuthorization).XPassword(xPassword).GrantCurrencyRoleRequest(grantCurrencyRoleRequest).Execute()
+> TransactionModel GrantCurrencyRole(ctx, currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).GrantCurrencyRoleRequest(grantCurrencyRoleRequest).Execute()
 
 Grant currency role
 
@@ -548,14 +548,14 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     grantCurrencyRoleRequest := *openapiclient.NewGrantCurrencyRoleRequest("Role_example") // GrantCurrencyRoleRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CurrenciesApi.GrantCurrencyRole(context.Background(), currencyId).XAuthorization(xAuthorization).XPassword(xPassword).GrantCurrencyRoleRequest(grantCurrencyRoleRequest).Execute()
+    resp, r, err := apiClient.CurrenciesApi.GrantCurrencyRole(context.Background(), currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).GrantCurrencyRoleRequest(grantCurrencyRoleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CurrenciesApi.GrantCurrencyRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -571,7 +571,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -582,7 +582,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **grantCurrencyRoleRequest** | [**GrantCurrencyRoleRequest**](GrantCurrencyRoleRequest.md) |  | 
 
 ### Return type
@@ -605,7 +605,7 @@ No authorization required
 
 ## MintCurrency
 
-> TransactionModel MintCurrency(ctx, currencyId).XAuthorization(xAuthorization).XPassword(xPassword).MintCurrencyRequest(mintCurrencyRequest).Execute()
+> TransactionModel MintCurrency(ctx, currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).MintCurrencyRequest(mintCurrencyRequest).Execute()
 
 Mint currency
 
@@ -624,14 +624,14 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     mintCurrencyRequest := *openapiclient.NewMintCurrencyRequest(float32(133.7)) // MintCurrencyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CurrenciesApi.MintCurrency(context.Background(), currencyId).XAuthorization(xAuthorization).XPassword(xPassword).MintCurrencyRequest(mintCurrencyRequest).Execute()
+    resp, r, err := apiClient.CurrenciesApi.MintCurrency(context.Background(), currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).MintCurrencyRequest(mintCurrencyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CurrenciesApi.MintCurrency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -647,7 +647,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -658,7 +658,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **mintCurrencyRequest** | [**MintCurrencyRequest**](MintCurrencyRequest.md) |  | 
 
 ### Return type
@@ -681,7 +681,7 @@ No authorization required
 
 ## RevokeCurrencyRole
 
-> TransactionModel RevokeCurrencyRole(ctx, currencyId).XAuthorization(xAuthorization).XPassword(xPassword).RevokeCollectionRoleRequest(revokeCollectionRoleRequest).Execute()
+> TransactionModel RevokeCurrencyRole(ctx, currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).RevokeCollectionRoleRequest(revokeCollectionRoleRequest).Execute()
 
 Revoke currency role
 
@@ -700,14 +700,14 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     revokeCollectionRoleRequest := *openapiclient.NewRevokeCollectionRoleRequest("Role_example") // RevokeCollectionRoleRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CurrenciesApi.RevokeCurrencyRole(context.Background(), currencyId).XAuthorization(xAuthorization).XPassword(xPassword).RevokeCollectionRoleRequest(revokeCollectionRoleRequest).Execute()
+    resp, r, err := apiClient.CurrenciesApi.RevokeCurrencyRole(context.Background(), currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).RevokeCollectionRoleRequest(revokeCollectionRoleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CurrenciesApi.RevokeCurrencyRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -723,7 +723,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -734,7 +734,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md) |  | 
 
 ### Return type
@@ -757,7 +757,7 @@ No authorization required
 
 ## SetCurrencyFees
 
-> TransactionModel SetCurrencyFees(ctx, currencyId).XAuthorization(xAuthorization).XPassword(xPassword).SetCurrencyFeesRequest(setCurrencyFeesRequest).Execute()
+> TransactionModel SetCurrencyFees(ctx, currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetCurrencyFeesRequest(setCurrencyFeesRequest).Execute()
 
 Set currency fees
 
@@ -776,14 +776,14 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     setCurrencyFeesRequest := *openapiclient.NewSetCurrencyFeesRequest("RecipientAddress_example", float32(123), float32(123), float32(123)) // SetCurrencyFeesRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CurrenciesApi.SetCurrencyFees(context.Background(), currencyId).XAuthorization(xAuthorization).XPassword(xPassword).SetCurrencyFeesRequest(setCurrencyFeesRequest).Execute()
+    resp, r, err := apiClient.CurrenciesApi.SetCurrencyFees(context.Background(), currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetCurrencyFeesRequest(setCurrencyFeesRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CurrenciesApi.SetCurrencyFees``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -799,7 +799,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -810,7 +810,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **setCurrencyFeesRequest** | [**SetCurrencyFeesRequest**](SetCurrencyFeesRequest.md) |  | 
 
 ### Return type
@@ -833,7 +833,7 @@ No authorization required
 
 ## TransferCurrency
 
-> TransactionModel TransferCurrency(ctx, currencyId).XAuthorization(xAuthorization).XPassword(xPassword).TransferCurrencyRequest(transferCurrencyRequest).Execute()
+> TransactionModel TransferCurrency(ctx, currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).TransferCurrencyRequest(transferCurrencyRequest).Execute()
 
 Transfer currency
 
@@ -852,14 +852,14 @@ import (
 )
 
 func main() {
-    currencyId := "currencyId_example" // string | Any currency id within the MetaFab ecosystem.
+    currencyId := "currencyId_example" // string | Any currency id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     transferCurrencyRequest := *openapiclient.NewTransferCurrencyRequest(float32(133.7)) // TransferCurrencyRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CurrenciesApi.TransferCurrency(context.Background(), currencyId).XAuthorization(xAuthorization).XPassword(xPassword).TransferCurrencyRequest(transferCurrencyRequest).Execute()
+    resp, r, err := apiClient.CurrenciesApi.TransferCurrency(context.Background(), currencyId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).TransferCurrencyRequest(transferCurrencyRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CurrenciesApi.TransferCurrency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -875,7 +875,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**currencyId** | **string** | Any currency id within the MetaFab ecosystem. | 
+**currencyId** | **string** | Any currency id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -886,7 +886,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **transferCurrencyRequest** | [**TransferCurrencyRequest**](TransferCurrencyRequest.md) |  | 
 
 ### Return type

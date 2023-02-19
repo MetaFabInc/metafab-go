@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Verified** | Pointer to **bool** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
+**WalletDecryptKey** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Wallet** | Pointer to [**WalletModel**](WalletModel.md) |  | [optional] 
 **FundingWallet** | Pointer to [**WalletModel**](WalletModel.md) |  | [optional] 
 
@@ -415,6 +416,31 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *AuthGame200Response) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### GetWalletDecryptKey
+
+`func (o *AuthGame200Response) GetWalletDecryptKey() string`
+
+GetWalletDecryptKey returns the WalletDecryptKey field if non-nil, zero value otherwise.
+
+### GetWalletDecryptKeyOk
+
+`func (o *AuthGame200Response) GetWalletDecryptKeyOk() (*string, bool)`
+
+GetWalletDecryptKeyOk returns a tuple with the WalletDecryptKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWalletDecryptKey
+
+`func (o *AuthGame200Response) SetWalletDecryptKey(v string)`
+
+SetWalletDecryptKey sets WalletDecryptKey field to given value.
+
+### HasWalletDecryptKey
+
+`func (o *AuthGame200Response) HasWalletDecryptKey() bool`
+
+HasWalletDecryptKey returns a boolean if a field has been set.
 
 ### GetWallet
 

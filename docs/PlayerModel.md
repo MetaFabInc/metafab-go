@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **GameId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **WalletId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **ConnectedWalletId** | Pointer to **string** | This field has not had a description added. | [optional] 
+**ProfileId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Username** | Pointer to **string** | This field has not had a description added. | [optional] 
 **AccessToken** | Pointer to **string** | This field has not had a description added. | [optional] 
+**ProfilePermissions** | Pointer to **map[string]interface{}** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 
@@ -132,6 +134,31 @@ SetConnectedWalletId sets ConnectedWalletId field to given value.
 
 HasConnectedWalletId returns a boolean if a field has been set.
 
+### GetProfileId
+
+`func (o *PlayerModel) GetProfileId() string`
+
+GetProfileId returns the ProfileId field if non-nil, zero value otherwise.
+
+### GetProfileIdOk
+
+`func (o *PlayerModel) GetProfileIdOk() (*string, bool)`
+
+GetProfileIdOk returns a tuple with the ProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfileId
+
+`func (o *PlayerModel) SetProfileId(v string)`
+
+SetProfileId sets ProfileId field to given value.
+
+### HasProfileId
+
+`func (o *PlayerModel) HasProfileId() bool`
+
+HasProfileId returns a boolean if a field has been set.
+
 ### GetUsername
 
 `func (o *PlayerModel) GetUsername() string`
@@ -181,6 +208,31 @@ SetAccessToken sets AccessToken field to given value.
 `func (o *PlayerModel) HasAccessToken() bool`
 
 HasAccessToken returns a boolean if a field has been set.
+
+### GetProfilePermissions
+
+`func (o *PlayerModel) GetProfilePermissions() map[string]interface{}`
+
+GetProfilePermissions returns the ProfilePermissions field if non-nil, zero value otherwise.
+
+### GetProfilePermissionsOk
+
+`func (o *PlayerModel) GetProfilePermissionsOk() (*map[string]interface{}, bool)`
+
+GetProfilePermissionsOk returns a tuple with the ProfilePermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfilePermissions
+
+`func (o *PlayerModel) SetProfilePermissions(v map[string]interface{})`
+
+SetProfilePermissions sets ProfilePermissions field to given value.
+
+### HasProfilePermissions
+
+`func (o *PlayerModel) HasProfilePermissions() bool`
+
+HasProfilePermissions returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

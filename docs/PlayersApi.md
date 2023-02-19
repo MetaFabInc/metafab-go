@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-    playerId := "playerId_example" // string | Any player id within the MetaFab ecosystem.
+    playerId := "playerId_example" // string | Any player id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -191,7 +191,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**playerId** | **string** | Any player id within the MetaFab ecosystem. | 
+**playerId** | **string** | Any player id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -241,7 +241,7 @@ import (
 )
 
 func main() {
-    playerId := "playerId_example" // string | Any player id within the MetaFab ecosystem.
+    playerId := "playerId_example" // string | Any player id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -261,7 +261,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**playerId** | **string** | Any player id within the MetaFab ecosystem. | 
+**playerId** | **string** | Any player id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -377,8 +377,8 @@ import (
 )
 
 func main() {
-    playerId := "playerId_example" // string | Any player id within the MetaFab ecosystem.
-    playerWalletId := "playerWalletId_example" // string | Any player wallet id within the MetaFab ecosystem.
+    playerId := "playerId_example" // string | Any player id within the MetaFab platform.
+    playerWalletId := "playerWalletId_example" // string | Any player wallet id within the MetaFab platform.
     removePlayerConnectedWalletRequest := *openapiclient.NewRemovePlayerConnectedWalletRequest("Address_example", int32(123), "Signature_example", "SELECT ONE") // RemovePlayerConnectedWalletRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -397,8 +397,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**playerId** | **string** | Any player id within the MetaFab ecosystem. | 
-**playerWalletId** | **string** | Any player wallet id within the MetaFab ecosystem. | 
+**playerId** | **string** | Any player id within the MetaFab platform. | 
+**playerWalletId** | **string** | Any player wallet id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -450,7 +450,7 @@ import (
 )
 
 func main() {
-    playerId := "playerId_example" // string | Any player id within the MetaFab ecosystem.
+    playerId := "playerId_example" // string | The player id of the authenticating player.
     xAuthorization := "player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `accessToken` of the authenticating player.
     setPlayerConnectedWalletRequest := *openapiclient.NewSetPlayerConnectedWalletRequest("Address_example", int32(123), "Signature_example", "SELECT ONE") // SetPlayerConnectedWalletRequest | 
 
@@ -472,7 +472,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**playerId** | **string** | Any player id within the MetaFab ecosystem. | 
+**playerId** | **string** | The player id of the authenticating player. | 
 
 ### Other Parameters
 
@@ -524,7 +524,7 @@ import (
 )
 
 func main() {
-    playerId := "playerId_example" // string | Any player id within the MetaFab ecosystem.
+    playerId := "playerId_example" // string | Any player id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
     setPlayerDataRequest := *openapiclient.NewSetPlayerDataRequest() // SetPlayerDataRequest | 
 
@@ -546,7 +546,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**playerId** | **string** | Any player id within the MetaFab ecosystem. | 
+**playerId** | **string** | Any player id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -579,7 +579,7 @@ No authorization required
 
 ## UpdatePlayer
 
-> PlayerModel UpdatePlayer(ctx, playerId).XAuthorization(xAuthorization).UpdatePlayerRequest(updatePlayerRequest).Execute()
+> UpdatePlayer200Response UpdatePlayer(ctx, playerId).XAuthorization(xAuthorization).UpdatePlayerRequest(updatePlayerRequest).Execute()
 
 Update player
 
@@ -598,7 +598,7 @@ import (
 )
 
 func main() {
-    playerId := "playerId_example" // string | Any player id within the MetaFab ecosystem.
+    playerId := "playerId_example" // string | The player id of the authenticating player.
     xAuthorization := "player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `accessToken` of the authenticating player.
     updatePlayerRequest := *openapiclient.NewUpdatePlayerRequest() // UpdatePlayerRequest | 
 
@@ -609,7 +609,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PlayersApi.UpdatePlayer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePlayer`: PlayerModel
+    // response from `UpdatePlayer`: UpdatePlayer200Response
     fmt.Fprintf(os.Stdout, "Response from `PlayersApi.UpdatePlayer`: %v\n", resp)
 }
 ```
@@ -620,7 +620,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**playerId** | **string** | Any player id within the MetaFab ecosystem. | 
+**playerId** | **string** | The player id of the authenticating player. | 
 
 ### Other Parameters
 
@@ -635,7 +635,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PlayerModel**](PlayerModel.md)
+[**UpdatePlayer200Response**](UpdatePlayer200Response.md)
 
 ### Authorization
 

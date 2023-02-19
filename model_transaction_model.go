@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -54,7 +54,7 @@ func NewTransactionModelWithDefaults() *TransactionModel {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TransactionModel) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -64,15 +64,15 @@ func (o *TransactionModel) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionModel) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *TransactionModel) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *TransactionModel) SetId(v string) {
 
 // GetContractId returns the ContractId field value if set, zero value otherwise.
 func (o *TransactionModel) GetContractId() string {
-	if o == nil || o.ContractId == nil {
+	if o == nil || isNil(o.ContractId) {
 		var ret string
 		return ret
 	}
@@ -96,15 +96,15 @@ func (o *TransactionModel) GetContractId() string {
 // GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionModel) GetContractIdOk() (*string, bool) {
-	if o == nil || o.ContractId == nil {
-		return nil, false
+	if o == nil || isNil(o.ContractId) {
+    return nil, false
 	}
 	return o.ContractId, true
 }
 
 // HasContractId returns a boolean if a field has been set.
 func (o *TransactionModel) HasContractId() bool {
-	if o != nil && o.ContractId != nil {
+	if o != nil && !isNil(o.ContractId) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *TransactionModel) SetContractId(v string) {
 
 // GetWalletId returns the WalletId field value if set, zero value otherwise.
 func (o *TransactionModel) GetWalletId() string {
-	if o == nil || o.WalletId == nil {
+	if o == nil || isNil(o.WalletId) {
 		var ret string
 		return ret
 	}
@@ -128,15 +128,15 @@ func (o *TransactionModel) GetWalletId() string {
 // GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionModel) GetWalletIdOk() (*string, bool) {
-	if o == nil || o.WalletId == nil {
-		return nil, false
+	if o == nil || isNil(o.WalletId) {
+    return nil, false
 	}
 	return o.WalletId, true
 }
 
 // HasWalletId returns a boolean if a field has been set.
 func (o *TransactionModel) HasWalletId() bool {
-	if o != nil && o.WalletId != nil {
+	if o != nil && !isNil(o.WalletId) {
 		return true
 	}
 
@@ -150,7 +150,7 @@ func (o *TransactionModel) SetWalletId(v string) {
 
 // GetFunction returns the Function field value if set, zero value otherwise.
 func (o *TransactionModel) GetFunction() string {
-	if o == nil || o.Function == nil {
+	if o == nil || isNil(o.Function) {
 		var ret string
 		return ret
 	}
@@ -160,15 +160,15 @@ func (o *TransactionModel) GetFunction() string {
 // GetFunctionOk returns a tuple with the Function field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionModel) GetFunctionOk() (*string, bool) {
-	if o == nil || o.Function == nil {
-		return nil, false
+	if o == nil || isNil(o.Function) {
+    return nil, false
 	}
 	return o.Function, true
 }
 
 // HasFunction returns a boolean if a field has been set.
 func (o *TransactionModel) HasFunction() bool {
-	if o != nil && o.Function != nil {
+	if o != nil && !isNil(o.Function) {
 		return true
 	}
 
@@ -182,7 +182,7 @@ func (o *TransactionModel) SetFunction(v string) {
 
 // GetArgs returns the Args field value if set, zero value otherwise.
 func (o *TransactionModel) GetArgs() map[string]interface{} {
-	if o == nil || o.Args == nil {
+	if o == nil || isNil(o.Args) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -192,15 +192,15 @@ func (o *TransactionModel) GetArgs() map[string]interface{} {
 // GetArgsOk returns a tuple with the Args field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionModel) GetArgsOk() (map[string]interface{}, bool) {
-	if o == nil || o.Args == nil {
-		return nil, false
+	if o == nil || isNil(o.Args) {
+    return map[string]interface{}{}, false
 	}
 	return o.Args, true
 }
 
 // HasArgs returns a boolean if a field has been set.
 func (o *TransactionModel) HasArgs() bool {
-	if o != nil && o.Args != nil {
+	if o != nil && !isNil(o.Args) {
 		return true
 	}
 
@@ -214,7 +214,7 @@ func (o *TransactionModel) SetArgs(v map[string]interface{}) {
 
 // GetHash returns the Hash field value if set, zero value otherwise.
 func (o *TransactionModel) GetHash() string {
-	if o == nil || o.Hash == nil {
+	if o == nil || isNil(o.Hash) {
 		var ret string
 		return ret
 	}
@@ -224,15 +224,15 @@ func (o *TransactionModel) GetHash() string {
 // GetHashOk returns a tuple with the Hash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionModel) GetHashOk() (*string, bool) {
-	if o == nil || o.Hash == nil {
-		return nil, false
+	if o == nil || isNil(o.Hash) {
+    return nil, false
 	}
 	return o.Hash, true
 }
 
 // HasHash returns a boolean if a field has been set.
 func (o *TransactionModel) HasHash() bool {
-	if o != nil && o.Hash != nil {
+	if o != nil && !isNil(o.Hash) {
 		return true
 	}
 
@@ -246,7 +246,7 @@ func (o *TransactionModel) SetHash(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *TransactionModel) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -256,15 +256,15 @@ func (o *TransactionModel) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionModel) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *TransactionModel) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -278,7 +278,7 @@ func (o *TransactionModel) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *TransactionModel) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -288,15 +288,15 @@ func (o *TransactionModel) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransactionModel) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *TransactionModel) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -310,28 +310,28 @@ func (o *TransactionModel) SetCreatedAt(v string) {
 
 func (o TransactionModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.ContractId != nil {
+	if !isNil(o.ContractId) {
 		toSerialize["contractId"] = o.ContractId
 	}
-	if o.WalletId != nil {
+	if !isNil(o.WalletId) {
 		toSerialize["walletId"] = o.WalletId
 	}
-	if o.Function != nil {
+	if !isNil(o.Function) {
 		toSerialize["function"] = o.Function
 	}
-	if o.Args != nil {
+	if !isNil(o.Args) {
 		toSerialize["args"] = o.Args
 	}
-	if o.Hash != nil {
+	if !isNil(o.Hash) {
 		toSerialize["hash"] = o.Hash
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
 	return json.Marshal(toSerialize)

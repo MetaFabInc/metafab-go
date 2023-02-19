@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -39,7 +39,7 @@ func NewGetCollections200ResponseInnerAllOfWithDefaults() *GetCollections200Resp
 
 // GetContract returns the Contract field value if set, zero value otherwise.
 func (o *GetCollections200ResponseInnerAllOf) GetContract() ContractModel {
-	if o == nil || o.Contract == nil {
+	if o == nil || isNil(o.Contract) {
 		var ret ContractModel
 		return ret
 	}
@@ -49,15 +49,15 @@ func (o *GetCollections200ResponseInnerAllOf) GetContract() ContractModel {
 // GetContractOk returns a tuple with the Contract field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCollections200ResponseInnerAllOf) GetContractOk() (*ContractModel, bool) {
-	if o == nil || o.Contract == nil {
-		return nil, false
+	if o == nil || isNil(o.Contract) {
+    return nil, false
 	}
 	return o.Contract, true
 }
 
 // HasContract returns a boolean if a field has been set.
 func (o *GetCollections200ResponseInnerAllOf) HasContract() bool {
-	if o != nil && o.Contract != nil {
+	if o != nil && !isNil(o.Contract) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *GetCollections200ResponseInnerAllOf) SetContract(v ContractModel) {
 
 func (o GetCollections200ResponseInnerAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Contract != nil {
+	if !isNil(o.Contract) {
 		toSerialize["contract"] = o.Contract
 	}
 	return json.Marshal(toSerialize)

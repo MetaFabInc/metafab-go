@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -39,7 +39,7 @@ func NewCreateCollection200ResponseAllOfContractAllOfWithDefaults() *CreateColle
 
 // GetTransactions returns the Transactions field value if set, zero value otherwise.
 func (o *CreateCollection200ResponseAllOfContractAllOf) GetTransactions() []TransactionModel {
-	if o == nil || o.Transactions == nil {
+	if o == nil || isNil(o.Transactions) {
 		var ret []TransactionModel
 		return ret
 	}
@@ -49,15 +49,15 @@ func (o *CreateCollection200ResponseAllOfContractAllOf) GetTransactions() []Tran
 // GetTransactionsOk returns a tuple with the Transactions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollection200ResponseAllOfContractAllOf) GetTransactionsOk() ([]TransactionModel, bool) {
-	if o == nil || o.Transactions == nil {
-		return nil, false
+	if o == nil || isNil(o.Transactions) {
+    return nil, false
 	}
 	return o.Transactions, true
 }
 
 // HasTransactions returns a boolean if a field has been set.
 func (o *CreateCollection200ResponseAllOfContractAllOf) HasTransactions() bool {
-	if o != nil && o.Transactions != nil {
+	if o != nil && !isNil(o.Transactions) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *CreateCollection200ResponseAllOfContractAllOf) SetTransactions(v []Tran
 
 func (o CreateCollection200ResponseAllOfContractAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Transactions != nil {
+	if !isNil(o.Transactions) {
 		toSerialize["transactions"] = o.Transactions
 	}
 	return json.Marshal(toSerialize)

@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -56,7 +56,7 @@ func NewPublicGameWithDefaults() *PublicGame {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PublicGame) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -66,15 +66,15 @@ func (o *PublicGame) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *PublicGame) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *PublicGame) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PublicGame) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -98,15 +98,15 @@ func (o *PublicGame) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *PublicGame) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *PublicGame) SetName(v string) {
 
 // GetPublishedKey returns the PublishedKey field value if set, zero value otherwise.
 func (o *PublicGame) GetPublishedKey() string {
-	if o == nil || o.PublishedKey == nil {
+	if o == nil || isNil(o.PublishedKey) {
 		var ret string
 		return ret
 	}
@@ -130,15 +130,15 @@ func (o *PublicGame) GetPublishedKey() string {
 // GetPublishedKeyOk returns a tuple with the PublishedKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetPublishedKeyOk() (*string, bool) {
-	if o == nil || o.PublishedKey == nil {
-		return nil, false
+	if o == nil || isNil(o.PublishedKey) {
+    return nil, false
 	}
 	return o.PublishedKey, true
 }
 
 // HasPublishedKey returns a boolean if a field has been set.
 func (o *PublicGame) HasPublishedKey() bool {
-	if o != nil && o.PublishedKey != nil {
+	if o != nil && !isNil(o.PublishedKey) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *PublicGame) SetPublishedKey(v string) {
 
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
 func (o *PublicGame) GetRedirectUris() []string {
-	if o == nil || o.RedirectUris == nil {
+	if o == nil || isNil(o.RedirectUris) {
 		var ret []string
 		return ret
 	}
@@ -162,15 +162,15 @@ func (o *PublicGame) GetRedirectUris() []string {
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetRedirectUrisOk() ([]string, bool) {
-	if o == nil || o.RedirectUris == nil {
-		return nil, false
+	if o == nil || isNil(o.RedirectUris) {
+    return nil, false
 	}
 	return o.RedirectUris, true
 }
 
 // HasRedirectUris returns a boolean if a field has been set.
 func (o *PublicGame) HasRedirectUris() bool {
-	if o != nil && o.RedirectUris != nil {
+	if o != nil && !isNil(o.RedirectUris) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *PublicGame) SetRedirectUris(v []string) {
 
 // GetIconImageUrl returns the IconImageUrl field value if set, zero value otherwise.
 func (o *PublicGame) GetIconImageUrl() string {
-	if o == nil || o.IconImageUrl == nil {
+	if o == nil || isNil(o.IconImageUrl) {
 		var ret string
 		return ret
 	}
@@ -194,15 +194,15 @@ func (o *PublicGame) GetIconImageUrl() string {
 // GetIconImageUrlOk returns a tuple with the IconImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetIconImageUrlOk() (*string, bool) {
-	if o == nil || o.IconImageUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.IconImageUrl) {
+    return nil, false
 	}
 	return o.IconImageUrl, true
 }
 
 // HasIconImageUrl returns a boolean if a field has been set.
 func (o *PublicGame) HasIconImageUrl() bool {
-	if o != nil && o.IconImageUrl != nil {
+	if o != nil && !isNil(o.IconImageUrl) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *PublicGame) SetIconImageUrl(v string) {
 
 // GetCoverImageUrl returns the CoverImageUrl field value if set, zero value otherwise.
 func (o *PublicGame) GetCoverImageUrl() string {
-	if o == nil || o.CoverImageUrl == nil {
+	if o == nil || isNil(o.CoverImageUrl) {
 		var ret string
 		return ret
 	}
@@ -226,15 +226,15 @@ func (o *PublicGame) GetCoverImageUrl() string {
 // GetCoverImageUrlOk returns a tuple with the CoverImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetCoverImageUrlOk() (*string, bool) {
-	if o == nil || o.CoverImageUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.CoverImageUrl) {
+    return nil, false
 	}
 	return o.CoverImageUrl, true
 }
 
 // HasCoverImageUrl returns a boolean if a field has been set.
 func (o *PublicGame) HasCoverImageUrl() bool {
-	if o != nil && o.CoverImageUrl != nil {
+	if o != nil && !isNil(o.CoverImageUrl) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *PublicGame) SetCoverImageUrl(v string) {
 
 // GetPrimaryColorHex returns the PrimaryColorHex field value if set, zero value otherwise.
 func (o *PublicGame) GetPrimaryColorHex() string {
-	if o == nil || o.PrimaryColorHex == nil {
+	if o == nil || isNil(o.PrimaryColorHex) {
 		var ret string
 		return ret
 	}
@@ -258,15 +258,15 @@ func (o *PublicGame) GetPrimaryColorHex() string {
 // GetPrimaryColorHexOk returns a tuple with the PrimaryColorHex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetPrimaryColorHexOk() (*string, bool) {
-	if o == nil || o.PrimaryColorHex == nil {
-		return nil, false
+	if o == nil || isNil(o.PrimaryColorHex) {
+    return nil, false
 	}
 	return o.PrimaryColorHex, true
 }
 
 // HasPrimaryColorHex returns a boolean if a field has been set.
 func (o *PublicGame) HasPrimaryColorHex() bool {
-	if o != nil && o.PrimaryColorHex != nil {
+	if o != nil && !isNil(o.PrimaryColorHex) {
 		return true
 	}
 
@@ -280,7 +280,7 @@ func (o *PublicGame) SetPrimaryColorHex(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *PublicGame) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -290,15 +290,15 @@ func (o *PublicGame) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *PublicGame) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -312,7 +312,7 @@ func (o *PublicGame) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *PublicGame) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -322,15 +322,15 @@ func (o *PublicGame) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicGame) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *PublicGame) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -344,31 +344,31 @@ func (o *PublicGame) SetCreatedAt(v string) {
 
 func (o PublicGame) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.PublishedKey != nil {
+	if !isNil(o.PublishedKey) {
 		toSerialize["publishedKey"] = o.PublishedKey
 	}
-	if o.RedirectUris != nil {
+	if !isNil(o.RedirectUris) {
 		toSerialize["redirectUris"] = o.RedirectUris
 	}
-	if o.IconImageUrl != nil {
+	if !isNil(o.IconImageUrl) {
 		toSerialize["iconImageUrl"] = o.IconImageUrl
 	}
-	if o.CoverImageUrl != nil {
+	if !isNil(o.CoverImageUrl) {
 		toSerialize["coverImageUrl"] = o.CoverImageUrl
 	}
-	if o.PrimaryColorHex != nil {
+	if !isNil(o.PrimaryColorHex) {
 		toSerialize["primaryColorHex"] = o.PrimaryColorHex
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
 	return json.Marshal(toSerialize)

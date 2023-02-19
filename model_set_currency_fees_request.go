@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -62,7 +62,7 @@ func (o *SetCurrencyFeesRequest) GetRecipientAddress() string {
 // and a boolean to check if the value has been set.
 func (o *SetCurrencyFeesRequest) GetRecipientAddressOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.RecipientAddress, true
 }
@@ -86,7 +86,7 @@ func (o *SetCurrencyFeesRequest) GetBasisPoints() float32 {
 // and a boolean to check if the value has been set.
 func (o *SetCurrencyFeesRequest) GetBasisPointsOk() (*float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.BasisPoints, true
 }
@@ -110,7 +110,7 @@ func (o *SetCurrencyFeesRequest) GetFixedAmount() float32 {
 // and a boolean to check if the value has been set.
 func (o *SetCurrencyFeesRequest) GetFixedAmountOk() (*float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.FixedAmount, true
 }
@@ -134,7 +134,7 @@ func (o *SetCurrencyFeesRequest) GetCapAmount() float32 {
 // and a boolean to check if the value has been set.
 func (o *SetCurrencyFeesRequest) GetCapAmountOk() (*float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.CapAmount, true
 }

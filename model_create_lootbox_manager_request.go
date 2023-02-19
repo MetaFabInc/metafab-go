@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -17,6 +17,8 @@ import (
 
 // CreateLootboxManagerRequest struct for CreateLootboxManagerRequest
 type CreateLootboxManagerRequest struct {
+	// The name of this item collection. This can be anything, such as `Production - Lootbox Manager`, `Testing - My Game Lootbox Manager`, etc.
+	Name *string `json:"name,omitempty"`
 	// The blockchain you want to deploy this lootbox manager on. Support for new blockchains are added over time.
 	Chain string `json:"chain"`
 }
@@ -39,6 +41,38 @@ func NewCreateLootboxManagerRequestWithDefaults() *CreateLootboxManagerRequest {
 	return &this
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CreateLootboxManagerRequest) GetName() string {
+	if o == nil || isNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateLootboxManagerRequest) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
+    return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CreateLootboxManagerRequest) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CreateLootboxManagerRequest) SetName(v string) {
+	o.Name = &v
+}
+
 // GetChain returns the Chain field value
 func (o *CreateLootboxManagerRequest) GetChain() string {
 	if o == nil {
@@ -53,7 +87,7 @@ func (o *CreateLootboxManagerRequest) GetChain() string {
 // and a boolean to check if the value has been set.
 func (o *CreateLootboxManagerRequest) GetChainOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Chain, true
 }
@@ -65,6 +99,9 @@ func (o *CreateLootboxManagerRequest) SetChain(v string) {
 
 func (o CreateLootboxManagerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if true {
 		toSerialize["chain"] = o.Chain
 	}

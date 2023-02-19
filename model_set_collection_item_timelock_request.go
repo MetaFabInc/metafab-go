@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -53,7 +53,7 @@ func (o *SetCollectionItemTimelockRequest) GetTimelock() int32 {
 // and a boolean to check if the value has been set.
 func (o *SetCollectionItemTimelockRequest) GetTimelockOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Timelock, true
 }

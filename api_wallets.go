@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -24,6 +24,265 @@ import (
 // WalletsApiService WalletsApi service
 type WalletsApiService service
 
+type ApiCreateWalletSignatureRequest struct {
+	ctx context.Context
+	ApiService *WalletsApiService
+	walletId string
+	xWalletDecryptKey *string
+	createWalletSignatureRequest *CreateWalletSignatureRequest
+}
+
+// The &#x60;walletDecryptKey&#x60; for the provided &#x60;walletId&#x60;.
+func (r ApiCreateWalletSignatureRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiCreateWalletSignatureRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
+	return r
+}
+
+func (r ApiCreateWalletSignatureRequest) CreateWalletSignatureRequest(createWalletSignatureRequest CreateWalletSignatureRequest) ApiCreateWalletSignatureRequest {
+	r.createWalletSignatureRequest = &createWalletSignatureRequest
+	return r
+}
+
+func (r ApiCreateWalletSignatureRequest) Execute() (string, *http.Response, error) {
+	return r.ApiService.CreateWalletSignatureExecute(r)
+}
+
+/*
+CreateWalletSignature Create wallet signature
+
+Creates a wallet signature from a plaintext message using the wallet for the provided walletId and walletDecryptKey. Wallet signatures cannot be generated for EOA wallets.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param walletId Any wallet id within the MetaFab platform.
+ @return ApiCreateWalletSignatureRequest
+*/
+func (a *WalletsApiService) CreateWalletSignature(ctx context.Context, walletId string) ApiCreateWalletSignatureRequest {
+	return ApiCreateWalletSignatureRequest{
+		ApiService: a,
+		ctx: ctx,
+		walletId: walletId,
+	}
+}
+
+// Execute executes the request
+//  @return string
+func (a *WalletsApiService) CreateWalletSignatureExecute(r ApiCreateWalletSignatureRequest) (string, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WalletsApiService.CreateWalletSignature")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/wallets/{walletId}/signatures"
+	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterToString(r.walletId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
+	}
+	if r.createWalletSignatureRequest == nil {
+		return localVarReturnValue, nil, reportError("createWalletSignatureRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
+	// body params
+	localVarPostBody = r.createWalletSignatureRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetWalletRequest struct {
+	ctx context.Context
+	ApiService *WalletsApiService
+	walletId string
+}
+
+func (r ApiGetWalletRequest) Execute() (*WalletModel, *http.Response, error) {
+	return r.ApiService.GetWalletExecute(r)
+}
+
+/*
+GetWallet Get wallet
+
+Returns a wallet object for the provided walletId.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param walletId Any wallet id within the MetaFab platform.
+ @return ApiGetWalletRequest
+*/
+func (a *WalletsApiService) GetWallet(ctx context.Context, walletId string) ApiGetWalletRequest {
+	return ApiGetWalletRequest{
+		ApiService: a,
+		ctx: ctx,
+		walletId: walletId,
+	}
+}
+
+// Execute executes the request
+//  @return WalletModel
+func (a *WalletsApiService) GetWalletExecute(r ApiGetWalletRequest) (*WalletModel, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WalletModel
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WalletsApiService.GetWallet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/wallets/{walletId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterToString(r.walletId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetWalletBalancesRequest struct {
 	ctx context.Context
 	ApiService *WalletsApiService
@@ -40,7 +299,7 @@ GetWalletBalances Get wallet balances
 Returns the current native token balance for all chains supported by MetaFab for the provided walletId. This includes balances like Eth, Matic and other native tokens from chains MetaFab supports.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Any wallet id within the MetaFab ecosystem.
+ @param walletId Any wallet id within the MetaFab platform.
  @return ApiGetWalletBalancesRequest
 */
 func (a *WalletsApiService) GetWalletBalances(ctx context.Context, walletId string) ApiGetWalletBalancesRequest {
@@ -119,7 +378,8 @@ func (a *WalletsApiService) GetWalletBalancesExecute(r ApiGetWalletBalancesReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -152,7 +412,7 @@ GetWalletTransactions Get wallet transactions
 Returns an array of MetaFab initiated transactions performed by the provided walletId. Transactions returned are ordered chronologically from newest to oldest.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Any wallet id within the MetaFab ecosystem.
+ @param walletId Any wallet id within the MetaFab platform.
  @return ApiGetWalletTransactionsRequest
 */
 func (a *WalletsApiService) GetWalletTransactions(ctx context.Context, walletId string) ApiGetWalletTransactionsRequest {
@@ -231,7 +491,8 @@ func (a *WalletsApiService) GetWalletTransactionsExecute(r ApiGetWalletTransacti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

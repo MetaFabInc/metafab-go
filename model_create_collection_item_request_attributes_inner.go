@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -54,7 +54,7 @@ func (o *CreateCollectionItemRequestAttributesInner) GetTraitType() string {
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequestAttributesInner) GetTraitTypeOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.TraitType, true
 }
@@ -79,8 +79,8 @@ func (o *CreateCollectionItemRequestAttributesInner) GetValue() interface{} {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateCollectionItemRequestAttributesInner) GetValueOk() (*interface{}, bool) {
-	if o == nil || o.Value == nil {
-		return nil, false
+	if o == nil || isNil(o.Value) {
+    return nil, false
 	}
 	return &o.Value, true
 }

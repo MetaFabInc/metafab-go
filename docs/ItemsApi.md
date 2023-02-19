@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 ## BatchMintCollectionItems
 
-> TransactionModel BatchMintCollectionItems(ctx, collectionId).XAuthorization(xAuthorization).XPassword(xPassword).BatchMintCollectionItemsRequest(batchMintCollectionItemsRequest).Execute()
+> TransactionModel BatchMintCollectionItems(ctx, collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BatchMintCollectionItemsRequest(batchMintCollectionItemsRequest).Execute()
 
 Batch mint collection items
 
@@ -49,14 +49,14 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     batchMintCollectionItemsRequest := *openapiclient.NewBatchMintCollectionItemsRequest([]int32{int32(123)}, []int32{int32(123)}) // BatchMintCollectionItemsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.BatchMintCollectionItems(context.Background(), collectionId).XAuthorization(xAuthorization).XPassword(xPassword).BatchMintCollectionItemsRequest(batchMintCollectionItemsRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.BatchMintCollectionItems(context.Background(), collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BatchMintCollectionItemsRequest(batchMintCollectionItemsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.BatchMintCollectionItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -72,7 +72,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **batchMintCollectionItemsRequest** | [**BatchMintCollectionItemsRequest**](BatchMintCollectionItemsRequest.md) |  | 
 
 ### Return type
@@ -106,7 +106,7 @@ No authorization required
 
 ## BatchTransferCollectionItems
 
-> TransactionModel BatchTransferCollectionItems(ctx, collectionId).XAuthorization(xAuthorization).XPassword(xPassword).BatchTransferCollectionItemsRequest(batchTransferCollectionItemsRequest).Execute()
+> TransactionModel BatchTransferCollectionItems(ctx, collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BatchTransferCollectionItemsRequest(batchTransferCollectionItemsRequest).Execute()
 
 Batch transfer collection items
 
@@ -125,14 +125,14 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     batchTransferCollectionItemsRequest := *openapiclient.NewBatchTransferCollectionItemsRequest([]int32{int32(12)}, []int32{int32(1)}) // BatchTransferCollectionItemsRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.BatchTransferCollectionItems(context.Background(), collectionId).XAuthorization(xAuthorization).XPassword(xPassword).BatchTransferCollectionItemsRequest(batchTransferCollectionItemsRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.BatchTransferCollectionItems(context.Background(), collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BatchTransferCollectionItemsRequest(batchTransferCollectionItemsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.BatchTransferCollectionItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -148,7 +148,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **batchTransferCollectionItemsRequest** | [**BatchTransferCollectionItemsRequest**](BatchTransferCollectionItemsRequest.md) |  | 
 
 ### Return type
@@ -182,7 +182,7 @@ No authorization required
 
 ## BurnCollectionItem
 
-> TransactionModel BurnCollectionItem(ctx, collectionId, collectionItemId).XAuthorization(xAuthorization).XPassword(xPassword).BurnCollectionItemRequest(burnCollectionItemRequest).Execute()
+> TransactionModel BurnCollectionItem(ctx, collectionId, collectionItemId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BurnCollectionItemRequest(burnCollectionItemRequest).Execute()
 
 Burn collection item
 
@@ -201,15 +201,15 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     burnCollectionItemRequest := *openapiclient.NewBurnCollectionItemRequest(int32(123)) // BurnCollectionItemRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.BurnCollectionItem(context.Background(), collectionId, collectionItemId).XAuthorization(xAuthorization).XPassword(xPassword).BurnCollectionItemRequest(burnCollectionItemRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.BurnCollectionItem(context.Background(), collectionId, collectionItemId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).BurnCollectionItemRequest(burnCollectionItemRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.BurnCollectionItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -225,7 +225,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 **collectionItemId** | **float32** | Any item id for the collection. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **burnCollectionItemRequest** | [**BurnCollectionItemRequest**](BurnCollectionItemRequest.md) |  | 
 
 ### Return type
@@ -261,7 +261,7 @@ No authorization required
 
 ## CreateCollection
 
-> CreateCollection200Response CreateCollection(ctx).XAuthorization(xAuthorization).XPassword(xPassword).CreateCollectionRequest(createCollectionRequest).Execute()
+> CreateCollection200Response CreateCollection(ctx).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateCollectionRequest(createCollectionRequest).Execute()
 
 Create collection
 
@@ -281,12 +281,12 @@ import (
 
 func main() {
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     createCollectionRequest := *openapiclient.NewCreateCollectionRequest("SELECT ONE") // CreateCollectionRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.CreateCollection(context.Background()).XAuthorization(xAuthorization).XPassword(xPassword).CreateCollectionRequest(createCollectionRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.CreateCollection(context.Background()).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateCollectionRequest(createCollectionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.CreateCollection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -308,7 +308,7 @@ Other parameters are passed through a pointer to a apiCreateCollectionRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createCollectionRequest** | [**CreateCollectionRequest**](CreateCollectionRequest.md) |  | 
 
 ### Return type
@@ -331,7 +331,7 @@ No authorization required
 
 ## CreateCollectionItem
 
-> TransactionModel CreateCollectionItem(ctx, collectionId).XAuthorization(xAuthorization).XPassword(xPassword).CreateCollectionItemRequest(createCollectionItemRequest).Execute()
+> TransactionModel CreateCollectionItem(ctx, collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateCollectionItemRequest(createCollectionItemRequest).Execute()
 
 Create collection item
 
@@ -350,14 +350,14 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     createCollectionItemRequest := *openapiclient.NewCreateCollectionItemRequest(int32(1337), "Fire Dagger", "Description_example") // CreateCollectionItemRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.CreateCollectionItem(context.Background(), collectionId).XAuthorization(xAuthorization).XPassword(xPassword).CreateCollectionItemRequest(createCollectionItemRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.CreateCollectionItem(context.Background(), collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateCollectionItemRequest(createCollectionItemRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.CreateCollectionItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +373,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createCollectionItemRequest** | [**CreateCollectionItemRequest**](CreateCollectionItemRequest.md) |  | 
 
 ### Return type
@@ -426,10 +426,10 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     operatorAddress := "0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D" // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`.
     address := "0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D" // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional)
-    walletId := "walletId_example" // string | Any wallet id within the MetaFab ecosystem. (optional)
+    walletId := "walletId_example" // string | Any wallet id within the MetaFab platform. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -449,7 +449,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 
  **operatorAddress** | **string** | A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
  **address** | **string** | A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
- **walletId** | **string** | Any wallet id within the MetaFab ecosystem. | 
+ **walletId** | **string** | Any wallet id within the MetaFab platform. | 
 
 ### Return type
 
@@ -483,7 +483,7 @@ No authorization required
 
 ## GetCollectionItem
 
-> map[string]interface{} GetCollectionItem(ctx, collectionId, collectionItemId).Execute()
+> CollectionItem GetCollectionItem(ctx, collectionId, collectionItemId).Execute()
 
 Get collection item
 
@@ -502,7 +502,7 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
 
     configuration := openapiclient.NewConfiguration()
@@ -512,7 +512,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.GetCollectionItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCollectionItem`: map[string]interface{}
+    // response from `GetCollectionItem`: CollectionItem
     fmt.Fprintf(os.Stdout, "Response from `ItemsApi.GetCollectionItem`: %v\n", resp)
 }
 ```
@@ -523,7 +523,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 **collectionItemId** | **float32** | Any item id for the collection. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CollectionItem**](CollectionItem.md)
 
 ### Authorization
 
@@ -575,10 +575,10 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     address := "0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D" // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional)
-    walletId := "walletId_example" // string | Any wallet id within the MetaFab ecosystem. (optional)
+    walletId := "walletId_example" // string | Any wallet id within the MetaFab platform. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -598,7 +598,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 **collectionItemId** | **float32** | Any item id for the collection. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -611,7 +611,7 @@ Name | Type | Description  | Notes
 
 
  **address** | **string** | A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
- **walletId** | **string** | Any wallet id within the MetaFab ecosystem. | 
+ **walletId** | **string** | Any wallet id within the MetaFab platform. | 
 
 ### Return type
 
@@ -652,9 +652,9 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     address := "0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D" // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional)
-    walletId := "walletId_example" // string | Any wallet id within the MetaFab ecosystem. (optional)
+    walletId := "walletId_example" // string | Any wallet id within the MetaFab platform. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -674,7 +674,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -685,7 +685,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **address** | **string** | A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
- **walletId** | **string** | Any wallet id within the MetaFab ecosystem. | 
+ **walletId** | **string** | Any wallet id within the MetaFab platform. | 
 
 ### Return type
 
@@ -726,7 +726,7 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -746,7 +746,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -796,10 +796,10 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     address := "0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D" // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional)
-    walletId := "walletId_example" // string | Any wallet id within the MetaFab ecosystem. (optional)
+    walletId := "walletId_example" // string | Any wallet id within the MetaFab platform. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -819,7 +819,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 **collectionItemId** | **float32** | Any item id for the collection. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -832,7 +832,7 @@ Name | Type | Description  | Notes
 
 
  **address** | **string** | A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
- **walletId** | **string** | Any wallet id within the MetaFab ecosystem. | 
+ **walletId** | **string** | Any wallet id within the MetaFab platform. | 
 
 ### Return type
 
@@ -873,7 +873,7 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
 
     configuration := openapiclient.NewConfiguration()
@@ -894,7 +894,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 **collectionItemId** | **float32** | Any item id for the collection. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -927,7 +927,7 @@ No authorization required
 
 ## GetCollectionItems
 
-> []map[string]interface{} GetCollectionItems(ctx, collectionId).Execute()
+> []CollectionItem GetCollectionItems(ctx, collectionId).Execute()
 
 Get collection items
 
@@ -946,7 +946,7 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -955,7 +955,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.GetCollectionItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCollectionItems`: []map[string]interface{}
+    // response from `GetCollectionItems`: []CollectionItem
     fmt.Fprintf(os.Stdout, "Response from `ItemsApi.GetCollectionItems`: %v\n", resp)
 }
 ```
@@ -966,7 +966,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -979,7 +979,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+[**[]CollectionItem**](CollectionItem.md)
 
 ### Authorization
 
@@ -1016,10 +1016,10 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     role := "minter" // string | A valid MetaFab role or bytes string representing a role, such as `0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7`
     address := "0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D" // string | A valid EVM based address. For example, `0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D`. (optional)
-    walletId := "walletId_example" // string | Any wallet id within the MetaFab ecosystem. (optional)
+    walletId := "walletId_example" // string | Any wallet id within the MetaFab platform. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1039,7 +1039,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -1051,7 +1051,7 @@ Name | Type | Description  | Notes
 
  **role** | **string** | A valid MetaFab role or bytes string representing a role, such as &#x60;0xc9eb32e43bf5ecbceacf00b32281dfc5d6d700a0db676ea26ccf938a385ac3b7&#x60; | 
  **address** | **string** | A valid EVM based address. For example, &#x60;0x39cb70F972E0EE920088AeF97Dbe5c6251a9c25D&#x60;. | 
- **walletId** | **string** | Any wallet id within the MetaFab ecosystem. | 
+ **walletId** | **string** | Any wallet id within the MetaFab platform. | 
 
 ### Return type
 
@@ -1139,7 +1139,7 @@ No authorization required
 
 ## GrantCollectionRole
 
-> TransactionModel GrantCollectionRole(ctx, collectionId).XAuthorization(xAuthorization).XPassword(xPassword).GrantCollectionRoleRequest(grantCollectionRoleRequest).Execute()
+> TransactionModel GrantCollectionRole(ctx, collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).GrantCollectionRoleRequest(grantCollectionRoleRequest).Execute()
 
 Grant collection role
 
@@ -1158,14 +1158,14 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     grantCollectionRoleRequest := *openapiclient.NewGrantCollectionRoleRequest("Role_example") // GrantCollectionRoleRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.GrantCollectionRole(context.Background(), collectionId).XAuthorization(xAuthorization).XPassword(xPassword).GrantCollectionRoleRequest(grantCollectionRoleRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.GrantCollectionRole(context.Background(), collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).GrantCollectionRoleRequest(grantCollectionRoleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.GrantCollectionRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1181,7 +1181,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -1192,7 +1192,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **grantCollectionRoleRequest** | [**GrantCollectionRoleRequest**](GrantCollectionRoleRequest.md) |  | 
 
 ### Return type
@@ -1215,7 +1215,7 @@ No authorization required
 
 ## MintCollectionItem
 
-> TransactionModel MintCollectionItem(ctx, collectionId, collectionItemId).XAuthorization(xAuthorization).XPassword(xPassword).MintCollectionItemRequest(mintCollectionItemRequest).Execute()
+> TransactionModel MintCollectionItem(ctx, collectionId, collectionItemId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).MintCollectionItemRequest(mintCollectionItemRequest).Execute()
 
 Mint collection item
 
@@ -1234,15 +1234,15 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     mintCollectionItemRequest := *openapiclient.NewMintCollectionItemRequest(int32(123)) // MintCollectionItemRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.MintCollectionItem(context.Background(), collectionId, collectionItemId).XAuthorization(xAuthorization).XPassword(xPassword).MintCollectionItemRequest(mintCollectionItemRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.MintCollectionItem(context.Background(), collectionId, collectionItemId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).MintCollectionItemRequest(mintCollectionItemRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.MintCollectionItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1258,7 +1258,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 **collectionItemId** | **float32** | Any item id for the collection. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -1271,7 +1271,7 @@ Name | Type | Description  | Notes
 
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **mintCollectionItemRequest** | [**MintCollectionItemRequest**](MintCollectionItemRequest.md) |  | 
 
 ### Return type
@@ -1294,7 +1294,7 @@ No authorization required
 
 ## RevokeCollectionRole
 
-> TransactionModel RevokeCollectionRole(ctx, collectionId).XAuthorization(xAuthorization).XPassword(xPassword).RevokeCollectionRoleRequest(revokeCollectionRoleRequest).Execute()
+> TransactionModel RevokeCollectionRole(ctx, collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).RevokeCollectionRoleRequest(revokeCollectionRoleRequest).Execute()
 
 Revoke collection role
 
@@ -1313,14 +1313,14 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     revokeCollectionRoleRequest := *openapiclient.NewRevokeCollectionRoleRequest("Role_example") // RevokeCollectionRoleRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.RevokeCollectionRole(context.Background(), collectionId).XAuthorization(xAuthorization).XPassword(xPassword).RevokeCollectionRoleRequest(revokeCollectionRoleRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.RevokeCollectionRole(context.Background(), collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).RevokeCollectionRoleRequest(revokeCollectionRoleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.RevokeCollectionRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1336,7 +1336,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -1347,7 +1347,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **revokeCollectionRoleRequest** | [**RevokeCollectionRoleRequest**](RevokeCollectionRoleRequest.md) |  | 
 
 ### Return type
@@ -1370,7 +1370,7 @@ No authorization required
 
 ## SetCollectionApproval
 
-> TransactionModel SetCollectionApproval(ctx, collectionId).XAuthorization(xAuthorization).XPassword(xPassword).SetCollectionApprovalRequest(setCollectionApprovalRequest).Execute()
+> TransactionModel SetCollectionApproval(ctx, collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetCollectionApprovalRequest(setCollectionApprovalRequest).Execute()
 
 Set collection approval
 
@@ -1389,14 +1389,14 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     setCollectionApprovalRequest := *openapiclient.NewSetCollectionApprovalRequest(false) // SetCollectionApprovalRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.SetCollectionApproval(context.Background(), collectionId).XAuthorization(xAuthorization).XPassword(xPassword).SetCollectionApprovalRequest(setCollectionApprovalRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.SetCollectionApproval(context.Background(), collectionId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetCollectionApprovalRequest(setCollectionApprovalRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.SetCollectionApproval``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1412,7 +1412,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -1423,7 +1423,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **setCollectionApprovalRequest** | [**SetCollectionApprovalRequest**](SetCollectionApprovalRequest.md) |  | 
 
 ### Return type
@@ -1446,7 +1446,7 @@ No authorization required
 
 ## SetCollectionItemTimelock
 
-> TransactionModel SetCollectionItemTimelock(ctx, collectionId, collectionItemId).XAuthorization(xAuthorization).XPassword(xPassword).SetCollectionItemTimelockRequest(setCollectionItemTimelockRequest).Execute()
+> TransactionModel SetCollectionItemTimelock(ctx, collectionId, collectionItemId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetCollectionItemTimelockRequest(setCollectionItemTimelockRequest).Execute()
 
 Set collection item timelock
 
@@ -1465,15 +1465,15 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     setCollectionItemTimelockRequest := *openapiclient.NewSetCollectionItemTimelockRequest(int32(1665786026)) // SetCollectionItemTimelockRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.SetCollectionItemTimelock(context.Background(), collectionId, collectionItemId).XAuthorization(xAuthorization).XPassword(xPassword).SetCollectionItemTimelockRequest(setCollectionItemTimelockRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.SetCollectionItemTimelock(context.Background(), collectionId, collectionItemId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetCollectionItemTimelockRequest(setCollectionItemTimelockRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.SetCollectionItemTimelock``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1489,7 +1489,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 **collectionItemId** | **float32** | Any item id for the collection. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -1502,7 +1502,7 @@ Name | Type | Description  | Notes
 
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **setCollectionItemTimelockRequest** | [**SetCollectionItemTimelockRequest**](SetCollectionItemTimelockRequest.md) |  | 
 
 ### Return type
@@ -1525,7 +1525,7 @@ No authorization required
 
 ## TransferCollectionItem
 
-> TransactionModel TransferCollectionItem(ctx, collectionId, collectionItemId).XAuthorization(xAuthorization).XPassword(xPassword).TransferCollectionItemRequest(transferCollectionItemRequest).Execute()
+> TransactionModel TransferCollectionItem(ctx, collectionId, collectionItemId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).TransferCollectionItemRequest(transferCollectionItemRequest).Execute()
 
 Transfer collection item
 
@@ -1544,15 +1544,15 @@ import (
 )
 
 func main() {
-    collectionId := "collectionId_example" // string | Any collection id within the MetaFab ecosystem.
+    collectionId := "collectionId_example" // string | Any collection id within the MetaFab platform.
     collectionItemId := float32(8.14) // float32 | Any item id for the collection. Zero, or a positive integer.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     transferCollectionItemRequest := *openapiclient.NewTransferCollectionItemRequest(int32(123)) // TransferCollectionItemRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ItemsApi.TransferCollectionItem(context.Background(), collectionId, collectionItemId).XAuthorization(xAuthorization).XPassword(xPassword).TransferCollectionItemRequest(transferCollectionItemRequest).Execute()
+    resp, r, err := apiClient.ItemsApi.TransferCollectionItem(context.Background(), collectionId, collectionItemId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).TransferCollectionItemRequest(transferCollectionItemRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ItemsApi.TransferCollectionItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1568,7 +1568,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**collectionId** | **string** | Any collection id within the MetaFab ecosystem. | 
+**collectionId** | **string** | Any collection id within the MetaFab platform. | 
 **collectionItemId** | **float32** | Any item id for the collection. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -1581,7 +1581,7 @@ Name | Type | Description  | Notes
 
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **transferCollectionItemRequest** | [**TransferCollectionItemRequest**](TransferCollectionItemRequest.md) |  | 
 
 ### Return type

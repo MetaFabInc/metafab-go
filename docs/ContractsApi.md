@@ -168,7 +168,7 @@ import (
 )
 
 func main() {
-    contractId := "contractId_example" // string | Any contract id within the MetaFab ecosystem.
+    contractId := "contractId_example" // string | Any contract id within the MetaFab platform.
     func_ := "func__example" // string | A contract function name. This can be any valid function from the the ABI of the contract you are interacting with. For example, `balanceOf`.
     args := "123,"Hello",false" // string | A comma seperated list of basic data type arguments. This is optional and only necessary if the function being invoked requires arguments per the contract ABI. For example, `123,\"Hello\",false`. (optional)
 
@@ -190,7 +190,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**contractId** | **string** | Any contract id within the MetaFab ecosystem. | 
+**contractId** | **string** | Any contract id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -223,7 +223,7 @@ No authorization required
 
 ## TransferContractOwnership
 
-> TransactionModel TransferContractOwnership(ctx, contractId).XAuthorization(xAuthorization).XPassword(xPassword).TransferContractOwnershipRequest(transferContractOwnershipRequest).Execute()
+> TransactionModel TransferContractOwnership(ctx, contractId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).TransferContractOwnershipRequest(transferContractOwnershipRequest).Execute()
 
 Transfer contract ownership
 
@@ -242,14 +242,14 @@ import (
 )
 
 func main() {
-    contractId := "contractId_example" // string | Any contract id within the MetaFab ecosystem.
+    contractId := "contractId_example" // string | Any contract id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     transferContractOwnershipRequest := *openapiclient.NewTransferContractOwnershipRequest("OwnerAddress_example") // TransferContractOwnershipRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContractsApi.TransferContractOwnership(context.Background(), contractId).XAuthorization(xAuthorization).XPassword(xPassword).TransferContractOwnershipRequest(transferContractOwnershipRequest).Execute()
+    resp, r, err := apiClient.ContractsApi.TransferContractOwnership(context.Background(), contractId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).TransferContractOwnershipRequest(transferContractOwnershipRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContractsApi.TransferContractOwnership``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,7 +265,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**contractId** | **string** | Any contract id within the MetaFab ecosystem. | 
+**contractId** | **string** | Any contract id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **transferContractOwnershipRequest** | [**TransferContractOwnershipRequest**](TransferContractOwnershipRequest.md) |  | 
 
 ### Return type
@@ -299,7 +299,7 @@ No authorization required
 
 ## UpgradeContractTrustedForwarder
 
-> TransactionModel UpgradeContractTrustedForwarder(ctx, contractId).XAuthorization(xAuthorization).XPassword(xPassword).UpgradeContractTrustedForwarderRequest(upgradeContractTrustedForwarderRequest).Execute()
+> TransactionModel UpgradeContractTrustedForwarder(ctx, contractId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).UpgradeContractTrustedForwarderRequest(upgradeContractTrustedForwarderRequest).Execute()
 
 Upgrade contract trusted forwarder
 
@@ -318,14 +318,14 @@ import (
 )
 
 func main() {
-    contractId := "contractId_example" // string | Any contract id within the MetaFab ecosystem.
+    contractId := "contractId_example" // string | Any contract id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     upgradeContractTrustedForwarderRequest := *openapiclient.NewUpgradeContractTrustedForwarderRequest("ForwarderAddress_example") // UpgradeContractTrustedForwarderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContractsApi.UpgradeContractTrustedForwarder(context.Background(), contractId).XAuthorization(xAuthorization).XPassword(xPassword).UpgradeContractTrustedForwarderRequest(upgradeContractTrustedForwarderRequest).Execute()
+    resp, r, err := apiClient.ContractsApi.UpgradeContractTrustedForwarder(context.Background(), contractId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).UpgradeContractTrustedForwarderRequest(upgradeContractTrustedForwarderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContractsApi.UpgradeContractTrustedForwarder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -341,7 +341,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**contractId** | **string** | Any contract id within the MetaFab ecosystem. | 
+**contractId** | **string** | Any contract id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **upgradeContractTrustedForwarderRequest** | [**UpgradeContractTrustedForwarderRequest**](UpgradeContractTrustedForwarderRequest.md) |  | 
 
 ### Return type
@@ -375,7 +375,7 @@ No authorization required
 
 ## WriteContract
 
-> TransactionModel WriteContract(ctx, contractId).XAuthorization(xAuthorization).XPassword(xPassword).WriteContractRequest(writeContractRequest).Execute()
+> TransactionModel WriteContract(ctx, contractId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).WriteContractRequest(writeContractRequest).Execute()
 
 Write contract data
 
@@ -394,14 +394,14 @@ import (
 )
 
 func main() {
-    contractId := "contractId_example" // string | Any contract id within the MetaFab ecosystem.
+    contractId := "contractId_example" // string | Any contract id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
     writeContractRequest := *openapiclient.NewWriteContractRequest("Func_example") // WriteContractRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContractsApi.WriteContract(context.Background(), contractId).XAuthorization(xAuthorization).XPassword(xPassword).WriteContractRequest(writeContractRequest).Execute()
+    resp, r, err := apiClient.ContractsApi.WriteContract(context.Background(), contractId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).WriteContractRequest(writeContractRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContractsApi.WriteContract``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -417,7 +417,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**contractId** | **string** | Any contract id within the MetaFab ecosystem. | 
+**contractId** | **string** | Any contract id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
  **writeContractRequest** | [**WriteContractRequest**](WriteContractRequest.md) |  | 
 
 ### Return type

@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -17,7 +17,10 @@ import (
 
 // AuthGame200ResponseAllOf struct for AuthGame200ResponseAllOf
 type AuthGame200ResponseAllOf struct {
+	// This field has not had a description added.
+	WalletDecryptKey *string `json:"walletDecryptKey,omitempty"`
 	Wallet *WalletModel `json:"wallet,omitempty"`
+	FundingWallet *WalletModel `json:"fundingWallet,omitempty"`
 }
 
 // NewAuthGame200ResponseAllOf instantiates a new AuthGame200ResponseAllOf object
@@ -37,9 +40,41 @@ func NewAuthGame200ResponseAllOfWithDefaults() *AuthGame200ResponseAllOf {
 	return &this
 }
 
+// GetWalletDecryptKey returns the WalletDecryptKey field value if set, zero value otherwise.
+func (o *AuthGame200ResponseAllOf) GetWalletDecryptKey() string {
+	if o == nil || isNil(o.WalletDecryptKey) {
+		var ret string
+		return ret
+	}
+	return *o.WalletDecryptKey
+}
+
+// GetWalletDecryptKeyOk returns a tuple with the WalletDecryptKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthGame200ResponseAllOf) GetWalletDecryptKeyOk() (*string, bool) {
+	if o == nil || isNil(o.WalletDecryptKey) {
+    return nil, false
+	}
+	return o.WalletDecryptKey, true
+}
+
+// HasWalletDecryptKey returns a boolean if a field has been set.
+func (o *AuthGame200ResponseAllOf) HasWalletDecryptKey() bool {
+	if o != nil && !isNil(o.WalletDecryptKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetWalletDecryptKey gets a reference to the given string and assigns it to the WalletDecryptKey field.
+func (o *AuthGame200ResponseAllOf) SetWalletDecryptKey(v string) {
+	o.WalletDecryptKey = &v
+}
+
 // GetWallet returns the Wallet field value if set, zero value otherwise.
 func (o *AuthGame200ResponseAllOf) GetWallet() WalletModel {
-	if o == nil || o.Wallet == nil {
+	if o == nil || isNil(o.Wallet) {
 		var ret WalletModel
 		return ret
 	}
@@ -49,15 +84,15 @@ func (o *AuthGame200ResponseAllOf) GetWallet() WalletModel {
 // GetWalletOk returns a tuple with the Wallet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200ResponseAllOf) GetWalletOk() (*WalletModel, bool) {
-	if o == nil || o.Wallet == nil {
-		return nil, false
+	if o == nil || isNil(o.Wallet) {
+    return nil, false
 	}
 	return o.Wallet, true
 }
 
 // HasWallet returns a boolean if a field has been set.
 func (o *AuthGame200ResponseAllOf) HasWallet() bool {
-	if o != nil && o.Wallet != nil {
+	if o != nil && !isNil(o.Wallet) {
 		return true
 	}
 
@@ -69,10 +104,48 @@ func (o *AuthGame200ResponseAllOf) SetWallet(v WalletModel) {
 	o.Wallet = &v
 }
 
+// GetFundingWallet returns the FundingWallet field value if set, zero value otherwise.
+func (o *AuthGame200ResponseAllOf) GetFundingWallet() WalletModel {
+	if o == nil || isNil(o.FundingWallet) {
+		var ret WalletModel
+		return ret
+	}
+	return *o.FundingWallet
+}
+
+// GetFundingWalletOk returns a tuple with the FundingWallet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthGame200ResponseAllOf) GetFundingWalletOk() (*WalletModel, bool) {
+	if o == nil || isNil(o.FundingWallet) {
+    return nil, false
+	}
+	return o.FundingWallet, true
+}
+
+// HasFundingWallet returns a boolean if a field has been set.
+func (o *AuthGame200ResponseAllOf) HasFundingWallet() bool {
+	if o != nil && !isNil(o.FundingWallet) {
+		return true
+	}
+
+	return false
+}
+
+// SetFundingWallet gets a reference to the given WalletModel and assigns it to the FundingWallet field.
+func (o *AuthGame200ResponseAllOf) SetFundingWallet(v WalletModel) {
+	o.FundingWallet = &v
+}
+
 func (o AuthGame200ResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Wallet != nil {
+	if !isNil(o.WalletDecryptKey) {
+		toSerialize["walletDecryptKey"] = o.WalletDecryptKey
+	}
+	if !isNil(o.Wallet) {
 		toSerialize["wallet"] = o.Wallet
+	}
+	if !isNil(o.FundingWallet) {
+		toSerialize["fundingWallet"] = o.FundingWallet
 	}
 	return json.Marshal(toSerialize)
 }

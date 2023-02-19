@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -46,7 +46,7 @@ func NewGetCurrencyFees200ResponseWithDefaults() *GetCurrencyFees200Response {
 
 // GetRecipientAddress returns the RecipientAddress field value if set, zero value otherwise.
 func (o *GetCurrencyFees200Response) GetRecipientAddress() string {
-	if o == nil || o.RecipientAddress == nil {
+	if o == nil || isNil(o.RecipientAddress) {
 		var ret string
 		return ret
 	}
@@ -56,15 +56,15 @@ func (o *GetCurrencyFees200Response) GetRecipientAddress() string {
 // GetRecipientAddressOk returns a tuple with the RecipientAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencyFees200Response) GetRecipientAddressOk() (*string, bool) {
-	if o == nil || o.RecipientAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.RecipientAddress) {
+    return nil, false
 	}
 	return o.RecipientAddress, true
 }
 
 // HasRecipientAddress returns a boolean if a field has been set.
 func (o *GetCurrencyFees200Response) HasRecipientAddress() bool {
-	if o != nil && o.RecipientAddress != nil {
+	if o != nil && !isNil(o.RecipientAddress) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *GetCurrencyFees200Response) SetRecipientAddress(v string) {
 
 // GetBasisPoints returns the BasisPoints field value if set, zero value otherwise.
 func (o *GetCurrencyFees200Response) GetBasisPoints() float32 {
-	if o == nil || o.BasisPoints == nil {
+	if o == nil || isNil(o.BasisPoints) {
 		var ret float32
 		return ret
 	}
@@ -88,15 +88,15 @@ func (o *GetCurrencyFees200Response) GetBasisPoints() float32 {
 // GetBasisPointsOk returns a tuple with the BasisPoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencyFees200Response) GetBasisPointsOk() (*float32, bool) {
-	if o == nil || o.BasisPoints == nil {
-		return nil, false
+	if o == nil || isNil(o.BasisPoints) {
+    return nil, false
 	}
 	return o.BasisPoints, true
 }
 
 // HasBasisPoints returns a boolean if a field has been set.
 func (o *GetCurrencyFees200Response) HasBasisPoints() bool {
-	if o != nil && o.BasisPoints != nil {
+	if o != nil && !isNil(o.BasisPoints) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *GetCurrencyFees200Response) SetBasisPoints(v float32) {
 
 // GetFixedAmount returns the FixedAmount field value if set, zero value otherwise.
 func (o *GetCurrencyFees200Response) GetFixedAmount() float32 {
-	if o == nil || o.FixedAmount == nil {
+	if o == nil || isNil(o.FixedAmount) {
 		var ret float32
 		return ret
 	}
@@ -120,15 +120,15 @@ func (o *GetCurrencyFees200Response) GetFixedAmount() float32 {
 // GetFixedAmountOk returns a tuple with the FixedAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencyFees200Response) GetFixedAmountOk() (*float32, bool) {
-	if o == nil || o.FixedAmount == nil {
-		return nil, false
+	if o == nil || isNil(o.FixedAmount) {
+    return nil, false
 	}
 	return o.FixedAmount, true
 }
 
 // HasFixedAmount returns a boolean if a field has been set.
 func (o *GetCurrencyFees200Response) HasFixedAmount() bool {
-	if o != nil && o.FixedAmount != nil {
+	if o != nil && !isNil(o.FixedAmount) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *GetCurrencyFees200Response) SetFixedAmount(v float32) {
 
 // GetCapAmount returns the CapAmount field value if set, zero value otherwise.
 func (o *GetCurrencyFees200Response) GetCapAmount() float32 {
-	if o == nil || o.CapAmount == nil {
+	if o == nil || isNil(o.CapAmount) {
 		var ret float32
 		return ret
 	}
@@ -152,15 +152,15 @@ func (o *GetCurrencyFees200Response) GetCapAmount() float32 {
 // GetCapAmountOk returns a tuple with the CapAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencyFees200Response) GetCapAmountOk() (*float32, bool) {
-	if o == nil || o.CapAmount == nil {
-		return nil, false
+	if o == nil || isNil(o.CapAmount) {
+    return nil, false
 	}
 	return o.CapAmount, true
 }
 
 // HasCapAmount returns a boolean if a field has been set.
 func (o *GetCurrencyFees200Response) HasCapAmount() bool {
-	if o != nil && o.CapAmount != nil {
+	if o != nil && !isNil(o.CapAmount) {
 		return true
 	}
 
@@ -174,16 +174,16 @@ func (o *GetCurrencyFees200Response) SetCapAmount(v float32) {
 
 func (o GetCurrencyFees200Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RecipientAddress != nil {
+	if !isNil(o.RecipientAddress) {
 		toSerialize["recipientAddress"] = o.RecipientAddress
 	}
-	if o.BasisPoints != nil {
+	if !isNil(o.BasisPoints) {
 		toSerialize["basisPoints"] = o.BasisPoints
 	}
-	if o.FixedAmount != nil {
+	if !isNil(o.FixedAmount) {
 		toSerialize["fixedAmount"] = o.FixedAmount
 	}
-	if o.CapAmount != nil {
+	if !isNil(o.CapAmount) {
 		toSerialize["capAmount"] = o.CapAmount
 	}
 	return json.Marshal(toSerialize)

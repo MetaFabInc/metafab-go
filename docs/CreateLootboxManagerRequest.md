@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Name** | Pointer to **string** | The name of this item collection. This can be anything, such as &#x60;Production - Lootbox Manager&#x60;, &#x60;Testing - My Game Lootbox Manager&#x60;, etc. | [optional] 
 **Chain** | **string** | The blockchain you want to deploy this lootbox manager on. Support for new blockchains are added over time. | 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewCreateLootboxManagerRequestWithDefaults instantiates a new CreateLootboxManagerRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *CreateLootboxManagerRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CreateLootboxManagerRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CreateLootboxManagerRequest) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CreateLootboxManagerRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetChain
 

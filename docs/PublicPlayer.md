@@ -7,10 +7,13 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | This field has not had a description added. | [optional] 
 **GameId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **WalletId** | Pointer to **string** | This field has not had a description added. | [optional] 
+**ConnectedWalletId** | Pointer to **string** | This field has not had a description added. | [optional] 
+**ProfileId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Username** | Pointer to **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
-**Wallet** | Pointer to [**PublicPlayerWallet**](PublicPlayerWallet.md) |  | [optional] 
+**CustodialWallet** | Pointer to [**PublicPlayerCustodialWallet**](PublicPlayerCustodialWallet.md) |  | [optional] 
+**Wallet** | Pointer to [**PublicPlayerCustodialWallet**](PublicPlayerCustodialWallet.md) |  | [optional] 
 
 ## Methods
 
@@ -106,6 +109,56 @@ SetWalletId sets WalletId field to given value.
 
 HasWalletId returns a boolean if a field has been set.
 
+### GetConnectedWalletId
+
+`func (o *PublicPlayer) GetConnectedWalletId() string`
+
+GetConnectedWalletId returns the ConnectedWalletId field if non-nil, zero value otherwise.
+
+### GetConnectedWalletIdOk
+
+`func (o *PublicPlayer) GetConnectedWalletIdOk() (*string, bool)`
+
+GetConnectedWalletIdOk returns a tuple with the ConnectedWalletId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectedWalletId
+
+`func (o *PublicPlayer) SetConnectedWalletId(v string)`
+
+SetConnectedWalletId sets ConnectedWalletId field to given value.
+
+### HasConnectedWalletId
+
+`func (o *PublicPlayer) HasConnectedWalletId() bool`
+
+HasConnectedWalletId returns a boolean if a field has been set.
+
+### GetProfileId
+
+`func (o *PublicPlayer) GetProfileId() string`
+
+GetProfileId returns the ProfileId field if non-nil, zero value otherwise.
+
+### GetProfileIdOk
+
+`func (o *PublicPlayer) GetProfileIdOk() (*string, bool)`
+
+GetProfileIdOk returns a tuple with the ProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfileId
+
+`func (o *PublicPlayer) SetProfileId(v string)`
+
+SetProfileId sets ProfileId field to given value.
+
+### HasProfileId
+
+`func (o *PublicPlayer) HasProfileId() bool`
+
+HasProfileId returns a boolean if a field has been set.
+
 ### GetUsername
 
 `func (o *PublicPlayer) GetUsername() string`
@@ -181,22 +234,47 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### GetCustodialWallet
+
+`func (o *PublicPlayer) GetCustodialWallet() PublicPlayerCustodialWallet`
+
+GetCustodialWallet returns the CustodialWallet field if non-nil, zero value otherwise.
+
+### GetCustodialWalletOk
+
+`func (o *PublicPlayer) GetCustodialWalletOk() (*PublicPlayerCustodialWallet, bool)`
+
+GetCustodialWalletOk returns a tuple with the CustodialWallet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustodialWallet
+
+`func (o *PublicPlayer) SetCustodialWallet(v PublicPlayerCustodialWallet)`
+
+SetCustodialWallet sets CustodialWallet field to given value.
+
+### HasCustodialWallet
+
+`func (o *PublicPlayer) HasCustodialWallet() bool`
+
+HasCustodialWallet returns a boolean if a field has been set.
+
 ### GetWallet
 
-`func (o *PublicPlayer) GetWallet() PublicPlayerWallet`
+`func (o *PublicPlayer) GetWallet() PublicPlayerCustodialWallet`
 
 GetWallet returns the Wallet field if non-nil, zero value otherwise.
 
 ### GetWalletOk
 
-`func (o *PublicPlayer) GetWalletOk() (*PublicPlayerWallet, bool)`
+`func (o *PublicPlayer) GetWalletOk() (*PublicPlayerCustodialWallet, bool)`
 
 GetWalletOk returns a tuple with the Wallet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWallet
 
-`func (o *PublicPlayer) SetWallet(v PublicPlayerWallet)`
+`func (o *PublicPlayer) SetWallet(v PublicPlayerCustodialWallet)`
 
 SetWallet sets Wallet field to given value.
 

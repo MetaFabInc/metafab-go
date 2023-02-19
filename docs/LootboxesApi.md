@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CreateLootboxManager
 
-> CreateLootboxManager200Response CreateLootboxManager(ctx).XAuthorization(xAuthorization).XPassword(xPassword).CreateLootboxManagerRequest(createLootboxManagerRequest).Execute()
+> CreateLootboxManager200Response CreateLootboxManager(ctx).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateLootboxManagerRequest(createLootboxManagerRequest).Execute()
 
 Create lootbox manager
 
@@ -36,12 +36,12 @@ import (
 
 func main() {
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     createLootboxManagerRequest := *openapiclient.NewCreateLootboxManagerRequest("SELECT ONE") // CreateLootboxManagerRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LootboxesApi.CreateLootboxManager(context.Background()).XAuthorization(xAuthorization).XPassword(xPassword).CreateLootboxManagerRequest(createLootboxManagerRequest).Execute()
+    resp, r, err := apiClient.LootboxesApi.CreateLootboxManager(context.Background()).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateLootboxManagerRequest(createLootboxManagerRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LootboxesApi.CreateLootboxManager``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,7 +63,7 @@ Other parameters are passed through a pointer to a apiCreateLootboxManagerReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createLootboxManagerRequest** | [**CreateLootboxManagerRequest**](CreateLootboxManagerRequest.md) |  | 
 
 ### Return type
@@ -105,8 +105,8 @@ import (
 )
 
 func main() {
-    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab ecosystem.
-    lootboxManagerLootboxId := "lootboxManagerLootboxId_example" // string | Any lootbox manager lootbox id within the MetaFab ecosystem.
+    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab platform.
+    lootboxManagerLootboxId := "lootboxManagerLootboxId_example" // string | Any lootbox manager lootbox id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -126,8 +126,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab ecosystem. | 
-**lootboxManagerLootboxId** | **string** | Any lootbox manager lootbox id within the MetaFab ecosystem. | 
+**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab platform. | 
+**lootboxManagerLootboxId** | **string** | Any lootbox manager lootbox id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -178,7 +178,7 @@ import (
 )
 
 func main() {
-    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab ecosystem.
+    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -198,7 +198,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab ecosystem. | 
+**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -295,7 +295,7 @@ No authorization required
 
 ## OpenLootboxManagerLootbox
 
-> []TransactionModel OpenLootboxManagerLootbox(ctx, lootboxManagerId, lootboxManagerLootboxId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+> []TransactionModel OpenLootboxManagerLootbox(ctx, lootboxManagerId, lootboxManagerLootboxId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).Execute()
 
 Open lootbox manager lootbox
 
@@ -314,14 +314,14 @@ import (
 )
 
 func main() {
-    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab ecosystem.
-    lootboxManagerLootboxId := "lootboxManagerLootboxId_example" // string | Any lootbox manager lootbox id within the MetaFab ecosystem.
+    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab platform.
+    lootboxManagerLootboxId := "lootboxManagerLootboxId_example" // string | Any lootbox manager lootbox id within the MetaFab platform.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LootboxesApi.OpenLootboxManagerLootbox(context.Background(), lootboxManagerId, lootboxManagerLootboxId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+    resp, r, err := apiClient.LootboxesApi.OpenLootboxManagerLootbox(context.Background(), lootboxManagerId, lootboxManagerLootboxId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LootboxesApi.OpenLootboxManagerLootbox``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -337,8 +337,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab ecosystem. | 
-**lootboxManagerLootboxId** | **string** | Any lootbox manager lootbox id within the MetaFab ecosystem. | 
+**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab platform. | 
+**lootboxManagerLootboxId** | **string** | Any lootbox manager lootbox id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
 
 ### Return type
 
@@ -372,7 +372,7 @@ No authorization required
 
 ## RemoveLootboxManagerLootbox
 
-> TransactionModel RemoveLootboxManagerLootbox(ctx, lootboxManagerId, lootboxManagerLootboxId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+> TransactionModel RemoveLootboxManagerLootbox(ctx, lootboxManagerId, lootboxManagerLootboxId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).Execute()
 
 Remove lootbox manager lootbox
 
@@ -391,14 +391,14 @@ import (
 )
 
 func main() {
-    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab ecosystem.
-    lootboxManagerLootboxId := "lootboxManagerLootboxId_example" // string | Any lootbox manager lootbox id within the MetaFab ecosystem.
+    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab platform.
+    lootboxManagerLootboxId := "lootboxManagerLootboxId_example" // string | Any lootbox manager lootbox id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LootboxesApi.RemoveLootboxManagerLootbox(context.Background(), lootboxManagerId, lootboxManagerLootboxId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+    resp, r, err := apiClient.LootboxesApi.RemoveLootboxManagerLootbox(context.Background(), lootboxManagerId, lootboxManagerLootboxId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LootboxesApi.RemoveLootboxManagerLootbox``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -414,8 +414,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab ecosystem. | 
-**lootboxManagerLootboxId** | **string** | Any lootbox manager lootbox id within the MetaFab ecosystem. | 
+**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab platform. | 
+**lootboxManagerLootboxId** | **string** | Any lootbox manager lootbox id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
 
 ### Return type
 
@@ -449,7 +449,7 @@ No authorization required
 
 ## SetLootboxManagerLootbox
 
-> TransactionModel SetLootboxManagerLootbox(ctx, lootboxManagerId).XAuthorization(xAuthorization).XPassword(xPassword).SetLootboxManagerLootboxRequest(setLootboxManagerLootboxRequest).Execute()
+> TransactionModel SetLootboxManagerLootbox(ctx, lootboxManagerId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetLootboxManagerLootboxRequest(setLootboxManagerLootboxRequest).Execute()
 
 Set lootbox manager lootbox
 
@@ -468,14 +468,14 @@ import (
 )
 
 func main() {
-    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab ecosystem.
+    lootboxManagerId := "lootboxManagerId_example" // string | Any lootbox manager id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     setLootboxManagerLootboxRequest := *openapiclient.NewSetLootboxManagerLootboxRequest(int32(1337)) // SetLootboxManagerLootboxRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LootboxesApi.SetLootboxManagerLootbox(context.Background(), lootboxManagerId).XAuthorization(xAuthorization).XPassword(xPassword).SetLootboxManagerLootboxRequest(setLootboxManagerLootboxRequest).Execute()
+    resp, r, err := apiClient.LootboxesApi.SetLootboxManagerLootbox(context.Background(), lootboxManagerId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetLootboxManagerLootboxRequest(setLootboxManagerLootboxRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LootboxesApi.SetLootboxManagerLootbox``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -491,7 +491,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab ecosystem. | 
+**lootboxManagerId** | **string** | Any lootbox manager id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **setLootboxManagerLootboxRequest** | [**SetLootboxManagerLootboxRequest**](SetLootboxManagerLootboxRequest.md) |  | 
 
 ### Return type

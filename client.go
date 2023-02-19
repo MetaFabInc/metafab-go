@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the MetaFab API API v1.4.1
+// APIClient manages communication with the MetaFab API API v1.5.1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -53,6 +53,8 @@ type APIClient struct {
 	ContractsApi *ContractsApiService
 
 	CurrenciesApi *CurrenciesApiService
+
+	EcosystemsApi *EcosystemsApiService
 
 	GamesApi *GamesApiService
 
@@ -87,6 +89,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.ContractsApi = (*ContractsApiService)(&c.common)
 	c.CurrenciesApi = (*CurrenciesApiService)(&c.common)
+	c.EcosystemsApi = (*EcosystemsApiService)(&c.common)
 	c.GamesApi = (*GamesApiService)(&c.common)
 	c.ItemsApi = (*ItemsApiService)(&c.common)
 	c.LootboxesApi = (*LootboxesApiService)(&c.common)
@@ -145,7 +148,7 @@ func typeCheckParameter(obj interface{}, expected string, name string) error {
 
 	// Check the type is as expected.
 	if reflect.TypeOf(obj).String() != expected {
-		return fmt.Errorf("Expected %s to be of type %s but received %s.", name, expected, reflect.TypeOf(obj).String())
+		return fmt.Errorf("expected %s to be of type %s but received %s", name, expected, reflect.TypeOf(obj).String())
 	}
 	return nil
 }
@@ -484,7 +487,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	}
 
 	if bodyBuf.Len() == 0 {
-		err = fmt.Errorf("Invalid body type %s\n", contentType)
+		err = fmt.Errorf("invalid body type %s\n", contentType)
 		return nil, err
 	}
 	return bodyBuf, nil
@@ -585,4 +588,24 @@ func (e GenericOpenAPIError) Body() []byte {
 // Model returns the unpacked model of the error
 func (e GenericOpenAPIError) Model() interface{} {
 	return e.model
+}
+
+// format error message using title and detail when model implements rfc7807
+func formatErrorMessage(status string, v interface{}) string {
+
+    str := ""
+    metaValue := reflect.ValueOf(v).Elem()
+
+    field := metaValue.FieldByName("Title")
+    if field != (reflect.Value{}) {
+        str = fmt.Sprintf("%s", field.Interface())
+    }
+
+    field = metaValue.FieldByName("Detail")
+    if field != (reflect.Value{}) {
+        str = fmt.Sprintf("%s (%s)", str, field.Interface())
+    }
+
+    // status title (detail)
+    return fmt.Sprintf("%s %s", status, str)
 }

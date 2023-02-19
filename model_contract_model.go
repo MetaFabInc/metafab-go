@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -56,7 +56,7 @@ func NewContractModelWithDefaults() *ContractModel {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ContractModel) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -66,15 +66,15 @@ func (o *ContractModel) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ContractModel) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *ContractModel) SetId(v string) {
 
 // GetGameId returns the GameId field value if set, zero value otherwise.
 func (o *ContractModel) GetGameId() string {
-	if o == nil || o.GameId == nil {
+	if o == nil || isNil(o.GameId) {
 		var ret string
 		return ret
 	}
@@ -98,15 +98,15 @@ func (o *ContractModel) GetGameId() string {
 // GetGameIdOk returns a tuple with the GameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetGameIdOk() (*string, bool) {
-	if o == nil || o.GameId == nil {
-		return nil, false
+	if o == nil || isNil(o.GameId) {
+    return nil, false
 	}
 	return o.GameId, true
 }
 
 // HasGameId returns a boolean if a field has been set.
 func (o *ContractModel) HasGameId() bool {
-	if o != nil && o.GameId != nil {
+	if o != nil && !isNil(o.GameId) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *ContractModel) SetGameId(v string) {
 
 // GetChain returns the Chain field value if set, zero value otherwise.
 func (o *ContractModel) GetChain() string {
-	if o == nil || o.Chain == nil {
+	if o == nil || isNil(o.Chain) {
 		var ret string
 		return ret
 	}
@@ -130,15 +130,15 @@ func (o *ContractModel) GetChain() string {
 // GetChainOk returns a tuple with the Chain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetChainOk() (*string, bool) {
-	if o == nil || o.Chain == nil {
-		return nil, false
+	if o == nil || isNil(o.Chain) {
+    return nil, false
 	}
 	return o.Chain, true
 }
 
 // HasChain returns a boolean if a field has been set.
 func (o *ContractModel) HasChain() bool {
-	if o != nil && o.Chain != nil {
+	if o != nil && !isNil(o.Chain) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *ContractModel) SetChain(v string) {
 
 // GetAbi returns the Abi field value if set, zero value otherwise.
 func (o *ContractModel) GetAbi() map[string]interface{} {
-	if o == nil || o.Abi == nil {
+	if o == nil || isNil(o.Abi) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -162,15 +162,15 @@ func (o *ContractModel) GetAbi() map[string]interface{} {
 // GetAbiOk returns a tuple with the Abi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetAbiOk() (map[string]interface{}, bool) {
-	if o == nil || o.Abi == nil {
-		return nil, false
+	if o == nil || isNil(o.Abi) {
+    return map[string]interface{}{}, false
 	}
 	return o.Abi, true
 }
 
 // HasAbi returns a boolean if a field has been set.
 func (o *ContractModel) HasAbi() bool {
-	if o != nil && o.Abi != nil {
+	if o != nil && !isNil(o.Abi) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *ContractModel) SetAbi(v map[string]interface{}) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ContractModel) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -194,15 +194,15 @@ func (o *ContractModel) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *ContractModel) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *ContractModel) SetType(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *ContractModel) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil || isNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -226,15 +226,15 @@ func (o *ContractModel) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
-		return nil, false
+	if o == nil || isNil(o.Address) {
+    return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *ContractModel) HasAddress() bool {
-	if o != nil && o.Address != nil {
+	if o != nil && !isNil(o.Address) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *ContractModel) SetAddress(v string) {
 
 // GetForwarderAddress returns the ForwarderAddress field value if set, zero value otherwise.
 func (o *ContractModel) GetForwarderAddress() string {
-	if o == nil || o.ForwarderAddress == nil {
+	if o == nil || isNil(o.ForwarderAddress) {
 		var ret string
 		return ret
 	}
@@ -258,15 +258,15 @@ func (o *ContractModel) GetForwarderAddress() string {
 // GetForwarderAddressOk returns a tuple with the ForwarderAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetForwarderAddressOk() (*string, bool) {
-	if o == nil || o.ForwarderAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.ForwarderAddress) {
+    return nil, false
 	}
 	return o.ForwarderAddress, true
 }
 
 // HasForwarderAddress returns a boolean if a field has been set.
 func (o *ContractModel) HasForwarderAddress() bool {
-	if o != nil && o.ForwarderAddress != nil {
+	if o != nil && !isNil(o.ForwarderAddress) {
 		return true
 	}
 
@@ -280,7 +280,7 @@ func (o *ContractModel) SetForwarderAddress(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ContractModel) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -290,15 +290,15 @@ func (o *ContractModel) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ContractModel) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -312,7 +312,7 @@ func (o *ContractModel) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ContractModel) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -322,15 +322,15 @@ func (o *ContractModel) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContractModel) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ContractModel) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -344,31 +344,31 @@ func (o *ContractModel) SetCreatedAt(v string) {
 
 func (o ContractModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.GameId != nil {
+	if !isNil(o.GameId) {
 		toSerialize["gameId"] = o.GameId
 	}
-	if o.Chain != nil {
+	if !isNil(o.Chain) {
 		toSerialize["chain"] = o.Chain
 	}
-	if o.Abi != nil {
+	if !isNil(o.Abi) {
 		toSerialize["abi"] = o.Abi
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Address != nil {
+	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if o.ForwarderAddress != nil {
+	if !isNil(o.ForwarderAddress) {
 		toSerialize["forwarderAddress"] = o.ForwarderAddress
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
 	return json.Marshal(toSerialize)

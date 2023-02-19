@@ -8,11 +8,15 @@ Name | Type | Description | Notes
 **GameId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **WalletId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **ConnectedWalletId** | Pointer to **string** | This field has not had a description added. | [optional] 
+**ProfileId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Username** | Pointer to **string** | This field has not had a description added. | [optional] 
 **AccessToken** | Pointer to **string** | This field has not had a description added. | [optional] 
+**ProfilePermissions** | Pointer to **map[string]interface{}** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
+**WalletDecryptKey** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Wallet** | Pointer to [**WalletModel**](WalletModel.md) |  | [optional] 
+**CustodialWallet** | Pointer to [**WalletModel**](WalletModel.md) |  | [optional] 
 
 ## Methods
 
@@ -133,6 +137,31 @@ SetConnectedWalletId sets ConnectedWalletId field to given value.
 
 HasConnectedWalletId returns a boolean if a field has been set.
 
+### GetProfileId
+
+`func (o *AuthPlayer200Response) GetProfileId() string`
+
+GetProfileId returns the ProfileId field if non-nil, zero value otherwise.
+
+### GetProfileIdOk
+
+`func (o *AuthPlayer200Response) GetProfileIdOk() (*string, bool)`
+
+GetProfileIdOk returns a tuple with the ProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfileId
+
+`func (o *AuthPlayer200Response) SetProfileId(v string)`
+
+SetProfileId sets ProfileId field to given value.
+
+### HasProfileId
+
+`func (o *AuthPlayer200Response) HasProfileId() bool`
+
+HasProfileId returns a boolean if a field has been set.
+
 ### GetUsername
 
 `func (o *AuthPlayer200Response) GetUsername() string`
@@ -182,6 +211,31 @@ SetAccessToken sets AccessToken field to given value.
 `func (o *AuthPlayer200Response) HasAccessToken() bool`
 
 HasAccessToken returns a boolean if a field has been set.
+
+### GetProfilePermissions
+
+`func (o *AuthPlayer200Response) GetProfilePermissions() map[string]interface{}`
+
+GetProfilePermissions returns the ProfilePermissions field if non-nil, zero value otherwise.
+
+### GetProfilePermissionsOk
+
+`func (o *AuthPlayer200Response) GetProfilePermissionsOk() (*map[string]interface{}, bool)`
+
+GetProfilePermissionsOk returns a tuple with the ProfilePermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfilePermissions
+
+`func (o *AuthPlayer200Response) SetProfilePermissions(v map[string]interface{})`
+
+SetProfilePermissions sets ProfilePermissions field to given value.
+
+### HasProfilePermissions
+
+`func (o *AuthPlayer200Response) HasProfilePermissions() bool`
+
+HasProfilePermissions returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -233,6 +287,31 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### GetWalletDecryptKey
+
+`func (o *AuthPlayer200Response) GetWalletDecryptKey() string`
+
+GetWalletDecryptKey returns the WalletDecryptKey field if non-nil, zero value otherwise.
+
+### GetWalletDecryptKeyOk
+
+`func (o *AuthPlayer200Response) GetWalletDecryptKeyOk() (*string, bool)`
+
+GetWalletDecryptKeyOk returns a tuple with the WalletDecryptKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWalletDecryptKey
+
+`func (o *AuthPlayer200Response) SetWalletDecryptKey(v string)`
+
+SetWalletDecryptKey sets WalletDecryptKey field to given value.
+
+### HasWalletDecryptKey
+
+`func (o *AuthPlayer200Response) HasWalletDecryptKey() bool`
+
+HasWalletDecryptKey returns a boolean if a field has been set.
+
 ### GetWallet
 
 `func (o *AuthPlayer200Response) GetWallet() WalletModel`
@@ -257,6 +336,31 @@ SetWallet sets Wallet field to given value.
 `func (o *AuthPlayer200Response) HasWallet() bool`
 
 HasWallet returns a boolean if a field has been set.
+
+### GetCustodialWallet
+
+`func (o *AuthPlayer200Response) GetCustodialWallet() WalletModel`
+
+GetCustodialWallet returns the CustodialWallet field if non-nil, zero value otherwise.
+
+### GetCustodialWalletOk
+
+`func (o *AuthPlayer200Response) GetCustodialWalletOk() (*WalletModel, bool)`
+
+GetCustodialWalletOk returns a tuple with the CustodialWallet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustodialWallet
+
+`func (o *AuthPlayer200Response) SetCustodialWallet(v WalletModel)`
+
+SetCustodialWallet sets CustodialWallet field to given value.
+
+### HasCustodialWallet
+
+`func (o *AuthPlayer200Response) HasCustodialWallet() bool`
+
+HasCustodialWallet returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

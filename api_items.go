@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -29,7 +29,7 @@ type ApiBatchMintCollectionItemsRequest struct {
 	ApiService *ItemsApiService
 	collectionId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	batchMintCollectionItemsRequest *BatchMintCollectionItemsRequest
 }
 
@@ -39,9 +39,9 @@ func (r ApiBatchMintCollectionItemsRequest) XAuthorization(xAuthorization string
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiBatchMintCollectionItemsRequest) XPassword(xPassword string) ApiBatchMintCollectionItemsRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiBatchMintCollectionItemsRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiBatchMintCollectionItemsRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -60,7 +60,7 @@ BatchMintCollectionItems Batch mint collection items
 Creates (mints) the provided itemIds of the specified quantities to the provided wallet address or wallet address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiBatchMintCollectionItemsRequest
 */
 func (a *ItemsApiService) BatchMintCollectionItems(ctx context.Context, collectionId string) ApiBatchMintCollectionItemsRequest {
@@ -95,8 +95,8 @@ func (a *ItemsApiService) BatchMintCollectionItemsExecute(r ApiBatchMintCollecti
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.batchMintCollectionItemsRequest == nil {
 		return localVarReturnValue, nil, reportError("batchMintCollectionItemsRequest is required and must be specified")
@@ -120,7 +120,7 @@ func (a *ItemsApiService) BatchMintCollectionItemsExecute(r ApiBatchMintCollecti
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.batchMintCollectionItemsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -152,7 +152,8 @@ func (a *ItemsApiService) BatchMintCollectionItemsExecute(r ApiBatchMintCollecti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -162,7 +163,8 @@ func (a *ItemsApiService) BatchMintCollectionItemsExecute(r ApiBatchMintCollecti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -184,7 +186,7 @@ type ApiBatchTransferCollectionItemsRequest struct {
 	ApiService *ItemsApiService
 	collectionId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	batchTransferCollectionItemsRequest *BatchTransferCollectionItemsRequest
 }
 
@@ -194,9 +196,9 @@ func (r ApiBatchTransferCollectionItemsRequest) XAuthorization(xAuthorization st
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiBatchTransferCollectionItemsRequest) XPassword(xPassword string) ApiBatchTransferCollectionItemsRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiBatchTransferCollectionItemsRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiBatchTransferCollectionItemsRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -215,7 +217,7 @@ BatchTransferCollectionItems Batch transfer collection items
 Transfers one or multiple items of specified quantities to the provided wallet addresses or wallet addresses associated with the provided walletIds. You may also provide a combination of addresses and walletIds in one request.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiBatchTransferCollectionItemsRequest
 */
 func (a *ItemsApiService) BatchTransferCollectionItems(ctx context.Context, collectionId string) ApiBatchTransferCollectionItemsRequest {
@@ -250,8 +252,8 @@ func (a *ItemsApiService) BatchTransferCollectionItemsExecute(r ApiBatchTransfer
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.batchTransferCollectionItemsRequest == nil {
 		return localVarReturnValue, nil, reportError("batchTransferCollectionItemsRequest is required and must be specified")
@@ -275,7 +277,7 @@ func (a *ItemsApiService) BatchTransferCollectionItemsExecute(r ApiBatchTransfer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.batchTransferCollectionItemsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -307,7 +309,8 @@ func (a *ItemsApiService) BatchTransferCollectionItemsExecute(r ApiBatchTransfer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -317,7 +320,8 @@ func (a *ItemsApiService) BatchTransferCollectionItemsExecute(r ApiBatchTransfer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -340,7 +344,7 @@ type ApiBurnCollectionItemRequest struct {
 	collectionId string
 	collectionItemId float32
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	burnCollectionItemRequest *BurnCollectionItemRequest
 }
 
@@ -350,9 +354,9 @@ func (r ApiBurnCollectionItemRequest) XAuthorization(xAuthorization string) ApiB
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiBurnCollectionItemRequest) XPassword(xPassword string) ApiBurnCollectionItemRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiBurnCollectionItemRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiBurnCollectionItemRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -371,7 +375,7 @@ BurnCollectionItem Burn collection item
 Removes (burns) the provided quantity of the collectionItemId from the authenticating game or players wallet. The quantity is permanently removed from the circulating supply of the item.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @param collectionItemId Any item id for the collection. Zero, or a positive integer.
  @return ApiBurnCollectionItemRequest
 */
@@ -409,8 +413,8 @@ func (a *ItemsApiService) BurnCollectionItemExecute(r ApiBurnCollectionItemReque
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.burnCollectionItemRequest == nil {
 		return localVarReturnValue, nil, reportError("burnCollectionItemRequest is required and must be specified")
@@ -434,7 +438,7 @@ func (a *ItemsApiService) BurnCollectionItemExecute(r ApiBurnCollectionItemReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.burnCollectionItemRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -466,7 +470,8 @@ func (a *ItemsApiService) BurnCollectionItemExecute(r ApiBurnCollectionItemReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -476,7 +481,8 @@ func (a *ItemsApiService) BurnCollectionItemExecute(r ApiBurnCollectionItemReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -497,7 +503,7 @@ type ApiCreateCollectionRequest struct {
 	ctx context.Context
 	ApiService *ItemsApiService
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	createCollectionRequest *CreateCollectionRequest
 }
 
@@ -507,9 +513,9 @@ func (r ApiCreateCollectionRequest) XAuthorization(xAuthorization string) ApiCre
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiCreateCollectionRequest) XPassword(xPassword string) ApiCreateCollectionRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiCreateCollectionRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiCreateCollectionRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -560,8 +566,8 @@ func (a *ItemsApiService) CreateCollectionExecute(r ApiCreateCollectionRequest) 
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.createCollectionRequest == nil {
 		return localVarReturnValue, nil, reportError("createCollectionRequest is required and must be specified")
@@ -585,7 +591,7 @@ func (a *ItemsApiService) CreateCollectionExecute(r ApiCreateCollectionRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.createCollectionRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -617,7 +623,8 @@ func (a *ItemsApiService) CreateCollectionExecute(r ApiCreateCollectionRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -627,7 +634,8 @@ func (a *ItemsApiService) CreateCollectionExecute(r ApiCreateCollectionRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -649,7 +657,7 @@ type ApiCreateCollectionItemRequest struct {
 	ApiService *ItemsApiService
 	collectionId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	createCollectionItemRequest *CreateCollectionItemRequest
 }
 
@@ -659,9 +667,9 @@ func (r ApiCreateCollectionItemRequest) XAuthorization(xAuthorization string) Ap
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiCreateCollectionItemRequest) XPassword(xPassword string) ApiCreateCollectionItemRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiCreateCollectionItemRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiCreateCollectionItemRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -684,7 +692,7 @@ Any itemId provided will have its existing item type overriden if it already exi
 Item type data is uploaded to, and resolved through IPFS for decentralized persistence.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiCreateCollectionItemRequest
 */
 func (a *ItemsApiService) CreateCollectionItem(ctx context.Context, collectionId string) ApiCreateCollectionItemRequest {
@@ -719,8 +727,8 @@ func (a *ItemsApiService) CreateCollectionItemExecute(r ApiCreateCollectionItemR
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.createCollectionItemRequest == nil {
 		return localVarReturnValue, nil, reportError("createCollectionItemRequest is required and must be specified")
@@ -744,7 +752,7 @@ func (a *ItemsApiService) CreateCollectionItemExecute(r ApiCreateCollectionItemR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.createCollectionItemRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -776,7 +784,8 @@ func (a *ItemsApiService) CreateCollectionItemExecute(r ApiCreateCollectionItemR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -786,7 +795,8 @@ func (a *ItemsApiService) CreateCollectionItemExecute(r ApiCreateCollectionItemR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -824,7 +834,7 @@ func (r ApiGetCollectionApprovalRequest) Address(address string) ApiGetCollectio
 	return r
 }
 
-// Any wallet id within the MetaFab ecosystem.
+// Any wallet id within the MetaFab platform.
 func (r ApiGetCollectionApprovalRequest) WalletId(walletId string) ApiGetCollectionApprovalRequest {
 	r.walletId = &walletId
 	return r
@@ -840,7 +850,7 @@ GetCollectionApproval Get collection approval
 Returns a boolean (true/false) representing if the provided operatorAddress has approval to transfer and burn items from the current collection owned by the address or address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiGetCollectionApprovalRequest
 */
 func (a *ItemsApiService) GetCollectionApproval(ctx context.Context, collectionId string) ApiGetCollectionApprovalRequest {
@@ -929,7 +939,8 @@ func (a *ItemsApiService) GetCollectionApprovalExecute(r ApiGetCollectionApprova
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -953,7 +964,7 @@ type ApiGetCollectionItemRequest struct {
 	collectionItemId float32
 }
 
-func (r ApiGetCollectionItemRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetCollectionItemRequest) Execute() (*CollectionItem, *http.Response, error) {
 	return r.ApiService.GetCollectionItemExecute(r)
 }
 
@@ -963,7 +974,7 @@ GetCollectionItem Get collection item
 Returns a metadata object for the provided collectionItemId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @param collectionItemId Any item id for the collection. Zero, or a positive integer.
  @return ApiGetCollectionItemRequest
 */
@@ -977,13 +988,13 @@ func (a *ItemsApiService) GetCollectionItem(ctx context.Context, collectionId st
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ItemsApiService) GetCollectionItemExecute(r ApiGetCollectionItemRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CollectionItem
+func (a *ItemsApiService) GetCollectionItemExecute(r ApiGetCollectionItemRequest) (*CollectionItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CollectionItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ItemsApiService.GetCollectionItem")
@@ -1045,7 +1056,8 @@ func (a *ItemsApiService) GetCollectionItemExecute(r ApiGetCollectionItemRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1077,7 +1089,7 @@ func (r ApiGetCollectionItemBalanceRequest) Address(address string) ApiGetCollec
 	return r
 }
 
-// Any wallet id within the MetaFab ecosystem.
+// Any wallet id within the MetaFab platform.
 func (r ApiGetCollectionItemBalanceRequest) WalletId(walletId string) ApiGetCollectionItemBalanceRequest {
 	r.walletId = &walletId
 	return r
@@ -1093,7 +1105,7 @@ GetCollectionItemBalance Get collection item balance
 Returns the current collection item balance of the provided collectionItemId for the provided wallet address or the wallet address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @param collectionItemId Any item id for the collection. Zero, or a positive integer.
  @return ApiGetCollectionItemBalanceRequest
 */
@@ -1181,7 +1193,8 @@ func (a *ItemsApiService) GetCollectionItemBalanceExecute(r ApiGetCollectionItem
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1212,7 +1225,7 @@ func (r ApiGetCollectionItemBalancesRequest) Address(address string) ApiGetColle
 	return r
 }
 
-// Any wallet id within the MetaFab ecosystem.
+// Any wallet id within the MetaFab platform.
 func (r ApiGetCollectionItemBalancesRequest) WalletId(walletId string) ApiGetCollectionItemBalancesRequest {
 	r.walletId = &walletId
 	return r
@@ -1228,7 +1241,7 @@ GetCollectionItemBalances Get collection item balances
 Returns the current collection item balances of all collection items for the provided wallet address or the wallet address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiGetCollectionItemBalancesRequest
 */
 func (a *ItemsApiService) GetCollectionItemBalances(ctx context.Context, collectionId string) ApiGetCollectionItemBalancesRequest {
@@ -1313,7 +1326,8 @@ func (a *ItemsApiService) GetCollectionItemBalancesExecute(r ApiGetCollectionIte
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1346,7 +1360,7 @@ GetCollectionItemSupplies Get collection item supplies
 Returns the currency circulating supply of all collection items.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiGetCollectionItemSuppliesRequest
 */
 func (a *ItemsApiService) GetCollectionItemSupplies(ctx context.Context, collectionId string) ApiGetCollectionItemSuppliesRequest {
@@ -1425,7 +1439,8 @@ func (a *ItemsApiService) GetCollectionItemSuppliesExecute(r ApiGetCollectionIte
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1457,7 +1472,7 @@ func (r ApiGetCollectionItemSupplyRequest) Address(address string) ApiGetCollect
 	return r
 }
 
-// Any wallet id within the MetaFab ecosystem.
+// Any wallet id within the MetaFab platform.
 func (r ApiGetCollectionItemSupplyRequest) WalletId(walletId string) ApiGetCollectionItemSupplyRequest {
 	r.walletId = &walletId
 	return r
@@ -1473,7 +1488,7 @@ GetCollectionItemSupply Get collection item supply
 Returns the current circulating supply of the provided collectionItemId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @param collectionItemId Any item id for the collection. Zero, or a positive integer.
  @return ApiGetCollectionItemSupplyRequest
 */
@@ -1561,7 +1576,8 @@ func (a *ItemsApiService) GetCollectionItemSupplyExecute(r ApiGetCollectionItemS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1595,7 +1611,7 @@ GetCollectionItemTimelock Get collection item timelock
 Returns a timestamp (in seconds) for when the provided collectionItemId's transfer timelock expires. A value of 0 means the provided collectionItemId does not have a timelock set. Timelocks prevent items of a specific collectionItemId from being transferred until the set timelock timestamp has been surpassed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @param collectionItemId Any item id for the collection. Zero, or a positive integer.
  @return ApiGetCollectionItemTimelockRequest
 */
@@ -1677,7 +1693,8 @@ func (a *ItemsApiService) GetCollectionItemTimelockExecute(r ApiGetCollectionIte
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1700,7 +1717,7 @@ type ApiGetCollectionItemsRequest struct {
 	collectionId string
 }
 
-func (r ApiGetCollectionItemsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
+func (r ApiGetCollectionItemsRequest) Execute() ([]CollectionItem, *http.Response, error) {
 	return r.ApiService.GetCollectionItemsExecute(r)
 }
 
@@ -1710,7 +1727,7 @@ GetCollectionItems Get collection items
 Returns all collection items as an array of metadata objects.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiGetCollectionItemsRequest
 */
 func (a *ItemsApiService) GetCollectionItems(ctx context.Context, collectionId string) ApiGetCollectionItemsRequest {
@@ -1722,13 +1739,13 @@ func (a *ItemsApiService) GetCollectionItems(ctx context.Context, collectionId s
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
-func (a *ItemsApiService) GetCollectionItemsExecute(r ApiGetCollectionItemsRequest) ([]map[string]interface{}, *http.Response, error) {
+//  @return []CollectionItem
+func (a *ItemsApiService) GetCollectionItemsExecute(r ApiGetCollectionItemsRequest) ([]CollectionItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []map[string]interface{}
+		localVarReturnValue  []CollectionItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ItemsApiService.GetCollectionItems")
@@ -1789,7 +1806,8 @@ func (a *ItemsApiService) GetCollectionItemsExecute(r ApiGetCollectionItemsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1827,7 +1845,7 @@ func (r ApiGetCollectionRoleRequest) Address(address string) ApiGetCollectionRol
 	return r
 }
 
-// Any wallet id within the MetaFab ecosystem.
+// Any wallet id within the MetaFab platform.
 func (r ApiGetCollectionRoleRequest) WalletId(walletId string) ApiGetCollectionRoleRequest {
 	r.walletId = &walletId
 	return r
@@ -1843,7 +1861,7 @@ GetCollectionRole Get collection role
 Returns a boolean (true/false) representing if the provided role for this collection has been granted to the provided address or address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiGetCollectionRoleRequest
 */
 func (a *ItemsApiService) GetCollectionRole(ctx context.Context, collectionId string) ApiGetCollectionRoleRequest {
@@ -1932,7 +1950,8 @@ func (a *ItemsApiService) GetCollectionRoleExecute(r ApiGetCollectionRoleRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2051,7 +2070,8 @@ func (a *ItemsApiService) GetCollectionsExecute(r ApiGetCollectionsRequest) ([]G
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2073,7 +2093,7 @@ type ApiGrantCollectionRoleRequest struct {
 	ApiService *ItemsApiService
 	collectionId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	grantCollectionRoleRequest *GrantCollectionRoleRequest
 }
 
@@ -2083,9 +2103,9 @@ func (r ApiGrantCollectionRoleRequest) XAuthorization(xAuthorization string) Api
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiGrantCollectionRoleRequest) XPassword(xPassword string) ApiGrantCollectionRoleRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiGrantCollectionRoleRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiGrantCollectionRoleRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -2104,7 +2124,7 @@ GrantCollectionRole Grant collection role
 Grants the provided role for the collection to the provided address or address associated with the provided walletId. Granted roles give different types of authority on behalf of the collection for specific players, addresses, or contracts to perform different types of permissioned collection operations.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiGrantCollectionRoleRequest
 */
 func (a *ItemsApiService) GrantCollectionRole(ctx context.Context, collectionId string) ApiGrantCollectionRoleRequest {
@@ -2139,8 +2159,8 @@ func (a *ItemsApiService) GrantCollectionRoleExecute(r ApiGrantCollectionRoleReq
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.grantCollectionRoleRequest == nil {
 		return localVarReturnValue, nil, reportError("grantCollectionRoleRequest is required and must be specified")
@@ -2164,7 +2184,7 @@ func (a *ItemsApiService) GrantCollectionRoleExecute(r ApiGrantCollectionRoleReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.grantCollectionRoleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2196,7 +2216,8 @@ func (a *ItemsApiService) GrantCollectionRoleExecute(r ApiGrantCollectionRoleReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2206,7 +2227,8 @@ func (a *ItemsApiService) GrantCollectionRoleExecute(r ApiGrantCollectionRoleReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2229,7 +2251,7 @@ type ApiMintCollectionItemRequest struct {
 	collectionId string
 	collectionItemId float32
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	mintCollectionItemRequest *MintCollectionItemRequest
 }
 
@@ -2239,9 +2261,9 @@ func (r ApiMintCollectionItemRequest) XAuthorization(xAuthorization string) ApiM
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiMintCollectionItemRequest) XPassword(xPassword string) ApiMintCollectionItemRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiMintCollectionItemRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiMintCollectionItemRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -2260,7 +2282,7 @@ MintCollectionItem Mint collection item
 Creates (mints) the specified quantity of the provided collectionItemId to the provided wallet address or wallet address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @param collectionItemId Any item id for the collection. Zero, or a positive integer.
  @return ApiMintCollectionItemRequest
 */
@@ -2298,8 +2320,8 @@ func (a *ItemsApiService) MintCollectionItemExecute(r ApiMintCollectionItemReque
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.mintCollectionItemRequest == nil {
 		return localVarReturnValue, nil, reportError("mintCollectionItemRequest is required and must be specified")
@@ -2323,7 +2345,7 @@ func (a *ItemsApiService) MintCollectionItemExecute(r ApiMintCollectionItemReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.mintCollectionItemRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2355,7 +2377,8 @@ func (a *ItemsApiService) MintCollectionItemExecute(r ApiMintCollectionItemReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2365,7 +2388,8 @@ func (a *ItemsApiService) MintCollectionItemExecute(r ApiMintCollectionItemReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2387,7 +2411,7 @@ type ApiRevokeCollectionRoleRequest struct {
 	ApiService *ItemsApiService
 	collectionId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	revokeCollectionRoleRequest *RevokeCollectionRoleRequest
 }
 
@@ -2397,9 +2421,9 @@ func (r ApiRevokeCollectionRoleRequest) XAuthorization(xAuthorization string) Ap
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiRevokeCollectionRoleRequest) XPassword(xPassword string) ApiRevokeCollectionRoleRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiRevokeCollectionRoleRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiRevokeCollectionRoleRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -2418,7 +2442,7 @@ RevokeCollectionRole Revoke collection role
 Revokes the provided role for the collection to the provided address or address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiRevokeCollectionRoleRequest
 */
 func (a *ItemsApiService) RevokeCollectionRole(ctx context.Context, collectionId string) ApiRevokeCollectionRoleRequest {
@@ -2453,8 +2477,8 @@ func (a *ItemsApiService) RevokeCollectionRoleExecute(r ApiRevokeCollectionRoleR
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.revokeCollectionRoleRequest == nil {
 		return localVarReturnValue, nil, reportError("revokeCollectionRoleRequest is required and must be specified")
@@ -2478,7 +2502,7 @@ func (a *ItemsApiService) RevokeCollectionRoleExecute(r ApiRevokeCollectionRoleR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.revokeCollectionRoleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2510,7 +2534,8 @@ func (a *ItemsApiService) RevokeCollectionRoleExecute(r ApiRevokeCollectionRoleR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2520,7 +2545,8 @@ func (a *ItemsApiService) RevokeCollectionRoleExecute(r ApiRevokeCollectionRoleR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2542,7 +2568,7 @@ type ApiSetCollectionApprovalRequest struct {
 	ApiService *ItemsApiService
 	collectionId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	setCollectionApprovalRequest *SetCollectionApprovalRequest
 }
 
@@ -2552,9 +2578,9 @@ func (r ApiSetCollectionApprovalRequest) XAuthorization(xAuthorization string) A
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiSetCollectionApprovalRequest) XPassword(xPassword string) ApiSetCollectionApprovalRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiSetCollectionApprovalRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiSetCollectionApprovalRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -2573,7 +2599,7 @@ SetCollectionApproval Set collection approval
 Sets approval for the provided address or wallet address associated with the provided walletId to operate on behalf of the authenticating game or player's owned items for this collection. Setting an approved value of `true` allows the provided address or address associated with the provided walletId to transfer and burn items from this collection on behalf of the authenticated game or player's wallet address.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @return ApiSetCollectionApprovalRequest
 */
 func (a *ItemsApiService) SetCollectionApproval(ctx context.Context, collectionId string) ApiSetCollectionApprovalRequest {
@@ -2608,8 +2634,8 @@ func (a *ItemsApiService) SetCollectionApprovalExecute(r ApiSetCollectionApprova
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.setCollectionApprovalRequest == nil {
 		return localVarReturnValue, nil, reportError("setCollectionApprovalRequest is required and must be specified")
@@ -2633,7 +2659,7 @@ func (a *ItemsApiService) SetCollectionApprovalExecute(r ApiSetCollectionApprova
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.setCollectionApprovalRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2665,7 +2691,8 @@ func (a *ItemsApiService) SetCollectionApprovalExecute(r ApiSetCollectionApprova
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2675,7 +2702,8 @@ func (a *ItemsApiService) SetCollectionApprovalExecute(r ApiSetCollectionApprova
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2698,7 +2726,7 @@ type ApiSetCollectionItemTimelockRequest struct {
 	collectionId string
 	collectionItemId float32
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	setCollectionItemTimelockRequest *SetCollectionItemTimelockRequest
 }
 
@@ -2708,9 +2736,9 @@ func (r ApiSetCollectionItemTimelockRequest) XAuthorization(xAuthorization strin
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiSetCollectionItemTimelockRequest) XPassword(xPassword string) ApiSetCollectionItemTimelockRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiSetCollectionItemTimelockRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiSetCollectionItemTimelockRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -2729,7 +2757,7 @@ SetCollectionItemTimelock Set collection item timelock
 Sets the item timelock for the provided collection itemId. The timelock is a unix timestamp (in seconds) that defines a period in time of when an item may be transferred by players. Until the timelock timestamp has passed, the itemId for the given timelock may not be transferred, sold, traded, etc. A timelock of 0 (default) means that there is no timelock set on the itemId and it can be freely transferred, traded, etc.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @param collectionItemId Any item id for the collection. Zero, or a positive integer.
  @return ApiSetCollectionItemTimelockRequest
 */
@@ -2767,8 +2795,8 @@ func (a *ItemsApiService) SetCollectionItemTimelockExecute(r ApiSetCollectionIte
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.setCollectionItemTimelockRequest == nil {
 		return localVarReturnValue, nil, reportError("setCollectionItemTimelockRequest is required and must be specified")
@@ -2792,7 +2820,7 @@ func (a *ItemsApiService) SetCollectionItemTimelockExecute(r ApiSetCollectionIte
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.setCollectionItemTimelockRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2824,7 +2852,8 @@ func (a *ItemsApiService) SetCollectionItemTimelockExecute(r ApiSetCollectionIte
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2834,7 +2863,8 @@ func (a *ItemsApiService) SetCollectionItemTimelockExecute(r ApiSetCollectionIte
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2857,7 +2887,7 @@ type ApiTransferCollectionItemRequest struct {
 	collectionId string
 	collectionItemId float32
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	transferCollectionItemRequest *TransferCollectionItemRequest
 }
 
@@ -2867,9 +2897,9 @@ func (r ApiTransferCollectionItemRequest) XAuthorization(xAuthorization string) 
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiTransferCollectionItemRequest) XPassword(xPassword string) ApiTransferCollectionItemRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiTransferCollectionItemRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiTransferCollectionItemRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -2888,7 +2918,7 @@ TransferCollectionItem Transfer collection item
 Transfers specified quantity of itemId to the provided wallet address or wallet address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param collectionId Any collection id within the MetaFab ecosystem.
+ @param collectionId Any collection id within the MetaFab platform.
  @param collectionItemId Any item id for the collection. Zero, or a positive integer.
  @return ApiTransferCollectionItemRequest
 */
@@ -2926,8 +2956,8 @@ func (a *ItemsApiService) TransferCollectionItemExecute(r ApiTransferCollectionI
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.transferCollectionItemRequest == nil {
 		return localVarReturnValue, nil, reportError("transferCollectionItemRequest is required and must be specified")
@@ -2951,7 +2981,7 @@ func (a *ItemsApiService) TransferCollectionItemExecute(r ApiTransferCollectionI
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.transferCollectionItemRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -2983,7 +3013,8 @@ func (a *ItemsApiService) TransferCollectionItemExecute(r ApiTransferCollectionI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2993,7 +3024,8 @@ func (a *ItemsApiService) TransferCollectionItemExecute(r ApiTransferCollectionI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

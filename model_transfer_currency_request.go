@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -47,7 +47,7 @@ func NewTransferCurrencyRequestWithDefaults() *TransferCurrencyRequest {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *TransferCurrencyRequest) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil || isNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -57,15 +57,15 @@ func (o *TransferCurrencyRequest) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferCurrencyRequest) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
-		return nil, false
+	if o == nil || isNil(o.Address) {
+    return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *TransferCurrencyRequest) HasAddress() bool {
-	if o != nil && o.Address != nil {
+	if o != nil && !isNil(o.Address) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *TransferCurrencyRequest) SetAddress(v string) {
 
 // GetWalletId returns the WalletId field value if set, zero value otherwise.
 func (o *TransferCurrencyRequest) GetWalletId() string {
-	if o == nil || o.WalletId == nil {
+	if o == nil || isNil(o.WalletId) {
 		var ret string
 		return ret
 	}
@@ -89,15 +89,15 @@ func (o *TransferCurrencyRequest) GetWalletId() string {
 // GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferCurrencyRequest) GetWalletIdOk() (*string, bool) {
-	if o == nil || o.WalletId == nil {
-		return nil, false
+	if o == nil || isNil(o.WalletId) {
+    return nil, false
 	}
 	return o.WalletId, true
 }
 
 // HasWalletId returns a boolean if a field has been set.
 func (o *TransferCurrencyRequest) HasWalletId() bool {
-	if o != nil && o.WalletId != nil {
+	if o != nil && !isNil(o.WalletId) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *TransferCurrencyRequest) GetAmount() float32 {
 // and a boolean to check if the value has been set.
 func (o *TransferCurrencyRequest) GetAmountOk() (*float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Amount, true
 }
@@ -135,7 +135,7 @@ func (o *TransferCurrencyRequest) SetAmount(v float32) {
 
 // GetReference returns the Reference field value if set, zero value otherwise.
 func (o *TransferCurrencyRequest) GetReference() float32 {
-	if o == nil || o.Reference == nil {
+	if o == nil || isNil(o.Reference) {
 		var ret float32
 		return ret
 	}
@@ -145,15 +145,15 @@ func (o *TransferCurrencyRequest) GetReference() float32 {
 // GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferCurrencyRequest) GetReferenceOk() (*float32, bool) {
-	if o == nil || o.Reference == nil {
-		return nil, false
+	if o == nil || isNil(o.Reference) {
+    return nil, false
 	}
 	return o.Reference, true
 }
 
 // HasReference returns a boolean if a field has been set.
 func (o *TransferCurrencyRequest) HasReference() bool {
-	if o != nil && o.Reference != nil {
+	if o != nil && !isNil(o.Reference) {
 		return true
 	}
 
@@ -167,16 +167,16 @@ func (o *TransferCurrencyRequest) SetReference(v float32) {
 
 func (o TransferCurrencyRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Address != nil {
+	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if o.WalletId != nil {
+	if !isNil(o.WalletId) {
 		toSerialize["walletId"] = o.WalletId
 	}
 	if true {
 		toSerialize["amount"] = o.Amount
 	}
-	if o.Reference != nil {
+	if !isNil(o.Reference) {
 		toSerialize["reference"] = o.Reference
 	}
 	return json.Marshal(toSerialize)

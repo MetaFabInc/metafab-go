@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.4.4
 Contact: metafabproject@gmail.com
 */
 
@@ -39,7 +39,7 @@ func NewAuthGame200ResponseAllOf1WithDefaults() *AuthGame200ResponseAllOf1 {
 
 // GetFundingWallet returns the FundingWallet field value if set, zero value otherwise.
 func (o *AuthGame200ResponseAllOf1) GetFundingWallet() WalletModel {
-	if o == nil || o.FundingWallet == nil {
+	if o == nil || isNil(o.FundingWallet) {
 		var ret WalletModel
 		return ret
 	}
@@ -49,15 +49,15 @@ func (o *AuthGame200ResponseAllOf1) GetFundingWallet() WalletModel {
 // GetFundingWalletOk returns a tuple with the FundingWallet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200ResponseAllOf1) GetFundingWalletOk() (*WalletModel, bool) {
-	if o == nil || o.FundingWallet == nil {
-		return nil, false
+	if o == nil || isNil(o.FundingWallet) {
+    return nil, false
 	}
 	return o.FundingWallet, true
 }
 
 // HasFundingWallet returns a boolean if a field has been set.
 func (o *AuthGame200ResponseAllOf1) HasFundingWallet() bool {
-	if o != nil && o.FundingWallet != nil {
+	if o != nil && !isNil(o.FundingWallet) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *AuthGame200ResponseAllOf1) SetFundingWallet(v WalletModel) {
 
 func (o AuthGame200ResponseAllOf1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.FundingWallet != nil {
+	if !isNil(o.FundingWallet) {
 		toSerialize["fundingWallet"] = o.FundingWallet
 	}
 	return json.Marshal(toSerialize)

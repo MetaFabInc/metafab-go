@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -53,7 +53,7 @@ func (o *TransferContractOwnershipRequest) GetOwnerAddress() string {
 // and a boolean to check if the value has been set.
 func (o *TransferContractOwnershipRequest) GetOwnerAddressOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.OwnerAddress, true
 }

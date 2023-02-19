@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-    transactionId := "transactionId_example" // string | Any transaction id within the MetaFab ecosystem.
+    transactionId := "transactionId_example" // string | Any transaction id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -49,7 +49,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**transactionId** | **string** | Any transaction id within the MetaFab ecosystem. | 
+**transactionId** | **string** | Any transaction id within the MetaFab platform. | 
 
 ### Other Parameters
 

@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -42,7 +42,7 @@ func NewSetPlayerDataRequestWithDefaults() *SetPlayerDataRequest {
 
 // GetProtectedData returns the ProtectedData field value if set, zero value otherwise.
 func (o *SetPlayerDataRequest) GetProtectedData() map[string]interface{} {
-	if o == nil || o.ProtectedData == nil {
+	if o == nil || isNil(o.ProtectedData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *SetPlayerDataRequest) GetProtectedData() map[string]interface{} {
 // GetProtectedDataOk returns a tuple with the ProtectedData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetPlayerDataRequest) GetProtectedDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.ProtectedData == nil {
-		return nil, false
+	if o == nil || isNil(o.ProtectedData) {
+    return map[string]interface{}{}, false
 	}
 	return o.ProtectedData, true
 }
 
 // HasProtectedData returns a boolean if a field has been set.
 func (o *SetPlayerDataRequest) HasProtectedData() bool {
-	if o != nil && o.ProtectedData != nil {
+	if o != nil && !isNil(o.ProtectedData) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *SetPlayerDataRequest) SetProtectedData(v map[string]interface{}) {
 
 // GetPublicData returns the PublicData field value if set, zero value otherwise.
 func (o *SetPlayerDataRequest) GetPublicData() map[string]interface{} {
-	if o == nil || o.PublicData == nil {
+	if o == nil || isNil(o.PublicData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *SetPlayerDataRequest) GetPublicData() map[string]interface{} {
 // GetPublicDataOk returns a tuple with the PublicData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetPlayerDataRequest) GetPublicDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.PublicData == nil {
-		return nil, false
+	if o == nil || isNil(o.PublicData) {
+    return map[string]interface{}{}, false
 	}
 	return o.PublicData, true
 }
 
 // HasPublicData returns a boolean if a field has been set.
 func (o *SetPlayerDataRequest) HasPublicData() bool {
-	if o != nil && o.PublicData != nil {
+	if o != nil && !isNil(o.PublicData) {
 		return true
 	}
 
@@ -106,10 +106,10 @@ func (o *SetPlayerDataRequest) SetPublicData(v map[string]interface{}) {
 
 func (o SetPlayerDataRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ProtectedData != nil {
+	if !isNil(o.ProtectedData) {
 		toSerialize["protectedData"] = o.ProtectedData
 	}
-	if o.PublicData != nil {
+	if !isNil(o.PublicData) {
 		toSerialize["publicData"] = o.PublicData
 	}
 	return json.Marshal(toSerialize)

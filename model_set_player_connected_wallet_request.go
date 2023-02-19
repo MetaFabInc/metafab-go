@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -62,7 +62,7 @@ func (o *SetPlayerConnectedWalletRequest) GetAddress() string {
 // and a boolean to check if the value has been set.
 func (o *SetPlayerConnectedWalletRequest) GetAddressOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Address, true
 }
@@ -86,7 +86,7 @@ func (o *SetPlayerConnectedWalletRequest) GetNonce() int32 {
 // and a boolean to check if the value has been set.
 func (o *SetPlayerConnectedWalletRequest) GetNonceOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Nonce, true
 }
@@ -110,7 +110,7 @@ func (o *SetPlayerConnectedWalletRequest) GetSignature() string {
 // and a boolean to check if the value has been set.
 func (o *SetPlayerConnectedWalletRequest) GetSignatureOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Signature, true
 }
@@ -134,7 +134,7 @@ func (o *SetPlayerConnectedWalletRequest) GetChain() string {
 // and a boolean to check if the value has been set.
 func (o *SetPlayerConnectedWalletRequest) GetChainOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Chain, true
 }

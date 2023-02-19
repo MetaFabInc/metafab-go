@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -47,6 +47,8 @@ type AuthGame200Response struct {
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
 	CreatedAt *string `json:"createdAt,omitempty"`
+	// This field has not had a description added.
+	WalletDecryptKey *string `json:"walletDecryptKey,omitempty"`
 	Wallet *WalletModel `json:"wallet,omitempty"`
 	FundingWallet *WalletModel `json:"fundingWallet,omitempty"`
 }
@@ -70,7 +72,7 @@ func NewAuthGame200ResponseWithDefaults() *AuthGame200Response {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -80,15 +82,15 @@ func (o *AuthGame200Response) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -102,7 +104,7 @@ func (o *AuthGame200Response) SetId(v string) {
 
 // GetWalletId returns the WalletId field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetWalletId() string {
-	if o == nil || o.WalletId == nil {
+	if o == nil || isNil(o.WalletId) {
 		var ret string
 		return ret
 	}
@@ -112,15 +114,15 @@ func (o *AuthGame200Response) GetWalletId() string {
 // GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetWalletIdOk() (*string, bool) {
-	if o == nil || o.WalletId == nil {
-		return nil, false
+	if o == nil || isNil(o.WalletId) {
+    return nil, false
 	}
 	return o.WalletId, true
 }
 
 // HasWalletId returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasWalletId() bool {
-	if o != nil && o.WalletId != nil {
+	if o != nil && !isNil(o.WalletId) {
 		return true
 	}
 
@@ -134,7 +136,7 @@ func (o *AuthGame200Response) SetWalletId(v string) {
 
 // GetFundingWalletId returns the FundingWalletId field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetFundingWalletId() string {
-	if o == nil || o.FundingWalletId == nil {
+	if o == nil || isNil(o.FundingWalletId) {
 		var ret string
 		return ret
 	}
@@ -144,15 +146,15 @@ func (o *AuthGame200Response) GetFundingWalletId() string {
 // GetFundingWalletIdOk returns a tuple with the FundingWalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetFundingWalletIdOk() (*string, bool) {
-	if o == nil || o.FundingWalletId == nil {
-		return nil, false
+	if o == nil || isNil(o.FundingWalletId) {
+    return nil, false
 	}
 	return o.FundingWalletId, true
 }
 
 // HasFundingWalletId returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasFundingWalletId() bool {
-	if o != nil && o.FundingWalletId != nil {
+	if o != nil && !isNil(o.FundingWalletId) {
 		return true
 	}
 
@@ -166,7 +168,7 @@ func (o *AuthGame200Response) SetFundingWalletId(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || isNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -176,15 +178,15 @@ func (o *AuthGame200Response) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
-		return nil, false
+	if o == nil || isNil(o.Email) {
+    return nil, false
 	}
 	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !isNil(o.Email) {
 		return true
 	}
 
@@ -198,7 +200,7 @@ func (o *AuthGame200Response) SetEmail(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -208,15 +210,15 @@ func (o *AuthGame200Response) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -230,7 +232,7 @@ func (o *AuthGame200Response) SetName(v string) {
 
 // GetRpcs returns the Rpcs field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetRpcs() map[string]interface{} {
-	if o == nil || o.Rpcs == nil {
+	if o == nil || isNil(o.Rpcs) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -240,15 +242,15 @@ func (o *AuthGame200Response) GetRpcs() map[string]interface{} {
 // GetRpcsOk returns a tuple with the Rpcs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetRpcsOk() (map[string]interface{}, bool) {
-	if o == nil || o.Rpcs == nil {
-		return nil, false
+	if o == nil || isNil(o.Rpcs) {
+    return map[string]interface{}{}, false
 	}
 	return o.Rpcs, true
 }
 
 // HasRpcs returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasRpcs() bool {
-	if o != nil && o.Rpcs != nil {
+	if o != nil && !isNil(o.Rpcs) {
 		return true
 	}
 
@@ -262,7 +264,7 @@ func (o *AuthGame200Response) SetRpcs(v map[string]interface{}) {
 
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetRedirectUris() map[string]interface{} {
-	if o == nil || o.RedirectUris == nil {
+	if o == nil || isNil(o.RedirectUris) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -272,15 +274,15 @@ func (o *AuthGame200Response) GetRedirectUris() map[string]interface{} {
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetRedirectUrisOk() (map[string]interface{}, bool) {
-	if o == nil || o.RedirectUris == nil {
-		return nil, false
+	if o == nil || isNil(o.RedirectUris) {
+    return map[string]interface{}{}, false
 	}
 	return o.RedirectUris, true
 }
 
 // HasRedirectUris returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasRedirectUris() bool {
-	if o != nil && o.RedirectUris != nil {
+	if o != nil && !isNil(o.RedirectUris) {
 		return true
 	}
 
@@ -294,7 +296,7 @@ func (o *AuthGame200Response) SetRedirectUris(v map[string]interface{}) {
 
 // GetIconImageUrl returns the IconImageUrl field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetIconImageUrl() string {
-	if o == nil || o.IconImageUrl == nil {
+	if o == nil || isNil(o.IconImageUrl) {
 		var ret string
 		return ret
 	}
@@ -304,15 +306,15 @@ func (o *AuthGame200Response) GetIconImageUrl() string {
 // GetIconImageUrlOk returns a tuple with the IconImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetIconImageUrlOk() (*string, bool) {
-	if o == nil || o.IconImageUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.IconImageUrl) {
+    return nil, false
 	}
 	return o.IconImageUrl, true
 }
 
 // HasIconImageUrl returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasIconImageUrl() bool {
-	if o != nil && o.IconImageUrl != nil {
+	if o != nil && !isNil(o.IconImageUrl) {
 		return true
 	}
 
@@ -326,7 +328,7 @@ func (o *AuthGame200Response) SetIconImageUrl(v string) {
 
 // GetCoverImageUrl returns the CoverImageUrl field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetCoverImageUrl() string {
-	if o == nil || o.CoverImageUrl == nil {
+	if o == nil || isNil(o.CoverImageUrl) {
 		var ret string
 		return ret
 	}
@@ -336,15 +338,15 @@ func (o *AuthGame200Response) GetCoverImageUrl() string {
 // GetCoverImageUrlOk returns a tuple with the CoverImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetCoverImageUrlOk() (*string, bool) {
-	if o == nil || o.CoverImageUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.CoverImageUrl) {
+    return nil, false
 	}
 	return o.CoverImageUrl, true
 }
 
 // HasCoverImageUrl returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasCoverImageUrl() bool {
-	if o != nil && o.CoverImageUrl != nil {
+	if o != nil && !isNil(o.CoverImageUrl) {
 		return true
 	}
 
@@ -358,7 +360,7 @@ func (o *AuthGame200Response) SetCoverImageUrl(v string) {
 
 // GetPrimaryColorHex returns the PrimaryColorHex field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetPrimaryColorHex() string {
-	if o == nil || o.PrimaryColorHex == nil {
+	if o == nil || isNil(o.PrimaryColorHex) {
 		var ret string
 		return ret
 	}
@@ -368,15 +370,15 @@ func (o *AuthGame200Response) GetPrimaryColorHex() string {
 // GetPrimaryColorHexOk returns a tuple with the PrimaryColorHex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetPrimaryColorHexOk() (*string, bool) {
-	if o == nil || o.PrimaryColorHex == nil {
-		return nil, false
+	if o == nil || isNil(o.PrimaryColorHex) {
+    return nil, false
 	}
 	return o.PrimaryColorHex, true
 }
 
 // HasPrimaryColorHex returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasPrimaryColorHex() bool {
-	if o != nil && o.PrimaryColorHex != nil {
+	if o != nil && !isNil(o.PrimaryColorHex) {
 		return true
 	}
 
@@ -390,7 +392,7 @@ func (o *AuthGame200Response) SetPrimaryColorHex(v string) {
 
 // GetPublishedKey returns the PublishedKey field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetPublishedKey() string {
-	if o == nil || o.PublishedKey == nil {
+	if o == nil || isNil(o.PublishedKey) {
 		var ret string
 		return ret
 	}
@@ -400,15 +402,15 @@ func (o *AuthGame200Response) GetPublishedKey() string {
 // GetPublishedKeyOk returns a tuple with the PublishedKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetPublishedKeyOk() (*string, bool) {
-	if o == nil || o.PublishedKey == nil {
-		return nil, false
+	if o == nil || isNil(o.PublishedKey) {
+    return nil, false
 	}
 	return o.PublishedKey, true
 }
 
 // HasPublishedKey returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasPublishedKey() bool {
-	if o != nil && o.PublishedKey != nil {
+	if o != nil && !isNil(o.PublishedKey) {
 		return true
 	}
 
@@ -422,7 +424,7 @@ func (o *AuthGame200Response) SetPublishedKey(v string) {
 
 // GetSecretKey returns the SecretKey field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetSecretKey() string {
-	if o == nil || o.SecretKey == nil {
+	if o == nil || isNil(o.SecretKey) {
 		var ret string
 		return ret
 	}
@@ -432,15 +434,15 @@ func (o *AuthGame200Response) GetSecretKey() string {
 // GetSecretKeyOk returns a tuple with the SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetSecretKeyOk() (*string, bool) {
-	if o == nil || o.SecretKey == nil {
-		return nil, false
+	if o == nil || isNil(o.SecretKey) {
+    return nil, false
 	}
 	return o.SecretKey, true
 }
 
 // HasSecretKey returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasSecretKey() bool {
-	if o != nil && o.SecretKey != nil {
+	if o != nil && !isNil(o.SecretKey) {
 		return true
 	}
 
@@ -454,7 +456,7 @@ func (o *AuthGame200Response) SetSecretKey(v string) {
 
 // GetVerified returns the Verified field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetVerified() bool {
-	if o == nil || o.Verified == nil {
+	if o == nil || isNil(o.Verified) {
 		var ret bool
 		return ret
 	}
@@ -464,15 +466,15 @@ func (o *AuthGame200Response) GetVerified() bool {
 // GetVerifiedOk returns a tuple with the Verified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetVerifiedOk() (*bool, bool) {
-	if o == nil || o.Verified == nil {
-		return nil, false
+	if o == nil || isNil(o.Verified) {
+    return nil, false
 	}
 	return o.Verified, true
 }
 
 // HasVerified returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasVerified() bool {
-	if o != nil && o.Verified != nil {
+	if o != nil && !isNil(o.Verified) {
 		return true
 	}
 
@@ -486,7 +488,7 @@ func (o *AuthGame200Response) SetVerified(v bool) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -496,15 +498,15 @@ func (o *AuthGame200Response) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -518,7 +520,7 @@ func (o *AuthGame200Response) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -528,15 +530,15 @@ func (o *AuthGame200Response) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -548,9 +550,41 @@ func (o *AuthGame200Response) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
+// GetWalletDecryptKey returns the WalletDecryptKey field value if set, zero value otherwise.
+func (o *AuthGame200Response) GetWalletDecryptKey() string {
+	if o == nil || isNil(o.WalletDecryptKey) {
+		var ret string
+		return ret
+	}
+	return *o.WalletDecryptKey
+}
+
+// GetWalletDecryptKeyOk returns a tuple with the WalletDecryptKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthGame200Response) GetWalletDecryptKeyOk() (*string, bool) {
+	if o == nil || isNil(o.WalletDecryptKey) {
+    return nil, false
+	}
+	return o.WalletDecryptKey, true
+}
+
+// HasWalletDecryptKey returns a boolean if a field has been set.
+func (o *AuthGame200Response) HasWalletDecryptKey() bool {
+	if o != nil && !isNil(o.WalletDecryptKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetWalletDecryptKey gets a reference to the given string and assigns it to the WalletDecryptKey field.
+func (o *AuthGame200Response) SetWalletDecryptKey(v string) {
+	o.WalletDecryptKey = &v
+}
+
 // GetWallet returns the Wallet field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetWallet() WalletModel {
-	if o == nil || o.Wallet == nil {
+	if o == nil || isNil(o.Wallet) {
 		var ret WalletModel
 		return ret
 	}
@@ -560,15 +594,15 @@ func (o *AuthGame200Response) GetWallet() WalletModel {
 // GetWalletOk returns a tuple with the Wallet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetWalletOk() (*WalletModel, bool) {
-	if o == nil || o.Wallet == nil {
-		return nil, false
+	if o == nil || isNil(o.Wallet) {
+    return nil, false
 	}
 	return o.Wallet, true
 }
 
 // HasWallet returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasWallet() bool {
-	if o != nil && o.Wallet != nil {
+	if o != nil && !isNil(o.Wallet) {
 		return true
 	}
 
@@ -582,7 +616,7 @@ func (o *AuthGame200Response) SetWallet(v WalletModel) {
 
 // GetFundingWallet returns the FundingWallet field value if set, zero value otherwise.
 func (o *AuthGame200Response) GetFundingWallet() WalletModel {
-	if o == nil || o.FundingWallet == nil {
+	if o == nil || isNil(o.FundingWallet) {
 		var ret WalletModel
 		return ret
 	}
@@ -592,15 +626,15 @@ func (o *AuthGame200Response) GetFundingWallet() WalletModel {
 // GetFundingWalletOk returns a tuple with the FundingWallet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthGame200Response) GetFundingWalletOk() (*WalletModel, bool) {
-	if o == nil || o.FundingWallet == nil {
-		return nil, false
+	if o == nil || isNil(o.FundingWallet) {
+    return nil, false
 	}
 	return o.FundingWallet, true
 }
 
 // HasFundingWallet returns a boolean if a field has been set.
 func (o *AuthGame200Response) HasFundingWallet() bool {
-	if o != nil && o.FundingWallet != nil {
+	if o != nil && !isNil(o.FundingWallet) {
 		return true
 	}
 
@@ -614,55 +648,58 @@ func (o *AuthGame200Response) SetFundingWallet(v WalletModel) {
 
 func (o AuthGame200Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.WalletId != nil {
+	if !isNil(o.WalletId) {
 		toSerialize["walletId"] = o.WalletId
 	}
-	if o.FundingWalletId != nil {
+	if !isNil(o.FundingWalletId) {
 		toSerialize["fundingWalletId"] = o.FundingWalletId
 	}
-	if o.Email != nil {
+	if !isNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Rpcs != nil {
+	if !isNil(o.Rpcs) {
 		toSerialize["rpcs"] = o.Rpcs
 	}
-	if o.RedirectUris != nil {
+	if !isNil(o.RedirectUris) {
 		toSerialize["redirectUris"] = o.RedirectUris
 	}
-	if o.IconImageUrl != nil {
+	if !isNil(o.IconImageUrl) {
 		toSerialize["iconImageUrl"] = o.IconImageUrl
 	}
-	if o.CoverImageUrl != nil {
+	if !isNil(o.CoverImageUrl) {
 		toSerialize["coverImageUrl"] = o.CoverImageUrl
 	}
-	if o.PrimaryColorHex != nil {
+	if !isNil(o.PrimaryColorHex) {
 		toSerialize["primaryColorHex"] = o.PrimaryColorHex
 	}
-	if o.PublishedKey != nil {
+	if !isNil(o.PublishedKey) {
 		toSerialize["publishedKey"] = o.PublishedKey
 	}
-	if o.SecretKey != nil {
+	if !isNil(o.SecretKey) {
 		toSerialize["secretKey"] = o.SecretKey
 	}
-	if o.Verified != nil {
+	if !isNil(o.Verified) {
 		toSerialize["verified"] = o.Verified
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.Wallet != nil {
+	if !isNil(o.WalletDecryptKey) {
+		toSerialize["walletDecryptKey"] = o.WalletDecryptKey
+	}
+	if !isNil(o.Wallet) {
 		toSerialize["wallet"] = o.Wallet
 	}
-	if o.FundingWallet != nil {
+	if !isNil(o.FundingWallet) {
 		toSerialize["fundingWallet"] = o.FundingWallet
 	}
 	return json.Marshal(toSerialize)

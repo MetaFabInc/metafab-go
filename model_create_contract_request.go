@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -61,7 +61,7 @@ func (o *CreateContractRequest) GetAddress() string {
 // and a boolean to check if the value has been set.
 func (o *CreateContractRequest) GetAddressOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Address, true
 }
@@ -73,7 +73,7 @@ func (o *CreateContractRequest) SetAddress(v string) {
 
 // GetForwarderAddress returns the ForwarderAddress field value if set, zero value otherwise.
 func (o *CreateContractRequest) GetForwarderAddress() string {
-	if o == nil || o.ForwarderAddress == nil {
+	if o == nil || isNil(o.ForwarderAddress) {
 		var ret string
 		return ret
 	}
@@ -83,15 +83,15 @@ func (o *CreateContractRequest) GetForwarderAddress() string {
 // GetForwarderAddressOk returns a tuple with the ForwarderAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateContractRequest) GetForwarderAddressOk() (*string, bool) {
-	if o == nil || o.ForwarderAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.ForwarderAddress) {
+    return nil, false
 	}
 	return o.ForwarderAddress, true
 }
 
 // HasForwarderAddress returns a boolean if a field has been set.
 func (o *CreateContractRequest) HasForwarderAddress() bool {
-	if o != nil && o.ForwarderAddress != nil {
+	if o != nil && !isNil(o.ForwarderAddress) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *CreateContractRequest) GetAbi() string {
 // and a boolean to check if the value has been set.
 func (o *CreateContractRequest) GetAbiOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Abi, true
 }
@@ -141,7 +141,7 @@ func (o *CreateContractRequest) GetChain() string {
 // and a boolean to check if the value has been set.
 func (o *CreateContractRequest) GetChainOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Chain, true
 }
@@ -156,7 +156,7 @@ func (o CreateContractRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["address"] = o.Address
 	}
-	if o.ForwarderAddress != nil {
+	if !isNil(o.ForwarderAddress) {
 		toSerialize["forwarderAddress"] = o.ForwarderAddress
 	}
 	if true {

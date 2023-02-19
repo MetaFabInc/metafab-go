@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -44,7 +44,7 @@ func NewUpdatePlayerRequestWithDefaults() *UpdatePlayerRequest {
 
 // GetCurrentPassword returns the CurrentPassword field value if set, zero value otherwise.
 func (o *UpdatePlayerRequest) GetCurrentPassword() string {
-	if o == nil || o.CurrentPassword == nil {
+	if o == nil || isNil(o.CurrentPassword) {
 		var ret string
 		return ret
 	}
@@ -54,15 +54,15 @@ func (o *UpdatePlayerRequest) GetCurrentPassword() string {
 // GetCurrentPasswordOk returns a tuple with the CurrentPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdatePlayerRequest) GetCurrentPasswordOk() (*string, bool) {
-	if o == nil || o.CurrentPassword == nil {
-		return nil, false
+	if o == nil || isNil(o.CurrentPassword) {
+    return nil, false
 	}
 	return o.CurrentPassword, true
 }
 
 // HasCurrentPassword returns a boolean if a field has been set.
 func (o *UpdatePlayerRequest) HasCurrentPassword() bool {
-	if o != nil && o.CurrentPassword != nil {
+	if o != nil && !isNil(o.CurrentPassword) {
 		return true
 	}
 
@@ -76,7 +76,7 @@ func (o *UpdatePlayerRequest) SetCurrentPassword(v string) {
 
 // GetNewPassword returns the NewPassword field value if set, zero value otherwise.
 func (o *UpdatePlayerRequest) GetNewPassword() string {
-	if o == nil || o.NewPassword == nil {
+	if o == nil || isNil(o.NewPassword) {
 		var ret string
 		return ret
 	}
@@ -86,15 +86,15 @@ func (o *UpdatePlayerRequest) GetNewPassword() string {
 // GetNewPasswordOk returns a tuple with the NewPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdatePlayerRequest) GetNewPasswordOk() (*string, bool) {
-	if o == nil || o.NewPassword == nil {
-		return nil, false
+	if o == nil || isNil(o.NewPassword) {
+    return nil, false
 	}
 	return o.NewPassword, true
 }
 
 // HasNewPassword returns a boolean if a field has been set.
 func (o *UpdatePlayerRequest) HasNewPassword() bool {
-	if o != nil && o.NewPassword != nil {
+	if o != nil && !isNil(o.NewPassword) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *UpdatePlayerRequest) SetNewPassword(v string) {
 
 // GetResetAccessToken returns the ResetAccessToken field value if set, zero value otherwise.
 func (o *UpdatePlayerRequest) GetResetAccessToken() bool {
-	if o == nil || o.ResetAccessToken == nil {
+	if o == nil || isNil(o.ResetAccessToken) {
 		var ret bool
 		return ret
 	}
@@ -118,15 +118,15 @@ func (o *UpdatePlayerRequest) GetResetAccessToken() bool {
 // GetResetAccessTokenOk returns a tuple with the ResetAccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdatePlayerRequest) GetResetAccessTokenOk() (*bool, bool) {
-	if o == nil || o.ResetAccessToken == nil {
-		return nil, false
+	if o == nil || isNil(o.ResetAccessToken) {
+    return nil, false
 	}
 	return o.ResetAccessToken, true
 }
 
 // HasResetAccessToken returns a boolean if a field has been set.
 func (o *UpdatePlayerRequest) HasResetAccessToken() bool {
-	if o != nil && o.ResetAccessToken != nil {
+	if o != nil && !isNil(o.ResetAccessToken) {
 		return true
 	}
 
@@ -140,13 +140,13 @@ func (o *UpdatePlayerRequest) SetResetAccessToken(v bool) {
 
 func (o UpdatePlayerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CurrentPassword != nil {
+	if !isNil(o.CurrentPassword) {
 		toSerialize["currentPassword"] = o.CurrentPassword
 	}
-	if o.NewPassword != nil {
+	if !isNil(o.NewPassword) {
 		toSerialize["newPassword"] = o.NewPassword
 	}
-	if o.ResetAccessToken != nil {
+	if !isNil(o.ResetAccessToken) {
 		toSerialize["resetAccessToken"] = o.ResetAccessToken
 	}
 	return json.Marshal(toSerialize)

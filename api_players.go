@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -126,7 +126,8 @@ func (a *PlayersApiService) AuthPlayerExecute(r ApiAuthPlayerRequest) (*AuthPlay
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -136,7 +137,8 @@ func (a *PlayersApiService) AuthPlayerExecute(r ApiAuthPlayerRequest) (*AuthPlay
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -268,7 +270,8 @@ func (a *PlayersApiService) CreatePlayerExecute(r ApiCreatePlayerRequest) (*Auth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -278,7 +281,8 @@ func (a *PlayersApiService) CreatePlayerExecute(r ApiCreatePlayerRequest) (*Auth
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -311,7 +315,7 @@ GetPlayer Get player
 Returns a player object for the provided player id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param playerId Any player id within the MetaFab ecosystem.
+ @param playerId Any player id within the MetaFab platform.
  @return ApiGetPlayerRequest
 */
 func (a *PlayersApiService) GetPlayer(ctx context.Context, playerId string) ApiGetPlayerRequest {
@@ -390,7 +394,8 @@ func (a *PlayersApiService) GetPlayerExecute(r ApiGetPlayerRequest) (*PublicPlay
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -423,7 +428,7 @@ GetPlayerData Get player data
 Returns the latest public and protected data as an object for the provided playerId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param playerId Any player id within the MetaFab ecosystem.
+ @param playerId Any player id within the MetaFab platform.
  @return ApiGetPlayerDataRequest
 */
 func (a *PlayersApiService) GetPlayerData(ctx context.Context, playerId string) ApiGetPlayerDataRequest {
@@ -502,7 +507,8 @@ func (a *PlayersApiService) GetPlayerDataExecute(r ApiGetPlayerDataRequest) (*Ge
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -621,7 +627,8 @@ func (a *PlayersApiService) GetPlayersExecute(r ApiGetPlayersRequest) ([]PublicP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -661,8 +668,8 @@ RemovePlayerConnectedWallet Remove player connected wallet
 Removes an external wallet from a player account. The player's wallet is reverted to their custodial wallet.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param playerId Any player id within the MetaFab ecosystem.
- @param playerWalletId Any player wallet id within the MetaFab ecosystem.
+ @param playerId Any player id within the MetaFab platform.
+ @param playerWalletId Any player wallet id within the MetaFab platform.
  @return ApiRemovePlayerConnectedWalletRequest
 */
 func (a *PlayersApiService) RemovePlayerConnectedWallet(ctx context.Context, playerId string, playerWalletId string) ApiRemovePlayerConnectedWalletRequest {
@@ -746,7 +753,8 @@ func (a *PlayersApiService) RemovePlayerConnectedWalletExecute(r ApiRemovePlayer
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -756,7 +764,8 @@ func (a *PlayersApiService) RemovePlayerConnectedWalletExecute(r ApiRemovePlayer
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -797,7 +806,7 @@ This is done through an internal system MetaFab has created that allows an exter
 Finally, this endpoint is meant for advanced users. The majority of developers who want to implement external wallet support for their game can do so without any extra work through our whitelabeled wallet connection feature that implements this endpoint underneath the hood without any required work.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param playerId Any player id within the MetaFab ecosystem.
+ @param playerId The player id of the authenticating player.
  @return ApiSetPlayerConnectedWalletRequest
 */
 func (a *PlayersApiService) SetPlayerConnectedWallet(ctx context.Context, playerId string) ApiSetPlayerConnectedWalletRequest {
@@ -885,7 +894,8 @@ func (a *PlayersApiService) SetPlayerConnectedWalletExecute(r ApiSetPlayerConnec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -895,7 +905,8 @@ func (a *PlayersApiService) SetPlayerConnectedWalletExecute(r ApiSetPlayerConnec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -943,7 +954,7 @@ Creates or updates public and/or protected data for the provided playerId. Data 
 Please note, When writing an array type for a player, arrays do not follow the deep merge approach. If you add or remove an item from an array, the entire array must be passed as an argument when updating the related property for player public or protected data.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param playerId Any player id within the MetaFab ecosystem.
+ @param playerId Any player id within the MetaFab platform.
  @return ApiSetPlayerDataRequest
 */
 func (a *PlayersApiService) SetPlayerData(ctx context.Context, playerId string) ApiSetPlayerDataRequest {
@@ -1031,7 +1042,8 @@ func (a *PlayersApiService) SetPlayerDataExecute(r ApiSetPlayerDataRequest) (*Ge
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1067,7 +1079,7 @@ func (r ApiUpdatePlayerRequest) UpdatePlayerRequest(updatePlayerRequest UpdatePl
 	return r
 }
 
-func (r ApiUpdatePlayerRequest) Execute() (*PlayerModel, *http.Response, error) {
+func (r ApiUpdatePlayerRequest) Execute() (*UpdatePlayer200Response, *http.Response, error) {
 	return r.ApiService.UpdatePlayerExecute(r)
 }
 
@@ -1077,7 +1089,7 @@ UpdatePlayer Update player
 Update various fields specific to a player. Such as changing its password and resetting its access token.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param playerId Any player id within the MetaFab ecosystem.
+ @param playerId The player id of the authenticating player.
  @return ApiUpdatePlayerRequest
 */
 func (a *PlayersApiService) UpdatePlayer(ctx context.Context, playerId string) ApiUpdatePlayerRequest {
@@ -1089,13 +1101,13 @@ func (a *PlayersApiService) UpdatePlayer(ctx context.Context, playerId string) A
 }
 
 // Execute executes the request
-//  @return PlayerModel
-func (a *PlayersApiService) UpdatePlayerExecute(r ApiUpdatePlayerRequest) (*PlayerModel, *http.Response, error) {
+//  @return UpdatePlayer200Response
+func (a *PlayersApiService) UpdatePlayerExecute(r ApiUpdatePlayerRequest) (*UpdatePlayer200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PlayerModel
+		localVarReturnValue  *UpdatePlayer200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlayersApiService.UpdatePlayer")
@@ -1165,7 +1177,8 @@ func (a *PlayersApiService) UpdatePlayerExecute(r ApiUpdatePlayerRequest) (*Play
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1175,7 +1188,8 @@ func (a *PlayersApiService) UpdatePlayerExecute(r ApiUpdatePlayerRequest) (*Play
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

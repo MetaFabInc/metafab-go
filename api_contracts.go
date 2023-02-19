@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -137,7 +137,8 @@ func (a *ContractsApiService) CreateContractExecute(r ApiCreateContractRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -147,7 +148,8 @@ func (a *ContractsApiService) CreateContractExecute(r ApiCreateContractRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -266,7 +268,8 @@ func (a *ContractsApiService) GetContractsExecute(r ApiGetContractsRequest) ([]C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -315,7 +318,7 @@ Oftentimes you'll want to query and retrieve some data from a contract. This is 
 Using this endpoint, you can get the data returned by any readable function listed in a contracts ABI. This could be things like querying the totalSupply of a currency contract, the number of owners of an items contract, and more.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param contractId Any contract id within the MetaFab ecosystem.
+ @param contractId Any contract id within the MetaFab platform.
  @return ApiReadContractRequest
 */
 func (a *ContractsApiService) ReadContract(ctx context.Context, contractId string) ApiReadContractRequest {
@@ -401,7 +404,8 @@ func (a *ContractsApiService) ReadContractExecute(r ApiReadContractRequest) (int
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -423,7 +427,7 @@ type ApiTransferContractOwnershipRequest struct {
 	ApiService *ContractsApiService
 	contractId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	transferContractOwnershipRequest *TransferContractOwnershipRequest
 }
 
@@ -433,9 +437,9 @@ func (r ApiTransferContractOwnershipRequest) XAuthorization(xAuthorization strin
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiTransferContractOwnershipRequest) XPassword(xPassword string) ApiTransferContractOwnershipRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiTransferContractOwnershipRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiTransferContractOwnershipRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -458,7 +462,7 @@ Your game's custodial wallet will retain a `MANAGER_ROLE` on your contracts, all
 Please be certain that the wallet address you transfer ownership to is one you control. Once ownership and admin permissions are transferred, your game's custodial wallet no longer has permission to reassign ownership or administrative priveleges for your contract.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param contractId Any contract id within the MetaFab ecosystem.
+ @param contractId Any contract id within the MetaFab platform.
  @return ApiTransferContractOwnershipRequest
 */
 func (a *ContractsApiService) TransferContractOwnership(ctx context.Context, contractId string) ApiTransferContractOwnershipRequest {
@@ -493,8 +497,8 @@ func (a *ContractsApiService) TransferContractOwnershipExecute(r ApiTransferCont
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.transferContractOwnershipRequest == nil {
 		return localVarReturnValue, nil, reportError("transferContractOwnershipRequest is required and must be specified")
@@ -518,7 +522,7 @@ func (a *ContractsApiService) TransferContractOwnershipExecute(r ApiTransferCont
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.transferContractOwnershipRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -550,7 +554,8 @@ func (a *ContractsApiService) TransferContractOwnershipExecute(r ApiTransferCont
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -560,7 +565,8 @@ func (a *ContractsApiService) TransferContractOwnershipExecute(r ApiTransferCont
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -582,7 +588,7 @@ type ApiUpgradeContractTrustedForwarderRequest struct {
 	ApiService *ContractsApiService
 	contractId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	upgradeContractTrustedForwarderRequest *UpgradeContractTrustedForwarderRequest
 }
 
@@ -592,9 +598,9 @@ func (r ApiUpgradeContractTrustedForwarderRequest) XAuthorization(xAuthorization
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiUpgradeContractTrustedForwarderRequest) XPassword(xPassword string) ApiUpgradeContractTrustedForwarderRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiUpgradeContractTrustedForwarderRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiUpgradeContractTrustedForwarderRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -613,7 +619,7 @@ UpgradeContractTrustedForwarder Upgrade contract trusted forwarder
 In rare circumstances, you may need to upgrade the underlying trusted forwarder contract address attached to your game's contracts. Using this endpoint, you can provide a new trusted forwarder contract address to assign to any of your contracts that implement the `upgradeTrustedForwarder` function.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param contractId Any contract id within the MetaFab ecosystem.
+ @param contractId Any contract id within the MetaFab platform.
  @return ApiUpgradeContractTrustedForwarderRequest
 */
 func (a *ContractsApiService) UpgradeContractTrustedForwarder(ctx context.Context, contractId string) ApiUpgradeContractTrustedForwarderRequest {
@@ -648,8 +654,8 @@ func (a *ContractsApiService) UpgradeContractTrustedForwarderExecute(r ApiUpgrad
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.upgradeContractTrustedForwarderRequest == nil {
 		return localVarReturnValue, nil, reportError("upgradeContractTrustedForwarderRequest is required and must be specified")
@@ -673,7 +679,7 @@ func (a *ContractsApiService) UpgradeContractTrustedForwarderExecute(r ApiUpgrad
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.upgradeContractTrustedForwarderRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -705,7 +711,8 @@ func (a *ContractsApiService) UpgradeContractTrustedForwarderExecute(r ApiUpgrad
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -715,7 +722,8 @@ func (a *ContractsApiService) UpgradeContractTrustedForwarderExecute(r ApiUpgrad
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -737,7 +745,7 @@ type ApiWriteContractRequest struct {
 	ApiService *ContractsApiService
 	contractId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	writeContractRequest *WriteContractRequest
 }
 
@@ -747,9 +755,9 @@ func (r ApiWriteContractRequest) XAuthorization(xAuthorization string) ApiWriteC
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiWriteContractRequest) XPassword(xPassword string) ApiWriteContractRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiWriteContractRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiWriteContractRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -772,7 +780,7 @@ Using this endpoint, you can execute a transaction for any writeable contract me
 Additionally, MetaFab will automatically attempt to perform a gasless transaction for players interacting with a contract through this endpoint. Gasless transactions by players through this endpoint will only work if the target contract was deployed through MetaFab or supports MetaFab's ERC2771 trusted forwarder contract.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param contractId Any contract id within the MetaFab ecosystem.
+ @param contractId Any contract id within the MetaFab platform.
  @return ApiWriteContractRequest
 */
 func (a *ContractsApiService) WriteContract(ctx context.Context, contractId string) ApiWriteContractRequest {
@@ -807,8 +815,8 @@ func (a *ContractsApiService) WriteContractExecute(r ApiWriteContractRequest) (*
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.writeContractRequest == nil {
 		return localVarReturnValue, nil, reportError("writeContractRequest is required and must be specified")
@@ -832,7 +840,7 @@ func (a *ContractsApiService) WriteContractExecute(r ApiWriteContractRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.writeContractRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -864,7 +872,8 @@ func (a *ContractsApiService) WriteContractExecute(r ApiWriteContractRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -874,7 +883,8 @@ func (a *ContractsApiService) WriteContractExecute(r ApiWriteContractRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

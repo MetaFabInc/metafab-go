@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -29,7 +29,7 @@ type ApiBatchTransferCurrencyRequest struct {
 	ApiService *CurrenciesApiService
 	currencyId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	batchTransferCurrencyRequest *BatchTransferCurrencyRequest
 }
 
@@ -39,9 +39,9 @@ func (r ApiBatchTransferCurrencyRequest) XAuthorization(xAuthorization string) A
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiBatchTransferCurrencyRequest) XPassword(xPassword string) ApiBatchTransferCurrencyRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiBatchTransferCurrencyRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiBatchTransferCurrencyRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -62,7 +62,7 @@ Transfers multiple amounts of currency to multiple provided wallet addresses or 
 Optional references may be included for the transfer. References are useful for identifying transfers intended to pay for items, trades, services and more.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiBatchTransferCurrencyRequest
 */
 func (a *CurrenciesApiService) BatchTransferCurrency(ctx context.Context, currencyId string) ApiBatchTransferCurrencyRequest {
@@ -97,8 +97,8 @@ func (a *CurrenciesApiService) BatchTransferCurrencyExecute(r ApiBatchTransferCu
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.batchTransferCurrencyRequest == nil {
 		return localVarReturnValue, nil, reportError("batchTransferCurrencyRequest is required and must be specified")
@@ -122,7 +122,7 @@ func (a *CurrenciesApiService) BatchTransferCurrencyExecute(r ApiBatchTransferCu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.batchTransferCurrencyRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -154,7 +154,8 @@ func (a *CurrenciesApiService) BatchTransferCurrencyExecute(r ApiBatchTransferCu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -164,7 +165,8 @@ func (a *CurrenciesApiService) BatchTransferCurrencyExecute(r ApiBatchTransferCu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -186,7 +188,7 @@ type ApiBurnCurrencyRequest struct {
 	ApiService *CurrenciesApiService
 	currencyId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	burnCurrencyRequest *BurnCurrencyRequest
 }
 
@@ -196,9 +198,9 @@ func (r ApiBurnCurrencyRequest) XAuthorization(xAuthorization string) ApiBurnCur
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiBurnCurrencyRequest) XPassword(xPassword string) ApiBurnCurrencyRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiBurnCurrencyRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiBurnCurrencyRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -217,7 +219,7 @@ BurnCurrency Burn currency
 Removes (burns) the provided amount of currency from the authenticating game or players wallet. The currency amount is permanently removed from the circulating supply of the currency.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiBurnCurrencyRequest
 */
 func (a *CurrenciesApiService) BurnCurrency(ctx context.Context, currencyId string) ApiBurnCurrencyRequest {
@@ -252,8 +254,8 @@ func (a *CurrenciesApiService) BurnCurrencyExecute(r ApiBurnCurrencyRequest) (*T
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.burnCurrencyRequest == nil {
 		return localVarReturnValue, nil, reportError("burnCurrencyRequest is required and must be specified")
@@ -277,7 +279,7 @@ func (a *CurrenciesApiService) BurnCurrencyExecute(r ApiBurnCurrencyRequest) (*T
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.burnCurrencyRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -309,7 +311,8 @@ func (a *CurrenciesApiService) BurnCurrencyExecute(r ApiBurnCurrencyRequest) (*T
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -319,7 +322,8 @@ func (a *CurrenciesApiService) BurnCurrencyExecute(r ApiBurnCurrencyRequest) (*T
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -340,7 +344,7 @@ type ApiCreateCurrencyRequest struct {
 	ctx context.Context
 	ApiService *CurrenciesApiService
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	createCurrencyRequest *CreateCurrencyRequest
 }
 
@@ -350,9 +354,9 @@ func (r ApiCreateCurrencyRequest) XAuthorization(xAuthorization string) ApiCreat
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiCreateCurrencyRequest) XPassword(xPassword string) ApiCreateCurrencyRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiCreateCurrencyRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiCreateCurrencyRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -403,8 +407,8 @@ func (a *CurrenciesApiService) CreateCurrencyExecute(r ApiCreateCurrencyRequest)
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.createCurrencyRequest == nil {
 		return localVarReturnValue, nil, reportError("createCurrencyRequest is required and must be specified")
@@ -428,7 +432,7 @@ func (a *CurrenciesApiService) CreateCurrencyExecute(r ApiCreateCurrencyRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.createCurrencyRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -460,7 +464,8 @@ func (a *CurrenciesApiService) CreateCurrencyExecute(r ApiCreateCurrencyRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -470,7 +475,8 @@ func (a *CurrenciesApiService) CreateCurrencyExecute(r ApiCreateCurrencyRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -589,7 +595,8 @@ func (a *CurrenciesApiService) GetCurrenciesExecute(r ApiGetCurrenciesRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -620,7 +627,7 @@ func (r ApiGetCurrencyBalanceRequest) Address(address string) ApiGetCurrencyBala
 	return r
 }
 
-// Any wallet id within the MetaFab ecosystem.
+// Any wallet id within the MetaFab platform.
 func (r ApiGetCurrencyBalanceRequest) WalletId(walletId string) ApiGetCurrencyBalanceRequest {
 	r.walletId = &walletId
 	return r
@@ -636,7 +643,7 @@ GetCurrencyBalance Get currency balance
 Returns the current currency balance of the provided wallet address or or the wallet address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiGetCurrencyBalanceRequest
 */
 func (a *CurrenciesApiService) GetCurrencyBalance(ctx context.Context, currencyId string) ApiGetCurrencyBalanceRequest {
@@ -721,7 +728,8 @@ func (a *CurrenciesApiService) GetCurrencyBalanceExecute(r ApiGetCurrencyBalance
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -754,7 +762,7 @@ GetCurrencyFees Get currency fees
 Returns the current fee recipient address and fees of the currency for the provided currencyId. Fees are only applicable for gasless transactions performed by default by players.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiGetCurrencyFeesRequest
 */
 func (a *CurrenciesApiService) GetCurrencyFees(ctx context.Context, currencyId string) ApiGetCurrencyFeesRequest {
@@ -833,7 +841,8 @@ func (a *CurrenciesApiService) GetCurrencyFeesExecute(r ApiGetCurrencyFeesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -871,7 +880,7 @@ func (r ApiGetCurrencyRoleRequest) Address(address string) ApiGetCurrencyRoleReq
 	return r
 }
 
-// Any wallet id within the MetaFab ecosystem.
+// Any wallet id within the MetaFab platform.
 func (r ApiGetCurrencyRoleRequest) WalletId(walletId string) ApiGetCurrencyRoleRequest {
 	r.walletId = &walletId
 	return r
@@ -887,7 +896,7 @@ GetCurrencyRole Get currency role
 Returns a boolean (true/false) representing if the provided role for this currency has been granted to the provided address or address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiGetCurrencyRoleRequest
 */
 func (a *CurrenciesApiService) GetCurrencyRole(ctx context.Context, currencyId string) ApiGetCurrencyRoleRequest {
@@ -976,7 +985,8 @@ func (a *CurrenciesApiService) GetCurrencyRoleExecute(r ApiGetCurrencyRoleReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -998,7 +1008,7 @@ type ApiGrantCurrencyRoleRequest struct {
 	ApiService *CurrenciesApiService
 	currencyId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	grantCurrencyRoleRequest *GrantCurrencyRoleRequest
 }
 
@@ -1008,9 +1018,9 @@ func (r ApiGrantCurrencyRoleRequest) XAuthorization(xAuthorization string) ApiGr
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiGrantCurrencyRoleRequest) XPassword(xPassword string) ApiGrantCurrencyRoleRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiGrantCurrencyRoleRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiGrantCurrencyRoleRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -1029,7 +1039,7 @@ GrantCurrencyRole Grant currency role
 Grants the provided role for the currency to the provided address or address associated with the provided walletId. Granted roles give different types of authority on behalf of the currency for specific players, addresses, or contracts to perform different types of permissioned currency operations.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiGrantCurrencyRoleRequest
 */
 func (a *CurrenciesApiService) GrantCurrencyRole(ctx context.Context, currencyId string) ApiGrantCurrencyRoleRequest {
@@ -1064,8 +1074,8 @@ func (a *CurrenciesApiService) GrantCurrencyRoleExecute(r ApiGrantCurrencyRoleRe
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.grantCurrencyRoleRequest == nil {
 		return localVarReturnValue, nil, reportError("grantCurrencyRoleRequest is required and must be specified")
@@ -1089,7 +1099,7 @@ func (a *CurrenciesApiService) GrantCurrencyRoleExecute(r ApiGrantCurrencyRoleRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.grantCurrencyRoleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1121,7 +1131,8 @@ func (a *CurrenciesApiService) GrantCurrencyRoleExecute(r ApiGrantCurrencyRoleRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1131,7 +1142,8 @@ func (a *CurrenciesApiService) GrantCurrencyRoleExecute(r ApiGrantCurrencyRoleRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1153,7 +1165,7 @@ type ApiMintCurrencyRequest struct {
 	ApiService *CurrenciesApiService
 	currencyId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	mintCurrencyRequest *MintCurrencyRequest
 }
 
@@ -1163,9 +1175,9 @@ func (r ApiMintCurrencyRequest) XAuthorization(xAuthorization string) ApiMintCur
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiMintCurrencyRequest) XPassword(xPassword string) ApiMintCurrencyRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiMintCurrencyRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiMintCurrencyRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -1184,7 +1196,7 @@ MintCurrency Mint currency
 Creates (mints) the provided amount of currency to the provided wallet address or wallet address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiMintCurrencyRequest
 */
 func (a *CurrenciesApiService) MintCurrency(ctx context.Context, currencyId string) ApiMintCurrencyRequest {
@@ -1219,8 +1231,8 @@ func (a *CurrenciesApiService) MintCurrencyExecute(r ApiMintCurrencyRequest) (*T
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.mintCurrencyRequest == nil {
 		return localVarReturnValue, nil, reportError("mintCurrencyRequest is required and must be specified")
@@ -1244,7 +1256,7 @@ func (a *CurrenciesApiService) MintCurrencyExecute(r ApiMintCurrencyRequest) (*T
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.mintCurrencyRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1276,7 +1288,8 @@ func (a *CurrenciesApiService) MintCurrencyExecute(r ApiMintCurrencyRequest) (*T
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1286,7 +1299,8 @@ func (a *CurrenciesApiService) MintCurrencyExecute(r ApiMintCurrencyRequest) (*T
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1308,7 +1322,7 @@ type ApiRevokeCurrencyRoleRequest struct {
 	ApiService *CurrenciesApiService
 	currencyId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	revokeCollectionRoleRequest *RevokeCollectionRoleRequest
 }
 
@@ -1318,9 +1332,9 @@ func (r ApiRevokeCurrencyRoleRequest) XAuthorization(xAuthorization string) ApiR
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiRevokeCurrencyRoleRequest) XPassword(xPassword string) ApiRevokeCurrencyRoleRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiRevokeCurrencyRoleRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiRevokeCurrencyRoleRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -1339,7 +1353,7 @@ RevokeCurrencyRole Revoke currency role
 Revokes the provided role for the currency to the provided address or address associated with the provided walletId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiRevokeCurrencyRoleRequest
 */
 func (a *CurrenciesApiService) RevokeCurrencyRole(ctx context.Context, currencyId string) ApiRevokeCurrencyRoleRequest {
@@ -1374,8 +1388,8 @@ func (a *CurrenciesApiService) RevokeCurrencyRoleExecute(r ApiRevokeCurrencyRole
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.revokeCollectionRoleRequest == nil {
 		return localVarReturnValue, nil, reportError("revokeCollectionRoleRequest is required and must be specified")
@@ -1399,7 +1413,7 @@ func (a *CurrenciesApiService) RevokeCurrencyRoleExecute(r ApiRevokeCurrencyRole
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.revokeCollectionRoleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1431,7 +1445,8 @@ func (a *CurrenciesApiService) RevokeCurrencyRoleExecute(r ApiRevokeCurrencyRole
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1441,7 +1456,8 @@ func (a *CurrenciesApiService) RevokeCurrencyRoleExecute(r ApiRevokeCurrencyRole
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1463,7 +1479,7 @@ type ApiSetCurrencyFeesRequest struct {
 	ApiService *CurrenciesApiService
 	currencyId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	setCurrencyFeesRequest *SetCurrencyFeesRequest
 }
 
@@ -1473,9 +1489,9 @@ func (r ApiSetCurrencyFeesRequest) XAuthorization(xAuthorization string) ApiSetC
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiSetCurrencyFeesRequest) XPassword(xPassword string) ApiSetCurrencyFeesRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiSetCurrencyFeesRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiSetCurrencyFeesRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -1494,7 +1510,7 @@ SetCurrencyFees Set currency fees
 Sets the recipient address, basis points, fixed amount and cap amount for a currency's fees.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiSetCurrencyFeesRequest
 */
 func (a *CurrenciesApiService) SetCurrencyFees(ctx context.Context, currencyId string) ApiSetCurrencyFeesRequest {
@@ -1529,8 +1545,8 @@ func (a *CurrenciesApiService) SetCurrencyFeesExecute(r ApiSetCurrencyFeesReques
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.setCurrencyFeesRequest == nil {
 		return localVarReturnValue, nil, reportError("setCurrencyFeesRequest is required and must be specified")
@@ -1554,7 +1570,7 @@ func (a *CurrenciesApiService) SetCurrencyFeesExecute(r ApiSetCurrencyFeesReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.setCurrencyFeesRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1586,7 +1602,8 @@ func (a *CurrenciesApiService) SetCurrencyFeesExecute(r ApiSetCurrencyFeesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1596,7 +1613,8 @@ func (a *CurrenciesApiService) SetCurrencyFeesExecute(r ApiSetCurrencyFeesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1618,7 +1636,7 @@ type ApiTransferCurrencyRequest struct {
 	ApiService *CurrenciesApiService
 	currencyId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	transferCurrencyRequest *TransferCurrencyRequest
 }
 
@@ -1628,9 +1646,9 @@ func (r ApiTransferCurrencyRequest) XAuthorization(xAuthorization string) ApiTra
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiTransferCurrencyRequest) XPassword(xPassword string) ApiTransferCurrencyRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiTransferCurrencyRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiTransferCurrencyRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -1651,7 +1669,7 @@ Transfers an amount of currency to the provided wallet address or wallet address
 An optional reference may be included for the transfer. References are useful for identifying transfers intended to pay for items, trades, services and more.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param currencyId Any currency id within the MetaFab ecosystem.
+ @param currencyId Any currency id within the MetaFab platform.
  @return ApiTransferCurrencyRequest
 */
 func (a *CurrenciesApiService) TransferCurrency(ctx context.Context, currencyId string) ApiTransferCurrencyRequest {
@@ -1686,8 +1704,8 @@ func (a *CurrenciesApiService) TransferCurrencyExecute(r ApiTransferCurrencyRequ
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.transferCurrencyRequest == nil {
 		return localVarReturnValue, nil, reportError("transferCurrencyRequest is required and must be specified")
@@ -1711,7 +1729,7 @@ func (a *CurrenciesApiService) TransferCurrencyExecute(r ApiTransferCurrencyRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.transferCurrencyRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1743,7 +1761,8 @@ func (a *CurrenciesApiService) TransferCurrencyExecute(r ApiTransferCurrencyRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1753,7 +1772,8 @@ func (a *CurrenciesApiService) TransferCurrencyExecute(r ApiTransferCurrencyRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

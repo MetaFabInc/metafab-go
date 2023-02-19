@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -23,6 +23,8 @@ type CreateShop200Response struct {
 	GameId *string `json:"gameId,omitempty"`
 	// This field has not had a description added.
 	ContractId *string `json:"contractId,omitempty"`
+	// This field has not had a description added.
+	Name *string `json:"name,omitempty"`
 	// This field has not had a description added.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
@@ -49,7 +51,7 @@ func NewCreateShop200ResponseWithDefaults() *CreateShop200Response {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CreateShop200Response) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,15 +61,15 @@ func (o *CreateShop200Response) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateShop200Response) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CreateShop200Response) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +83,7 @@ func (o *CreateShop200Response) SetId(v string) {
 
 // GetGameId returns the GameId field value if set, zero value otherwise.
 func (o *CreateShop200Response) GetGameId() string {
-	if o == nil || o.GameId == nil {
+	if o == nil || isNil(o.GameId) {
 		var ret string
 		return ret
 	}
@@ -91,15 +93,15 @@ func (o *CreateShop200Response) GetGameId() string {
 // GetGameIdOk returns a tuple with the GameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateShop200Response) GetGameIdOk() (*string, bool) {
-	if o == nil || o.GameId == nil {
-		return nil, false
+	if o == nil || isNil(o.GameId) {
+    return nil, false
 	}
 	return o.GameId, true
 }
 
 // HasGameId returns a boolean if a field has been set.
 func (o *CreateShop200Response) HasGameId() bool {
-	if o != nil && o.GameId != nil {
+	if o != nil && !isNil(o.GameId) {
 		return true
 	}
 
@@ -113,7 +115,7 @@ func (o *CreateShop200Response) SetGameId(v string) {
 
 // GetContractId returns the ContractId field value if set, zero value otherwise.
 func (o *CreateShop200Response) GetContractId() string {
-	if o == nil || o.ContractId == nil {
+	if o == nil || isNil(o.ContractId) {
 		var ret string
 		return ret
 	}
@@ -123,15 +125,15 @@ func (o *CreateShop200Response) GetContractId() string {
 // GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateShop200Response) GetContractIdOk() (*string, bool) {
-	if o == nil || o.ContractId == nil {
-		return nil, false
+	if o == nil || isNil(o.ContractId) {
+    return nil, false
 	}
 	return o.ContractId, true
 }
 
 // HasContractId returns a boolean if a field has been set.
 func (o *CreateShop200Response) HasContractId() bool {
-	if o != nil && o.ContractId != nil {
+	if o != nil && !isNil(o.ContractId) {
 		return true
 	}
 
@@ -143,9 +145,41 @@ func (o *CreateShop200Response) SetContractId(v string) {
 	o.ContractId = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CreateShop200Response) GetName() string {
+	if o == nil || isNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateShop200Response) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
+    return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CreateShop200Response) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CreateShop200Response) SetName(v string) {
+	o.Name = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *CreateShop200Response) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -155,15 +189,15 @@ func (o *CreateShop200Response) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateShop200Response) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *CreateShop200Response) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -177,7 +211,7 @@ func (o *CreateShop200Response) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *CreateShop200Response) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -187,15 +221,15 @@ func (o *CreateShop200Response) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateShop200Response) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *CreateShop200Response) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -209,7 +243,7 @@ func (o *CreateShop200Response) SetCreatedAt(v string) {
 
 // GetContract returns the Contract field value if set, zero value otherwise.
 func (o *CreateShop200Response) GetContract() CreateCollection200ResponseAllOfContract {
-	if o == nil || o.Contract == nil {
+	if o == nil || isNil(o.Contract) {
 		var ret CreateCollection200ResponseAllOfContract
 		return ret
 	}
@@ -219,15 +253,15 @@ func (o *CreateShop200Response) GetContract() CreateCollection200ResponseAllOfCo
 // GetContractOk returns a tuple with the Contract field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateShop200Response) GetContractOk() (*CreateCollection200ResponseAllOfContract, bool) {
-	if o == nil || o.Contract == nil {
-		return nil, false
+	if o == nil || isNil(o.Contract) {
+    return nil, false
 	}
 	return o.Contract, true
 }
 
 // HasContract returns a boolean if a field has been set.
 func (o *CreateShop200Response) HasContract() bool {
-	if o != nil && o.Contract != nil {
+	if o != nil && !isNil(o.Contract) {
 		return true
 	}
 
@@ -241,22 +275,25 @@ func (o *CreateShop200Response) SetContract(v CreateCollection200ResponseAllOfCo
 
 func (o CreateShop200Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.GameId != nil {
+	if !isNil(o.GameId) {
 		toSerialize["gameId"] = o.GameId
 	}
-	if o.ContractId != nil {
+	if !isNil(o.ContractId) {
 		toSerialize["contractId"] = o.ContractId
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.Contract != nil {
+	if !isNil(o.Contract) {
 		toSerialize["contract"] = o.Contract
 	}
 	return json.Marshal(toSerialize)

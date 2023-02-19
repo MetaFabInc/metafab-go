@@ -3,7 +3,7 @@ MetaFab API
 
  Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.4.4
 Contact: metafabproject@gmail.com
 */
 
@@ -42,7 +42,7 @@ func NewPublicPlayerWalletWithDefaults() *PublicPlayerWallet {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PublicPlayerWallet) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *PublicPlayerWallet) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicPlayerWallet) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *PublicPlayerWallet) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *PublicPlayerWallet) SetId(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *PublicPlayerWallet) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil || isNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *PublicPlayerWallet) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicPlayerWallet) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
-		return nil, false
+	if o == nil || isNil(o.Address) {
+    return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *PublicPlayerWallet) HasAddress() bool {
-	if o != nil && o.Address != nil {
+	if o != nil && !isNil(o.Address) {
 		return true
 	}
 
@@ -106,10 +106,10 @@ func (o *PublicPlayerWallet) SetAddress(v string) {
 
 func (o PublicPlayerWallet) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Address != nil {
+	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
 	return json.Marshal(toSerialize)

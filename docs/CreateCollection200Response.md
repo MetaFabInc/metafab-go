@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | This field has not had a description added. | [optional] 
 **GameId** | Pointer to **string** | This field has not had a description added. | [optional] 
 **ContractId** | Pointer to **string** | This field has not had a description added. | [optional] 
+**Name** | Pointer to **string** | This field has not had a description added. | [optional] 
 **UpdatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **CreatedAt** | Pointer to **string** | This field has not had a description added. | [optional] 
 **Contract** | Pointer to [**CreateCollection200ResponseAllOfContract**](CreateCollection200ResponseAllOfContract.md) |  | [optional] 
@@ -104,6 +105,31 @@ SetContractId sets ContractId field to given value.
 `func (o *CreateCollection200Response) HasContractId() bool`
 
 HasContractId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *CreateCollection200Response) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CreateCollection200Response) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CreateCollection200Response) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CreateCollection200Response) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

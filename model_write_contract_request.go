@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -55,7 +55,7 @@ func (o *WriteContractRequest) GetFunc() string {
 // and a boolean to check if the value has been set.
 func (o *WriteContractRequest) GetFuncOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Func, true
 }
@@ -67,7 +67,7 @@ func (o *WriteContractRequest) SetFunc(v string) {
 
 // GetArgs returns the Args field value if set, zero value otherwise.
 func (o *WriteContractRequest) GetArgs() []WriteContractRequestArgsInner {
-	if o == nil || o.Args == nil {
+	if o == nil || isNil(o.Args) {
 		var ret []WriteContractRequestArgsInner
 		return ret
 	}
@@ -77,15 +77,15 @@ func (o *WriteContractRequest) GetArgs() []WriteContractRequestArgsInner {
 // GetArgsOk returns a tuple with the Args field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WriteContractRequest) GetArgsOk() ([]WriteContractRequestArgsInner, bool) {
-	if o == nil || o.Args == nil {
-		return nil, false
+	if o == nil || isNil(o.Args) {
+    return nil, false
 	}
 	return o.Args, true
 }
 
 // HasArgs returns a boolean if a field has been set.
 func (o *WriteContractRequest) HasArgs() bool {
-	if o != nil && o.Args != nil {
+	if o != nil && !isNil(o.Args) {
 		return true
 	}
 
@@ -102,7 +102,7 @@ func (o WriteContractRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["func"] = o.Func
 	}
-	if o.Args != nil {
+	if !isNil(o.Args) {
 		toSerialize["args"] = o.Args
 	}
 	return json.Marshal(toSerialize)

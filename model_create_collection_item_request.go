@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -69,7 +69,7 @@ func (o *CreateCollectionItemRequest) GetId() int32 {
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequest) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Id, true
 }
@@ -93,7 +93,7 @@ func (o *CreateCollectionItemRequest) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequest) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -117,7 +117,7 @@ func (o *CreateCollectionItemRequest) GetDescription() string {
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequest) GetDescriptionOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Description, true
 }
@@ -129,7 +129,7 @@ func (o *CreateCollectionItemRequest) SetDescription(v string) {
 
 // GetImageBase64 returns the ImageBase64 field value if set, zero value otherwise.
 func (o *CreateCollectionItemRequest) GetImageBase64() string {
-	if o == nil || o.ImageBase64 == nil {
+	if o == nil || isNil(o.ImageBase64) {
 		var ret string
 		return ret
 	}
@@ -139,15 +139,15 @@ func (o *CreateCollectionItemRequest) GetImageBase64() string {
 // GetImageBase64Ok returns a tuple with the ImageBase64 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequest) GetImageBase64Ok() (*string, bool) {
-	if o == nil || o.ImageBase64 == nil {
-		return nil, false
+	if o == nil || isNil(o.ImageBase64) {
+    return nil, false
 	}
 	return o.ImageBase64, true
 }
 
 // HasImageBase64 returns a boolean if a field has been set.
 func (o *CreateCollectionItemRequest) HasImageBase64() bool {
-	if o != nil && o.ImageBase64 != nil {
+	if o != nil && !isNil(o.ImageBase64) {
 		return true
 	}
 
@@ -161,7 +161,7 @@ func (o *CreateCollectionItemRequest) SetImageBase64(v string) {
 
 // GetImageUrl returns the ImageUrl field value if set, zero value otherwise.
 func (o *CreateCollectionItemRequest) GetImageUrl() string {
-	if o == nil || o.ImageUrl == nil {
+	if o == nil || isNil(o.ImageUrl) {
 		var ret string
 		return ret
 	}
@@ -171,15 +171,15 @@ func (o *CreateCollectionItemRequest) GetImageUrl() string {
 // GetImageUrlOk returns a tuple with the ImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequest) GetImageUrlOk() (*string, bool) {
-	if o == nil || o.ImageUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.ImageUrl) {
+    return nil, false
 	}
 	return o.ImageUrl, true
 }
 
 // HasImageUrl returns a boolean if a field has been set.
 func (o *CreateCollectionItemRequest) HasImageUrl() bool {
-	if o != nil && o.ImageUrl != nil {
+	if o != nil && !isNil(o.ImageUrl) {
 		return true
 	}
 
@@ -193,7 +193,7 @@ func (o *CreateCollectionItemRequest) SetImageUrl(v string) {
 
 // GetExternalUrl returns the ExternalUrl field value if set, zero value otherwise.
 func (o *CreateCollectionItemRequest) GetExternalUrl() string {
-	if o == nil || o.ExternalUrl == nil {
+	if o == nil || isNil(o.ExternalUrl) {
 		var ret string
 		return ret
 	}
@@ -203,15 +203,15 @@ func (o *CreateCollectionItemRequest) GetExternalUrl() string {
 // GetExternalUrlOk returns a tuple with the ExternalUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequest) GetExternalUrlOk() (*string, bool) {
-	if o == nil || o.ExternalUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.ExternalUrl) {
+    return nil, false
 	}
 	return o.ExternalUrl, true
 }
 
 // HasExternalUrl returns a boolean if a field has been set.
 func (o *CreateCollectionItemRequest) HasExternalUrl() bool {
-	if o != nil && o.ExternalUrl != nil {
+	if o != nil && !isNil(o.ExternalUrl) {
 		return true
 	}
 
@@ -225,7 +225,7 @@ func (o *CreateCollectionItemRequest) SetExternalUrl(v string) {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *CreateCollectionItemRequest) GetAttributes() []CreateCollectionItemRequestAttributesInner {
-	if o == nil || o.Attributes == nil {
+	if o == nil || isNil(o.Attributes) {
 		var ret []CreateCollectionItemRequestAttributesInner
 		return ret
 	}
@@ -235,15 +235,15 @@ func (o *CreateCollectionItemRequest) GetAttributes() []CreateCollectionItemRequ
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequest) GetAttributesOk() ([]CreateCollectionItemRequestAttributesInner, bool) {
-	if o == nil || o.Attributes == nil {
-		return nil, false
+	if o == nil || isNil(o.Attributes) {
+    return nil, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *CreateCollectionItemRequest) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !isNil(o.Attributes) {
 		return true
 	}
 
@@ -257,7 +257,7 @@ func (o *CreateCollectionItemRequest) SetAttributes(v []CreateCollectionItemRequ
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *CreateCollectionItemRequest) GetData() map[string]interface{} {
-	if o == nil || o.Data == nil {
+	if o == nil || isNil(o.Data) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -267,15 +267,15 @@ func (o *CreateCollectionItemRequest) GetData() map[string]interface{} {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCollectionItemRequest) GetDataOk() (map[string]interface{}, bool) {
-	if o == nil || o.Data == nil {
-		return nil, false
+	if o == nil || isNil(o.Data) {
+    return map[string]interface{}{}, false
 	}
 	return o.Data, true
 }
 
 // HasData returns a boolean if a field has been set.
 func (o *CreateCollectionItemRequest) HasData() bool {
-	if o != nil && o.Data != nil {
+	if o != nil && !isNil(o.Data) {
 		return true
 	}
 
@@ -298,19 +298,19 @@ func (o CreateCollectionItemRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["description"] = o.Description
 	}
-	if o.ImageBase64 != nil {
+	if !isNil(o.ImageBase64) {
 		toSerialize["imageBase64"] = o.ImageBase64
 	}
-	if o.ImageUrl != nil {
+	if !isNil(o.ImageUrl) {
 		toSerialize["imageUrl"] = o.ImageUrl
 	}
-	if o.ExternalUrl != nil {
+	if !isNil(o.ExternalUrl) {
 		toSerialize["externalUrl"] = o.ExternalUrl
 	}
-	if o.Attributes != nil {
+	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if o.Data != nil {
+	if !isNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	return json.Marshal(toSerialize)

@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -57,7 +57,7 @@ func (o *RevokeCollectionRoleRequest) GetRole() string {
 // and a boolean to check if the value has been set.
 func (o *RevokeCollectionRoleRequest) GetRoleOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Role, true
 }
@@ -69,7 +69,7 @@ func (o *RevokeCollectionRoleRequest) SetRole(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *RevokeCollectionRoleRequest) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil || isNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -79,15 +79,15 @@ func (o *RevokeCollectionRoleRequest) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevokeCollectionRoleRequest) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
-		return nil, false
+	if o == nil || isNil(o.Address) {
+    return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *RevokeCollectionRoleRequest) HasAddress() bool {
-	if o != nil && o.Address != nil {
+	if o != nil && !isNil(o.Address) {
 		return true
 	}
 
@@ -101,7 +101,7 @@ func (o *RevokeCollectionRoleRequest) SetAddress(v string) {
 
 // GetWalletId returns the WalletId field value if set, zero value otherwise.
 func (o *RevokeCollectionRoleRequest) GetWalletId() []string {
-	if o == nil || o.WalletId == nil {
+	if o == nil || isNil(o.WalletId) {
 		var ret []string
 		return ret
 	}
@@ -111,15 +111,15 @@ func (o *RevokeCollectionRoleRequest) GetWalletId() []string {
 // GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RevokeCollectionRoleRequest) GetWalletIdOk() ([]string, bool) {
-	if o == nil || o.WalletId == nil {
-		return nil, false
+	if o == nil || isNil(o.WalletId) {
+    return nil, false
 	}
 	return o.WalletId, true
 }
 
 // HasWalletId returns a boolean if a field has been set.
 func (o *RevokeCollectionRoleRequest) HasWalletId() bool {
-	if o != nil && o.WalletId != nil {
+	if o != nil && !isNil(o.WalletId) {
 		return true
 	}
 
@@ -136,10 +136,10 @@ func (o RevokeCollectionRoleRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["role"] = o.Role
 	}
-	if o.Address != nil {
+	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if o.WalletId != nil {
+	if !isNil(o.WalletId) {
 		toSerialize["walletId"] = o.WalletId
 	}
 	return json.Marshal(toSerialize)

@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -41,7 +41,7 @@ func NewSetPlayerConnectedWallet200ResponseWithDefaults() *SetPlayerConnectedWal
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SetPlayerConnectedWallet200Response) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,15 +51,15 @@ func (o *SetPlayerConnectedWallet200Response) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetPlayerConnectedWallet200Response) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SetPlayerConnectedWallet200Response) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *SetPlayerConnectedWallet200Response) SetId(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *SetPlayerConnectedWallet200Response) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil || isNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -83,15 +83,15 @@ func (o *SetPlayerConnectedWallet200Response) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetPlayerConnectedWallet200Response) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
-		return nil, false
+	if o == nil || isNil(o.Address) {
+    return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *SetPlayerConnectedWallet200Response) HasAddress() bool {
-	if o != nil && o.Address != nil {
+	if o != nil && !isNil(o.Address) {
 		return true
 	}
 
@@ -105,7 +105,7 @@ func (o *SetPlayerConnectedWallet200Response) SetAddress(v string) {
 
 // GetTransaction returns the Transaction field value if set, zero value otherwise.
 func (o *SetPlayerConnectedWallet200Response) GetTransaction() TransactionModel {
-	if o == nil || o.Transaction == nil {
+	if o == nil || isNil(o.Transaction) {
 		var ret TransactionModel
 		return ret
 	}
@@ -115,15 +115,15 @@ func (o *SetPlayerConnectedWallet200Response) GetTransaction() TransactionModel 
 // GetTransactionOk returns a tuple with the Transaction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetPlayerConnectedWallet200Response) GetTransactionOk() (*TransactionModel, bool) {
-	if o == nil || o.Transaction == nil {
-		return nil, false
+	if o == nil || isNil(o.Transaction) {
+    return nil, false
 	}
 	return o.Transaction, true
 }
 
 // HasTransaction returns a boolean if a field has been set.
 func (o *SetPlayerConnectedWallet200Response) HasTransaction() bool {
-	if o != nil && o.Transaction != nil {
+	if o != nil && !isNil(o.Transaction) {
 		return true
 	}
 
@@ -137,13 +137,13 @@ func (o *SetPlayerConnectedWallet200Response) SetTransaction(v TransactionModel)
 
 func (o SetPlayerConnectedWallet200Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Address != nil {
+	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if o.Transaction != nil {
+	if !isNil(o.Transaction) {
 		toSerialize["transaction"] = o.Transaction
 	}
 	return json.Marshal(toSerialize)

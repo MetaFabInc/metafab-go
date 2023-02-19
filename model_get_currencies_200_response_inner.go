@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -55,7 +55,7 @@ func NewGetCurrencies200ResponseInnerWithDefaults() *GetCurrencies200ResponseInn
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -65,15 +65,15 @@ func (o *GetCurrencies200ResponseInner) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *GetCurrencies200ResponseInner) SetId(v string) {
 
 // GetGameId returns the GameId field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetGameId() string {
-	if o == nil || o.GameId == nil {
+	if o == nil || isNil(o.GameId) {
 		var ret string
 		return ret
 	}
@@ -97,15 +97,15 @@ func (o *GetCurrencies200ResponseInner) GetGameId() string {
 // GetGameIdOk returns a tuple with the GameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetGameIdOk() (*string, bool) {
-	if o == nil || o.GameId == nil {
-		return nil, false
+	if o == nil || isNil(o.GameId) {
+    return nil, false
 	}
 	return o.GameId, true
 }
 
 // HasGameId returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasGameId() bool {
-	if o != nil && o.GameId != nil {
+	if o != nil && !isNil(o.GameId) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *GetCurrencies200ResponseInner) SetGameId(v string) {
 
 // GetContractId returns the ContractId field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetContractId() string {
-	if o == nil || o.ContractId == nil {
+	if o == nil || isNil(o.ContractId) {
 		var ret string
 		return ret
 	}
@@ -129,15 +129,15 @@ func (o *GetCurrencies200ResponseInner) GetContractId() string {
 // GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetContractIdOk() (*string, bool) {
-	if o == nil || o.ContractId == nil {
-		return nil, false
+	if o == nil || isNil(o.ContractId) {
+    return nil, false
 	}
 	return o.ContractId, true
 }
 
 // HasContractId returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasContractId() bool {
-	if o != nil && o.ContractId != nil {
+	if o != nil && !isNil(o.ContractId) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *GetCurrencies200ResponseInner) SetContractId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -161,15 +161,15 @@ func (o *GetCurrencies200ResponseInner) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *GetCurrencies200ResponseInner) SetName(v string) {
 
 // GetSymbol returns the Symbol field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetSymbol() string {
-	if o == nil || o.Symbol == nil {
+	if o == nil || isNil(o.Symbol) {
 		var ret string
 		return ret
 	}
@@ -193,15 +193,15 @@ func (o *GetCurrencies200ResponseInner) GetSymbol() string {
 // GetSymbolOk returns a tuple with the Symbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetSymbolOk() (*string, bool) {
-	if o == nil || o.Symbol == nil {
-		return nil, false
+	if o == nil || isNil(o.Symbol) {
+    return nil, false
 	}
 	return o.Symbol, true
 }
 
 // HasSymbol returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasSymbol() bool {
-	if o != nil && o.Symbol != nil {
+	if o != nil && !isNil(o.Symbol) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *GetCurrencies200ResponseInner) SetSymbol(v string) {
 
 // GetSupplyCap returns the SupplyCap field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetSupplyCap() int32 {
-	if o == nil || o.SupplyCap == nil {
+	if o == nil || isNil(o.SupplyCap) {
 		var ret int32
 		return ret
 	}
@@ -225,15 +225,15 @@ func (o *GetCurrencies200ResponseInner) GetSupplyCap() int32 {
 // GetSupplyCapOk returns a tuple with the SupplyCap field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetSupplyCapOk() (*int32, bool) {
-	if o == nil || o.SupplyCap == nil {
-		return nil, false
+	if o == nil || isNil(o.SupplyCap) {
+    return nil, false
 	}
 	return o.SupplyCap, true
 }
 
 // HasSupplyCap returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasSupplyCap() bool {
-	if o != nil && o.SupplyCap != nil {
+	if o != nil && !isNil(o.SupplyCap) {
 		return true
 	}
 
@@ -247,7 +247,7 @@ func (o *GetCurrencies200ResponseInner) SetSupplyCap(v int32) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -257,15 +257,15 @@ func (o *GetCurrencies200ResponseInner) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -279,7 +279,7 @@ func (o *GetCurrencies200ResponseInner) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -289,15 +289,15 @@ func (o *GetCurrencies200ResponseInner) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -311,7 +311,7 @@ func (o *GetCurrencies200ResponseInner) SetCreatedAt(v string) {
 
 // GetContract returns the Contract field value if set, zero value otherwise.
 func (o *GetCurrencies200ResponseInner) GetContract() ContractModel {
-	if o == nil || o.Contract == nil {
+	if o == nil || isNil(o.Contract) {
 		var ret ContractModel
 		return ret
 	}
@@ -321,15 +321,15 @@ func (o *GetCurrencies200ResponseInner) GetContract() ContractModel {
 // GetContractOk returns a tuple with the Contract field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCurrencies200ResponseInner) GetContractOk() (*ContractModel, bool) {
-	if o == nil || o.Contract == nil {
-		return nil, false
+	if o == nil || isNil(o.Contract) {
+    return nil, false
 	}
 	return o.Contract, true
 }
 
 // HasContract returns a boolean if a field has been set.
 func (o *GetCurrencies200ResponseInner) HasContract() bool {
-	if o != nil && o.Contract != nil {
+	if o != nil && !isNil(o.Contract) {
 		return true
 	}
 
@@ -343,31 +343,31 @@ func (o *GetCurrencies200ResponseInner) SetContract(v ContractModel) {
 
 func (o GetCurrencies200ResponseInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.GameId != nil {
+	if !isNil(o.GameId) {
 		toSerialize["gameId"] = o.GameId
 	}
-	if o.ContractId != nil {
+	if !isNil(o.ContractId) {
 		toSerialize["contractId"] = o.ContractId
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Symbol != nil {
+	if !isNil(o.Symbol) {
 		toSerialize["symbol"] = o.Symbol
 	}
-	if o.SupplyCap != nil {
+	if !isNil(o.SupplyCap) {
 		toSerialize["supplyCap"] = o.SupplyCap
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.Contract != nil {
+	if !isNil(o.Contract) {
 		toSerialize["contract"] = o.Contract
 	}
 	return json.Marshal(toSerialize)

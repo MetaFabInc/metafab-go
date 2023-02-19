@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -47,7 +47,7 @@ func NewBatchTransferCurrencyRequestWithDefaults() *BatchTransferCurrencyRequest
 
 // GetAddresses returns the Addresses field value if set, zero value otherwise.
 func (o *BatchTransferCurrencyRequest) GetAddresses() []string {
-	if o == nil || o.Addresses == nil {
+	if o == nil || isNil(o.Addresses) {
 		var ret []string
 		return ret
 	}
@@ -57,15 +57,15 @@ func (o *BatchTransferCurrencyRequest) GetAddresses() []string {
 // GetAddressesOk returns a tuple with the Addresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BatchTransferCurrencyRequest) GetAddressesOk() ([]string, bool) {
-	if o == nil || o.Addresses == nil {
-		return nil, false
+	if o == nil || isNil(o.Addresses) {
+    return nil, false
 	}
 	return o.Addresses, true
 }
 
 // HasAddresses returns a boolean if a field has been set.
 func (o *BatchTransferCurrencyRequest) HasAddresses() bool {
-	if o != nil && o.Addresses != nil {
+	if o != nil && !isNil(o.Addresses) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *BatchTransferCurrencyRequest) SetAddresses(v []string) {
 
 // GetWalletIds returns the WalletIds field value if set, zero value otherwise.
 func (o *BatchTransferCurrencyRequest) GetWalletIds() []string {
-	if o == nil || o.WalletIds == nil {
+	if o == nil || isNil(o.WalletIds) {
 		var ret []string
 		return ret
 	}
@@ -89,15 +89,15 @@ func (o *BatchTransferCurrencyRequest) GetWalletIds() []string {
 // GetWalletIdsOk returns a tuple with the WalletIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BatchTransferCurrencyRequest) GetWalletIdsOk() ([]string, bool) {
-	if o == nil || o.WalletIds == nil {
-		return nil, false
+	if o == nil || isNil(o.WalletIds) {
+    return nil, false
 	}
 	return o.WalletIds, true
 }
 
 // HasWalletIds returns a boolean if a field has been set.
 func (o *BatchTransferCurrencyRequest) HasWalletIds() bool {
-	if o != nil && o.WalletIds != nil {
+	if o != nil && !isNil(o.WalletIds) {
 		return true
 	}
 
@@ -123,7 +123,7 @@ func (o *BatchTransferCurrencyRequest) GetAmounts() []float32 {
 // and a boolean to check if the value has been set.
 func (o *BatchTransferCurrencyRequest) GetAmountsOk() ([]float32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.Amounts, true
 }
@@ -135,7 +135,7 @@ func (o *BatchTransferCurrencyRequest) SetAmounts(v []float32) {
 
 // GetReferences returns the References field value if set, zero value otherwise.
 func (o *BatchTransferCurrencyRequest) GetReferences() []float32 {
-	if o == nil || o.References == nil {
+	if o == nil || isNil(o.References) {
 		var ret []float32
 		return ret
 	}
@@ -145,15 +145,15 @@ func (o *BatchTransferCurrencyRequest) GetReferences() []float32 {
 // GetReferencesOk returns a tuple with the References field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BatchTransferCurrencyRequest) GetReferencesOk() ([]float32, bool) {
-	if o == nil || o.References == nil {
-		return nil, false
+	if o == nil || isNil(o.References) {
+    return nil, false
 	}
 	return o.References, true
 }
 
 // HasReferences returns a boolean if a field has been set.
 func (o *BatchTransferCurrencyRequest) HasReferences() bool {
-	if o != nil && o.References != nil {
+	if o != nil && !isNil(o.References) {
 		return true
 	}
 
@@ -167,16 +167,16 @@ func (o *BatchTransferCurrencyRequest) SetReferences(v []float32) {
 
 func (o BatchTransferCurrencyRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Addresses != nil {
+	if !isNil(o.Addresses) {
 		toSerialize["addresses"] = o.Addresses
 	}
-	if o.WalletIds != nil {
+	if !isNil(o.WalletIds) {
 		toSerialize["walletIds"] = o.WalletIds
 	}
 	if true {
 		toSerialize["amounts"] = o.Amounts
 	}
-	if o.References != nil {
+	if !isNil(o.References) {
 		toSerialize["references"] = o.References
 	}
 	return json.Marshal(toSerialize)

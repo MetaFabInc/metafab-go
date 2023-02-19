@@ -159,7 +159,7 @@ import (
 )
 
 func main() {
-    gameId := "gameId_example" // string | Any game id within the MetaFab ecosystem.
+    gameId := "gameId_example" // string | Any game id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -179,7 +179,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**gameId** | **string** | Any game id within the MetaFab ecosystem. | 
+**gameId** | **string** | Any game id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -210,7 +210,7 @@ No authorization required
 
 ## UpdateGame
 
-> GameModel UpdateGame(ctx, gameId).XAuthorization(xAuthorization).UpdateGameRequest(updateGameRequest).Execute()
+> UpdateGame200Response UpdateGame(ctx, gameId).XAuthorization(xAuthorization).UpdateGameRequest(updateGameRequest).Execute()
 
 Update game
 
@@ -229,7 +229,7 @@ import (
 )
 
 func main() {
-    gameId := "gameId_example" // string | Any game id within the MetaFab ecosystem.
+    gameId := "gameId_example" // string | The game id of the authenticating game.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
     updateGameRequest := *openapiclient.NewUpdateGameRequest() // UpdateGameRequest | 
 
@@ -240,7 +240,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GamesApi.UpdateGame``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateGame`: GameModel
+    // response from `UpdateGame`: UpdateGame200Response
     fmt.Fprintf(os.Stdout, "Response from `GamesApi.UpdateGame`: %v\n", resp)
 }
 ```
@@ -251,7 +251,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**gameId** | **string** | Any game id within the MetaFab ecosystem. | 
+**gameId** | **string** | The game id of the authenticating game. | 
 
 ### Other Parameters
 
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GameModel**](GameModel.md)
+[**UpdateGame200Response**](UpdateGame200Response.md)
 
 ### Authorization
 

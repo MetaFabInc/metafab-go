@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -59,7 +59,7 @@ func (o *CreateGameRequest) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *CreateGameRequest) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -83,7 +83,7 @@ func (o *CreateGameRequest) GetEmail() string {
 // and a boolean to check if the value has been set.
 func (o *CreateGameRequest) GetEmailOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Email, true
 }
@@ -107,7 +107,7 @@ func (o *CreateGameRequest) GetPassword() string {
 // and a boolean to check if the value has been set.
 func (o *CreateGameRequest) GetPasswordOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Password, true
 }

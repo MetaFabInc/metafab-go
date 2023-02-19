@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -65,7 +65,7 @@ func (dst *WriteContractRequestArgsInner) UnmarshalJSON(data []byte) error {
 		dst.string = nil
 	}
 
-	return fmt.Errorf("Data failed to match schemas in anyOf(WriteContractRequestArgsInner)")
+	return fmt.Errorf("data failed to match schemas in anyOf(WriteContractRequestArgsInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

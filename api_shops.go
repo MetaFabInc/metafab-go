@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -28,7 +28,7 @@ type ApiCreateShopRequest struct {
 	ctx context.Context
 	ApiService *ShopsApiService
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	createShopRequest *CreateShopRequest
 }
 
@@ -38,9 +38,9 @@ func (r ApiCreateShopRequest) XAuthorization(xAuthorization string) ApiCreateSho
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiCreateShopRequest) XPassword(xPassword string) ApiCreateShopRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiCreateShopRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiCreateShopRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -91,8 +91,8 @@ func (a *ShopsApiService) CreateShopExecute(r ApiCreateShopRequest) (*CreateShop
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.createShopRequest == nil {
 		return localVarReturnValue, nil, reportError("createShopRequest is required and must be specified")
@@ -116,7 +116,7 @@ func (a *ShopsApiService) CreateShopExecute(r ApiCreateShopRequest) (*CreateShop
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.createShopRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -148,7 +148,8 @@ func (a *ShopsApiService) CreateShopExecute(r ApiCreateShopRequest) (*CreateShop
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -158,7 +159,8 @@ func (a *ShopsApiService) CreateShopExecute(r ApiCreateShopRequest) (*CreateShop
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -192,7 +194,7 @@ GetShopOffer Get shop offer
 Returns a shop offer object for the provided shopOfferId.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopId Any shop id within the MetaFab platform.
  @param shopOfferId Any offer id for the shop. Zero, or a positive integer.
  @return ApiGetShopOfferRequest
 */
@@ -220,7 +222,7 @@ func (a *ShopsApiService) GetShopOfferExecute(r ApiGetShopOfferRequest) (*ShopOf
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/shops/{shopId}/items/{shopOfferId}"
+	localVarPath := localBasePath + "/v1/shops/{shopId}/offers/{shopOfferId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"shopId"+"}", url.PathEscape(parameterToString(r.shopId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"shopOfferId"+"}", url.PathEscape(parameterToString(r.shopOfferId, "")), -1)
 
@@ -274,7 +276,8 @@ func (a *ShopsApiService) GetShopOfferExecute(r ApiGetShopOfferRequest) (*ShopOf
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -307,7 +310,7 @@ GetShopOffers Get shop offers
 Returns all shop offers as an array of shop offer objects.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopId Any shop id within the MetaFab platform.
  @return ApiGetShopOffersRequest
 */
 func (a *ShopsApiService) GetShopOffers(ctx context.Context, shopId string) ApiGetShopOffersRequest {
@@ -386,7 +389,8 @@ func (a *ShopsApiService) GetShopOffersExecute(r ApiGetShopOffersRequest) ([]Sho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -505,7 +509,8 @@ func (a *ShopsApiService) GetShopsExecute(r ApiGetShopsRequest) ([]GetShops200Re
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -528,7 +533,7 @@ type ApiRemoveShopOfferRequest struct {
 	shopId string
 	shopOfferId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 }
 
 // The &#x60;secretKey&#x60; of the authenticating game.
@@ -537,9 +542,9 @@ func (r ApiRemoveShopOfferRequest) XAuthorization(xAuthorization string) ApiRemo
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiRemoveShopOfferRequest) XPassword(xPassword string) ApiRemoveShopOfferRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiRemoveShopOfferRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiRemoveShopOfferRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -553,7 +558,7 @@ RemoveShopOffer Remove shop offer
 Removes the provided offer by offerId from the provided shop. Removed offers can no longer be used.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopId Any shop id within the MetaFab platform.
  @param shopOfferId Any offer id for the shop. Zero, or a positive integer.
  @return ApiRemoveShopOfferRequest
 */
@@ -591,8 +596,8 @@ func (a *ShopsApiService) RemoveShopOfferExecute(r ApiRemoveShopOfferRequest) (*
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -613,7 +618,7 @@ func (a *ShopsApiService) RemoveShopOfferExecute(r ApiRemoveShopOfferRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -643,7 +648,8 @@ func (a *ShopsApiService) RemoveShopOfferExecute(r ApiRemoveShopOfferRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -653,7 +659,8 @@ func (a *ShopsApiService) RemoveShopOfferExecute(r ApiRemoveShopOfferRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -675,7 +682,7 @@ type ApiSetShopOfferRequest struct {
 	ApiService *ShopsApiService
 	shopId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	setShopOfferRequest *SetShopOfferRequest
 }
 
@@ -685,9 +692,9 @@ func (r ApiSetShopOfferRequest) XAuthorization(xAuthorization string) ApiSetShop
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiSetShopOfferRequest) XPassword(xPassword string) ApiSetShopOfferRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiSetShopOfferRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiSetShopOfferRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -710,7 +717,7 @@ All request fields besides `id` are optional. Any optional fields omitted will n
 Another example, you may want to make a shop offer from one ERC20 token to another. This is also possible - simple set the input and output currency fields and leave the others blank.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopId Any shop id within the MetaFab platform.
  @return ApiSetShopOfferRequest
 */
 func (a *ShopsApiService) SetShopOffer(ctx context.Context, shopId string) ApiSetShopOfferRequest {
@@ -745,8 +752,8 @@ func (a *ShopsApiService) SetShopOfferExecute(r ApiSetShopOfferRequest) (*Transa
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.setShopOfferRequest == nil {
 		return localVarReturnValue, nil, reportError("setShopOfferRequest is required and must be specified")
@@ -770,7 +777,7 @@ func (a *ShopsApiService) SetShopOfferExecute(r ApiSetShopOfferRequest) (*Transa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.setShopOfferRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -802,7 +809,8 @@ func (a *ShopsApiService) SetShopOfferExecute(r ApiSetShopOfferRequest) (*Transa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -812,7 +820,8 @@ func (a *ShopsApiService) SetShopOfferExecute(r ApiSetShopOfferRequest) (*Transa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -835,7 +844,7 @@ type ApiUseShopOfferRequest struct {
 	shopId string
 	shopOfferId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 }
 
 // The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player.
@@ -844,9 +853,9 @@ func (r ApiUseShopOfferRequest) XAuthorization(xAuthorization string) ApiUseShop
 	return r
 }
 
-// The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
-func (r ApiUseShopOfferRequest) XPassword(xPassword string) ApiUseShopOfferRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+func (r ApiUseShopOfferRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiUseShopOfferRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -860,7 +869,7 @@ UseShopOffer Use shop offer
 Uses a shop offer. The required (input) item(s) and/or currency are removed from the wallet or player wallet using the offer. The given (output) item(s) and/or currency are given to the wallet or player wallet using the offer.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopId Any shop id within the MetaFab platform.
  @param shopOfferId Any offer id for the shop. Zero, or a positive integer.
  @return ApiUseShopOfferRequest
 */
@@ -898,8 +907,8 @@ func (a *ShopsApiService) UseShopOfferExecute(r ApiUseShopOfferRequest) (*Transa
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -920,7 +929,7 @@ func (a *ShopsApiService) UseShopOfferExecute(r ApiUseShopOfferRequest) (*Transa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -950,7 +959,8 @@ func (a *ShopsApiService) UseShopOfferExecute(r ApiUseShopOfferRequest) (*Transa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -960,7 +970,8 @@ func (a *ShopsApiService) UseShopOfferExecute(r ApiUseShopOfferRequest) (*Transa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -982,7 +993,7 @@ type ApiWithdrawFromShopRequest struct {
 	ApiService *ShopsApiService
 	shopId string
 	xAuthorization *string
-	xPassword *string
+	xWalletDecryptKey *string
 	withdrawFromShopRequest *WithdrawFromShopRequest
 }
 
@@ -992,9 +1003,9 @@ func (r ApiWithdrawFromShopRequest) XAuthorization(xAuthorization string) ApiWit
 	return r
 }
 
-// The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
-func (r ApiWithdrawFromShopRequest) XPassword(xPassword string) ApiWithdrawFromShopRequest {
-	r.xPassword = &xPassword
+// The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+func (r ApiWithdrawFromShopRequest) XWalletDecryptKey(xWalletDecryptKey string) ApiWithdrawFromShopRequest {
+	r.xWalletDecryptKey = &xWalletDecryptKey
 	return r
 }
 
@@ -1013,7 +1024,7 @@ WithdrawFromShop Withdraw from shop
 Withdraws native token, currency or items from a shop. Whenever a shop offer has input requirements, the native tokens, currencies or items for the requirements of that offer are deposited into the shop contract when the offer is used. These can be withdrawn to any other address.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param shopId Any shop id within the MetaFab ecosystem.
+ @param shopId Any shop id within the MetaFab platform.
  @return ApiWithdrawFromShopRequest
 */
 func (a *ShopsApiService) WithdrawFromShop(ctx context.Context, shopId string) ApiWithdrawFromShopRequest {
@@ -1048,8 +1059,8 @@ func (a *ShopsApiService) WithdrawFromShopExecute(r ApiWithdrawFromShopRequest) 
 	if r.xAuthorization == nil {
 		return localVarReturnValue, nil, reportError("xAuthorization is required and must be specified")
 	}
-	if r.xPassword == nil {
-		return localVarReturnValue, nil, reportError("xPassword is required and must be specified")
+	if r.xWalletDecryptKey == nil {
+		return localVarReturnValue, nil, reportError("xWalletDecryptKey is required and must be specified")
 	}
 	if r.withdrawFromShopRequest == nil {
 		return localVarReturnValue, nil, reportError("withdrawFromShopRequest is required and must be specified")
@@ -1073,7 +1084,7 @@ func (a *ShopsApiService) WithdrawFromShopExecute(r ApiWithdrawFromShopRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	localVarHeaderParams["X-Authorization"] = parameterToString(*r.xAuthorization, "")
-	localVarHeaderParams["X-Password"] = parameterToString(*r.xPassword, "")
+	localVarHeaderParams["X-Wallet-Decrypt-Key"] = parameterToString(*r.xWalletDecryptKey, "")
 	// body params
 	localVarPostBody = r.withdrawFromShopRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1105,7 +1116,8 @@ func (a *ShopsApiService) WithdrawFromShopExecute(r ApiWithdrawFromShopRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1115,7 +1127,8 @@ func (a *ShopsApiService) WithdrawFromShopExecute(r ApiWithdrawFromShopRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

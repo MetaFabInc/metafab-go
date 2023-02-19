@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -83,7 +83,7 @@ func (o *SetShopOfferRequest) GetId() int32 {
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Id, true
 }
@@ -95,7 +95,7 @@ func (o *SetShopOfferRequest) SetId(v int32) {
 
 // GetInputCollectionAddress returns the InputCollectionAddress field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetInputCollectionAddress() string {
-	if o == nil || o.InputCollectionAddress == nil {
+	if o == nil || isNil(o.InputCollectionAddress) {
 		var ret string
 		return ret
 	}
@@ -105,15 +105,15 @@ func (o *SetShopOfferRequest) GetInputCollectionAddress() string {
 // GetInputCollectionAddressOk returns a tuple with the InputCollectionAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetInputCollectionAddressOk() (*string, bool) {
-	if o == nil || o.InputCollectionAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCollectionAddress) {
+    return nil, false
 	}
 	return o.InputCollectionAddress, true
 }
 
 // HasInputCollectionAddress returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasInputCollectionAddress() bool {
-	if o != nil && o.InputCollectionAddress != nil {
+	if o != nil && !isNil(o.InputCollectionAddress) {
 		return true
 	}
 
@@ -127,7 +127,7 @@ func (o *SetShopOfferRequest) SetInputCollectionAddress(v string) {
 
 // GetInputCollectionId returns the InputCollectionId field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetInputCollectionId() string {
-	if o == nil || o.InputCollectionId == nil {
+	if o == nil || isNil(o.InputCollectionId) {
 		var ret string
 		return ret
 	}
@@ -137,15 +137,15 @@ func (o *SetShopOfferRequest) GetInputCollectionId() string {
 // GetInputCollectionIdOk returns a tuple with the InputCollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetInputCollectionIdOk() (*string, bool) {
-	if o == nil || o.InputCollectionId == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCollectionId) {
+    return nil, false
 	}
 	return o.InputCollectionId, true
 }
 
 // HasInputCollectionId returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasInputCollectionId() bool {
-	if o != nil && o.InputCollectionId != nil {
+	if o != nil && !isNil(o.InputCollectionId) {
 		return true
 	}
 
@@ -159,7 +159,7 @@ func (o *SetShopOfferRequest) SetInputCollectionId(v string) {
 
 // GetInputCollectionItemIds returns the InputCollectionItemIds field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetInputCollectionItemIds() []int32 {
-	if o == nil || o.InputCollectionItemIds == nil {
+	if o == nil || isNil(o.InputCollectionItemIds) {
 		var ret []int32
 		return ret
 	}
@@ -169,15 +169,15 @@ func (o *SetShopOfferRequest) GetInputCollectionItemIds() []int32 {
 // GetInputCollectionItemIdsOk returns a tuple with the InputCollectionItemIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetInputCollectionItemIdsOk() ([]int32, bool) {
-	if o == nil || o.InputCollectionItemIds == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCollectionItemIds) {
+    return nil, false
 	}
 	return o.InputCollectionItemIds, true
 }
 
 // HasInputCollectionItemIds returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasInputCollectionItemIds() bool {
-	if o != nil && o.InputCollectionItemIds != nil {
+	if o != nil && !isNil(o.InputCollectionItemIds) {
 		return true
 	}
 
@@ -191,7 +191,7 @@ func (o *SetShopOfferRequest) SetInputCollectionItemIds(v []int32) {
 
 // GetInputCollectionItemAmounts returns the InputCollectionItemAmounts field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetInputCollectionItemAmounts() []int32 {
-	if o == nil || o.InputCollectionItemAmounts == nil {
+	if o == nil || isNil(o.InputCollectionItemAmounts) {
 		var ret []int32
 		return ret
 	}
@@ -201,15 +201,15 @@ func (o *SetShopOfferRequest) GetInputCollectionItemAmounts() []int32 {
 // GetInputCollectionItemAmountsOk returns a tuple with the InputCollectionItemAmounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetInputCollectionItemAmountsOk() ([]int32, bool) {
-	if o == nil || o.InputCollectionItemAmounts == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCollectionItemAmounts) {
+    return nil, false
 	}
 	return o.InputCollectionItemAmounts, true
 }
 
 // HasInputCollectionItemAmounts returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasInputCollectionItemAmounts() bool {
-	if o != nil && o.InputCollectionItemAmounts != nil {
+	if o != nil && !isNil(o.InputCollectionItemAmounts) {
 		return true
 	}
 
@@ -223,7 +223,7 @@ func (o *SetShopOfferRequest) SetInputCollectionItemAmounts(v []int32) {
 
 // GetInputCurrencyAddress returns the InputCurrencyAddress field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetInputCurrencyAddress() string {
-	if o == nil || o.InputCurrencyAddress == nil {
+	if o == nil || isNil(o.InputCurrencyAddress) {
 		var ret string
 		return ret
 	}
@@ -233,15 +233,15 @@ func (o *SetShopOfferRequest) GetInputCurrencyAddress() string {
 // GetInputCurrencyAddressOk returns a tuple with the InputCurrencyAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetInputCurrencyAddressOk() (*string, bool) {
-	if o == nil || o.InputCurrencyAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCurrencyAddress) {
+    return nil, false
 	}
 	return o.InputCurrencyAddress, true
 }
 
 // HasInputCurrencyAddress returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasInputCurrencyAddress() bool {
-	if o != nil && o.InputCurrencyAddress != nil {
+	if o != nil && !isNil(o.InputCurrencyAddress) {
 		return true
 	}
 
@@ -255,7 +255,7 @@ func (o *SetShopOfferRequest) SetInputCurrencyAddress(v string) {
 
 // GetInputCurrencyId returns the InputCurrencyId field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetInputCurrencyId() string {
-	if o == nil || o.InputCurrencyId == nil {
+	if o == nil || isNil(o.InputCurrencyId) {
 		var ret string
 		return ret
 	}
@@ -265,15 +265,15 @@ func (o *SetShopOfferRequest) GetInputCurrencyId() string {
 // GetInputCurrencyIdOk returns a tuple with the InputCurrencyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetInputCurrencyIdOk() (*string, bool) {
-	if o == nil || o.InputCurrencyId == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCurrencyId) {
+    return nil, false
 	}
 	return o.InputCurrencyId, true
 }
 
 // HasInputCurrencyId returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasInputCurrencyId() bool {
-	if o != nil && o.InputCurrencyId != nil {
+	if o != nil && !isNil(o.InputCurrencyId) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func (o *SetShopOfferRequest) SetInputCurrencyId(v string) {
 
 // GetInputCurrencyAmount returns the InputCurrencyAmount field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetInputCurrencyAmount() float32 {
-	if o == nil || o.InputCurrencyAmount == nil {
+	if o == nil || isNil(o.InputCurrencyAmount) {
 		var ret float32
 		return ret
 	}
@@ -297,15 +297,15 @@ func (o *SetShopOfferRequest) GetInputCurrencyAmount() float32 {
 // GetInputCurrencyAmountOk returns a tuple with the InputCurrencyAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetInputCurrencyAmountOk() (*float32, bool) {
-	if o == nil || o.InputCurrencyAmount == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCurrencyAmount) {
+    return nil, false
 	}
 	return o.InputCurrencyAmount, true
 }
 
 // HasInputCurrencyAmount returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasInputCurrencyAmount() bool {
-	if o != nil && o.InputCurrencyAmount != nil {
+	if o != nil && !isNil(o.InputCurrencyAmount) {
 		return true
 	}
 
@@ -319,7 +319,7 @@ func (o *SetShopOfferRequest) SetInputCurrencyAmount(v float32) {
 
 // GetOutputCollectionAddress returns the OutputCollectionAddress field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetOutputCollectionAddress() string {
-	if o == nil || o.OutputCollectionAddress == nil {
+	if o == nil || isNil(o.OutputCollectionAddress) {
 		var ret string
 		return ret
 	}
@@ -329,15 +329,15 @@ func (o *SetShopOfferRequest) GetOutputCollectionAddress() string {
 // GetOutputCollectionAddressOk returns a tuple with the OutputCollectionAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetOutputCollectionAddressOk() (*string, bool) {
-	if o == nil || o.OutputCollectionAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionAddress) {
+    return nil, false
 	}
 	return o.OutputCollectionAddress, true
 }
 
 // HasOutputCollectionAddress returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasOutputCollectionAddress() bool {
-	if o != nil && o.OutputCollectionAddress != nil {
+	if o != nil && !isNil(o.OutputCollectionAddress) {
 		return true
 	}
 
@@ -351,7 +351,7 @@ func (o *SetShopOfferRequest) SetOutputCollectionAddress(v string) {
 
 // GetOutputCollectionId returns the OutputCollectionId field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetOutputCollectionId() string {
-	if o == nil || o.OutputCollectionId == nil {
+	if o == nil || isNil(o.OutputCollectionId) {
 		var ret string
 		return ret
 	}
@@ -361,15 +361,15 @@ func (o *SetShopOfferRequest) GetOutputCollectionId() string {
 // GetOutputCollectionIdOk returns a tuple with the OutputCollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetOutputCollectionIdOk() (*string, bool) {
-	if o == nil || o.OutputCollectionId == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionId) {
+    return nil, false
 	}
 	return o.OutputCollectionId, true
 }
 
 // HasOutputCollectionId returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasOutputCollectionId() bool {
-	if o != nil && o.OutputCollectionId != nil {
+	if o != nil && !isNil(o.OutputCollectionId) {
 		return true
 	}
 
@@ -383,7 +383,7 @@ func (o *SetShopOfferRequest) SetOutputCollectionId(v string) {
 
 // GetOutputCollectionItemIds returns the OutputCollectionItemIds field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetOutputCollectionItemIds() []int32 {
-	if o == nil || o.OutputCollectionItemIds == nil {
+	if o == nil || isNil(o.OutputCollectionItemIds) {
 		var ret []int32
 		return ret
 	}
@@ -393,15 +393,15 @@ func (o *SetShopOfferRequest) GetOutputCollectionItemIds() []int32 {
 // GetOutputCollectionItemIdsOk returns a tuple with the OutputCollectionItemIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetOutputCollectionItemIdsOk() ([]int32, bool) {
-	if o == nil || o.OutputCollectionItemIds == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionItemIds) {
+    return nil, false
 	}
 	return o.OutputCollectionItemIds, true
 }
 
 // HasOutputCollectionItemIds returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasOutputCollectionItemIds() bool {
-	if o != nil && o.OutputCollectionItemIds != nil {
+	if o != nil && !isNil(o.OutputCollectionItemIds) {
 		return true
 	}
 
@@ -415,7 +415,7 @@ func (o *SetShopOfferRequest) SetOutputCollectionItemIds(v []int32) {
 
 // GetOutputCollectionItemAmounts returns the OutputCollectionItemAmounts field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetOutputCollectionItemAmounts() []int32 {
-	if o == nil || o.OutputCollectionItemAmounts == nil {
+	if o == nil || isNil(o.OutputCollectionItemAmounts) {
 		var ret []int32
 		return ret
 	}
@@ -425,15 +425,15 @@ func (o *SetShopOfferRequest) GetOutputCollectionItemAmounts() []int32 {
 // GetOutputCollectionItemAmountsOk returns a tuple with the OutputCollectionItemAmounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetOutputCollectionItemAmountsOk() ([]int32, bool) {
-	if o == nil || o.OutputCollectionItemAmounts == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionItemAmounts) {
+    return nil, false
 	}
 	return o.OutputCollectionItemAmounts, true
 }
 
 // HasOutputCollectionItemAmounts returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasOutputCollectionItemAmounts() bool {
-	if o != nil && o.OutputCollectionItemAmounts != nil {
+	if o != nil && !isNil(o.OutputCollectionItemAmounts) {
 		return true
 	}
 
@@ -447,7 +447,7 @@ func (o *SetShopOfferRequest) SetOutputCollectionItemAmounts(v []int32) {
 
 // GetOutputCurrencyAddress returns the OutputCurrencyAddress field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetOutputCurrencyAddress() string {
-	if o == nil || o.OutputCurrencyAddress == nil {
+	if o == nil || isNil(o.OutputCurrencyAddress) {
 		var ret string
 		return ret
 	}
@@ -457,15 +457,15 @@ func (o *SetShopOfferRequest) GetOutputCurrencyAddress() string {
 // GetOutputCurrencyAddressOk returns a tuple with the OutputCurrencyAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetOutputCurrencyAddressOk() (*string, bool) {
-	if o == nil || o.OutputCurrencyAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCurrencyAddress) {
+    return nil, false
 	}
 	return o.OutputCurrencyAddress, true
 }
 
 // HasOutputCurrencyAddress returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasOutputCurrencyAddress() bool {
-	if o != nil && o.OutputCurrencyAddress != nil {
+	if o != nil && !isNil(o.OutputCurrencyAddress) {
 		return true
 	}
 
@@ -479,7 +479,7 @@ func (o *SetShopOfferRequest) SetOutputCurrencyAddress(v string) {
 
 // GetOutputCurrencyId returns the OutputCurrencyId field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetOutputCurrencyId() string {
-	if o == nil || o.OutputCurrencyId == nil {
+	if o == nil || isNil(o.OutputCurrencyId) {
 		var ret string
 		return ret
 	}
@@ -489,15 +489,15 @@ func (o *SetShopOfferRequest) GetOutputCurrencyId() string {
 // GetOutputCurrencyIdOk returns a tuple with the OutputCurrencyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetOutputCurrencyIdOk() (*string, bool) {
-	if o == nil || o.OutputCurrencyId == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCurrencyId) {
+    return nil, false
 	}
 	return o.OutputCurrencyId, true
 }
 
 // HasOutputCurrencyId returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasOutputCurrencyId() bool {
-	if o != nil && o.OutputCurrencyId != nil {
+	if o != nil && !isNil(o.OutputCurrencyId) {
 		return true
 	}
 
@@ -511,7 +511,7 @@ func (o *SetShopOfferRequest) SetOutputCurrencyId(v string) {
 
 // GetOutputCurrencyAmount returns the OutputCurrencyAmount field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetOutputCurrencyAmount() float32 {
-	if o == nil || o.OutputCurrencyAmount == nil {
+	if o == nil || isNil(o.OutputCurrencyAmount) {
 		var ret float32
 		return ret
 	}
@@ -521,15 +521,15 @@ func (o *SetShopOfferRequest) GetOutputCurrencyAmount() float32 {
 // GetOutputCurrencyAmountOk returns a tuple with the OutputCurrencyAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetOutputCurrencyAmountOk() (*float32, bool) {
-	if o == nil || o.OutputCurrencyAmount == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCurrencyAmount) {
+    return nil, false
 	}
 	return o.OutputCurrencyAmount, true
 }
 
 // HasOutputCurrencyAmount returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasOutputCurrencyAmount() bool {
-	if o != nil && o.OutputCurrencyAmount != nil {
+	if o != nil && !isNil(o.OutputCurrencyAmount) {
 		return true
 	}
 
@@ -543,7 +543,7 @@ func (o *SetShopOfferRequest) SetOutputCurrencyAmount(v float32) {
 
 // GetMaxUses returns the MaxUses field value if set, zero value otherwise.
 func (o *SetShopOfferRequest) GetMaxUses() int32 {
-	if o == nil || o.MaxUses == nil {
+	if o == nil || isNil(o.MaxUses) {
 		var ret int32
 		return ret
 	}
@@ -553,15 +553,15 @@ func (o *SetShopOfferRequest) GetMaxUses() int32 {
 // GetMaxUsesOk returns a tuple with the MaxUses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetShopOfferRequest) GetMaxUsesOk() (*int32, bool) {
-	if o == nil || o.MaxUses == nil {
-		return nil, false
+	if o == nil || isNil(o.MaxUses) {
+    return nil, false
 	}
 	return o.MaxUses, true
 }
 
 // HasMaxUses returns a boolean if a field has been set.
 func (o *SetShopOfferRequest) HasMaxUses() bool {
-	if o != nil && o.MaxUses != nil {
+	if o != nil && !isNil(o.MaxUses) {
 		return true
 	}
 
@@ -578,49 +578,49 @@ func (o SetShopOfferRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if o.InputCollectionAddress != nil {
+	if !isNil(o.InputCollectionAddress) {
 		toSerialize["inputCollectionAddress"] = o.InputCollectionAddress
 	}
-	if o.InputCollectionId != nil {
+	if !isNil(o.InputCollectionId) {
 		toSerialize["inputCollectionId"] = o.InputCollectionId
 	}
-	if o.InputCollectionItemIds != nil {
+	if !isNil(o.InputCollectionItemIds) {
 		toSerialize["inputCollectionItemIds"] = o.InputCollectionItemIds
 	}
-	if o.InputCollectionItemAmounts != nil {
+	if !isNil(o.InputCollectionItemAmounts) {
 		toSerialize["inputCollectionItemAmounts"] = o.InputCollectionItemAmounts
 	}
-	if o.InputCurrencyAddress != nil {
+	if !isNil(o.InputCurrencyAddress) {
 		toSerialize["inputCurrencyAddress"] = o.InputCurrencyAddress
 	}
-	if o.InputCurrencyId != nil {
+	if !isNil(o.InputCurrencyId) {
 		toSerialize["inputCurrencyId"] = o.InputCurrencyId
 	}
-	if o.InputCurrencyAmount != nil {
+	if !isNil(o.InputCurrencyAmount) {
 		toSerialize["inputCurrencyAmount"] = o.InputCurrencyAmount
 	}
-	if o.OutputCollectionAddress != nil {
+	if !isNil(o.OutputCollectionAddress) {
 		toSerialize["outputCollectionAddress"] = o.OutputCollectionAddress
 	}
-	if o.OutputCollectionId != nil {
+	if !isNil(o.OutputCollectionId) {
 		toSerialize["outputCollectionId"] = o.OutputCollectionId
 	}
-	if o.OutputCollectionItemIds != nil {
+	if !isNil(o.OutputCollectionItemIds) {
 		toSerialize["outputCollectionItemIds"] = o.OutputCollectionItemIds
 	}
-	if o.OutputCollectionItemAmounts != nil {
+	if !isNil(o.OutputCollectionItemAmounts) {
 		toSerialize["outputCollectionItemAmounts"] = o.OutputCollectionItemAmounts
 	}
-	if o.OutputCurrencyAddress != nil {
+	if !isNil(o.OutputCurrencyAddress) {
 		toSerialize["outputCurrencyAddress"] = o.OutputCurrencyAddress
 	}
-	if o.OutputCurrencyId != nil {
+	if !isNil(o.OutputCurrencyId) {
 		toSerialize["outputCurrencyId"] = o.OutputCurrencyId
 	}
-	if o.OutputCurrencyAmount != nil {
+	if !isNil(o.OutputCurrencyAmount) {
 		toSerialize["outputCurrencyAmount"] = o.OutputCurrencyAmount
 	}
-	if o.MaxUses != nil {
+	if !isNil(o.MaxUses) {
 		toSerialize["maxUses"] = o.MaxUses
 	}
 	return json.Marshal(toSerialize)

@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -40,7 +40,7 @@ GetTransaction Get transaction
 Returns an executed transaction object for the provided transactionId. Transactions are created by MetaFab when interacting with contracts, currencies, items and other MetaFab resources.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param transactionId Any transaction id within the MetaFab ecosystem.
+ @param transactionId Any transaction id within the MetaFab platform.
  @return ApiGetTransactionRequest
 */
 func (a *TransactionsApiService) GetTransaction(ctx context.Context, transactionId string) ApiGetTransactionRequest {
@@ -119,7 +119,8 @@ func (a *TransactionsApiService) GetTransactionExecute(r ApiGetTransactionReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

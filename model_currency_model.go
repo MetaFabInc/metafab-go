@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -54,7 +54,7 @@ func NewCurrencyModelWithDefaults() *CurrencyModel {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CurrencyModel) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -64,15 +64,15 @@ func (o *CurrencyModel) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrencyModel) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CurrencyModel) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *CurrencyModel) SetId(v string) {
 
 // GetGameId returns the GameId field value if set, zero value otherwise.
 func (o *CurrencyModel) GetGameId() string {
-	if o == nil || o.GameId == nil {
+	if o == nil || isNil(o.GameId) {
 		var ret string
 		return ret
 	}
@@ -96,15 +96,15 @@ func (o *CurrencyModel) GetGameId() string {
 // GetGameIdOk returns a tuple with the GameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrencyModel) GetGameIdOk() (*string, bool) {
-	if o == nil || o.GameId == nil {
-		return nil, false
+	if o == nil || isNil(o.GameId) {
+    return nil, false
 	}
 	return o.GameId, true
 }
 
 // HasGameId returns a boolean if a field has been set.
 func (o *CurrencyModel) HasGameId() bool {
-	if o != nil && o.GameId != nil {
+	if o != nil && !isNil(o.GameId) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *CurrencyModel) SetGameId(v string) {
 
 // GetContractId returns the ContractId field value if set, zero value otherwise.
 func (o *CurrencyModel) GetContractId() string {
-	if o == nil || o.ContractId == nil {
+	if o == nil || isNil(o.ContractId) {
 		var ret string
 		return ret
 	}
@@ -128,15 +128,15 @@ func (o *CurrencyModel) GetContractId() string {
 // GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrencyModel) GetContractIdOk() (*string, bool) {
-	if o == nil || o.ContractId == nil {
-		return nil, false
+	if o == nil || isNil(o.ContractId) {
+    return nil, false
 	}
 	return o.ContractId, true
 }
 
 // HasContractId returns a boolean if a field has been set.
 func (o *CurrencyModel) HasContractId() bool {
-	if o != nil && o.ContractId != nil {
+	if o != nil && !isNil(o.ContractId) {
 		return true
 	}
 
@@ -150,7 +150,7 @@ func (o *CurrencyModel) SetContractId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CurrencyModel) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -160,15 +160,15 @@ func (o *CurrencyModel) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrencyModel) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CurrencyModel) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -182,7 +182,7 @@ func (o *CurrencyModel) SetName(v string) {
 
 // GetSymbol returns the Symbol field value if set, zero value otherwise.
 func (o *CurrencyModel) GetSymbol() string {
-	if o == nil || o.Symbol == nil {
+	if o == nil || isNil(o.Symbol) {
 		var ret string
 		return ret
 	}
@@ -192,15 +192,15 @@ func (o *CurrencyModel) GetSymbol() string {
 // GetSymbolOk returns a tuple with the Symbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrencyModel) GetSymbolOk() (*string, bool) {
-	if o == nil || o.Symbol == nil {
-		return nil, false
+	if o == nil || isNil(o.Symbol) {
+    return nil, false
 	}
 	return o.Symbol, true
 }
 
 // HasSymbol returns a boolean if a field has been set.
 func (o *CurrencyModel) HasSymbol() bool {
-	if o != nil && o.Symbol != nil {
+	if o != nil && !isNil(o.Symbol) {
 		return true
 	}
 
@@ -214,7 +214,7 @@ func (o *CurrencyModel) SetSymbol(v string) {
 
 // GetSupplyCap returns the SupplyCap field value if set, zero value otherwise.
 func (o *CurrencyModel) GetSupplyCap() int32 {
-	if o == nil || o.SupplyCap == nil {
+	if o == nil || isNil(o.SupplyCap) {
 		var ret int32
 		return ret
 	}
@@ -224,15 +224,15 @@ func (o *CurrencyModel) GetSupplyCap() int32 {
 // GetSupplyCapOk returns a tuple with the SupplyCap field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrencyModel) GetSupplyCapOk() (*int32, bool) {
-	if o == nil || o.SupplyCap == nil {
-		return nil, false
+	if o == nil || isNil(o.SupplyCap) {
+    return nil, false
 	}
 	return o.SupplyCap, true
 }
 
 // HasSupplyCap returns a boolean if a field has been set.
 func (o *CurrencyModel) HasSupplyCap() bool {
-	if o != nil && o.SupplyCap != nil {
+	if o != nil && !isNil(o.SupplyCap) {
 		return true
 	}
 
@@ -246,7 +246,7 @@ func (o *CurrencyModel) SetSupplyCap(v int32) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *CurrencyModel) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -256,15 +256,15 @@ func (o *CurrencyModel) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrencyModel) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *CurrencyModel) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -278,7 +278,7 @@ func (o *CurrencyModel) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *CurrencyModel) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -288,15 +288,15 @@ func (o *CurrencyModel) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrencyModel) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *CurrencyModel) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -310,28 +310,28 @@ func (o *CurrencyModel) SetCreatedAt(v string) {
 
 func (o CurrencyModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.GameId != nil {
+	if !isNil(o.GameId) {
 		toSerialize["gameId"] = o.GameId
 	}
-	if o.ContractId != nil {
+	if !isNil(o.ContractId) {
 		toSerialize["contractId"] = o.ContractId
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Symbol != nil {
+	if !isNil(o.Symbol) {
 		toSerialize["symbol"] = o.Symbol
 	}
-	if o.SupplyCap != nil {
+	if !isNil(o.SupplyCap) {
 		toSerialize["supplyCap"] = o.SupplyCap
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
 	return json.Marshal(toSerialize)

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.trymetafab.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateShop**](ShopsApi.md#CreateShop) | **Post** /v1/shops | Create shop
-[**GetShopOffer**](ShopsApi.md#GetShopOffer) | **Get** /v1/shops/{shopId}/items/{shopOfferId} | Get shop offer
+[**GetShopOffer**](ShopsApi.md#GetShopOffer) | **Get** /v1/shops/{shopId}/offers/{shopOfferId} | Get shop offer
 [**GetShopOffers**](ShopsApi.md#GetShopOffers) | **Get** /v1/shops/{shopId}/offers | Get shop offers
 [**GetShops**](ShopsApi.md#GetShops) | **Get** /v1/shops | Get shops
 [**RemoveShopOffer**](ShopsApi.md#RemoveShopOffer) | **Delete** /v1/shops/{shopId}/offers/{shopOfferId} | Remove shop offer
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateShop
 
-> CreateShop200Response CreateShop(ctx).XAuthorization(xAuthorization).XPassword(xPassword).CreateShopRequest(createShopRequest).Execute()
+> CreateShop200Response CreateShop(ctx).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateShopRequest(createShopRequest).Execute()
 
 Create shop
 
@@ -37,12 +37,12 @@ import (
 
 func main() {
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     createShopRequest := *openapiclient.NewCreateShopRequest("SELECT ONE") // CreateShopRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShopsApi.CreateShop(context.Background()).XAuthorization(xAuthorization).XPassword(xPassword).CreateShopRequest(createShopRequest).Execute()
+    resp, r, err := apiClient.ShopsApi.CreateShop(context.Background()).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).CreateShopRequest(createShopRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.CreateShop``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ Other parameters are passed through a pointer to a apiCreateShopRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **createShopRequest** | [**CreateShopRequest**](CreateShopRequest.md) |  | 
 
 ### Return type
@@ -106,7 +106,7 @@ import (
 )
 
 func main() {
-    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab platform.
     shopOfferId := "shopOfferId_example" // string | Any offer id for the shop. Zero, or a positive integer.
 
     configuration := openapiclient.NewConfiguration()
@@ -127,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab platform. | 
 **shopOfferId** | **string** | Any offer id for the shop. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -179,7 +179,7 @@ import (
 )
 
 func main() {
-    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab platform.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -199,7 +199,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -296,7 +296,7 @@ No authorization required
 
 ## RemoveShopOffer
 
-> TransactionModel RemoveShopOffer(ctx, shopId, shopOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+> TransactionModel RemoveShopOffer(ctx, shopId, shopOfferId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).Execute()
 
 Remove shop offer
 
@@ -315,14 +315,14 @@ import (
 )
 
 func main() {
-    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab platform.
     shopOfferId := "shopOfferId_example" // string | Any offer id for the shop. Zero, or a positive integer.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShopsApi.RemoveShopOffer(context.Background(), shopId, shopOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+    resp, r, err := apiClient.ShopsApi.RemoveShopOffer(context.Background(), shopId, shopOfferId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.RemoveShopOffer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -338,7 +338,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab platform. | 
 **shopOfferId** | **string** | Any offer id for the shop. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
 
 ### Return type
 
@@ -373,7 +373,7 @@ No authorization required
 
 ## SetShopOffer
 
-> TransactionModel SetShopOffer(ctx, shopId).XAuthorization(xAuthorization).XPassword(xPassword).SetShopOfferRequest(setShopOfferRequest).Execute()
+> TransactionModel SetShopOffer(ctx, shopId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetShopOfferRequest(setShopOfferRequest).Execute()
 
 Set shop offer
 
@@ -392,14 +392,14 @@ import (
 )
 
 func main() {
-    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     setShopOfferRequest := *openapiclient.NewSetShopOfferRequest(int32(1337)) // SetShopOfferRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShopsApi.SetShopOffer(context.Background(), shopId).XAuthorization(xAuthorization).XPassword(xPassword).SetShopOfferRequest(setShopOfferRequest).Execute()
+    resp, r, err := apiClient.ShopsApi.SetShopOffer(context.Background(), shopId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).SetShopOfferRequest(setShopOfferRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.SetShopOffer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -415,7 +415,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **setShopOfferRequest** | [**SetShopOfferRequest**](SetShopOfferRequest.md) |  | 
 
 ### Return type
@@ -449,7 +449,7 @@ No authorization required
 
 ## UseShopOffer
 
-> TransactionModel UseShopOffer(ctx, shopId, shopOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+> TransactionModel UseShopOffer(ctx, shopId, shopOfferId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).Execute()
 
 Use shop offer
 
@@ -468,14 +468,14 @@ import (
 )
 
 func main() {
-    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab platform.
     shopOfferId := "shopOfferId_example" // string | Any offer id for the shop. Zero, or a positive integer.
     xAuthorization := "["game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP","player_at_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP"]" // string | The `secretKey` of a specific game or the `accessToken` of a specific player.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShopsApi.UseShopOffer(context.Background(), shopId, shopOfferId).XAuthorization(xAuthorization).XPassword(xPassword).Execute()
+    resp, r, err := apiClient.ShopsApi.UseShopOffer(context.Background(), shopId, shopOfferId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.UseShopOffer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -491,7 +491,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab platform. | 
 **shopOfferId** | **string** | Any offer id for the shop. Zero, or a positive integer. | 
 
 ### Other Parameters
@@ -504,7 +504,7 @@ Name | Type | Description  | Notes
 
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of a specific game or the &#x60;accessToken&#x60; of a specific player. | 
- **xPassword** | **string** | The password of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game or player. Required to decrypt and perform blockchain transactions with the game or player primary wallet. | 
 
 ### Return type
 
@@ -526,7 +526,7 @@ No authorization required
 
 ## WithdrawFromShop
 
-> TransactionModel WithdrawFromShop(ctx, shopId).XAuthorization(xAuthorization).XPassword(xPassword).WithdrawFromShopRequest(withdrawFromShopRequest).Execute()
+> TransactionModel WithdrawFromShop(ctx, shopId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).WithdrawFromShopRequest(withdrawFromShopRequest).Execute()
 
 Withdraw from shop
 
@@ -545,14 +545,14 @@ import (
 )
 
 func main() {
-    shopId := "shopId_example" // string | Any shop id within the MetaFab ecosystem.
+    shopId := "shopId_example" // string | Any shop id within the MetaFab platform.
     xAuthorization := "game_sk_02z4Mv3c85Ig0gNowY9Dq0N2kjb1xwzr27ArLE0669RrRI6dLf822iPO26K1p1FP" // string | The `secretKey` of the authenticating game.
-    xPassword := "mySecurePassword" // string | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
+    xWalletDecryptKey := "AXNP8MKb+5SbBtHWrZu5KHh5/BomXY/dMRG/BDUn7a4=" // string | The `walletDecryptKey` of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet.
     withdrawFromShopRequest := *openapiclient.NewWithdrawFromShopRequest() // WithdrawFromShopRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShopsApi.WithdrawFromShop(context.Background(), shopId).XAuthorization(xAuthorization).XPassword(xPassword).WithdrawFromShopRequest(withdrawFromShopRequest).Execute()
+    resp, r, err := apiClient.ShopsApi.WithdrawFromShop(context.Background(), shopId).XAuthorization(xAuthorization).XWalletDecryptKey(xWalletDecryptKey).WithdrawFromShopRequest(withdrawFromShopRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ShopsApi.WithdrawFromShop``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -568,7 +568,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**shopId** | **string** | Any shop id within the MetaFab ecosystem. | 
+**shopId** | **string** | Any shop id within the MetaFab platform. | 
 
 ### Other Parameters
 
@@ -579,7 +579,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xAuthorization** | **string** | The &#x60;secretKey&#x60; of the authenticating game. | 
- **xPassword** | **string** | The password of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
+ **xWalletDecryptKey** | **string** | The &#x60;walletDecryptKey&#x60; of the authenticating game. Required to decrypt and perform blockchain transactions with the game primary wallet. | 
  **withdrawFromShopRequest** | [**WithdrawFromShopRequest**](WithdrawFromShopRequest.md) |  | 
 
 ### Return type

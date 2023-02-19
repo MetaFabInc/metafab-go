@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -24,12 +24,17 @@ type PublicPlayer struct {
 	// This field has not had a description added.
 	WalletId *string `json:"walletId,omitempty"`
 	// This field has not had a description added.
+	ConnectedWalletId *string `json:"connectedWalletId,omitempty"`
+	// This field has not had a description added.
+	ProfileId *string `json:"profileId,omitempty"`
+	// This field has not had a description added.
 	Username *string `json:"username,omitempty"`
 	// This field has not had a description added.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
 	CreatedAt *string `json:"createdAt,omitempty"`
-	Wallet *PublicPlayerWallet `json:"wallet,omitempty"`
+	CustodialWallet *PublicPlayerCustodialWallet `json:"custodialWallet,omitempty"`
+	Wallet *PublicPlayerCustodialWallet `json:"wallet,omitempty"`
 }
 
 // NewPublicPlayer instantiates a new PublicPlayer object
@@ -51,7 +56,7 @@ func NewPublicPlayerWithDefaults() *PublicPlayer {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PublicPlayer) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,15 +66,15 @@ func (o *PublicPlayer) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicPlayer) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *PublicPlayer) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +88,7 @@ func (o *PublicPlayer) SetId(v string) {
 
 // GetGameId returns the GameId field value if set, zero value otherwise.
 func (o *PublicPlayer) GetGameId() string {
-	if o == nil || o.GameId == nil {
+	if o == nil || isNil(o.GameId) {
 		var ret string
 		return ret
 	}
@@ -93,15 +98,15 @@ func (o *PublicPlayer) GetGameId() string {
 // GetGameIdOk returns a tuple with the GameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicPlayer) GetGameIdOk() (*string, bool) {
-	if o == nil || o.GameId == nil {
-		return nil, false
+	if o == nil || isNil(o.GameId) {
+    return nil, false
 	}
 	return o.GameId, true
 }
 
 // HasGameId returns a boolean if a field has been set.
 func (o *PublicPlayer) HasGameId() bool {
-	if o != nil && o.GameId != nil {
+	if o != nil && !isNil(o.GameId) {
 		return true
 	}
 
@@ -115,7 +120,7 @@ func (o *PublicPlayer) SetGameId(v string) {
 
 // GetWalletId returns the WalletId field value if set, zero value otherwise.
 func (o *PublicPlayer) GetWalletId() string {
-	if o == nil || o.WalletId == nil {
+	if o == nil || isNil(o.WalletId) {
 		var ret string
 		return ret
 	}
@@ -125,15 +130,15 @@ func (o *PublicPlayer) GetWalletId() string {
 // GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicPlayer) GetWalletIdOk() (*string, bool) {
-	if o == nil || o.WalletId == nil {
-		return nil, false
+	if o == nil || isNil(o.WalletId) {
+    return nil, false
 	}
 	return o.WalletId, true
 }
 
 // HasWalletId returns a boolean if a field has been set.
 func (o *PublicPlayer) HasWalletId() bool {
-	if o != nil && o.WalletId != nil {
+	if o != nil && !isNil(o.WalletId) {
 		return true
 	}
 
@@ -145,9 +150,73 @@ func (o *PublicPlayer) SetWalletId(v string) {
 	o.WalletId = &v
 }
 
+// GetConnectedWalletId returns the ConnectedWalletId field value if set, zero value otherwise.
+func (o *PublicPlayer) GetConnectedWalletId() string {
+	if o == nil || isNil(o.ConnectedWalletId) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedWalletId
+}
+
+// GetConnectedWalletIdOk returns a tuple with the ConnectedWalletId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicPlayer) GetConnectedWalletIdOk() (*string, bool) {
+	if o == nil || isNil(o.ConnectedWalletId) {
+    return nil, false
+	}
+	return o.ConnectedWalletId, true
+}
+
+// HasConnectedWalletId returns a boolean if a field has been set.
+func (o *PublicPlayer) HasConnectedWalletId() bool {
+	if o != nil && !isNil(o.ConnectedWalletId) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedWalletId gets a reference to the given string and assigns it to the ConnectedWalletId field.
+func (o *PublicPlayer) SetConnectedWalletId(v string) {
+	o.ConnectedWalletId = &v
+}
+
+// GetProfileId returns the ProfileId field value if set, zero value otherwise.
+func (o *PublicPlayer) GetProfileId() string {
+	if o == nil || isNil(o.ProfileId) {
+		var ret string
+		return ret
+	}
+	return *o.ProfileId
+}
+
+// GetProfileIdOk returns a tuple with the ProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicPlayer) GetProfileIdOk() (*string, bool) {
+	if o == nil || isNil(o.ProfileId) {
+    return nil, false
+	}
+	return o.ProfileId, true
+}
+
+// HasProfileId returns a boolean if a field has been set.
+func (o *PublicPlayer) HasProfileId() bool {
+	if o != nil && !isNil(o.ProfileId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProfileId gets a reference to the given string and assigns it to the ProfileId field.
+func (o *PublicPlayer) SetProfileId(v string) {
+	o.ProfileId = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *PublicPlayer) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || isNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -157,15 +226,15 @@ func (o *PublicPlayer) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicPlayer) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
+	if o == nil || isNil(o.Username) {
+    return nil, false
 	}
 	return o.Username, true
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *PublicPlayer) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !isNil(o.Username) {
 		return true
 	}
 
@@ -179,7 +248,7 @@ func (o *PublicPlayer) SetUsername(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *PublicPlayer) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -189,15 +258,15 @@ func (o *PublicPlayer) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicPlayer) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *PublicPlayer) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -211,7 +280,7 @@ func (o *PublicPlayer) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *PublicPlayer) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -221,15 +290,15 @@ func (o *PublicPlayer) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PublicPlayer) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *PublicPlayer) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -241,10 +310,42 @@ func (o *PublicPlayer) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
+// GetCustodialWallet returns the CustodialWallet field value if set, zero value otherwise.
+func (o *PublicPlayer) GetCustodialWallet() PublicPlayerCustodialWallet {
+	if o == nil || isNil(o.CustodialWallet) {
+		var ret PublicPlayerCustodialWallet
+		return ret
+	}
+	return *o.CustodialWallet
+}
+
+// GetCustodialWalletOk returns a tuple with the CustodialWallet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicPlayer) GetCustodialWalletOk() (*PublicPlayerCustodialWallet, bool) {
+	if o == nil || isNil(o.CustodialWallet) {
+    return nil, false
+	}
+	return o.CustodialWallet, true
+}
+
+// HasCustodialWallet returns a boolean if a field has been set.
+func (o *PublicPlayer) HasCustodialWallet() bool {
+	if o != nil && !isNil(o.CustodialWallet) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustodialWallet gets a reference to the given PublicPlayerCustodialWallet and assigns it to the CustodialWallet field.
+func (o *PublicPlayer) SetCustodialWallet(v PublicPlayerCustodialWallet) {
+	o.CustodialWallet = &v
+}
+
 // GetWallet returns the Wallet field value if set, zero value otherwise.
-func (o *PublicPlayer) GetWallet() PublicPlayerWallet {
-	if o == nil || o.Wallet == nil {
-		var ret PublicPlayerWallet
+func (o *PublicPlayer) GetWallet() PublicPlayerCustodialWallet {
+	if o == nil || isNil(o.Wallet) {
+		var ret PublicPlayerCustodialWallet
 		return ret
 	}
 	return *o.Wallet
@@ -252,48 +353,57 @@ func (o *PublicPlayer) GetWallet() PublicPlayerWallet {
 
 // GetWalletOk returns a tuple with the Wallet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PublicPlayer) GetWalletOk() (*PublicPlayerWallet, bool) {
-	if o == nil || o.Wallet == nil {
-		return nil, false
+func (o *PublicPlayer) GetWalletOk() (*PublicPlayerCustodialWallet, bool) {
+	if o == nil || isNil(o.Wallet) {
+    return nil, false
 	}
 	return o.Wallet, true
 }
 
 // HasWallet returns a boolean if a field has been set.
 func (o *PublicPlayer) HasWallet() bool {
-	if o != nil && o.Wallet != nil {
+	if o != nil && !isNil(o.Wallet) {
 		return true
 	}
 
 	return false
 }
 
-// SetWallet gets a reference to the given PublicPlayerWallet and assigns it to the Wallet field.
-func (o *PublicPlayer) SetWallet(v PublicPlayerWallet) {
+// SetWallet gets a reference to the given PublicPlayerCustodialWallet and assigns it to the Wallet field.
+func (o *PublicPlayer) SetWallet(v PublicPlayerCustodialWallet) {
 	o.Wallet = &v
 }
 
 func (o PublicPlayer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.GameId != nil {
+	if !isNil(o.GameId) {
 		toSerialize["gameId"] = o.GameId
 	}
-	if o.WalletId != nil {
+	if !isNil(o.WalletId) {
 		toSerialize["walletId"] = o.WalletId
 	}
-	if o.Username != nil {
+	if !isNil(o.ConnectedWalletId) {
+		toSerialize["connectedWalletId"] = o.ConnectedWalletId
+	}
+	if !isNil(o.ProfileId) {
+		toSerialize["profileId"] = o.ProfileId
+	}
+	if !isNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.Wallet != nil {
+	if !isNil(o.CustodialWallet) {
+		toSerialize["custodialWallet"] = o.CustodialWallet
+	}
+	if !isNil(o.Wallet) {
 		toSerialize["wallet"] = o.Wallet
 	}
 	return json.Marshal(toSerialize)

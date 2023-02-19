@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -115,7 +115,8 @@ func (a *GamesApiService) AuthGameExecute(r ApiAuthGameRequest) (*AuthGame200Res
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -125,7 +126,8 @@ func (a *GamesApiService) AuthGameExecute(r ApiAuthGameRequest) (*AuthGame200Res
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -248,7 +250,8 @@ func (a *GamesApiService) CreateGameExecute(r ApiCreateGameRequest) (*AuthGame20
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -258,7 +261,8 @@ func (a *GamesApiService) CreateGameExecute(r ApiCreateGameRequest) (*AuthGame20
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -291,7 +295,7 @@ GetGame Get game
 Returns a game object for the provided game id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param gameId Any game id within the MetaFab ecosystem.
+ @param gameId Any game id within the MetaFab platform.
  @return ApiGetGameRequest
 */
 func (a *GamesApiService) GetGame(ctx context.Context, gameId string) ApiGetGameRequest {
@@ -370,7 +374,8 @@ func (a *GamesApiService) GetGameExecute(r ApiGetGameRequest) (*PublicGame, *htt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -406,7 +411,7 @@ func (r ApiUpdateGameRequest) UpdateGameRequest(updateGameRequest UpdateGameRequ
 	return r
 }
 
-func (r ApiUpdateGameRequest) Execute() (*GameModel, *http.Response, error) {
+func (r ApiUpdateGameRequest) Execute() (*UpdateGame200Response, *http.Response, error) {
 	return r.ApiService.UpdateGameExecute(r)
 }
 
@@ -416,7 +421,7 @@ UpdateGame Update game
 Update various fields specific to a game. Such as changing its password, resetting its published or secret key, or updating its RPCs.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param gameId Any game id within the MetaFab ecosystem.
+ @param gameId The game id of the authenticating game.
  @return ApiUpdateGameRequest
 */
 func (a *GamesApiService) UpdateGame(ctx context.Context, gameId string) ApiUpdateGameRequest {
@@ -428,13 +433,13 @@ func (a *GamesApiService) UpdateGame(ctx context.Context, gameId string) ApiUpda
 }
 
 // Execute executes the request
-//  @return GameModel
-func (a *GamesApiService) UpdateGameExecute(r ApiUpdateGameRequest) (*GameModel, *http.Response, error) {
+//  @return UpdateGame200Response
+func (a *GamesApiService) UpdateGameExecute(r ApiUpdateGameRequest) (*UpdateGame200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GameModel
+		localVarReturnValue  *UpdateGame200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GamesApiService.UpdateGame")
@@ -504,7 +509,8 @@ func (a *GamesApiService) UpdateGameExecute(r ApiUpdateGameRequest) (*GameModel,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -514,7 +520,8 @@ func (a *GamesApiService) UpdateGameExecute(r ApiUpdateGameRequest) (*GameModel,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

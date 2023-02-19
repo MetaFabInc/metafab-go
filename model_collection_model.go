@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -23,6 +23,8 @@ type CollectionModel struct {
 	GameId *string `json:"gameId,omitempty"`
 	// This field has not had a description added.
 	ContractId *string `json:"contractId,omitempty"`
+	// This field has not had a description added.
+	Name *string `json:"name,omitempty"`
 	// This field has not had a description added.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// This field has not had a description added.
@@ -48,7 +50,7 @@ func NewCollectionModelWithDefaults() *CollectionModel {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CollectionModel) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -58,15 +60,15 @@ func (o *CollectionModel) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CollectionModel) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CollectionModel) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -80,7 +82,7 @@ func (o *CollectionModel) SetId(v string) {
 
 // GetGameId returns the GameId field value if set, zero value otherwise.
 func (o *CollectionModel) GetGameId() string {
-	if o == nil || o.GameId == nil {
+	if o == nil || isNil(o.GameId) {
 		var ret string
 		return ret
 	}
@@ -90,15 +92,15 @@ func (o *CollectionModel) GetGameId() string {
 // GetGameIdOk returns a tuple with the GameId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CollectionModel) GetGameIdOk() (*string, bool) {
-	if o == nil || o.GameId == nil {
-		return nil, false
+	if o == nil || isNil(o.GameId) {
+    return nil, false
 	}
 	return o.GameId, true
 }
 
 // HasGameId returns a boolean if a field has been set.
 func (o *CollectionModel) HasGameId() bool {
-	if o != nil && o.GameId != nil {
+	if o != nil && !isNil(o.GameId) {
 		return true
 	}
 
@@ -112,7 +114,7 @@ func (o *CollectionModel) SetGameId(v string) {
 
 // GetContractId returns the ContractId field value if set, zero value otherwise.
 func (o *CollectionModel) GetContractId() string {
-	if o == nil || o.ContractId == nil {
+	if o == nil || isNil(o.ContractId) {
 		var ret string
 		return ret
 	}
@@ -122,15 +124,15 @@ func (o *CollectionModel) GetContractId() string {
 // GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CollectionModel) GetContractIdOk() (*string, bool) {
-	if o == nil || o.ContractId == nil {
-		return nil, false
+	if o == nil || isNil(o.ContractId) {
+    return nil, false
 	}
 	return o.ContractId, true
 }
 
 // HasContractId returns a boolean if a field has been set.
 func (o *CollectionModel) HasContractId() bool {
-	if o != nil && o.ContractId != nil {
+	if o != nil && !isNil(o.ContractId) {
 		return true
 	}
 
@@ -142,9 +144,41 @@ func (o *CollectionModel) SetContractId(v string) {
 	o.ContractId = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CollectionModel) GetName() string {
+	if o == nil || isNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CollectionModel) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
+    return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CollectionModel) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CollectionModel) SetName(v string) {
+	o.Name = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *CollectionModel) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -154,15 +188,15 @@ func (o *CollectionModel) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CollectionModel) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *CollectionModel) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -176,7 +210,7 @@ func (o *CollectionModel) SetUpdatedAt(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *CollectionModel) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -186,15 +220,15 @@ func (o *CollectionModel) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CollectionModel) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *CollectionModel) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -208,19 +242,22 @@ func (o *CollectionModel) SetCreatedAt(v string) {
 
 func (o CollectionModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.GameId != nil {
+	if !isNil(o.GameId) {
 		toSerialize["gameId"] = o.GameId
 	}
-	if o.ContractId != nil {
+	if !isNil(o.ContractId) {
 		toSerialize["contractId"] = o.ContractId
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
 	return json.Marshal(toSerialize)

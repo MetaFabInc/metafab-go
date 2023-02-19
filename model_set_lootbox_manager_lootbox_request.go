@@ -1,9 +1,9 @@
 /*
 MetaFab API
 
- Complete MetaFab API references and guides can be found at: https://trymetafab.com
+Complete MetaFab API references and guides can be found at: https://trymetafab.com
 
-API version: 1.4.1
+API version: 1.5.1
 Contact: metafabproject@gmail.com
 */
 
@@ -73,7 +73,7 @@ func (o *SetLootboxManagerLootboxRequest) GetId() int32 {
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetIdOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Id, true
 }
@@ -85,7 +85,7 @@ func (o *SetLootboxManagerLootboxRequest) SetId(v int32) {
 
 // GetInputCollectionAddress returns the InputCollectionAddress field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetInputCollectionAddress() string {
-	if o == nil || o.InputCollectionAddress == nil {
+	if o == nil || isNil(o.InputCollectionAddress) {
 		var ret string
 		return ret
 	}
@@ -95,15 +95,15 @@ func (o *SetLootboxManagerLootboxRequest) GetInputCollectionAddress() string {
 // GetInputCollectionAddressOk returns a tuple with the InputCollectionAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetInputCollectionAddressOk() (*string, bool) {
-	if o == nil || o.InputCollectionAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCollectionAddress) {
+    return nil, false
 	}
 	return o.InputCollectionAddress, true
 }
 
 // HasInputCollectionAddress returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasInputCollectionAddress() bool {
-	if o != nil && o.InputCollectionAddress != nil {
+	if o != nil && !isNil(o.InputCollectionAddress) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *SetLootboxManagerLootboxRequest) SetInputCollectionAddress(v string) {
 
 // GetInputCollectionId returns the InputCollectionId field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetInputCollectionId() string {
-	if o == nil || o.InputCollectionId == nil {
+	if o == nil || isNil(o.InputCollectionId) {
 		var ret string
 		return ret
 	}
@@ -127,15 +127,15 @@ func (o *SetLootboxManagerLootboxRequest) GetInputCollectionId() string {
 // GetInputCollectionIdOk returns a tuple with the InputCollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetInputCollectionIdOk() (*string, bool) {
-	if o == nil || o.InputCollectionId == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCollectionId) {
+    return nil, false
 	}
 	return o.InputCollectionId, true
 }
 
 // HasInputCollectionId returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasInputCollectionId() bool {
-	if o != nil && o.InputCollectionId != nil {
+	if o != nil && !isNil(o.InputCollectionId) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *SetLootboxManagerLootboxRequest) SetInputCollectionId(v string) {
 
 // GetInputCollectionItemIds returns the InputCollectionItemIds field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetInputCollectionItemIds() []int32 {
-	if o == nil || o.InputCollectionItemIds == nil {
+	if o == nil || isNil(o.InputCollectionItemIds) {
 		var ret []int32
 		return ret
 	}
@@ -159,15 +159,15 @@ func (o *SetLootboxManagerLootboxRequest) GetInputCollectionItemIds() []int32 {
 // GetInputCollectionItemIdsOk returns a tuple with the InputCollectionItemIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetInputCollectionItemIdsOk() ([]int32, bool) {
-	if o == nil || o.InputCollectionItemIds == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCollectionItemIds) {
+    return nil, false
 	}
 	return o.InputCollectionItemIds, true
 }
 
 // HasInputCollectionItemIds returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasInputCollectionItemIds() bool {
-	if o != nil && o.InputCollectionItemIds != nil {
+	if o != nil && !isNil(o.InputCollectionItemIds) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *SetLootboxManagerLootboxRequest) SetInputCollectionItemIds(v []int32) {
 
 // GetInputCollectionItemAmounts returns the InputCollectionItemAmounts field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetInputCollectionItemAmounts() []int32 {
-	if o == nil || o.InputCollectionItemAmounts == nil {
+	if o == nil || isNil(o.InputCollectionItemAmounts) {
 		var ret []int32
 		return ret
 	}
@@ -191,15 +191,15 @@ func (o *SetLootboxManagerLootboxRequest) GetInputCollectionItemAmounts() []int3
 // GetInputCollectionItemAmountsOk returns a tuple with the InputCollectionItemAmounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetInputCollectionItemAmountsOk() ([]int32, bool) {
-	if o == nil || o.InputCollectionItemAmounts == nil {
-		return nil, false
+	if o == nil || isNil(o.InputCollectionItemAmounts) {
+    return nil, false
 	}
 	return o.InputCollectionItemAmounts, true
 }
 
 // HasInputCollectionItemAmounts returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasInputCollectionItemAmounts() bool {
-	if o != nil && o.InputCollectionItemAmounts != nil {
+	if o != nil && !isNil(o.InputCollectionItemAmounts) {
 		return true
 	}
 
@@ -213,7 +213,7 @@ func (o *SetLootboxManagerLootboxRequest) SetInputCollectionItemAmounts(v []int3
 
 // GetOutputCollectionAddress returns the OutputCollectionAddress field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionAddress() string {
-	if o == nil || o.OutputCollectionAddress == nil {
+	if o == nil || isNil(o.OutputCollectionAddress) {
 		var ret string
 		return ret
 	}
@@ -223,15 +223,15 @@ func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionAddress() string {
 // GetOutputCollectionAddressOk returns a tuple with the OutputCollectionAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionAddressOk() (*string, bool) {
-	if o == nil || o.OutputCollectionAddress == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionAddress) {
+    return nil, false
 	}
 	return o.OutputCollectionAddress, true
 }
 
 // HasOutputCollectionAddress returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasOutputCollectionAddress() bool {
-	if o != nil && o.OutputCollectionAddress != nil {
+	if o != nil && !isNil(o.OutputCollectionAddress) {
 		return true
 	}
 
@@ -245,7 +245,7 @@ func (o *SetLootboxManagerLootboxRequest) SetOutputCollectionAddress(v string) {
 
 // GetOutputCollectionId returns the OutputCollectionId field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionId() string {
-	if o == nil || o.OutputCollectionId == nil {
+	if o == nil || isNil(o.OutputCollectionId) {
 		var ret string
 		return ret
 	}
@@ -255,15 +255,15 @@ func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionId() string {
 // GetOutputCollectionIdOk returns a tuple with the OutputCollectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionIdOk() (*string, bool) {
-	if o == nil || o.OutputCollectionId == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionId) {
+    return nil, false
 	}
 	return o.OutputCollectionId, true
 }
 
 // HasOutputCollectionId returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasOutputCollectionId() bool {
-	if o != nil && o.OutputCollectionId != nil {
+	if o != nil && !isNil(o.OutputCollectionId) {
 		return true
 	}
 
@@ -277,7 +277,7 @@ func (o *SetLootboxManagerLootboxRequest) SetOutputCollectionId(v string) {
 
 // GetOutputCollectionItemIds returns the OutputCollectionItemIds field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemIds() []int32 {
-	if o == nil || o.OutputCollectionItemIds == nil {
+	if o == nil || isNil(o.OutputCollectionItemIds) {
 		var ret []int32
 		return ret
 	}
@@ -287,15 +287,15 @@ func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemIds() []int32 {
 // GetOutputCollectionItemIdsOk returns a tuple with the OutputCollectionItemIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemIdsOk() ([]int32, bool) {
-	if o == nil || o.OutputCollectionItemIds == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionItemIds) {
+    return nil, false
 	}
 	return o.OutputCollectionItemIds, true
 }
 
 // HasOutputCollectionItemIds returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasOutputCollectionItemIds() bool {
-	if o != nil && o.OutputCollectionItemIds != nil {
+	if o != nil && !isNil(o.OutputCollectionItemIds) {
 		return true
 	}
 
@@ -309,7 +309,7 @@ func (o *SetLootboxManagerLootboxRequest) SetOutputCollectionItemIds(v []int32) 
 
 // GetOutputCollectionItemAmounts returns the OutputCollectionItemAmounts field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemAmounts() []int32 {
-	if o == nil || o.OutputCollectionItemAmounts == nil {
+	if o == nil || isNil(o.OutputCollectionItemAmounts) {
 		var ret []int32
 		return ret
 	}
@@ -319,15 +319,15 @@ func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemAmounts() []int
 // GetOutputCollectionItemAmountsOk returns a tuple with the OutputCollectionItemAmounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemAmountsOk() ([]int32, bool) {
-	if o == nil || o.OutputCollectionItemAmounts == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionItemAmounts) {
+    return nil, false
 	}
 	return o.OutputCollectionItemAmounts, true
 }
 
 // HasOutputCollectionItemAmounts returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasOutputCollectionItemAmounts() bool {
-	if o != nil && o.OutputCollectionItemAmounts != nil {
+	if o != nil && !isNil(o.OutputCollectionItemAmounts) {
 		return true
 	}
 
@@ -341,7 +341,7 @@ func (o *SetLootboxManagerLootboxRequest) SetOutputCollectionItemAmounts(v []int
 
 // GetOutputCollectionItemWeights returns the OutputCollectionItemWeights field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemWeights() []int32 {
-	if o == nil || o.OutputCollectionItemWeights == nil {
+	if o == nil || isNil(o.OutputCollectionItemWeights) {
 		var ret []int32
 		return ret
 	}
@@ -351,15 +351,15 @@ func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemWeights() []int
 // GetOutputCollectionItemWeightsOk returns a tuple with the OutputCollectionItemWeights field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetOutputCollectionItemWeightsOk() ([]int32, bool) {
-	if o == nil || o.OutputCollectionItemWeights == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputCollectionItemWeights) {
+    return nil, false
 	}
 	return o.OutputCollectionItemWeights, true
 }
 
 // HasOutputCollectionItemWeights returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasOutputCollectionItemWeights() bool {
-	if o != nil && o.OutputCollectionItemWeights != nil {
+	if o != nil && !isNil(o.OutputCollectionItemWeights) {
 		return true
 	}
 
@@ -373,7 +373,7 @@ func (o *SetLootboxManagerLootboxRequest) SetOutputCollectionItemWeights(v []int
 
 // GetOutputTotalItems returns the OutputTotalItems field value if set, zero value otherwise.
 func (o *SetLootboxManagerLootboxRequest) GetOutputTotalItems() int32 {
-	if o == nil || o.OutputTotalItems == nil {
+	if o == nil || isNil(o.OutputTotalItems) {
 		var ret int32
 		return ret
 	}
@@ -383,15 +383,15 @@ func (o *SetLootboxManagerLootboxRequest) GetOutputTotalItems() int32 {
 // GetOutputTotalItemsOk returns a tuple with the OutputTotalItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetLootboxManagerLootboxRequest) GetOutputTotalItemsOk() (*int32, bool) {
-	if o == nil || o.OutputTotalItems == nil {
-		return nil, false
+	if o == nil || isNil(o.OutputTotalItems) {
+    return nil, false
 	}
 	return o.OutputTotalItems, true
 }
 
 // HasOutputTotalItems returns a boolean if a field has been set.
 func (o *SetLootboxManagerLootboxRequest) HasOutputTotalItems() bool {
-	if o != nil && o.OutputTotalItems != nil {
+	if o != nil && !isNil(o.OutputTotalItems) {
 		return true
 	}
 
@@ -408,34 +408,34 @@ func (o SetLootboxManagerLootboxRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if o.InputCollectionAddress != nil {
+	if !isNil(o.InputCollectionAddress) {
 		toSerialize["inputCollectionAddress"] = o.InputCollectionAddress
 	}
-	if o.InputCollectionId != nil {
+	if !isNil(o.InputCollectionId) {
 		toSerialize["inputCollectionId"] = o.InputCollectionId
 	}
-	if o.InputCollectionItemIds != nil {
+	if !isNil(o.InputCollectionItemIds) {
 		toSerialize["inputCollectionItemIds"] = o.InputCollectionItemIds
 	}
-	if o.InputCollectionItemAmounts != nil {
+	if !isNil(o.InputCollectionItemAmounts) {
 		toSerialize["inputCollectionItemAmounts"] = o.InputCollectionItemAmounts
 	}
-	if o.OutputCollectionAddress != nil {
+	if !isNil(o.OutputCollectionAddress) {
 		toSerialize["outputCollectionAddress"] = o.OutputCollectionAddress
 	}
-	if o.OutputCollectionId != nil {
+	if !isNil(o.OutputCollectionId) {
 		toSerialize["outputCollectionId"] = o.OutputCollectionId
 	}
-	if o.OutputCollectionItemIds != nil {
+	if !isNil(o.OutputCollectionItemIds) {
 		toSerialize["outputCollectionItemIds"] = o.OutputCollectionItemIds
 	}
-	if o.OutputCollectionItemAmounts != nil {
+	if !isNil(o.OutputCollectionItemAmounts) {
 		toSerialize["outputCollectionItemAmounts"] = o.OutputCollectionItemAmounts
 	}
-	if o.OutputCollectionItemWeights != nil {
+	if !isNil(o.OutputCollectionItemWeights) {
 		toSerialize["outputCollectionItemWeights"] = o.OutputCollectionItemWeights
 	}
-	if o.OutputTotalItems != nil {
+	if !isNil(o.OutputTotalItems) {
 		toSerialize["outputTotalItems"] = o.OutputTotalItems
 	}
 	return json.Marshal(toSerialize)
